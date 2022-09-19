@@ -1,0 +1,5 @@
+new_session: true
+delete_merged_file: yes
+apple-touch-icon: "logo.png"
+apple-touch-icon-size: 120
+favicon: "favicon.ico"

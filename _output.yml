@@ -1,0 +1,9 @@
+bookdown::gitbook:
+  df_print: paged
+  delete_merged_file: true
+  config:
+    toc:
+      collapse: section
+      before: |
+          <li><strong><a href="./">MA 2021</a></strong></li>
+  
