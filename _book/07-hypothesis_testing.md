@@ -97,7 +97,7 @@ mean_sample <- mean(music_listening_sample$hours)
 ggplot(music_listening_sample) + geom_histogram(aes(x = hours),
     fill = "white", color = "black", bins = 20) + theme_bw() +
     geom_vline(xintercept = mean_sample, color = "black",
-        size = 1) + labs(title = TeX(sprintf("Distribution of values in the sample ($n =$ %.0f, $\\bar{x] = $ %.2f, s = %.2f)",
+        size = 1) + labs(title = TeX(sprintf("Distribution of values in the sample ($n =$ %.0f, $\\bar{x} = $ %.2f, s = %.2f)",
     n, mean_sample, sd(music_listening_sample$hours))),
     x = "Hours", y = "Frequency")
 ```
@@ -736,7 +736,7 @@ t.test(hours ~ group, data = hours_a_b, mu = 0, alternative = "two.sided",
 ## 
 ## data:  hours by group
 ## t = -4.9646, df = 195.73, p-value = 0.000001494
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true difference in means between group A and group B is not equal to 0
 ## 95 percent confidence interval:
 ##  -14.514246  -6.261264
 ## sample estimates:
@@ -982,12 +982,12 @@ t.test(hours_a_b_paired$hours_a, hours_a_b_paired$hours_b,
 ## 
 ## data:  hours_a_b_paired$hours_a and hours_a_b_paired$hours_b
 ## t = -5.4148, df = 99, p-value = 0.00000043
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
 ##  -15.919048  -7.380952
 ## sample estimates:
-## mean of the differences 
-##                  -11.65
+## mean difference 
+##          -11.65
 ```
 Again, we could combine the results of the statistical test and the visualization using the `ggstatsplot` package. 
 

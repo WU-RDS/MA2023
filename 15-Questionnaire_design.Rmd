@@ -1133,7 +1133,7 @@ ggplot(gender_sow, aes(x = gender, y = points, fill = gender)) +
 
 Another way to compare multiple values across groups is a radar plot. First we calculate the share of respondents by gender for a couple of car use-cases (`aggregate(. ~ gender, data = car_gender, mean)` where `.` indicates all other variables). Then we create a radar plot where the color indicates the gender. Since the labels are multiple words long we can rotate them to make them fit better (`theme(axis.text.x = element_text(angle = c(-30,...)))`).
 
-```{r warning=FALSE}
+```{r warning=FALSE, fig.width=5, fig.height=5}
 library(ggiraphExtra)
 carsharing$gender <- factor(carsharing$Q26, levels = c(1,2), labels = c("F", "M"))
 car_gender <- carsharing[,c(q6_columns, "gender")]
@@ -1141,7 +1141,7 @@ car_gender_mean <- aggregate(. ~ gender, data = car_gender, mean)
 names(car_gender_mean) <- c("gender", q6_answers)
 ggRadar(car_gender_mean, aes(color = gender) ) + 
   theme_bw() + 
-  theme(axis.text.x = element_text(angle = c(-30,-50,-90,0,0,0,90,45,10))) +
+  #theme(axis.text.x = element_text(angle = c(30,50,89, 0,0,0, 89,45,10, 0))) + # 
   scale_color_discrete_qualitative(palette = "Dynamic") 
 ```
 

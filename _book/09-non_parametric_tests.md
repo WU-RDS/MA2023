@@ -10,7 +10,7 @@ output:
 
 ```
 ## 
-## Attache Paket: 'dplyr'
+## Attaching package: 'dplyr'
 ```
 
 ```
@@ -27,7 +27,7 @@ output:
 
 ```
 ## 
-## Attache Paket: 'ggplot2'
+## Attaching package: 'ggplot2'
 ```
 
 ```
@@ -37,20 +37,20 @@ output:
 ```
 
 ```
-## Lade nötiges Paket: lattice
+## Loading required package: lattice
 ```
 
 ```
-## Lade nötiges Paket: survival
+## Loading required package: survival
 ```
 
 ```
-## Lade nötiges Paket: Formula
+## Loading required package: Formula
 ```
 
 ```
 ## 
-## Attache Paket: 'Hmisc'
+## Attaching package: 'Hmisc'
 ```
 
 ```

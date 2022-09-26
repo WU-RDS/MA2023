@@ -563,7 +563,7 @@ t.test(revenue ~ exp_group, data = customer_data)
 ## 
 ## data:  revenue by exp_group
 ## t = -4.4767, df = 283.33, p-value = 0.000011
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true difference in means between group control and group treatment is not equal to 0
 ## 95 percent confidence interval:
 ##  -626.0553 -243.6507
 ## sample estimates:
@@ -675,12 +675,12 @@ t.test(y = customer_data$time_on_site, x = customer_data$time_on_site_1,
 ## 
 ## data:  customer_data$time_on_site_1 and customer_data$time_on_site
 ## t = 39.242, df = 144, p-value < 0.00000000000000022
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
 ##  29.28793 32.39483
 ## sample estimates:
-## mean of the differences 
-##                30.84138
+## mean difference 
+##        30.84138
 ```
 The p-value is again lower than the chosen significance level of 5% (i.e., p < .05), which means that we reject the null hypothesis that there is no difference in the mean time on site between the two page layouts. Make sure you interpret the p-value correctly. It refers to the probability of observing a difference of the observed magnitude (or larger) between the two layouts, assuming that there was in fact no difference between the layouts The confidence interval confirms the conclusion to reject the null hypothesis since $0$ is not contained in the range of plausible values.
 
@@ -1001,15 +1001,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data)
 ## 
-## Quantile = 2.356
+## Quantile = 2.3559
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      198.4986 -73.2308 470.2280
-## dynamic retargeting - no retargeting == 0      730.4972 465.7628 995.2316
-## dynamic retargeting - generic retargeting == 0 531.9986 255.7701 808.2270
+## generic retargeting - no retargeting == 0      198.4986 -73.2194 470.2166
+## dynamic retargeting - no retargeting == 0      730.4972 465.7739 995.2205
+## dynamic retargeting - generic retargeting == 0 531.9986 255.7817 808.2154
 ```
 
 ```r
@@ -1589,7 +1589,7 @@ lm.beta(linear_model)
 ## 
 ## Standardized Coefficients::
 ##    (Intercept)     tv_adspend online_adspend  radio_adspend 
-##     0.00000000     0.75566632     0.49556807    -0.02668878
+##             NA     0.75566632     0.49556807    -0.02668878
 ```
 
 Here, we conclude that tv advertising has the largest ROI followed by online advertising and radio advertising. 
