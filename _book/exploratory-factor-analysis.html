@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><strong><a href="./">MA</a></strong></li>
+<li><strong><a href="./">MA 2022/23</a></strong></li>
 
 <li class="divider"></li>
 <li class="part"><span><b>I Course outline</b></span></li>
@@ -541,21 +541,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Going back to the specific wording of the items you can see that the first group of items (i.e., items 1,3,5) refer to the <strong>health benefits</strong>, while the second item group (i.e., items 2,4,6) refer to the <strong>social benefits</strong>. Imagine now, for example, you would like to include the above variables as explanatory variables in a regression model. Due to the high degree of correlation among the items, you are likely to run into problems of multicollinearity. Instead of omitting some of the items, you might try to combine highly correlated items into one variable. Another application could be when you are developing a new measurement scale for a construct and you wish to explore the underlying dimensions of this construct. In these applications, you need to make sure that the questions that you are asking actually relate to the construct that you intend to measure.</p>
 <p>The goal of factor analysis is to explain the maximum amount of total variance in a correlation matrix by transforming the original variables into linear components. This means that the correlation matrix is broken down into a smaller set of dimensions. The generalized formal representation of the linear relationship between a latent factor <em>Y</em> and the set of variables can be written as:</p>
-<p><span class="math display" id="eq:factor1">\[\begin{equation}
+<p><span class="math display" id="eq:factor1">\[\begin{equation} 
 Y_i=b_1X_{1i} + b_2X_{2i} + b_nX_{ni}+\epsilon_i
 \tag{8.1}
 \end{equation}\]</span></p>
 <p>where X<sub>n</sub> represents the data that we have collected for the different variables. To make it more explicit, the equation could also be written as</p>
-<p><span class="math display" id="eq:factor2">\[\begin{equation}
+<p><span class="math display" id="eq:factor2">\[\begin{equation} 
 Factor_i=b_1Variable_{1i} + b_2Variable_{2i} + b_nVariable_{ni}+\epsilon_i
 \tag{8.2}
 \end{equation}\]</span></p>
 <p>where the dependent variable “Factor” refers to the factor score of person <em>i</em> on the underlying dimensions. In our case, the initial inspection suggested two underlying factors (i.e., health benefits and social benefits), so that we can construct two equations that describe both factors in terms of the variables that we have measured:</p>
-<p><span class="math display" id="eq:factor3">\[\begin{equation}
+<p><span class="math display" id="eq:factor3">\[\begin{equation} 
 Health_i=b_1X_{1i} + b_2X_{2i} + b_3X_{3i}+ b_4X_{4i}+ b_5X_{5i}+ b_6X_{6i}+\epsilon_i
 \tag{8.3}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:factor4">\[\begin{equation}
+<p><span class="math display" id="eq:factor4">\[\begin{equation} 
 Social_i=b_1X_{1i} + b_2X_{2i} + b_3X_{3i}+ b_4X_{4i}+ b_5X_{5i}+ b_6X_{6i}+\epsilon_i
 \tag{8.4}
 \end{equation}\]</span></p>
@@ -579,14 +579,14 @@ Figure 1.2: Factor loadings
 </div>
 <p><br></p>
 <p>The factor loadings may then be used to compute the two new variables (i.e., factor scores) representing the two underlying dimensions. Using a rather simplistic approach, the factor scores for person <em>i</em> could be computed by</p>
-<p><span class="math display" id="eq:factor5">\[\begin{equation}
+<p><span class="math display" id="eq:factor5">\[\begin{equation} 
 \begin{split}
 Health_i=&amp; 0.93*preventCavities_{i} -0.3*shinyTeeth_{i} + 0.94*strengthenGum_{i}\\
           &amp;-0.34*freshBreath_{i} + 0.87*preventDecay_{i} - 0.18*attractTeeth_{i}
 \end{split}
 \tag{8.5}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:factor6">\[\begin{equation}
+<p><span class="math display" id="eq:factor6">\[\begin{equation} 
 \begin{split}
 Social_i=&amp; 0.25*preventCavities_{i} + 0.80*shinyTeeth_{i} + 0.13*strengthenGum_{i}\\
          &amp;+ 0.79*freshBreath_{i}+ 0.35*preventDecay_{i}+ 0.87*attractTeeth_{i}
@@ -608,7 +608,7 @@ Social_i=&amp; 0.25*preventCavities_{i} + 0.80*shinyTeeth_{i} + 0.13*strengthenG
 <img src="https://github.com/IMSMWU/Teaching/raw/master/MRDA2017/ra_anx_quest.JPG" alt="" />
 <p class="caption">The R anxiety questionnaire (source: Field, A. et al. (2012): Discovering Statistics Using R, p. 768)</p>
 </div>
-<p>Let’s assume, we have collected data from 2,571 respondents and stored the results in the data set “raq.dat”.</p>
+<p>Let’s assume, we have collected data from 2,571 respondents and stored the results in the data set “raq.dat.”</p>
 <div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="exploratory-factor-analysis.html#cb666-1" aria-hidden="true" tabindex="-1"></a>raq_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/raq.dat&quot;</span>, </span>
 <span id="cb666-2"><a href="exploratory-factor-analysis.html#cb666-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, </span>
 <span id="cb666-3"><a href="exploratory-factor-analysis.html#cb666-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span></code></pre></div>
@@ -740,7 +740,7 @@ Figure 1.7: Correlation matrix
 <pre><code>## [1] TRUE</code></pre>
 <p>As you can see, the determinant is larger than the threshold, indicating that the overall correlation between variables is not too strong.</p>
 <p>Finally, you should test if the correlation pattern in the matrix is appropriate for factor analysis using the Kaiser-Meyer-Olkin (KMO) measure of sampling adequacy. This statistic is a measure of the proportion of variance among variables that might be common variance.</p>
-<p><span class="math display" id="eq:MSA">\[\begin{equation}
+<p><span class="math display" id="eq:MSA">\[\begin{equation} 
 MSA_j=\frac{\sum_{k\ne j}^{}{r^2_{jk}}}{\sum_{k\ne j}^{}{r^2_{jk}}+\sum_{k\ne j}^{}{p^2_{jk}}}
 \tag{8.7}
 \end{equation}\]</span></p>
@@ -836,29 +836,29 @@ MSA_j=\frac{\sum_{k\ne j}^{}{r^2_{jk}}}{\sum_{k\ne j}^{}{r^2_{jk}}+\sum_{k\ne j}
 ## Q22  0.08  0.15  0.09  0.01  0.04 -0.06  0.02  0.00  0.01 -0.01  0.01  1
 ## Q23 -0.01 -0.07 -0.12 -0.06 -0.03  0.05 -0.03  0.01 -0.01 -0.02  0.00  1
 ##           u2 com
-## Q01  3.3e-16 6.0
-## Q02 -6.7e-16 6.1
-## Q03  8.9e-16 4.4
-## Q04  0.0e+00 4.9
-## Q05 -1.1e-15 5.2
-## Q06  7.8e-16 4.4
-## Q07  4.4e-16 4.1
-## Q08 -6.7e-16 5.7
-## Q09 -4.4e-16 5.0
-## Q10  1.1e-16 7.7
-## Q11  0.0e+00 4.1
-## Q12  0.0e+00 3.8
-## Q13  0.0e+00 4.2
-## Q14 -4.4e-16 4.3
-## Q15 -2.2e-16 5.6
-## Q16 -1.1e-15 4.0
-## Q17 -4.4e-16 4.3
-## Q18  0.0e+00 3.4
-## Q19  3.3e-16 3.5
-## Q20  2.2e-16 8.7
-## Q21  0.0e+00 4.6
-## Q22 -2.2e-16 7.2
-## Q23  8.9e-16 4.2
+## Q01 -1.1e-15 6.0
+## Q02 -3.8e-15 6.1
+## Q03  6.7e-16 4.4
+## Q04 -1.1e-15 4.9
+## Q05 -6.7e-16 5.2
+## Q06 -4.4e-16 4.4
+## Q07 -4.4e-16 4.1
+## Q08 -1.3e-15 5.7
+## Q09 -1.3e-15 5.0
+## Q10  2.2e-16 7.7
+## Q11 -1.3e-15 4.1
+## Q12 -1.6e-15 3.8
+## Q13 -1.6e-15 4.2
+## Q14 -1.1e-15 4.3
+## Q15 -6.7e-16 5.6
+## Q16 -1.8e-15 4.0
+## Q17 -1.6e-15 4.3
+## Q18 -1.1e-15 3.4
+## Q19 -8.9e-16 3.5
+## Q20  4.4e-16 8.7
+## Q21 -2.2e-16 4.6
+## Q22  0.0e+00 7.2
+## Q23  1.1e-16 4.2
 ## 
 ##                        PC1  PC2  PC3  PC4  PC5  PC6  PC7  PC8  PC9 PC10 PC11
 ## SS loadings           7.29 1.74 1.32 1.23 0.99 0.90 0.81 0.78 0.75 0.72 0.68
@@ -896,7 +896,7 @@ MSA_j=\frac{\sum_{k\ne j}^{}{r^2_{jk}}}{\sum_{k\ne j}^{}{r^2_{jk}}+\sum_{k\ne j}
 Figure 1.13: Scree plot
 </p>
 </div>
-<p>The dashed line is simply a visualization of the rule that we will retain factors with Eigenvalues &gt; 1 (suggesting four factors). Another criterion based on this plot would be to find the point where the curve flattens (point of inflection). If the largest few eigenvalues in the covariance matrix dominate in magnitude, then the scree plot will exhibit an “elbow”. From that point onwards, the incremental gain in explained variance is rather low. Also according to this criterion, we would extract four factors. Taken together, the results suggest that we should extract four factors.</p>
+<p>The dashed line is simply a visualization of the rule that we will retain factors with Eigenvalues &gt; 1 (suggesting four factors). Another criterion based on this plot would be to find the point where the curve flattens (point of inflection). If the largest few eigenvalues in the covariance matrix dominate in magnitude, then the scree plot will exhibit an “elbow.” From that point onwards, the incremental gain in explained variance is rather low. Also according to this criterion, we would extract four factors. Taken together, the results suggest that we should extract four factors.</p>
 <p>Now that we know how many components we want to extract, we can rerun the analysis, specifying that number:</p>
 <div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="exploratory-factor-analysis.html#cb688-1" aria-hidden="true" tabindex="-1"></a>pc2 <span class="ot">&lt;-</span> <span class="fu">principal</span>(raq_data, <span class="at">nfactors =</span> <span class="dv">4</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
 <span id="cb688-2"><a href="exploratory-factor-analysis.html#cb688-2" aria-hidden="true" tabindex="-1"></a>pc2</span></code></pre></div>
@@ -942,7 +942,7 @@ Figure 1.13: Scree plot
 ##  with the empirical chi square  4006.15  with prob &lt;  0 
 ## 
 ## Fit based upon off diagonal values = 0.96</code></pre>
-<p>Now that the output is less complex, we can inspect the remaining statistics. The first part of the output is the <strong>factor matrix</strong>, which contains the factor loadings of all the variables on the four extracted factors (i.e., PC1, PC2, PC3, PC4). As we have said before, the <strong>factor loadings</strong> are the correlations between the variables and the factors. The factor matrix also contains the columns “h2” and “u2”. “h2” refers to the <strong>communality</strong>, which is the proportion of variance a variable shares with all the other variables being considered. This is also the proportion of variance explained by the common factors. In contrast, “u2” refers to the unique variance, which is the proportion of the variance that is unique to a particular variable. In PCA, we are primarily interested in the common variance. When the communality is very low (say &lt;.30), a variable is “quite unique” and should be removed, as it is definitely measuring “something else”. In our example, all communalities (i.e., h2) are above 0.3 so that we retain all variables.</p>
+<p>Now that the output is less complex, we can inspect the remaining statistics. The first part of the output is the <strong>factor matrix</strong>, which contains the factor loadings of all the variables on the four extracted factors (i.e., PC1, PC2, PC3, PC4). As we have said before, the <strong>factor loadings</strong> are the correlations between the variables and the factors. The factor matrix also contains the columns “h2” and “u2.” “h2” refers to the <strong>communality</strong>, which is the proportion of variance a variable shares with all the other variables being considered. This is also the proportion of variance explained by the common factors. In contrast, “u2” refers to the unique variance, which is the proportion of the variance that is unique to a particular variable. In PCA, we are primarily interested in the common variance. When the communality is very low (say &lt;.30), a variable is “quite unique” and should be removed, as it is definitely measuring “something else.” In our example, all communalities (i.e., h2) are above 0.3 so that we retain all variables.</p>
 <p>Note that there is a difference between PCA and common factor analysis. PCA focuses on the variance and aims to reproduce the total variable variance. This means that the components reflect both common and unique variance of the variables. Factor analysis, in contrast, focuses on the correlation and aims to reproduce the correlations among variables. Here, the factors only represent the common variance that variable share and do not include the unique variance. In other words, while factor analysis focuses on explaining the off-diagonal terms in the correlation matrix (i.e., shared co-variance), PCA focuses on explaining the diagonal terms (i.e., the variances). However, although PCA aims to reproduce the on-diagonal terms in the correlation matrix, it also tends to fit the off-diagonal correlations quite well. Hence, the results are often comparable. See also <a href="https://en.wikipedia.org/wiki/Principal_component_analysis#Relation_between_PCA_and_factor_analysis" target="_blank">here</a>.</p>
 <p>You should also take a closer look at the residuals in order to check whether you have extracted the correct number of factors. The difference between the reproduced and the actual correlation matrices are the residuals. We can extract the residuals from our model using the <code>factor.residuals()</code> function from the <code>psych</code> package. It takes the original correlation matrix and the factor loadings as arguments:</p>
 <div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="exploratory-factor-analysis.html#cb690-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">factor.residuals</span>(raq_matrix, pc2<span class="sc">$</span>loadings)</span>
@@ -1095,7 +1095,7 @@ Figure 1.13: Scree plot
 ## Q22 -0.096  0.464  0.408
 ## Q23  0.032  0.408  0.412</code></pre>
 <p>You can see that the reproduced correlation between the first and second variable is -0.112. From the correlation table from the beginning we know, however, that the observed correlation was -0.099. Hence, the difference between the observed and reproduced correlation is: (-0.099)-(-0.112) = 0.013, which corresponds to the residual of this variable pair in the residual matrix. Note that the diagonal elements in the reproduced matrix correspond to the communalities in the model summary above (i.e., “h2”).</p>
-<p>A measure of fit can now be computed based on the size of the residuals. In the worst case, the residuals would be as large as the correlations in the original matrix, which would be the case if we extracted no factors at all. A measure of fit could therefore be the sum of the squared residuals divided by the sum of the squared correlations. We square the residuals to account for positive and negative deviations. <strong>Values &gt;0.90 are considered indicators of good fit.</strong> From the output above, you can see that: “Fit based upon off diagonal values = 0.96”. Thus, we conclude that the model fit is sufficient.</p>
+<p>A measure of fit can now be computed based on the size of the residuals. In the worst case, the residuals would be as large as the correlations in the original matrix, which would be the case if we extracted no factors at all. A measure of fit could therefore be the sum of the squared residuals divided by the sum of the squared correlations. We square the residuals to account for positive and negative deviations. <strong>Values &gt;0.90 are considered indicators of good fit.</strong> From the output above, you can see that: “Fit based upon off diagonal values = 0.96.” Thus, we conclude that the model fit is sufficient.</p>
 <p>You could also manually compute this statistic by summing over the squared residuals and correlations, take their ratio and subtract it from one (note that we use the <code>upper.tri()</code> function to use the upper triangle of the matrix only; this has the effect of discarding the diagonal elements and the elements below the diagonal).</p>
 <div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="exploratory-factor-analysis.html#cb694-1" aria-hidden="true" tabindex="-1"></a>ssr <span class="ot">&lt;-</span> (<span class="fu">sum</span>(residuals[<span class="fu">upper.tri</span>((residuals))]<span class="sc">^</span><span class="dv">2</span>)) <span class="co">#sum of squared residuals </span></span>
 <span id="cb694-2"><a href="exploratory-factor-analysis.html#cb694-2" aria-hidden="true" tabindex="-1"></a>ssc <span class="ot">&lt;-</span> (<span class="fu">sum</span>(raq_matrix[<span class="fu">upper.tri</span>((raq_matrix))]<span class="sc">^</span><span class="dv">2</span>)) <span class="co">#sum of squared correlations</span></span>
@@ -1247,7 +1247,7 @@ Figure 1.20: Q-Q plot
 <li><strong>Factor 3:</strong> fear of maths</li>
 <li><strong>Factor 4:</strong> Peer evaluation</li>
 </ul>
-<p>The previous type of rotation (i.e., “varimax”) assumed that the the factors are independent. Oblique rotation is another type of rotation that can handle correlation between the factors. The command for an oblique rotation is very similar to that for an orthogonal rotation – we just change the rotate option from “varimax” to “oblimin”.</p>
+<p>The previous type of rotation (i.e., “varimax”) assumed that the the factors are independent. Oblique rotation is another type of rotation that can handle correlation between the factors. The command for an oblique rotation is very similar to that for an orthogonal rotation – we just change the rotate option from “varimax” to “oblimin.”</p>
 <div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="exploratory-factor-analysis.html#cb710-1" aria-hidden="true" tabindex="-1"></a>pc4 <span class="ot">&lt;-</span> <span class="fu">principal</span>(raq_data, <span class="at">nfactors =</span> <span class="dv">4</span>, <span class="at">rotate =</span> <span class="st">&quot;oblimin&quot;</span>, <span class="at">scores =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb710-2"><a href="exploratory-factor-analysis.html#cb710-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print.psych</span>(pc4, <span class="at">cut =</span> <span class="fl">0.3</span>, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Principal Components Analysis
@@ -1326,7 +1326,7 @@ Figure 1.20: Q-Q plot
 </div>
 <p><br></p>
 <p>When you are using multi-item scales to measure a latent construct (e.g., the output from the PCA above), it is useful to check the reliability of your scale. Reliability means that our items should consistently reflect the construct that they are intended to measure. In other words, individual items should produce results consistent with the overall scale. This means that for a scale to be reliable, the score of a person on one half of the items should be similar to the score derived based on the other half of the items (split-half reliability). The problem is that there are several ways in which data can be split. A measure that reflects this underlying intuition is <strong>Cronbach’s alpha</strong>, which is approximately equal to the average of all possible split-half reliabilities. It is computed as follows:</p>
-<p><span class="math display" id="eq:calpha">\[\begin{equation}
+<p><span class="math display" id="eq:calpha">\[\begin{equation} 
 \alpha=\frac{N^2\overline{Cov}}{\sum{s^2_{item}}+\sum{Cov_{item}}}
 \tag{8.8}
 \end{equation}\]</span></p>
@@ -1558,80 +1558,127 @@ Figure 1.20: Q-Q plot
 <h2>Learning check<a href="exploratory-factor-analysis.html#learning-check-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC8.1) The goals of factor analysis are…</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />…to identify underlying dimensions that explain correlations among variables.</li>
-<li><input type="checkbox" disabled="" />…to identify multiplicative effects in a linear regression.</li>
-<li><input type="checkbox" disabled="" checked="" />…to identify a smaller set of uncorrelated variables.</li>
-<li><input type="checkbox" disabled="" />…to identify interaction terms in a linear regression.</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+…to identify underlying dimensions that explain correlations among variables.</li>
+<li><input type="checkbox" disabled="" />
+…to identify multiplicative effects in a linear regression.</li>
+<li><input type="checkbox" disabled="" checked="" />
+…to identify a smaller set of uncorrelated variables.</li>
+<li><input type="checkbox" disabled="" />
+…to identify interaction terms in a linear regression.</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.2) What are typical hypotheses in exploratory factor analysis (EFA) concerning how many factors will emerge?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />A reduction greater than 50% of the input variables</li>
-<li><input type="checkbox" disabled="" />Between a third and a fourth of the input variables</li>
-<li><input type="checkbox" disabled="" />A reduction smaller than 50% of the input variables</li>
-<li><input type="checkbox" disabled="" checked="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+A reduction greater than 50% of the input variables</li>
+<li><input type="checkbox" disabled="" />
+Between a third and a fourth of the input variables</li>
+<li><input type="checkbox" disabled="" />
+A reduction smaller than 50% of the input variables</li>
+<li><input type="checkbox" disabled="" checked="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.3) What assumptions have to be fulfilled for using factor analysis?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />Variables must be in interval or ratio scale</li>
-<li><input type="checkbox" disabled="" checked="" />Existence of some underlying factor structure</li>
-<li><input type="checkbox" disabled="" checked="" />The correlation matrix must have sufficient number of correlations</li>
-<li><input type="checkbox" disabled="" />Variables must be measured using ordinal scales</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+Variables must be in interval or ratio scale</li>
+<li><input type="checkbox" disabled="" checked="" />
+Existence of some underlying factor structure</li>
+<li><input type="checkbox" disabled="" checked="" />
+The correlation matrix must have sufficient number of correlations</li>
+<li><input type="checkbox" disabled="" />
+Variables must be measured using ordinal scales</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.4) What is the correct interpretation of the b-values in the following mathematical representation concerning exploratory factor analysis (EFA)?</strong> <span class="math inline">\(Factor_i=b_1*Variable_1 + b_2*Variable_2+…+b_nVariable_n\)</span></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Regression coefficients</li>
-<li><input type="checkbox" disabled="" />Correlations between the variables</li>
-<li><input type="checkbox" disabled="" checked="" />Weights of a variable on a factor</li>
-<li><input type="checkbox" disabled="" checked="" />Factor loadings</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+Regression coefficients</li>
+<li><input type="checkbox" disabled="" />
+Correlations between the variables</li>
+<li><input type="checkbox" disabled="" checked="" />
+Weights of a variable on a factor</li>
+<li><input type="checkbox" disabled="" checked="" />
+Factor loadings</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.5) What is the null hypothesis of the Bartlett’s test of sphericity?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />All variables are correlated in the population</li>
-<li><input type="checkbox" disabled="" />The correlation matrix is singular</li>
-<li><input type="checkbox" disabled="" checked="" />All variables are uncorrelated in the population</li>
-<li><input type="checkbox" disabled="" checked="" />The correlation matrix is an identity matrix</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+All variables are correlated in the population</li>
+<li><input type="checkbox" disabled="" />
+The correlation matrix is singular</li>
+<li><input type="checkbox" disabled="" checked="" />
+All variables are uncorrelated in the population</li>
+<li><input type="checkbox" disabled="" checked="" />
+The correlation matrix is an identity matrix</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.6) Before conducting PCA, how can you test the sampling adequacy of your data (i.e., how suited your data is for Factor Analysis)?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Kaiser-Meyer-Olkin (KMO) test with scores &lt;0.5</li>
-<li><input type="checkbox" disabled="" checked="" />Kaiser-Meyer-Olkin (KMO) test with scores &gt;0.5</li>
-<li><input type="checkbox" disabled="" />By inspecting the scree plot</li>
-<li><input type="checkbox" disabled="" />Cronbach’s alpha test with scores &gt;0.7</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+Kaiser-Meyer-Olkin (KMO) test with scores &lt;0.5</li>
+<li><input type="checkbox" disabled="" checked="" />
+Kaiser-Meyer-Olkin (KMO) test with scores &gt;0.5</li>
+<li><input type="checkbox" disabled="" />
+By inspecting the scree plot</li>
+<li><input type="checkbox" disabled="" />
+Cronbach’s alpha test with scores &gt;0.7</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.7) What is communality?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />Proportion of common variance in a variable</li>
-<li><input type="checkbox" disabled="" />Variance that is unique to a particular variable</li>
-<li><input type="checkbox" disabled="" />Proportion of unique variance in a variable</li>
-<li><input type="checkbox" disabled="" />Covariance between two factors</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+Proportion of common variance in a variable</li>
+<li><input type="checkbox" disabled="" />
+Variance that is unique to a particular variable</li>
+<li><input type="checkbox" disabled="" />
+Proportion of unique variance in a variable</li>
+<li><input type="checkbox" disabled="" />
+Covariance between two factors</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.8) Orthogonal factor rotation assumes:</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Inter-correlated factors</li>
-<li><input type="checkbox" disabled="" checked="" />Uncorrelated factors</li>
-<li><input type="checkbox" disabled="" />Outer-correlated factors</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+Inter-correlated factors</li>
+<li><input type="checkbox" disabled="" checked="" />
+Uncorrelated factors</li>
+<li><input type="checkbox" disabled="" />
+Outer-correlated factors</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.9) Imagine you want to conduct a PCA on 10 variables without factor rotation and in a first step, you wish to find out how many components you should extract. How would the corresponding R Code look?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" /><code>principal(data, nfactors = 10, rotate = "none")</code></li>
-<li><input type="checkbox" disabled="" /><code>principal(data, nfactors = “varimax”, rotate = 10)</code></li>
-<li><input type="checkbox" disabled="" /><code>principal(data, nfactors = 10, rotate = "oblimin")</code></li>
-<li><input type="checkbox" disabled="" /><code>principal(data, nfactors = 10, rotate = "varimax")</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>principal(data, nfactors = 10, rotate = "none")</code></li>
+<li><input type="checkbox" disabled="" />
+<code>principal(data, nfactors = “varimax”, rotate = 10)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>principal(data, nfactors = 10, rotate = "oblimin")</code></li>
+<li><input type="checkbox" disabled="" />
+<code>principal(data, nfactors = 10, rotate = "varimax")</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC8.10) Which of the following statements concerning reliability and validity are TRUE?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Validity (i.e. “consistency”) requires the absence of random errors</li>
-<li><input type="checkbox" disabled="" />Reliability (i.e. “truthfulness”) requires the absence of measurement errors</li>
-<li><input type="checkbox" disabled="" />Validity describes the extent to which a scale produces consistent results in repeated measurements</li>
-<li><input type="checkbox" disabled="" checked="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+Validity (i.e. “consistency”) requires the absence of random errors</li>
+<li><input type="checkbox" disabled="" />
+Reliability (i.e. “truthfulness”) requires the absence of measurement errors</li>
+<li><input type="checkbox" disabled="" />
+Validity describes the extent to which a scale produces consistent results in repeated measurements</li>
+<li><input type="checkbox" disabled="" checked="" />
+None of the above</li>
 </ul>
 </div>
 <div id="references-5" class="section level2 unnumbered hasAnchor">

@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><strong><a href="./">MA</a></strong></li>
+<li><strong><a href="./">MA 2022/23</a></strong></li>
 
 <li class="divider"></li>
 <li class="part"><span><b>I Course outline</b></span></li>
@@ -621,7 +621,7 @@ Difference-in-differences<br>
 <div id="descriptive-research" class="section level5 hasAnchor" number="1.2.2.3.1">
 <h5><span class="header-section-number">1.2.2.3.1</span> Descriptive research<a href="preliminaries.html#descriptive-research" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Descriptive research is aimed at capturing the structure of your data and representing it in a compact manner. Descriptive modeling differs from explanatory (prescriptive) modeling because an underlying causal theory is either absent or incorporated in a less formal way. This means that there is less emphasize on the theory and hypothesis building part of the research process in descriptive research. Descriptive modeling further differs from predictive modeling because it is not aimed at prediction. Having said that, fitting a regression model could be descriptive if it is used for capturing the association between the dependent and independent variables rather than for causal inference or for prediction.</p>
-<p>An example of descriptive research is the grouping a firm’s customers according to observable customer characteristics (i.e., features) using cluster analysis. This type of analysis represents the original data in a compact manner by capturing the underlying data structure using clusters. Another example would be the reduction of the dimensionality of a data set using principal component analysis. Similar to cluster analysis, this type of model captures the underlying structure of the data by grouping highly correlated input variables into so-called ‘factors’. This type of analysis can be useful, e.g., if predictors in a regression model are highly correlated as we will see later.</p>
+<p>An example of descriptive research is the grouping a firm’s customers according to observable customer characteristics (i.e., features) using cluster analysis. This type of analysis represents the original data in a compact manner by capturing the underlying data structure using clusters. Another example would be the reduction of the dimensionality of a data set using principal component analysis. Similar to cluster analysis, this type of model captures the underlying structure of the data by grouping highly correlated input variables into so-called ‘factors.’ This type of analysis can be useful, e.g., if predictors in a regression model are highly correlated as we will see later.</p>
 <p>It should be noted that the computational capacity of many firms has increased drastically over the past years due to a substantial decline of the costs associated with computational power and data storage. These developments have made it feasible for many firms to analyze very large data sets (‘big data’) with the aim of deriving managerial insights. With the rising relevance of large data sets, descriptive research has received increasing attention. The reason is that identifying patters in such vast amounts of data requires structure and often, an initial exploratory, descriptive investigation of large data sets enables the researcher to discover patterns, which then give rise to predictive or causal inference modeling tasks. This is especially true for unstructured data (social media texts, voice data) which can be analyzed using machine learning methods.</p>
 </div>
 <div id="predictive-research" class="section level5 hasAnchor" number="1.2.2.3.2">
@@ -630,7 +630,7 @@ Difference-in-differences<br>
 </div>
 <div id="causal-inference-aka-prescriptive-research" class="section level5 hasAnchor" number="1.2.2.3.3">
 <h5><span class="header-section-number">1.2.2.3.3</span> Causal inference (aka ‘prescriptive’ research)<a href="preliminaries.html#causal-inference-aka-prescriptive-research" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>In many scientific fields, and especially the social sciences, the focus is almost exclusively on research that tests causal hypotheses. To stay within our motivating example, we could be interested in investigating the effect of targeting of online advertising on the effectiveness of a firm’s online marketing efforts. Notice the different focus compared to predictive modeling: in the predictive modeling example, we use observations from the past to predict the probability that a given customer will purchase in the future. In the causal inference task, we are interested in causal effect, such as ‘(By how much) Can we increase the probability that a customer will make a purchase using targeted online advertising?’ Or in other words, what should managers do differently in order to increase the purchase probability? To answer this type of question, a set of theoretically derived constructs are measured by variables X and these variables are assumed to cause an underlying effect, measured by variable Y. Since the focus here is on explaining causal effects, this type of research is also often referred to as explanatory modeling. Another alternative term you may come across is ‘prescriptive modeling’, empasizing that the goal is to make recommendations to managers or policy makers regarding the course of action. For these type of questions, theory has a much more important role compared to predictive and descriptive research. Hence, the focus when it comes to the model output is more on the coefficients associated with the explanatory variables, rather than on the predictive ability of the model. If you are interested in more details, the article ‘To Explain or to Predict?’ by Shmueli (2010) has a nice discussion regarding the difference between explanatory and predictive models.</p>
+<p>In many scientific fields, and especially the social sciences, the focus is almost exclusively on research that tests causal hypotheses. To stay within our motivating example, we could be interested in investigating the effect of targeting of online advertising on the effectiveness of a firm’s online marketing efforts. Notice the different focus compared to predictive modeling: in the predictive modeling example, we use observations from the past to predict the probability that a given customer will purchase in the future. In the causal inference task, we are interested in causal effect, such as ‘(By how much) Can we increase the probability that a customer will make a purchase using targeted online advertising?’ Or in other words, what should managers do differently in order to increase the purchase probability? To answer this type of question, a set of theoretically derived constructs are measured by variables X and these variables are assumed to cause an underlying effect, measured by variable Y. Since the focus here is on explaining causal effects, this type of research is also often referred to as explanatory modeling. Another alternative term you may come across is ‘prescriptive modeling,’ empasizing that the goal is to make recommendations to managers or policy makers regarding the course of action. For these type of questions, theory has a much more important role compared to predictive and descriptive research. Hence, the focus when it comes to the model output is more on the coefficients associated with the explanatory variables, rather than on the predictive ability of the model. If you are interested in more details, the article ‘To Explain or to Predict?’ by Shmueli (2010) has a nice discussion regarding the difference between explanatory and predictive models.</p>
 <p>While managers and marketing researchers care most about causal research questions, finding answers to these type of questions is challenging for various reasons. Consider our targeting example. In order to estimate the effect of targeting on sales, we could, for example, compare the conversion rates between two groups of users: 1) users exposed to the targeted advertising campaign, and 2) users who were not exposed to the same targeted advertising campaign. The problem with this type of comparison is that the targeting algorithm uses unobserved variables to decide which users to show the ad. Thus, the exposed and unexposed users may be different in outcomes for reasons that have nothing to do with the advertising. If we advertise products from a particular category, it might simply mean that the users targeted with our advertising might have a stronger preference for this category and might have purchased from our store even without seeing the ad. With regard to the underlying model, the ‘interest in the product category’ can be seen as an unobserved confounder, as the following figure shows. Note that if this omitted variable is not properly controlled for, we will overestimate the advertising effect (see also Lewis et al. 2011).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
 <img src="images/confounder.JPG" alt="Unobserved confounders" width="70%" />
@@ -638,7 +638,7 @@ Difference-in-differences<br>
 Figure 1.5: Unobserved confounders
 </p>
 </div>
-<p>In other words, the correlations observed between the dependent measure and advertising are often due to unobserved variables, leading to so-called ‘spurious correlations’, i.e., a connection between two variables that appears causal but is not. There are plenty of examples for <a href="https://www.tylervigen.com/spurious-correlations">spurious correlations</a> and you can see one of them in the figure below.</p>
+<p>In other words, the correlations observed between the dependent measure and advertising are often due to unobserved variables, leading to so-called ‘spurious correlations,’ i.e., a connection between two variables that appears causal but is not. There are plenty of examples for <a href="https://www.tylervigen.com/spurious-correlations">spurious correlations</a> and you can see one of them in the figure below.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="images/murder_rate.JPG" alt="Spurious correlation" width="50%" />
 <p class="caption">
@@ -668,7 +668,7 @@ Figure 1.6: Spurious correlation
 <iframe width="500" height="310" src="https://www.youtube.com/embed/BvZzmyld8Wc" frameborder="0" allowfullscreen>
 </iframe>
 </div>
-<p>In the last section, we saw that causal research questions are the ones that matter most to marketing managers. In our example, the question we asked was ‘(By how much) Can we increase the probability that a customer will make a purchase within the next month using targeted online advertising?’. In this section, we will see that experiments are a proper way of establishing a causal relationship. Or, as the famous quote by Box, Hunter, and Hunter (1978) puts is:</p>
+<p>In the last section, we saw that causal research questions are the ones that matter most to marketing managers. In our example, the question we asked was ‘(By how much) Can we increase the probability that a customer will make a purchase within the next month using targeted online advertising?’ In this section, we will see that experiments are a proper way of establishing a causal relationship. Or, as the famous quote by Box, Hunter, and Hunter (1978) puts is:</p>
 <blockquote>
 <p>“To find out what happens when you change something,
 it is necessary to change it.”</p>
@@ -809,7 +809,7 @@ and that is often referred to as the `gold standard’ for identifying causal re
 Figure 1.11: Cross-sectional vs. longitudinal design
 </p>
 </div>
-<p>The main advantage of a longitudinal design is that it allows researcher to observe changes over time, which is particularly helpful for the identification of causal effects. Although the observational units self-select into the test and control conditions, it is often possible to account for unobserved individual-level differences by focusing on the change over time. A method that lends itself very well for this purpose is the difference-in-differences (DiD) estimator. Continuing with the example from above, imagine we would have only conducted one cross-sectional study at T2 (after the streaming service had been introduced to the market). As can be seen from the figure below, Spotify users spend, on average, more money on music products from other channels (CDs &amp; downloads). However, you cannot conclude from this observation that Spotify <em>causes</em> them to spend more money on music from other channels. Rather, in the absence of random assignment, the users self-selected into the test and control conditions and it is likely that music enthusiasts (i.e., consumers with a high interest in music) started using the streaming service. The unobserved factor in this case is the ‘interest in music products’.</p>
+<p>The main advantage of a longitudinal design is that it allows researcher to observe changes over time, which is particularly helpful for the identification of causal effects. Although the observational units self-select into the test and control conditions, it is often possible to account for unobserved individual-level differences by focusing on the change over time. A method that lends itself very well for this purpose is the difference-in-differences (DiD) estimator. Continuing with the example from above, imagine we would have only conducted one cross-sectional study at T2 (after the streaming service had been introduced to the market). As can be seen from the figure below, Spotify users spend, on average, more money on music products from other channels (CDs &amp; downloads). However, you cannot conclude from this observation that Spotify <em>causes</em> them to spend more money on music from other channels. Rather, in the absence of random assignment, the users self-selected into the test and control conditions and it is likely that music enthusiasts (i.e., consumers with a high interest in music) started using the streaming service. The unobserved factor in this case is the ‘interest in music products.’</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
 <img src="images/spotify_study.JPG" alt="Example of DID study design (Wlömert &amp; Papies 2016)" width="70%" />
 <p class="caption">
@@ -883,7 +883,7 @@ Yt,pre + (Yc,post - Yc,pre)
 <p><br></p>
 <p>Hence, the effect of the treatment on the treated is <span class="math inline">\((Yt,post - Yt,pre) − (Yc,post - Yc,pre)\)</span>.</p>
 <p>Going back to our music example above, the effect of the treatment on the treated can be computed as follows: <span class="math inline">\((7.90 - 10.40) - (4.60 - 4.60) = -2.50\)</span>. This means that the introduction of Spotify reduces the expenditures in other channels by 2.50EUR per user per month on average.</p>
-<p>There are other approaches that researchers may use to mimic random assignment using data from quasi-experiments, which we won’t discuss in detail. For example, matching procedures may be used to make the control and test groups comparable across a set of observable characteristics. In their study of the music market, Datta et al. (2017), for example, investigate whether the adoption of streaming services leads users to diversify their tastes. Similar to the example above, consumers self-selected into the conditions of Spotify users and non-users. Through statistical matching procedures they identified ‘statistical twins’, i.e., for each Spotify user they identified one person from the group of non-users who is as comparable as possible to the respective user across the set of observable characteristics. The goal is to make the two groups as comparable as possible except for the fact that users in one group adopted the music services and the users in the other group didn’t.</p>
+<p>There are other approaches that researchers may use to mimic random assignment using data from quasi-experiments, which we won’t discuss in detail. For example, matching procedures may be used to make the control and test groups comparable across a set of observable characteristics. In their study of the music market, Datta et al. (2017), for example, investigate whether the adoption of streaming services leads users to diversify their tastes. Similar to the example above, consumers self-selected into the conditions of Spotify users and non-users. Through statistical matching procedures they identified ‘statistical twins,’ i.e., for each Spotify user they identified one person from the group of non-users who is as comparable as possible to the respective user across the set of observable characteristics. The goal is to make the two groups as comparable as possible except for the fact that users in one group adopted the music services and the users in the other group didn’t.</p>
 <div class="infobox_orange hint">
 <p>Although causal models for observational data are often challenging to implement, there are some packages that make it easier for researchers to apply fairly complex models using just a few lines of code. One such example is the <a href="https://google.github.io/CausalImpact/CausalImpact.html">Causal Impact Package</a> which has been developed by Google. We will cover regression models later, but if you are interested you could already have a look at the package description to see what it can do. The corresponding <a href="https://www.youtube.com/watch?v=GTgZfCltMm8">video</a> summarizes the underlying intuition nicely.</p>
 </div>
@@ -902,7 +902,7 @@ Yt,pre + (Yc,post - Yc,pre)
 <p>The first distinction you need to consider pertains to the level of measurement. This step is important because the level of measurement determines what type of analysis you will be able to apply once the data has been collected. Thus, you should make sure that your plan for the data analysis is aligned with the levels of measurement of the dependent and independent variables. There are different characteristics that a scale can have:</p>
 <ul>
 <li><strong>Description</strong>: Unique labels or descriptors that are used to designate each value of the scale.</li>
-<li><strong>Order</strong>: Relative sizes or positions of the descriptors. Described “greater than”, “less than”, and “equal to”.</li>
+<li><strong>Order</strong>: Relative sizes or positions of the descriptors. Described “greater than,” “less than,” and “equal to.”</li>
 <li><strong>Distance</strong>: Absolute differences between the scale descriptors are known and may be expressed in units.</li>
 <li><strong>Origin</strong>: Scale has a unique or fixed beginning or true zero point.</li>
 </ul>
@@ -1002,7 +1002,7 @@ Figure 1.21: Validity vs. reliability
 </div>
 <div id="single-vs.-multi-item-scales" class="section level6 unnumbered hasAnchor">
 <h6>Single vs. multi-item scales<a href="preliminaries.html#single-vs.-multi-item-scales" class="anchor-section" aria-label="Anchor link to header"></a></h6>
-<p>Related to the concept of measurement accuracy are some choices that the researcher can make to increase the reliability and validity of the measures. The first choice is between single and multi-item scales to measure a construct. A <strong>construct</strong> is a specific type of concept that exists at a higher level of abstraction than everyday concepts. The construct is unobservable (‘latent’) but can be inferred from other measurable variables (‘items’) that together comprise a scale (latent construct). A multi-item scale consists of multiple items, where an item is a single question or statement to be evaluated. The following figure depicts and example of a multi-item scales to measure the construct ‘satisfaction’.</p>
+<p>Related to the concept of measurement accuracy are some choices that the researcher can make to increase the reliability and validity of the measures. The first choice is between single and multi-item scales to measure a construct. A <strong>construct</strong> is a specific type of concept that exists at a higher level of abstraction than everyday concepts. The construct is unobservable (‘latent’) but can be inferred from other measurable variables (‘items’) that together comprise a scale (latent construct). A multi-item scale consists of multiple items, where an item is a single question or statement to be evaluated. The following figure depicts and example of a multi-item scales to measure the construct ‘satisfaction.’</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
 <img src="images/construct.JPG" alt="Multi-item scales" width="60%" />
 <p class="caption">
@@ -1057,81 +1057,124 @@ Figure 1.25: Formative vs. reflective measurement
 </ul>
 <p><strong>(LC1.2) Which of the answers is correct? A nominal scale …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />…has an absolute zero point</li>
-<li><input type="checkbox" disabled="" />…possesses all properties of an ordinal scale</li>
-<li><input type="checkbox" disabled="" checked="" />…can have numerical values</li>
-<li><input type="checkbox" disabled="" checked="" />…serves as a label to classify/categorize objects</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+…has an absolute zero point</li>
+<li><input type="checkbox" disabled="" />
+…possesses all properties of an ordinal scale</li>
+<li><input type="checkbox" disabled="" checked="" />
+…can have numerical values</li>
+<li><input type="checkbox" disabled="" checked="" />
+…serves as a label to classify/categorize objects</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.3) Which of these statements regarding formative constructs are true?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />Indicators (items) measure the cause for the change of the not directly observable construct</li>
-<li><input type="checkbox" disabled="" />Indicators (items) measure the effect of the change in a not directly observable construct</li>
-<li><input type="checkbox" disabled="" />The indicators (items) of the scale should be highly correlated</li>
-<li><input type="checkbox" disabled="" />Multi-item measurement is particularly important for the increase in the reliability of the measurement</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+Indicators (items) measure the cause for the change of the not directly observable construct</li>
+<li><input type="checkbox" disabled="" />
+Indicators (items) measure the effect of the change in a not directly observable construct</li>
+<li><input type="checkbox" disabled="" />
+The indicators (items) of the scale should be highly correlated</li>
+<li><input type="checkbox" disabled="" />
+Multi-item measurement is particularly important for the increase in the reliability of the measurement</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.4) In causal inference tasks, …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />…the main concern is to generate predictions of future outcomes</li>
-<li><input type="checkbox" disabled="" />…the main concern is to maximize the explained variance</li>
-<li><input type="checkbox" disabled="" />…observational research is the ‘gold standard’</li>
-<li><input type="checkbox" disabled="" checked="" />…randomization minimizes unsystematic variation</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+…the main concern is to generate predictions of future outcomes</li>
+<li><input type="checkbox" disabled="" />
+…the main concern is to maximize the explained variance</li>
+<li><input type="checkbox" disabled="" />
+…observational research is the ‘gold standard’</li>
+<li><input type="checkbox" disabled="" checked="" />
+…randomization minimizes unsystematic variation</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.5) True or false? Reliability refers to the consistency of a measurement.</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />True</li>
-<li><input type="checkbox" disabled="" />False</li>
+<li><input type="checkbox" disabled="" checked="" />
+True</li>
+<li><input type="checkbox" disabled="" />
+False</li>
 </ul>
 <p><strong>(LC1.5) Using a between-subjects design, we … </strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />… manipulate the independent variable (treatment) using different persons for each group</li>
-<li><input type="checkbox" disabled="" />… manipulate independent variable using the same participants for each group</li>
-<li><input type="checkbox" disabled="" />… manipulate the dependent variable (treatment) using different persons for each group</li>
-<li><input type="checkbox" disabled="" />… manipulate dependent variable using the same participants for each group</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+… manipulate the independent variable (treatment) using different persons for each group</li>
+<li><input type="checkbox" disabled="" />
+… manipulate independent variable using the same participants for each group</li>
+<li><input type="checkbox" disabled="" />
+… manipulate the dependent variable (treatment) using different persons for each group</li>
+<li><input type="checkbox" disabled="" />
+… manipulate dependent variable using the same participants for each group</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.6) When conducting field experiments, the term crossover effect means …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />… that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment</li>
-<li><input type="checkbox" disabled="" />… that a treated individual affects the outcomes for other untreated individuals<br />
+<li><input type="checkbox" disabled="" checked="" />
+… that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment</li>
+<li><input type="checkbox" disabled="" />
+… that a treated individual affects the outcomes for other untreated individuals<br />
 </li>
-<li><input type="checkbox" disabled="" />… that individuals can be part of both the test and the control condition</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+… that individuals can be part of both the test and the control condition</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.7) Conditions for causality are …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />… a cause and an effect should vary together in the way predicted by the hypothesis under consideration</li>
-<li><input type="checkbox" disabled="" />… random assignment of test units</li>
-<li><input type="checkbox" disabled="" checked="" />… the causing event must occur before the effect</li>
-<li><input type="checkbox" disabled="" checked="" />… absence of other possible causal factors</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+… a cause and an effect should vary together in the way predicted by the hypothesis under consideration</li>
+<li><input type="checkbox" disabled="" />
+… random assignment of test units</li>
+<li><input type="checkbox" disabled="" checked="" />
+… the causing event must occur before the effect</li>
+<li><input type="checkbox" disabled="" checked="" />
+… absence of other possible causal factors</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.8) The effect of the treatment on the treated in DID models can be written as …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><span class="math inline">\((Yt,pre - Yt,post) − (Yc,post - Yc,pre)\)</span><br />
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\((Yt,pre - Yt,post) − (Yc,post - Yc,pre)\)</span><br />
 </li>
-<li><input type="checkbox" disabled="" checked="" /><span class="math inline">\((Yt,post - Yt,pre) − (Yc,post - Yc,pre)\)</span></li>
-<li><input type="checkbox" disabled="" /><span class="math inline">\((Yt,pre - Yt,post) − (Yc,pre - Yc,post)\)</span><br />
+<li><input type="checkbox" disabled="" checked="" />
+<span class="math inline">\((Yt,post - Yt,pre) − (Yc,post - Yc,pre)\)</span></li>
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\((Yt,pre - Yt,post) − (Yc,pre - Yc,post)\)</span><br />
 </li>
-<li><input type="checkbox" disabled="" /><span class="math inline">\((Yt,post - Yt,pre) − (Yc,pre - Yc,post)\)</span><br />
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\((Yt,post - Yt,pre) − (Yc,pre - Yc,post)\)</span><br />
 </li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.9) In predictive modeling tasks …</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />… once major concern are unobserved confounders</li>
-<li><input type="checkbox" disabled="" checked="" />… one major concern is overfitting</li>
-<li><input type="checkbox" disabled="" checked="" />… we primarily care about the predictive ability of the model<br />
+<li><input type="checkbox" disabled="" />
+… once major concern are unobserved confounders</li>
+<li><input type="checkbox" disabled="" checked="" />
+… one major concern is overfitting</li>
+<li><input type="checkbox" disabled="" checked="" />
+… we primarily care about the predictive ability of the model<br />
 </li>
-<li><input type="checkbox" disabled="" />… we primarily care about causal effects</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+… we primarily care about causal effects</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC1.10) True or false? For ordinal scales, the magnitude of difference between scale points is known</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />True</li>
-<li><input type="checkbox" disabled="" checked="" />False</li>
+<li><input type="checkbox" disabled="" />
+True</li>
+<li><input type="checkbox" disabled="" checked="" />
+False</li>
 </ul>
 </div>
 <div id="references" class="section level2 unnumbered hasAnchor">

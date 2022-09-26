@@ -121,7 +121,7 @@ data-types
 data-structures
 accessing-data-in-data-frames
 inspecting-the-content-of-a-data-frame
-append-and-delete-variables-tofrom-data-frames
+select-append-and-delete-variables-tofrom-data-frames
 data-import-and-export
 getting-data-for-this-course
 import-data-created-by-other-software-packages

@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><strong><a href="./">MA</a></strong></li>
+<li><strong><a href="./">MA 2022/23</a></strong></li>
 
 <li class="divider"></li>
 <li class="part"><span><b>I Course outline</b></span></li>
@@ -551,7 +551,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="r-code" class="section level3 unnumbered hasAnchor">
 <h3>R-Code<a href="r-markdown.html#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R-code is contained in so called “chunks”. These chunks always start with three backticks and <code>r</code> in curly braces (<code></code>{r} <code>) and end with three backticks (</code> <code></code>). Optionally, parameters can be added after the <code>r</code> to influence how a chunk behaves. Additionally, you can also give each chunk a name. Note that these have to be <strong>unique</strong>, otherwise R will refuse to knit your document.</p>
+<p>R-code is contained in so called “chunks.” These chunks always start with three backticks and <code>r</code> in curly braces (<code></code>{r} <code>) and end with three backticks (</code> <code></code>). Optionally, parameters can be added after the <code>r</code> to influence how a chunk behaves. Additionally, you can also give each chunk a name. Note that these have to be <strong>unique</strong>, otherwise R will refuse to knit your document.</p>
 <div id="global-and-chunk-options" class="section level4 unnumbered hasAnchor">
 <h4>Global and chunk options<a href="r-markdown.html#global-and-chunk-options" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The first chunk always looks as follows</p>
@@ -586,7 +586,7 @@ plot(dist~speed, cars)
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="r-markdown.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, cars)</span></code></pre></div>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="r-markdown.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dist<span class="sc">~</span>speed, cars)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" /></p>
 <p>A good overview of all available global/chunk options can be found <a href="https://yihui.name/knitr/options/#chunk_options">here</a>.</p>
 </div>
@@ -598,7 +598,7 @@ plot(dist~speed, cars)
  f_1(\omega) = \frac{\sigma^2}{2 \pi},\ \omega \in[-\pi, \pi]
 $$</code></pre>
 <p><span class="math display">\[
-f_1(\omega) = \frac{\sigma^2}{2 \pi},\ \omega \in[-\pi, \pi]
+ f_1(\omega) = \frac{\sigma^2}{2 \pi},\ \omega \in[-\pi, \pi]
 \]</span></p>
 <p>(for those interested this is the spectral density of <a href="https://en.wikipedia.org/wiki/White_noise">white noise</a>)</p>
 <p>Including inline mathematical notation is done with a single <code>$</code> symbol.</p>
@@ -837,13 +837,13 @@ Code
 <ol style="list-style-type: decimal">
 <li>The accounting department asks you to provide an estimate of the average revenue per customer. Compute the 95% confidence interval for the mean revenue per customer and provide an interpretation of the interval.<br />
 </li>
-<li>You run an A/B-Test on your website that aims at analyzing a new personalization feature to stimulate sales. To test the effect of this feature on revenues (variable: “revenue”), you randomly assign users either to a control group (status quo), or to a treatment group (the new personalization feature). The information regarding which group a customer has been assigned to is stored in the variable “exp_group”. Is there a significant difference regarding the revenue between customers from the control and treatment groups? Please include the effect size Cohen’s d and the confidence intervals in your report.</li>
+<li>You run an A/B-Test on your website that aims at analyzing a new personalization feature to stimulate sales. To test the effect of this feature on revenues (variable: “revenue”), you randomly assign users either to a control group (status quo), or to a treatment group (the new personalization feature). The information regarding which group a customer has been assigned to is stored in the variable “exp_group.” Is there a significant difference regarding the revenue between customers from the control and treatment groups? Please include the effect size Cohen’s d and the confidence intervals in your report.</li>
 <li>After conducting the experiment described above, you would like to find out how to improve the user experience with regard to the new personalization feature. Thus, you expose the same customers from the treatment group from the previous experiment to an alternative page layout and record the time spend on the website after this change had been implemented (variable: “time_on_site_1”). Did the alternative page layout lead to a significant increase regarding the time your customers spend on your website? Please include the effect size Cohen’s d and confidence intervals in your report.</li>
 <li>Assume that you plan to run an experiment with two groups to test two different advertising strategies. You randomly assign website visitors to the control and experimental conditions and your goal is to test if there is a significant difference between the groups regarding the number of products they purchase from your store. How many users would you need to include in each group of your experiment if you assume the effect size to be 0.1 for a significance level of 0.05 and power of 0.8?<br />
 </li>
 <li>You are interested in analyzing the effects of different types of online advertising (variable: “retargeting”) on revenue per customer (variable: “revenue”). You conduct an experiment in which your customers were exposed to different types of online advertising (randomly assigned) and now you wish to analyze the results. Are there significant differences between the three groups? In your analysis, please inspect if there is an overall difference between the three groups first and then test for differences between the individual groups.<br />
 </li>
-<li>After the last checkout, you conduct a short survey and obtain data on the Net Promoter Score. The question asks “How likely would you be to recommend [us] to a friend or colleague”. The response is a value from 0 [very unlikely] to 10 [very likely]. Did the new personalization feature from the experiment in question 2 (variable: “exp_group”) significantly influenced the ratings you obtain for the net promoter score (variable: “nps”)?</li>
+<li>After the last checkout, you conduct a short survey and obtain data on the Net Promoter Score. The question asks “How likely would you be to recommend [us] to a friend or colleague.” The response is a value from 0 [very unlikely] to 10 [very likely]. Did the new personalization feature from the experiment in question 2 (variable: “exp_group”) significantly influenced the ratings you obtain for the net promoter score (variable: “nps”)?</li>
 <li>The goal of the personalization feature was to trigger conversions (i.e., stimulate purchases). Thus, you recorded whether a click on the personalization feature lead to a purchase (variable: “conversion”). Please test the effect of the personalization feature on the conversion rate.</li>
 </ol>
 <p>When answering the questions, please remember to address the following points, where appropriate:</p>
@@ -857,12 +857,13 @@ Code
 </li>
 <li>Finally, don’t forget to report your research conclusion</li>
 </ul>
-<p>When you are done with your analysis, click on “Knit to HTML” button above the code editor. This will create a HTML document of your results in the folder where the “assignment3.Rmd” file is stored. Open this file in your Internet browser to see if the output is correct. If the output is correct, submit the HTML file via Learn@WU. The file name should be “assignment2_studendID_lastname.html”.</p>
+<p>When you are done with your analysis, click on “Knit to HTML” button above the code editor. This will create a HTML document of your results in the folder where the “assignment3.Rmd” file is stored. Open this file in your Internet browser to see if the output is correct. If the output is correct, submit the HTML file via Learn@WU. The file name should be “assignment2_studendID_lastname.html.”</p>
 <p><strong>Load and inspect data</strong></p>
 <p>Let´s load the data first and inspect the contained variables:</p>
-<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="r-markdown.html#cb763-1" aria-hidden="true" tabindex="-1"></a>customer_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/Assignments/Assignment2/assignment2_data.dat&quot;</span>,</span>
-<span id="cb763-2"><a href="r-markdown.html#cb763-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
-<span id="cb763-3"><a href="r-markdown.html#cb763-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(customer_data)</span></code></pre></div>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="r-markdown.html#cb763-1" aria-hidden="true" tabindex="-1"></a>customer_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/Assignments/Assignment2/assignment2_data.dat&quot;</span>, </span>
+<span id="cb763-2"><a href="r-markdown.html#cb763-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, </span>
+<span id="cb763-3"><a href="r-markdown.html#cb763-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
+<span id="cb763-4"><a href="r-markdown.html#cb763-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(customer_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["customerID"],"name":[1],"type":["int"],"align":["right"]},{"label":["revenue"],"name":[2],"type":["int"],"align":["right"]},{"label":["time_on_site"],"name":[3],"type":["int"],"align":["right"]},{"label":["time_on_site_1"],"name":[4],"type":["int"],"align":["right"]},{"label":["exp_group"],"name":[5],"type":["int"],"align":["right"]},{"label":["nps"],"name":[6],"type":["int"],"align":["right"]},{"label":["retargeting"],"name":[7],"type":["int"],"align":["right"]},{"label":["conversion"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"1862","3":"1000","4":"1034","5":"1","6":"7","7":"3","8":"0"},{"1":"2","2":"2573","3":"996","4":"1023","5":"1","6":"2","7":"1","8":"1"},{"1":"3","2":"861","3":"854","4":"873","5":"1","6":"8","7":"1","8":"0"},{"1":"4","2":"1412","3":"742","4":"NA","5":"0","6":"8","7":"1","8":"0"},{"1":"5","2":"2625","3":"1161","4":"1189","5":"1","6":"10","7":"1","8":"1"},{"1":"6","2":"1095","3":"791","4":"NA","5":"0","6":"10","7":"1","8":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -891,17 +892,16 @@ Code
 <span id="cb766-9"><a href="r-markdown.html#cb766-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span></code></pre></div>
 <p><strong>Question 1</strong></p>
 <p>To compute the confidence interval for the average revenue per customer, we will need three things: 1) the mean <span class="math inline">\(\bar x\)</span>, 2) the standard error (<span class="math inline">\(s \over \sqrt{n}\)</span>), and 3) the critical value for a t-distribution (<span class="math inline">\(t_{crit}\)</span>; we will use a t-distribution, because we are not sure of the variance in the population; for this assignment, also the normal distribution and the corresponding <span class="math inline">\(z\)</span>-score would have been counted as correct).</p>
-<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="r-markdown.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate components of confidence interval</span></span>
-<span id="cb767-2"><a href="r-markdown.html#cb767-2" aria-hidden="true" tabindex="-1"></a><span class="co"># formula</span></span>
-<span id="cb767-3"><a href="r-markdown.html#cb767-3" aria-hidden="true" tabindex="-1"></a>mean_rev <span class="ot">&lt;-</span> <span class="fu">mean</span>(customer_data<span class="sc">$</span>revenue)  <span class="co">#mean</span></span>
-<span id="cb767-4"><a href="r-markdown.html#cb767-4" aria-hidden="true" tabindex="-1"></a>sd_rev <span class="ot">&lt;-</span> <span class="fu">sd</span>(customer_data<span class="sc">$</span>revenue)  <span class="co">#standard deviation</span></span>
-<span id="cb767-5"><a href="r-markdown.html#cb767-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(customer_data)  <span class="co">#number of observations </span></span>
-<span id="cb767-6"><a href="r-markdown.html#cb767-6" aria-hidden="true" tabindex="-1"></a>se_rev <span class="ot">&lt;-</span> sd_rev<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb767-7"><a href="r-markdown.html#cb767-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span>  <span class="co">#degress of freedom</span></span>
-<span id="cb767-8"><a href="r-markdown.html#cb767-8" aria-hidden="true" tabindex="-1"></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, df)</span></code></pre></div>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="r-markdown.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate components of confidence interval formula </span></span>
+<span id="cb767-2"><a href="r-markdown.html#cb767-2" aria-hidden="true" tabindex="-1"></a>mean_rev <span class="ot">&lt;-</span> <span class="fu">mean</span>(customer_data<span class="sc">$</span>revenue) <span class="co">#mean</span></span>
+<span id="cb767-3"><a href="r-markdown.html#cb767-3" aria-hidden="true" tabindex="-1"></a>sd_rev <span class="ot">&lt;-</span> <span class="fu">sd</span>(customer_data<span class="sc">$</span>revenue) <span class="co">#standard deviation</span></span>
+<span id="cb767-4"><a href="r-markdown.html#cb767-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(customer_data) <span class="co">#number of observations </span></span>
+<span id="cb767-5"><a href="r-markdown.html#cb767-5" aria-hidden="true" tabindex="-1"></a>se_rev <span class="ot">&lt;-</span> sd_rev<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb767-6"><a href="r-markdown.html#cb767-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n<span class="dv">-1</span> <span class="co">#degress of freedom</span></span>
+<span id="cb767-7"><a href="r-markdown.html#cb767-7" aria-hidden="true" tabindex="-1"></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, df)</span></code></pre></div>
 <p>Now the confidence interval can be computed according to the equation:</p>
 <p><span class="math display">\[CI_{rev} = \bar x \pm t_{ \alpha \over 2}*SE_{\bar x}\]</span></p>
-<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="r-markdown.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Interval for revenue</span></span>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="r-markdown.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Interval for revenue</span></span>
 <span id="cb768-2"><a href="r-markdown.html#cb768-2" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> mean_rev <span class="sc">-</span> t_crit <span class="sc">*</span> se_rev</span>
 <span id="cb768-3"><a href="r-markdown.html#cb768-3" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> mean_rev <span class="sc">+</span> t_crit <span class="sc">*</span> se_rev</span></code></pre></div>
 <p>Hence, the CI for the revenue variable is given by:</p>
@@ -916,11 +916,10 @@ Code
 <p><span class="math display">\[H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1\]</span></p>
 <p>We need to transform the variable <em>exp_group</em> into a factor variable. Note that it is a good idea to do data transformations separate from the analysis in a separate code chunk. This avoids the code being executed twice, which would lead to difficulties because the factor variable would be overwritten with missing (NA) values.</p>
 <div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="r-markdown.html#cb773-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform into factor variable</span></span>
-<span id="cb773-2"><a href="r-markdown.html#cb773-2" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>exp_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>exp_group,</span>
-<span id="cb773-3"><a href="r-markdown.html#cb773-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;treatment&quot;</span>))</span></code></pre></div>
+<span id="cb773-2"><a href="r-markdown.html#cb773-2" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>exp_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>exp_group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;treatment&quot;</span>))</span></code></pre></div>
 <p>A good way to get a feeling for the data is to compute descriptive statistics and create appropriate plots. Since we are testing differences in means, a plot of means (or a boxplot) would be appropriate.</p>
 <p>Let’s inspect the descriptive statistics first:</p>
-<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="r-markdown.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics</span></span>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="r-markdown.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics </span></span>
 <span id="cb774-2"><a href="r-markdown.html#cb774-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(customer_data<span class="sc">$</span>revenue, customer_data<span class="sc">$</span>exp_group)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
@@ -936,18 +935,19 @@ Code
 ##      se
 ## X1 70.8</code></pre>
 <p>It can already be seen that the mean revenue is higher in the treatment group.</p>
-<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="r-markdown.html#cb776-1" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data, <span class="at">measurevar =</span> <span class="st">&quot;revenue&quot;</span>,</span>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="r-markdown.html#cb776-1" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data, <span class="at">measurevar =</span> <span class="st">&quot;revenue&quot;</span>, </span>
 <span id="cb776-2"><a href="r-markdown.html#cb776-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">groupvars =</span> <span class="fu">c</span>(<span class="st">&quot;exp_group&quot;</span>))</span>
 <span id="cb776-3"><a href="r-markdown.html#cb776-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb776-4"><a href="r-markdown.html#cb776-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of means</span></span>
-<span id="cb776-5"><a href="r-markdown.html#cb776-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data, <span class="fu">aes</span>(<span class="at">x =</span> exp_group, <span class="at">y =</span> revenue)) <span class="sc">+</span></span>
-<span id="cb776-6"><a href="r-markdown.html#cb776-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb776-7"><a href="r-markdown.html#cb776-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span></span>
-<span id="cb776-8"><a href="r-markdown.html#cb776-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">width =</span> <span class="fl">0.15</span>,</span>
-<span id="cb776-9"><a href="r-markdown.html#cb776-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">ymin =</span> revenue <span class="sc">-</span> ci, <span class="at">ymax =</span> revenue <span class="sc">+</span> ci)) <span class="sc">+</span></span>
-<span id="cb776-10"><a href="r-markdown.html#cb776-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average revenue&quot;</span>,</span>
-<span id="cb776-11"><a href="r-markdown.html#cb776-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average revenue by group&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb776-12"><a href="r-markdown.html#cb776-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>))</span></code></pre></div>
+<span id="cb776-5"><a href="r-markdown.html#cb776-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data, <span class="fu">aes</span>(<span class="at">x =</span> exp_group, <span class="at">y =</span> revenue)) <span class="sc">+</span> </span>
+<span id="cb776-6"><a href="r-markdown.html#cb776-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb776-7"><a href="r-markdown.html#cb776-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span> </span>
+<span id="cb776-8"><a href="r-markdown.html#cb776-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">width =</span> <span class="fl">0.15</span>, </span>
+<span id="cb776-9"><a href="r-markdown.html#cb776-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">ymin =</span> revenue <span class="sc">-</span> ci, <span class="at">ymax =</span> revenue <span class="sc">+</span> ci)) <span class="sc">+</span> </span>
+<span id="cb776-10"><a href="r-markdown.html#cb776-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average revenue&quot;</span>, </span>
+<span id="cb776-11"><a href="r-markdown.html#cb776-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average revenue by group&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb776-12"><a href="r-markdown.html#cb776-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, </span>
+<span id="cb776-13"><a href="r-markdown.html#cb776-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>))</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>As we can see in both the descriptive statistics and the plot, the mean revenues were higher for the group that was exposed to the new personalization feature. To test whether or not this difference is significant, we need to use a <strong>independent-means t-test</strong>. We use an independent-means t-test because we have different customers in each group, meaning that we have collected the data using a between-subjects design (i.e., the customers in one condition are <em>independent</em> of the customers in the other condition). The requirements are clearly met:</p>
 <ul>
@@ -993,9 +993,8 @@ Code
 <p>Next we want to examine whether the alternative page layout has an effect on the time that a user spends on the website. The null hypothesis here is that there is no difference in the mean time spend on the website for the same customers between the two alternative page layouts. Because the observations come from the same population of customers (i.e., a within-subject design), we refer to the difference in the means for the same population as <span class="math inline">\(\mu_D\)</span> when stating our hypotheses. The alternative hypothesis states that that there is a difference between the time on site variables for the same customers. In mathematical notation this can be written as</p>
 <p><span class="math display">\[H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0\]</span></p>
 <p>Again, we start with descriptive statistics to get a feel for the data. Note that in order to compare the groups, it is important to base the comparison on the same sample. Since only customers from the treatment condition in the first experiment have been included in this follow-up study, we need to make sure that the customers who were not included in the study are not considered when comparing the means:</p>
-<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="r-markdown.html#cb782-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics</span></span>
-<span id="cb782-2"><a href="r-markdown.html#cb782-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(customer_data[<span class="sc">!</span><span class="fu">is.na</span>(customer_data<span class="sc">$</span>time_on_site_1),</span>
-<span id="cb782-3"><a href="r-markdown.html#cb782-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;time_on_site&quot;</span>, <span class="st">&quot;time_on_site_1&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="r-markdown.html#cb782-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive statistics </span></span>
+<span id="cb782-2"><a href="r-markdown.html#cb782-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(customer_data[<span class="sc">!</span><span class="fu">is.na</span>(customer_data<span class="sc">$</span>time_on_site_1),<span class="fu">c</span>(<span class="st">&quot;time_on_site&quot;</span>,<span class="st">&quot;time_on_site_1&quot;</span>)])</span></code></pre></div>
 <pre><code>##                vars   n   mean     sd median trimmed    mad min  max range
 ## time_on_site      1 145 783.12 324.73    769  785.13 346.93  43 1530  1487
 ## time_on_site_1    2 145 813.97 324.81    794  816.09 345.45  78 1552  1474
@@ -1004,27 +1003,25 @@ Code
 ## time_on_site_1 -0.03    -0.43 26.97</code></pre>
 <p>As can be seen, the mean for the alternative page layout is higher, which we can also show visually using a plot of means (or alternatively a boxplot).</p>
 <div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="r-markdown.html#cb784-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of means</span></span>
-<span id="cb784-2"><a href="r-markdown.html#cb784-2" aria-hidden="true" tabindex="-1"></a>customer_data_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(customer_data[<span class="sc">!</span><span class="fu">is.na</span>(customer_data<span class="sc">$</span>time_on_site_1),</span>
-<span id="cb784-3"><a href="r-markdown.html#cb784-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;time_on_site&quot;</span>, <span class="st">&quot;time_on_site_1&quot;</span>)])</span>
-<span id="cb784-4"><a href="r-markdown.html#cb784-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(customer_data_long) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;layout&quot;</span>, <span class="st">&quot;time_on_site&quot;</span>)</span>
-<span id="cb784-5"><a href="r-markdown.html#cb784-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb784-6"><a href="r-markdown.html#cb784-6" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data_long, <span class="at">measurevar =</span> <span class="st">&quot;time_on_site&quot;</span>,</span>
-<span id="cb784-7"><a href="r-markdown.html#cb784-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">groupvars =</span> <span class="fu">c</span>(<span class="st">&quot;layout&quot;</span>))</span>
-<span id="cb784-8"><a href="r-markdown.html#cb784-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb784-9"><a href="r-markdown.html#cb784-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of means</span></span>
-<span id="cb784-10"><a href="r-markdown.html#cb784-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data, <span class="fu">aes</span>(<span class="at">x =</span> layout, <span class="at">y =</span> time_on_site)) <span class="sc">+</span></span>
-<span id="cb784-11"><a href="r-markdown.html#cb784-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb784-12"><a href="r-markdown.html#cb784-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span></span>
-<span id="cb784-13"><a href="r-markdown.html#cb784-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">width =</span> <span class="fl">0.15</span>,</span>
-<span id="cb784-14"><a href="r-markdown.html#cb784-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">ymin =</span> time_on_site <span class="sc">-</span> ci, <span class="at">ymax =</span> time_on_site <span class="sc">+</span></span>
-<span id="cb784-15"><a href="r-markdown.html#cb784-15" aria-hidden="true" tabindex="-1"></a>            ci)) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;layout&quot;</span>,</span>
-<span id="cb784-16"><a href="r-markdown.html#cb784-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Average time on site&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Average time on site by group&quot;</span>) <span class="sc">+</span></span>
-<span id="cb784-17"><a href="r-markdown.html#cb784-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
-<span id="cb784-18"><a href="r-markdown.html#cb784-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>))</span></code></pre></div>
+<span id="cb784-2"><a href="r-markdown.html#cb784-2" aria-hidden="true" tabindex="-1"></a>customer_data_long <span class="ot">&lt;-</span> <span class="fu">melt</span>(customer_data[<span class="sc">!</span><span class="fu">is.na</span>(customer_data<span class="sc">$</span>time_on_site_1), <span class="fu">c</span>(<span class="st">&quot;time_on_site&quot;</span>, <span class="st">&quot;time_on_site_1&quot;</span>)])</span>
+<span id="cb784-3"><a href="r-markdown.html#cb784-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(customer_data_long) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;layout&quot;</span>, <span class="st">&quot;time_on_site&quot;</span>)</span>
+<span id="cb784-4"><a href="r-markdown.html#cb784-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb784-5"><a href="r-markdown.html#cb784-5" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data_long, <span class="at">measurevar =</span> <span class="st">&quot;time_on_site&quot;</span>, </span>
+<span id="cb784-6"><a href="r-markdown.html#cb784-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">groupvars =</span> <span class="fu">c</span>(<span class="st">&quot;layout&quot;</span>))</span>
+<span id="cb784-7"><a href="r-markdown.html#cb784-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb784-8"><a href="r-markdown.html#cb784-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of means</span></span>
+<span id="cb784-9"><a href="r-markdown.html#cb784-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data, <span class="fu">aes</span>(<span class="at">x =</span> layout, <span class="at">y =</span> time_on_site)) <span class="sc">+</span> </span>
+<span id="cb784-10"><a href="r-markdown.html#cb784-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb784-11"><a href="r-markdown.html#cb784-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span> </span>
+<span id="cb784-12"><a href="r-markdown.html#cb784-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">width =</span> <span class="fl">0.15</span>, </span>
+<span id="cb784-13"><a href="r-markdown.html#cb784-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">ymin =</span> time_on_site <span class="sc">-</span> ci, <span class="at">ymax =</span> time_on_site <span class="sc">+</span> ci)) <span class="sc">+</span> </span>
+<span id="cb784-14"><a href="r-markdown.html#cb784-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;layout&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average time on site&quot;</span>, </span>
+<span id="cb784-15"><a href="r-markdown.html#cb784-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average time on site by group&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb784-16"><a href="r-markdown.html#cb784-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, </span>
+<span id="cb784-17"><a href="r-markdown.html#cb784-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>))</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>It appears that there is a difference in the means. To test whether it is significant, we again need a t-test. However, this time we need a slightly different version of the t-test because the same customers are observed for the two page layouts (i.e., the same customers are shown both layouts). This means that we need a <strong>dependent means t-test</strong>. This test is also known as the <strong>paired samples t-test</strong>. The other assumptions are virtually identical to the independent-means t-test. The test can be executed in R by adding <code>paired = TRUE</code> to the code.</p>
-<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="r-markdown.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">y =</span> customer_data<span class="sc">$</span>time_on_site, <span class="at">x =</span> customer_data<span class="sc">$</span>time_on_site_1,</span>
-<span id="cb785-2"><a href="r-markdown.html#cb785-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="r-markdown.html#cb785-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">y =</span> customer_data<span class="sc">$</span>time_on_site, <span class="at">x =</span> customer_data<span class="sc">$</span>time_on_site_1, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -1038,8 +1035,7 @@ Code
 ##        30.84138</code></pre>
 <p>The p-value is again lower than the chosen significance level of 5% (i.e., p &lt; .05), which means that we reject the null hypothesis that there is no difference in the mean time on site between the two page layouts. Make sure you interpret the p-value correctly. It refers to the probability of observing a difference of the observed magnitude (or larger) between the two layouts, assuming that there was in fact no difference between the layouts The confidence interval confirms the conclusion to reject the null hypothesis since <span class="math inline">\(0\)</span> is not contained in the range of plausible values.</p>
 <p>Now let’s find out how strong this effect is.</p>
-<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="r-markdown.html#cb787-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(customer_data<span class="sc">$</span>time_on_site, customer_data<span class="sc">$</span>time_on_site_1,</span>
-<span id="cb787-2"><a href="r-markdown.html#cb787-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;paired&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="r-markdown.html#cb787-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cohensD</span>(customer_data<span class="sc">$</span>time_on_site, customer_data<span class="sc">$</span>time_on_site_1, <span class="at">method =</span> <span class="st">&#39;paired&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] 3.258853</code></pre>
 <p>A standardized effect size of approx. 3.23 tells us that this effect is (very) large.</p>
 <p>Alternatively, you could also use the <code>ggstatsplot</code> package to conduct the tests and extract the relevant information from there:</p>
@@ -1061,8 +1057,7 @@ Code
 <p>The conclusion from this test would be that the alternative page layout increases the time that users spend on the website and, thus, the alternative layout should be implemented as the new standard.</p>
 <p><strong>Question 4</strong></p>
 <p>The question of how many customers we would need to include in each group of our experiment can be answered quite comfortably with a power calculation function in R.</p>
-<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="r-markdown.html#cb790-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.1</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>,</span>
-<span id="cb790-2"><a href="r-markdown.html#cb790-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;two.sample&quot;</span>), <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="r-markdown.html#cb790-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.1</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">type =</span> <span class="fu">c</span>(<span class="st">&quot;two.sample&quot;</span>), <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>))</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -1083,11 +1078,9 @@ Code
 <p><span class="math display">\[H_1: \exists {i,j}: {\mu_i \ne \mu_j} \]</span></p>
 <p>The appropriate test for such a hypothesis is one-way ANOVA since we have a metric scales dependent variable and a categorical independent variable with more than two levels.</p>
 <p>First, we will recode the relevant variables into factors and give them more descriptive level names:</p>
-<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="r-markdown.html#cb792-1" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>retargeting <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>retargeting,</span>
-<span id="cb792-2"><a href="r-markdown.html#cb792-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no retargeting&quot;</span>,</span>
-<span id="cb792-3"><a href="r-markdown.html#cb792-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;generic retargeting&quot;</span>, <span class="st">&quot;dynamic retargeting&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb792-1"><a href="r-markdown.html#cb792-1" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>retargeting <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>retargeting, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no retargeting&quot;</span>, <span class="st">&quot;generic retargeting&quot;</span>, <span class="st">&quot;dynamic retargeting&quot;</span>))</span></code></pre></div>
 <p>Next we will calculate summary statistics for the data and produce an appropriate plot.</p>
-<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="r-markdown.html#cb793-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(customer_data<span class="sc">$</span>revenue, customer_data<span class="sc">$</span>retargeting)</span></code></pre></div>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="r-markdown.html#cb793-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(customer_data<span class="sc">$</span>revenue,customer_data<span class="sc">$</span>retargeting)</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## group: no retargeting
@@ -1107,16 +1100,14 @@ Code
 ## X1    1 96 2149.46 873.18   2213 2135.82 816.91 293 5077  4784 0.25     0.36
 ##       se
 ## X1 89.12</code></pre>
-<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="r-markdown.html#cb795-1" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data, <span class="at">measurevar =</span> <span class="st">&quot;revenue&quot;</span>,</span>
-<span id="cb795-2"><a href="r-markdown.html#cb795-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">groupvars =</span> <span class="fu">c</span>(<span class="st">&quot;retargeting&quot;</span>))</span>
-<span id="cb795-3"><a href="r-markdown.html#cb795-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data, <span class="fu">aes</span>(<span class="at">x =</span> retargeting, <span class="at">y =</span> revenue)) <span class="sc">+</span></span>
-<span id="cb795-4"><a href="r-markdown.html#cb795-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="dv">1</span>), <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb795-5"><a href="r-markdown.html#cb795-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span></span>
-<span id="cb795-6"><a href="r-markdown.html#cb795-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>), <span class="at">width =</span> <span class="fl">0.15</span>,</span>
-<span id="cb795-7"><a href="r-markdown.html#cb795-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">ymin =</span> revenue <span class="sc">-</span> ci, <span class="at">ymax =</span> revenue <span class="sc">+</span> ci)) <span class="sc">+</span></span>
-<span id="cb795-8"><a href="r-markdown.html#cb795-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average revenue&quot;</span>,</span>
-<span id="cb795-9"><a href="r-markdown.html#cb795-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Average revenue by group&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb795-10"><a href="r-markdown.html#cb795-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="r-markdown.html#cb795-1" aria-hidden="true" tabindex="-1"></a>mean_data <span class="ot">&lt;-</span> <span class="fu">summarySE</span>(customer_data, <span class="at">measurevar=</span><span class="st">&quot;revenue&quot;</span>, <span class="at">groupvars=</span><span class="fu">c</span>(<span class="st">&quot;retargeting&quot;</span>))</span>
+<span id="cb795-2"><a href="r-markdown.html#cb795-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_data,<span class="fu">aes</span>(<span class="at">x =</span> retargeting, <span class="at">y =</span> revenue)) <span class="sc">+</span> </span>
+<span id="cb795-3"><a href="r-markdown.html#cb795-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">1</span>), <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;#CCCCCC&quot;</span>, <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">width =</span> <span class="fl">0.65</span>) <span class="sc">+</span></span>
+<span id="cb795-4"><a href="r-markdown.html#cb795-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="at">position=</span><span class="fu">position_dodge</span>(.<span class="dv">9</span>), <span class="at">width=</span>.<span class="dv">15</span>, <span class="fu">aes</span>(<span class="at">ymin=</span>revenue<span class="sc">-</span>ci, <span class="at">ymax=</span>revenue<span class="sc">+</span>ci)) <span class="sc">+</span></span>
+<span id="cb795-5"><a href="r-markdown.html#cb795-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb795-6"><a href="r-markdown.html#cb795-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average revenue&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Average revenue by group&quot;</span>)<span class="sc">+</span></span>
+<span id="cb795-7"><a href="r-markdown.html#cb795-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb795-8"><a href="r-markdown.html#cb795-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Both the summary statistics and the plot hint at the fact that the means may not be equal. Especially the difference between dynamic retargeting and no retargeting/ generic regtargeting seem to be quite high. Before we move to the formal test, we need to see if a series of assumptions are met, namely:</p>
 <ul>
@@ -1125,25 +1116,24 @@ Code
 <li>Independence of observations</li>
 </ul>
 <p>The last assumption is satisfied due to the fact that the observations were randomly assigned to the advertisement groups. To see if we need to worry about distributional assumptions we first take a look at the number of observations in each advertising group.</p>
-<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="r-markdown.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check number of observations by group</span></span>
+<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="r-markdown.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check number of observations by group</span></span>
 <span id="cb796-2"><a href="r-markdown.html#cb796-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(customer_data<span class="sc">$</span>retargeting)</span></code></pre></div>
 <pre><code>## 
 ##      no retargeting generic retargeting dynamic retargeting 
 ##                 103                  87                  96</code></pre>
 <p>Due to the fact that there are always more than 30 observations in each group we can rely on the central limit theorem to satisfy the distributional assumptions.</p>
 <p>Homogeneity of variances can be checked with Levene’s test (implemented as <code>leveneTest()</code> from the <code>car</code> package). The null hypothesis of this test is that the variances are equal, with the alternative hypothesis being that the variances are not all equal. Note that this step could also be skipped and replaced by the use of the robust ANOVA using the <code>oneway.test()</code> function.</p>
-<div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="r-markdown.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Homogeneity of variances test:</span></span>
+<div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="r-markdown.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Homogeneity of variances test:</span></span>
 <span id="cb798-2"><a href="r-markdown.html#cb798-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb798-3"><a href="r-markdown.html#cb798-3" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(revenue <span class="sc">~</span> retargeting, <span class="at">data =</span> customer_data,</span>
-<span id="cb798-4"><a href="r-markdown.html#cb798-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">center =</span> mean)</span></code></pre></div>
+<span id="cb798-3"><a href="r-markdown.html#cb798-3" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(revenue <span class="sc">~</span> retargeting, <span class="at">data=</span>customer_data, <span class="at">center=</span>mean)</span></code></pre></div>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = mean)
 ##        Df F value Pr(&gt;F)
 ## group   2  1.4005 0.2482
 ##       283</code></pre>
 <p>The test result is insignificant (for a significance level of 5 %), meaning that we do not reject the null hypothesis of equal variances and can operate under the assumption that the variances are equal.</p>
 <p>Since all assumptions are fulfilled we can move on to conducting the actual ANOVA using the <code>aov()</code> function. As said above, it would also be possible to conduct the analysis using the robust ANOVA using the <code>oneway.test()</code> function, which has an in-build correction for unequal variances across groups:</p>
-<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="r-markdown.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Anova:</span></span>
-<span id="cb800-2"><a href="r-markdown.html#cb800-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(revenue <span class="sc">~</span> retargeting, <span class="at">data =</span> customer_data)</span>
+<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="r-markdown.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Anova:</span></span>
+<span id="cb800-2"><a href="r-markdown.html#cb800-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(revenue<span class="sc">~</span>retargeting, <span class="at">data =</span> customer_data)</span>
 <span id="cb800-3"><a href="r-markdown.html#cb800-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code></pre></div>
 <pre><code>##              Df    Sum Sq  Mean Sq F value        Pr(&gt;F)    
 ## retargeting   2  27948872 13974436   22.27 0.00000000104 ***
@@ -1152,11 +1142,11 @@ Code
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The p-value is smaller than 0.05, which we chose as our significance level, meaning that we reject the null hypothesis of the means being equal in the three advertising groups.</p>
 <p>Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.</p>
-<div class="sourceCode" id="cb802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb802-1"><a href="r-markdown.html#cb802-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect residuals</span></span>
-<span id="cb802-2"><a href="r-markdown.html#cb802-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb802-1"><a href="r-markdown.html#cb802-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Inspect residuals</span></span>
+<span id="cb802-2"><a href="r-markdown.html#cb802-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov,<span class="dv">1</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>The first plot gives us a feel for the distribution of the residuals of the three groups. The residuals seem to be roughly equally distributed, which speaks for the fact that the homogeneity of variances assumptions is fulfilled.</p>
-<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="r-markdown.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="r-markdown.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov,<span class="dv">2</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>The second plot is a QQ-plot of the residuals, meant as a quick visual check to see if the normality assumption is fulfilled. Leading up to the test we only checked if there were more than 30 observations per group to satisfy the normality assumption but despite this being fulfilled it is still important to check the normality of the residuals, as any strange behavior here may indicate problems with the model specification.</p>
 <p>To further confirm that the residuals are roughly normally distributed we employ the Shapiro-Wilk test. The null hypothesis is that the distribution of the data is normal, with the alternative hypothesis positing that the data is not normally distributed.</p>
@@ -1172,9 +1162,8 @@ Code
 2) H_0: \mu_2 = \mu_3; H_1 = \mu_2 \neq \mu_3 \\
 3) H_0: \mu_1 = \mu_3; H_1 = \mu_1 \neq \mu_3 \]</span></p>
 <p>Here we will conduct both the Bonferroni correction as well as Tukey’s HSD test, however either would be sufficient for your homework. Bonferroni’s correction conducts multiple pairwise t-tests, with the null hypothesis being that of equal means in each case and the alternative hypothesis stating that the means are unequal.</p>
-<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="r-markdown.html#cb806-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bonferroni</span></span>
-<span id="cb806-2"><a href="r-markdown.html#cb806-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(customer_data<span class="sc">$</span>revenue, customer_data<span class="sc">$</span>retargeting,</span>
-<span id="cb806-3"><a href="r-markdown.html#cb806-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> customer_data, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="r-markdown.html#cb806-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bonferroni</span></span>
+<span id="cb806-2"><a href="r-markdown.html#cb806-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(customer_data<span class="sc">$</span>revenue, customer_data<span class="sc">$</span>retargeting, <span class="at">data=</span>customer_data, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -1191,7 +1180,7 @@ dynamic regargeting vs. no retargeting<br />
 dynamic regargeting vs. generig retargeting</p>
 <p>But there seems to be no difference in the means of generic retargeting vs. no retargeting.</p>
 <p>Alternatively, you could have also chosen to use Tukey’s HSD to conduct the post hoc test. Tukey’s HSD similarly compares pairwise means, corrected for family-wise errors (both of the post hoc tests would have been considered correct).</p>
-<div class="sourceCode" id="cb808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb808-1"><a href="r-markdown.html#cb808-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tukey correction using the mult-comp package</span></span>
+<div class="sourceCode" id="cb808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb808-1"><a href="r-markdown.html#cb808-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tukey correction using the mult-comp package</span></span>
 <span id="cb808-2"><a href="r-markdown.html#cb808-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
 <span id="cb808-3"><a href="r-markdown.html#cb808-3" aria-hidden="true" tabindex="-1"></a>tukeys <span class="ot">&lt;-</span> <span class="fu">glht</span>(aov, <span class="at">linfct =</span> <span class="fu">mcp</span>(<span class="at">retargeting =</span> <span class="st">&quot;Tukey&quot;</span>))</span>
 <span id="cb808-4"><a href="r-markdown.html#cb808-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tukeys)</span></code></pre></div>
@@ -1226,21 +1215,18 @@ dynamic regargeting vs. generig retargeting</p>
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data)
 ## 
-## Quantile = 2.356
+## Quantile = 2.3559
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      198.4986 -73.2259 470.2231
-## dynamic retargeting - no retargeting == 0      730.4972 465.7676 995.2268
-## dynamic retargeting - generic retargeting == 0 531.9986 255.7751 808.2220</code></pre>
-<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="r-markdown.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The mar parameter changes the margins around</span></span>
-<span id="cb812-2"><a href="r-markdown.html#cb812-2" aria-hidden="true" tabindex="-1"></a><span class="co"># created plots. This is done so the labels on</span></span>
-<span id="cb812-3"><a href="r-markdown.html#cb812-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the side of the Tukey plot are visible</span></span>
-<span id="cb812-4"><a href="r-markdown.html#cb812-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (however, this was not expected).</span></span>
-<span id="cb812-5"><a href="r-markdown.html#cb812-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
-<span id="cb812-6"><a href="r-markdown.html#cb812-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
+## generic retargeting - no retargeting == 0      198.4986 -73.2129 470.2101
+## dynamic retargeting - no retargeting == 0      730.4972 465.7802 995.2142
+## dynamic retargeting - generic retargeting == 0 531.9986 255.7883 808.2088</code></pre>
+<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="r-markdown.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected). </span></span>
+<span id="cb812-2"><a href="r-markdown.html#cb812-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>, <span class="dv">2</span>))</span>
+<span id="cb812-3"><a href="r-markdown.html#cb812-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>It is clearly visible that just the CIs of generic retargetring vs. no retargeting cross the 0 bound, which further indicates that the differences in means are statistically not significantly different from 0.</p>
 <p>From a reporting standpoint we can say that revenue is higher when using dynamic retargeting vs. no retargeting or generic retargeting, but there is no significant difference between the sales for products in the dynamic retargeting vs. no retargeting conditions. Managerially, this means that only dynamic retargetting helps us to increase sales and should thus be the preferred choice.</p>
@@ -1260,12 +1246,14 @@ Let’s inspect the descriptive statistics first:</p>
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## X1    1 145 6.83 3.01      8    7.17 2.97   0  10    10 -0.81    -0.55 0.25</code></pre>
 <p>A good way to visualize ordinal data is through a boxplot.</p>
-<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="r-markdown.html#cb815-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> customer_data, <span class="fu">aes</span>(<span class="at">x =</span> exp_group, <span class="at">y =</span> nps)) <span class="sc">+</span></span>
-<span id="cb815-2"><a href="r-markdown.html#cb815-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rank&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="r-markdown.html#cb815-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> customer_data, <span class="fu">aes</span>(<span class="at">x =</span> exp_group, <span class="at">y =</span> nps)) <span class="sc">+</span> </span>
+<span id="cb815-2"><a href="r-markdown.html#cb815-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb815-3"><a href="r-markdown.html#cb815-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb815-4"><a href="r-markdown.html#cb815-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rank&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The boxplot seems to indicate that the medians are unequal. Surprisingly, the plot indicates that the median NPS score is lower in the treatment group. The may be due to, for example, that while the customers spend more money due to the personalization feature, this feature actually reduces the NPS, possibly because customers are not comfortable with the use of their personal data for advertising purposes.</p>
 <p>The only assumption that we require for this test is that the dependent variable is at least ordinal, which is fulfilled for customer ranks. Hence we can move on to performing the test in R.</p>
-<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="r-markdown.html#cb816-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ordinal data so we use a non-parametric test</span></span>
+<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="r-markdown.html#cb816-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ordinal data so we use a non-parametric test</span></span>
 <span id="cb816-2"><a href="r-markdown.html#cb816-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(nps <span class="sc">~</span> exp_group, <span class="at">data =</span> customer_data)</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
@@ -1294,8 +1282,7 @@ Let’s inspect the descriptive statistics first:</p>
 <p>Our null hypothesis in this case states that the proportions of conversion are the groups with and without the personalization feature. Our alternative hypothesis states that these proportions are unequal.</p>
 <p><span class="math display">\[H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2\]</span>
 First, we will recode the relevant variables into factors and give them more descriptive level names. Note that the <em>exp_group</em> variable had already been converted to a factor variable and, thus, does not need to be converted to a factor variable again.</p>
-<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="r-markdown.html#cb819-1" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>conversion <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>conversion,</span>
-<span id="cb819-2"><a href="r-markdown.html#cb819-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="r-markdown.html#cb819-1" aria-hidden="true" tabindex="-1"></a>customer_data<span class="sc">$</span>conversion <span class="ot">&lt;-</span> <span class="fu">factor</span>(customer_data<span class="sc">$</span>conversion, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>))</span></code></pre></div>
 <p>First let´s create a summary plot to get a feeling for the data.</p>
 <div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="r-markdown.html#cb820-1" aria-hidden="true" tabindex="-1"></a><span class="co">#conditional relative frequencies</span></span>
 <span id="cb820-2"><a href="r-markdown.html#cb820-2" aria-hidden="true" tabindex="-1"></a>rel_freq_table <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(customer_data<span class="sc">$</span>exp_group, customer_data<span class="sc">$</span>conversion), <span class="dv">1</span>))</span>
@@ -1313,14 +1300,12 @@ First, we will recode the relevant variables into factors and give them more des
 <span id="cb821-5"><a href="r-markdown.html#cb821-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_3_1-1.png" width="672" /></p>
 <p>We see that our conversion seems to be better for the group with the personalization feature, but let´s check whether these proportions are significantly different.</p>
-<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="r-markdown.html#cb822-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>))  <span class="co">#number of observations for females</span></span>
+<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="r-markdown.html#cb822-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span>)) <span class="co">#number of observations for females</span></span>
 <span id="cb822-2"><a href="r-markdown.html#cb822-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span> <span class="st">&quot;treatment&quot;</span>))  <span class="co">#number of observations for males</span></span>
-<span id="cb822-3"><a href="r-markdown.html#cb822-3" aria-hidden="true" tabindex="-1"></a>n1_conv <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span></span>
-<span id="cb822-4"><a href="r-markdown.html#cb822-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;control&quot;</span> <span class="sc">&amp;</span> conversion <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>))  <span class="co">#number of conversions for females</span></span>
-<span id="cb822-5"><a href="r-markdown.html#cb822-5" aria-hidden="true" tabindex="-1"></a>n2_conv <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span></span>
-<span id="cb822-6"><a href="r-markdown.html#cb822-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;treatment&quot;</span> <span class="sc">&amp;</span> conversion <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>))  <span class="co">#number of conversions for males</span></span>
-<span id="cb822-7"><a href="r-markdown.html#cb822-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb822-8"><a href="r-markdown.html#cb822-8" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(n1_conv, n2_conv), <span class="at">n =</span> <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<span id="cb822-3"><a href="r-markdown.html#cb822-3" aria-hidden="true" tabindex="-1"></a>n1_conv <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span> <span class="st">&quot;control&quot;</span> <span class="sc">&amp;</span> conversion <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>))  <span class="co">#number of conversions for females</span></span>
+<span id="cb822-4"><a href="r-markdown.html#cb822-4" aria-hidden="true" tabindex="-1"></a>n2_conv <span class="ot">&lt;-</span> <span class="fu">nrow</span>(<span class="fu">subset</span>(customer_data, exp_group <span class="sc">==</span> <span class="st">&quot;treatment&quot;</span> <span class="sc">&amp;</span> conversion <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>))  <span class="co">#number of conversions for males</span></span>
+<span id="cb822-5"><a href="r-markdown.html#cb822-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb822-6"><a href="r-markdown.html#cb822-6" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(n1_conv, n2_conv), <span class="at">n =</span> <span class="fu">c</span>(n1, n2), <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
 <pre><code>## 
 ##  2-sample test for equality of proportions with continuity correction
 ## 
@@ -1335,10 +1320,17 @@ First, we will recode the relevant variables into factors and give them more des
 <p>The test showed that the conversion rate for the personalization feature was 23% higher compared to the control group. This difference is highly significant <span class="math inline">\(\chi^2\)</span> (1) = 20.4, p &lt; .05 (95% CI = [0.13,0.37]), which means that we can reject our null hypothesis of equal probability and state that there indeed is a difference between the groups. In managerial terms this means that the personalization feature increases the conversion rate by making the ads more relevant for the customers and the feature should thus be implemented (but see the discussion about lower NPS scores).</p>
 <p>This information could have also been extracted using the ggstatsplot package:</p>
 <div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="r-markdown.html#cb824-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb824-2"><a href="r-markdown.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarstats</span>(<span class="at">data =</span> customer_data, <span class="at">x =</span> conversion, <span class="at">y =</span> exp_group,</span>
-<span id="cb824-3"><a href="r-markdown.html#cb824-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Conversion by group&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Group&quot;</span>,</span>
-<span id="cb824-4"><a href="r-markdown.html#cb824-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;Blues&quot;</span>, <span class="at">messages =</span> <span class="cn">FALSE</span>, <span class="at">bar.proptest =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb824-5"><a href="r-markdown.html#cb824-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bf.message =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<span id="cb824-2"><a href="r-markdown.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbarstats</span>(</span>
+<span id="cb824-3"><a href="r-markdown.html#cb824-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> customer_data,</span>
+<span id="cb824-4"><a href="r-markdown.html#cb824-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> conversion,</span>
+<span id="cb824-5"><a href="r-markdown.html#cb824-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> exp_group,</span>
+<span id="cb824-6"><a href="r-markdown.html#cb824-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Conversion by group&quot;</span>,</span>
+<span id="cb824-7"><a href="r-markdown.html#cb824-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb824-8"><a href="r-markdown.html#cb824-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="st">&quot;Blues&quot;</span>,</span>
+<span id="cb824-9"><a href="r-markdown.html#cb824-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb824-10"><a href="r-markdown.html#cb824-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">bar.proptest =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb824-11"><a href="r-markdown.html#cb824-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">bf.message =</span> <span class="cn">FALSE</span></span>
+<span id="cb824-12"><a href="r-markdown.html#cb824-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 </div>
 <div id="solution-assignment-3" class="section level2 hasAnchor" number="10.3">
@@ -1367,12 +1359,13 @@ First, we will recode the relevant variables into factors and give them more des
 <ol start="5" style="list-style-type: decimal">
 <li>What sales quantity would you predict based on your model for a product when the marketing activities are planned as follows: TV: 150 thsd. €, Online: 26 thsd. €, Radio: 15 thsd. €? Please provide the equation you used to make the prediction.</li>
 </ol>
-<p>When you are done with your analysis, click on “Knit to HTML” button above the code editor. This will create a HTML document of your results in the folder where the “assignment3.Rmd” file is stored. Open this file in your Internet browser to see if the output is correct. If the output is correct, submit the HTML file via Learn@WU. The file name should be “assignment3_studendID_name.html”.</p>
+<p>When you are done with your analysis, click on “Knit to HTML” button above the code editor. This will create a HTML document of your results in the folder where the “assignment3.Rmd” file is stored. Open this file in your Internet browser to see if the output is correct. If the output is correct, submit the HTML file via Learn@WU. The file name should be “assignment3_studendID_name.html.”</p>
 <p><strong>Load data</strong></p>
-<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="r-markdown.html#cb825-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/assignment4.dat&quot;</span>,</span>
-<span id="cb825-2"><a href="r-markdown.html#cb825-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
-<span id="cb825-3"><a href="r-markdown.html#cb825-3" aria-hidden="true" tabindex="-1"></a>sales_data<span class="sc">$</span>market_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sales_data)</span>
-<span id="cb825-4"><a href="r-markdown.html#cb825-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sales_data)</span></code></pre></div>
+<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="r-markdown.html#cb825-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/assignment4.dat&quot;</span>, </span>
+<span id="cb825-2"><a href="r-markdown.html#cb825-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, </span>
+<span id="cb825-3"><a href="r-markdown.html#cb825-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
+<span id="cb825-4"><a href="r-markdown.html#cb825-4" aria-hidden="true" tabindex="-1"></a>sales_data<span class="sc">$</span>market_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sales_data)</span>
+<span id="cb825-5"><a href="r-markdown.html#cb825-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sales_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["tv_adspend"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["online_adspend"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["radio_adspend"],"name":[3],"type":["int"],"align":["right"]},{"label":["sales"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["market_id"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"68.6","2":"10.3","3":"24","4":"8.6","5":"1"},{"1":"136.6","2":"29.0","3":"40","4":"15.8","5":"2"},{"1":"14.5","2":"44.3","3":"25","4":"11.8","5":"3"},{"1":"214.6","2":"26.2","3":"40","4":"17.1","5":"4"},{"1":"285.0","2":"13.9","3":"31","4":"17.4","5":"5"},{"1":"139.6","2":"74.9","3":"24","4":"24.4","5":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1406,8 +1399,7 @@ First, we will recode the relevant variables into factors and give them more des
 ## market_id         -1.22 4.44</code></pre>
 <p>Inspecting the correlation matrix reveals that the sales variable is positively correlated with tv advertising and online advertising expenditures. The correlations among the independent variables appear moderate.</p>
 <div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="r-markdown.html#cb830-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
-<span id="cb830-2"><a href="r-markdown.html#cb830-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(sales_data[, <span class="fu">c</span>(<span class="st">&quot;sales&quot;</span>, <span class="st">&quot;tv_adspend&quot;</span>,</span>
-<span id="cb830-3"><a href="r-markdown.html#cb830-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;online_adspend&quot;</span>, <span class="st">&quot;radio_adspend&quot;</span>)]))</span></code></pre></div>
+<span id="cb830-2"><a href="r-markdown.html#cb830-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(sales_data[,<span class="fu">c</span>(<span class="st">&quot;sales&quot;</span>,<span class="st">&quot;tv_adspend&quot;</span>,<span class="st">&quot;online_adspend&quot;</span>,<span class="st">&quot;radio_adspend&quot;</span>)]))</span></code></pre></div>
 <pre><code>##                sales tv_adspend online_adspend radio_adspend
 ## sales           1.00       0.78           0.54         -0.04
 ## tv_adspend      0.78       1.00           0.05          0.03
@@ -1425,37 +1417,32 @@ First, we will recode the relevant variables into factors and give them more des
 ## radio_adspend  0.5316 0.6735     0.2790</code></pre>
 <p>Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.</p>
 <div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="r-markdown.html#cb832-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb832-2"><a href="r-markdown.html#cb832-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> tv_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
-<span id="cb832-3"><a href="r-markdown.html#cb832-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb832-4"><a href="r-markdown.html#cb832-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<span id="cb832-2"><a href="r-markdown.html#cb832-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> tv_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb832-3"><a href="r-markdown.html#cb832-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
-<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="r-markdown.html#cb833-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> online_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
-<span id="cb833-2"><a href="r-markdown.html#cb833-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb833-3"><a href="r-markdown.html#cb833-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="r-markdown.html#cb833-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> online_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb833-2"><a href="r-markdown.html#cb833-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-43-2.png" width="672" /></p>
-<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="r-markdown.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> radio_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span></span>
-<span id="cb834-2"><a href="r-markdown.html#cb834-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb834-3"><a href="r-markdown.html#cb834-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="r-markdown.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sales_data, <span class="fu">aes</span>(<span class="at">x =</span> radio_adspend, <span class="at">y =</span> sales)) <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb834-2"><a href="r-markdown.html#cb834-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span><span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-43-3.png" width="672" /></p>
 <p>The plots including the fitted lines from a simple linear model already suggest that there might be a positive linear relationship between sales and TV- and online-advertising. However, there does not appear to be a strong relationship between sales and radio advertising.</p>
 <p><strong>Question 3</strong></p>
 <p>The estimate the model, we will use the <code>lm()</code> function:</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="r-markdown.html#cb835-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> tv_adspend <span class="sc">+</span> online_adspend <span class="sc">+</span></span>
-<span id="cb835-2"><a href="r-markdown.html#cb835-2" aria-hidden="true" tabindex="-1"></a>    radio_adspend, <span class="at">data =</span> sales_data)</span></code></pre></div>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="r-markdown.html#cb835-1" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> tv_adspend <span class="sc">+</span> online_adspend <span class="sc">+</span> radio_adspend, <span class="at">data =</span> sales_data)</span></code></pre></div>
 <p>Before we can inspect the results, we need to test if there might be potential problems with our model specification.</p>
 <p><em>Outliers</em></p>
 <p>The check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3.</p>
 <div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="r-markdown.html#cb836-1" aria-hidden="true" tabindex="-1"></a>sales_data<span class="sc">$</span>stud_resid <span class="ot">&lt;-</span> <span class="fu">rstudent</span>(linear_model)</span>
-<span id="cb836-2"><a href="r-markdown.html#cb836-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sales_data), sales_data<span class="sc">$</span>stud_resid, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.3</span>,</span>
-<span id="cb836-3"><a href="r-markdown.html#cb836-3" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.3</span>))  <span class="co">#create scatterplot </span></span>
-<span id="cb836-4"><a href="r-markdown.html#cb836-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)  <span class="co">#add reference lines</span></span></code></pre></div>
+<span id="cb836-2"><a href="r-markdown.html#cb836-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(sales_data),sales_data<span class="sc">$</span>stud_resid, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.3</span>,<span class="fl">3.3</span>)) <span class="co">#create scatterplot </span></span>
+<span id="cb836-3"><a href="r-markdown.html#cb836-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lty=</span><span class="dv">2</span>) <span class="co">#add reference lines</span></span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>Since there are no residuals with absolute values larger than 3, we conclude that there are no severe outliers.</p>
 <p><em>Influencial observations</em></p>
 <p>To test for influential observations, we use Cook’s Distance. You may use the following two plots to verify if any Cook’s Distance values are larger than the cutoff of 1.</p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="r-markdown.html#cb837-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="r-markdown.html#cb837-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model,<span class="dv">4</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
-<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="r-markdown.html#cb838-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="r-markdown.html#cb838-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model,<span class="dv">5</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-46-2.png" width="672" /></p>
 <p>Since all values are well below the cutoff, we conclude that influential observations are not a problem in our model.</p>
 <p><em>Non-linear relationships</em></p>
@@ -1481,7 +1468,7 @@ First, we will recode the relevant variables into factors and give them more des
 ## BP = 1.7583, df = 3, p-value = 0.6241</code></pre>
 <p><em>Non-normally distributed errors</em></p>
 <p>Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output:</p>
-<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="r-markdown.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="r-markdown.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model,<span class="dv">2</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>The Q-Q plot does not suggest a severe deviation from a normal distribution. This could also be validated using the Shapiro test:</p>
 <div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="r-markdown.html#cb845-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(linear_model))</span></code></pre></div>
@@ -1495,8 +1482,7 @@ First, we will recode the relevant variables into factors and give them more des
 <p><em>Multicollinearity</em></p>
 <p>To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., &gt;0.8).</p>
 <div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="r-markdown.html#cb847-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;Hmisc&quot;</span>)</span>
-<span id="cb847-2"><a href="r-markdown.html#cb847-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(sales_data[, <span class="fu">c</span>(<span class="st">&quot;tv_adspend&quot;</span>, <span class="st">&quot;online_adspend&quot;</span>,</span>
-<span id="cb847-3"><a href="r-markdown.html#cb847-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;radio_adspend&quot;</span>)]))</span></code></pre></div>
+<span id="cb847-2"><a href="r-markdown.html#cb847-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(sales_data[,<span class="fu">c</span>(<span class="st">&quot;tv_adspend&quot;</span>,<span class="st">&quot;online_adspend&quot;</span>,<span class="st">&quot;radio_adspend&quot;</span>)]))</span></code></pre></div>
 <pre><code>##                tv_adspend online_adspend radio_adspend
 ## tv_adspend           1.00           0.05          0.03
 ## online_adspend       0.05           1.00         -0.07
@@ -1511,8 +1497,7 @@ First, we will recode the relevant variables into factors and give them more des
 ## online_adspend 0.4127                    0.2790       
 ## radio_adspend  0.6735     0.2790</code></pre>
 <p>The results show that the bivariate correlations are low to moderate. This can also be shown in a plot:</p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="r-markdown.html#cb849-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sales_data[, <span class="fu">c</span>(<span class="st">&quot;tv_adspend&quot;</span>, <span class="st">&quot;online_adspend&quot;</span>,</span>
-<span id="cb849-2"><a href="r-markdown.html#cb849-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;radio_adspend&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb849-1"><a href="r-markdown.html#cb849-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sales_data[,<span class="fu">c</span>(<span class="st">&quot;tv_adspend&quot;</span>,<span class="st">&quot;online_adspend&quot;</span>,<span class="st">&quot;radio_adspend&quot;</span>)])</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <p>In a next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors.</p>
 <div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="r-markdown.html#cb850-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
@@ -1591,17 +1576,16 @@ First, we will recode the relevant variables into factors and give them more des
 <p>Of course, you could have also used the functions included in the ggstatsplot package to report the results from your regression model.</p>
 <div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb859-1"><a href="r-markdown.html#cb859-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
 <span id="cb859-2"><a href="r-markdown.html#cb859-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">0</span>)</span>
-<span id="cb859-3"><a href="r-markdown.html#cb859-3" aria-hidden="true" tabindex="-1"></a><span class="co"># specify_decimal_p(0.00000000004, k = 3L,</span></span>
-<span id="cb859-4"><a href="r-markdown.html#cb859-4" aria-hidden="true" tabindex="-1"></a><span class="co"># p.value = TRUE)</span></span>
-<span id="cb859-5"><a href="r-markdown.html#cb859-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcoefstats</span>(<span class="at">x =</span> linear_model, <span class="at">k =</span> <span class="dv">15</span>, <span class="at">title =</span> <span class="st">&quot;Sales predicted by adspend, airplay, &amp; starpower&quot;</span>)</span></code></pre></div>
+<span id="cb859-3"><a href="r-markdown.html#cb859-3" aria-hidden="true" tabindex="-1"></a><span class="co">#specify_decimal_p(0.00000000004, k = 3L, p.value = TRUE)</span></span>
+<span id="cb859-4"><a href="r-markdown.html#cb859-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcoefstats</span>(<span class="at">x =</span> linear_model, <span class="at">k =</span> <span class="dv">15</span>, <span class="at">title =</span> <span class="st">&quot;Sales predicted by adspend, airplay, &amp; starpower&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p><strong>Question 5</strong></p>
 <p>Finally, we can predict the outcome for the given marketing mix using the following equation:</p>
 <p><span class="math display">\[\hat{sales}= 3.6 + 0.045*150 + 0.186*26 + 0.011*15 = 15.11\]</span></p>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="r-markdown.html#cb860-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">1</span>, <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">2</span>,</span>
-<span id="cb860-2"><a href="r-markdown.html#cb860-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>] <span class="sc">*</span> <span class="dv">150</span> <span class="sc">+</span> <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">3</span>,</span>
-<span id="cb860-3"><a href="r-markdown.html#cb860-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>] <span class="sc">*</span> <span class="dv">26</span> <span class="sc">+</span> <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">4</span>,</span>
-<span id="cb860-4"><a href="r-markdown.html#cb860-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>] <span class="sc">*</span> <span class="dv">15</span></span></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb860-1"><a href="r-markdown.html#cb860-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>] <span class="sc">+</span> </span>
+<span id="cb860-2"><a href="r-markdown.html#cb860-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">*</span><span class="dv">150</span> <span class="sc">+</span> </span>
+<span id="cb860-3"><a href="r-markdown.html#cb860-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">3</span>,<span class="dv">1</span>]<span class="sc">*</span><span class="dv">26</span> <span class="sc">+</span></span>
+<span id="cb860-4"><a href="r-markdown.html#cb860-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(linear_model)<span class="sc">$</span>coefficients[<span class="dv">4</span>,<span class="dv">1</span>]<span class="sc">*</span><span class="dv">15</span></span></code></pre></div>
 <pre><code>## [1] 15.11236</code></pre>
 <p>This means that given the planned marketing mix, we would expect to sell around 15,112 units (recall that the variables are measured in thousands of units).</p>
 

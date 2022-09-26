@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -142,7 +142,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><strong><a href="./">MA</a></strong></li>
+<li><strong><a href="./">MA 2022/23</a></strong></li>
 
 <li class="divider"></li>
 <li class="part"><span><b>I Course outline</b></span></li>
@@ -475,7 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can also explicitly tell R to print the value of an object:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-handling.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x) <span class="co">#print the value of x to the console</span></span></code></pre></div>
 <pre><code>## [1] &quot;hello world&quot;</code></pre>
-<p>Note that because we assign characters in this case (as opposed to e.g., numeric values), we need to wrap the words in quotation marks, which must always come in pairs. Although RStudio automatically adds a pair of quotation marks (i.e., opening and closing marks) when you enter the opening marks it could be that you end up with a mismatch by accident (e.g., <code>x &lt;- "hello</code>). In this case, R will show you the continuation character “+”. The same could happen if you did not execute the full command by accident. The “+” means that R is expecting more input. If this happens, either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
+<p>Note that because we assign characters in this case (as opposed to e.g., numeric values), we need to wrap the words in quotation marks, which must always come in pairs. Although RStudio automatically adds a pair of quotation marks (i.e., opening and closing marks) when you enter the opening marks it could be that you end up with a mismatch by accident (e.g., <code>x &lt;- "hello</code>). In this case, R will show you the continuation character “+.” The same could happen if you did not execute the full command by accident. The “+” means that R is expecting more input. If this happens, either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
 <p>To change the value of an object, you can simply overwrite the previous value. For example, you could also assign a numeric value to “x” to perform some basic operations:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-handling.html#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co">#assigns the value of 2 to the object x</span></span>
 <span id="cb15-2"><a href="data-handling.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-handling.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">3</span>   <span class="co">#checks whether the value of x is greater than 3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>Note that the name of the object is completely arbitrary. We could also define a second object “y”, assign it a different value and use it to perform some basic mathematical operations:</p>
+<p>Note that the name of the object is completely arbitrary. We could also define a second object “y,” assign it a different value and use it to perform some basic mathematical operations:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-handling.html#cb25-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co">#assigns the value of 2 to the object x</span></span>
 <span id="cb25-2"><a href="data-handling.html#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y <span class="co">#checks whether the value of x to the value of y</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-19"><a href="data-handling.html#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-20"><a href="data-handling.html#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#Logical</span></span>
 <span id="cb35-21"><a href="data-handling.html#cb35-21" aria-hidden="true" tabindex="-1"></a>top10_track_explicit_1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>,<span class="cn">FALSE</span>)  </span></code></pre></div>
-<p>In order to “call” a vector we can now simply enter its name:</p>
+<p>In order to “return” a vector we can now simply enter its name:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="data-handling.html#cb36-1" aria-hidden="true" tabindex="-1"></a>top10_track_streams</span></code></pre></div>
 <pre><code>##  [1] 163608 126687 120480 110022 108630  95639  94690  89011  87869  85599</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-handling.html#cb38-1" aria-hidden="true" tabindex="-1"></a>top_10_track_release_date</span></code></pre></div>
@@ -585,7 +585,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p style="text-align:center;">
 <img src="https://github.com/IMSMWU/Teaching/raw/master/MRDA2017/Graphics/dataframe.JPG" alt="data types" height="320">
 </p>
-<p>Data frames are similar to matrices but are more flexible in the sense that they may contain different data types (e.g., numeric, character, etc.), where all values of vectors and matrices have to be of the same type (e.g. character). It is often more convenient to use characters instead of numbers (e.g. when indicating a persons sex: “F”, “M” instead of 1 for female , 2 for male). Thus we would like to combine both numeric and character values while retaining the respective desired features. This is where “data frames” come into play. Data frames can have different types of data in each column. For example, we can combine the vectors created above in one data frame using <code>data.frame()</code>. This creates a separate column for each vector, which is usually what we want (similar to SPSS or Excel).</p>
+<p>Data frames are similar to matrices but are more flexible in the sense that they may contain different data types (e.g., numeric, character, etc.), where all values of vectors and matrices have to be of the same type (e.g. character). It is often more convenient to use characters instead of numbers (e.g. when indicating a persons sex: “F,” “M” instead of 1 for female , 2 for male). Thus we would like to combine both numeric and character values while retaining the respective desired features. This is where “data frames” come into play. Data frames can have different types of data in each column. For example, we can combine the vectors created above in one data frame using <code>data.frame()</code>. This creates a separate column for each vector, which is usually what we want (similar to SPSS or Excel).</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-handling.html#cb42-1" aria-hidden="true" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(top10_track_streams, </span>
 <span id="cb42-2"><a href="data-handling.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                         top10_artist_names, </span>
 <span id="cb42-3"><a href="data-handling.html#cb42-3" aria-hidden="true" tabindex="-1"></a>                         top10_track_explicit, </span>
@@ -609,91 +609,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 {"columns":[{"label":["top10_artist_names"],"name":[1],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[2],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"Axwell /\\\\ Ingrosso","2":"not explicit","3":"Dance"},{"1":"Imagine Dragons","2":"not explicit","3":"Alternative"},{"1":"J. Balvin","2":"not explicit","3":"Latino"},{"1":"Robin Schulz","2":"not explicit","3":"Dance"},{"1":"Jonas Blue","2":"not explicit","3":"Dance"},{"1":"David Guetta","2":"not explicit","3":"Dance"},{"1":"French Montana","2":"explicit","3":"Hip-Hop/Rap"},{"1":"Calvin Harris","2":"explicit","3":"Dance"},{"1":"Liam Payne","2":"not explicit","3":"Pop"},{"1":"Lauv","2":"not explicit","3":"Pop"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-handling.html#cb45-1" aria-hidden="true" tabindex="-1"></a>music_data[ ,<span class="fu">c</span>(<span class="st">&quot;top10_artist_names&quot;</span>, <span class="st">&quot;top_10_track_release_date&quot;</span>)] <span class="co"># all rows and columns &quot;top10_artist_names&quot; and &quot;top_10_track_release_date&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-handling.html#cb45-1" aria-hidden="true" tabindex="-1"></a>music_data[<span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>, ] <span class="co"># rows 5,6,7 and all columns</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["top10_artist_names"],"name":[1],"type":["chr"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[2],"type":["date"],"align":["right"]}],"data":[{"1":"Axwell /\\\\ Ingrosso","2":"2017-05-24"},{"1":"Imagine Dragons","2":"2017-06-23"},{"1":"J. Balvin","2":"2017-07-03"},{"1":"Robin Schulz","2":"2017-06-30"},{"1":"Jonas Blue","2":"2017-05-05"},{"1":"David Guetta","2":"2017-06-09"},{"1":"French Montana","2":"2017-07-14"},{"1":"Calvin Harris","2":"2017-06-16"},{"1":"Liam Payne","2":"2017-05-18"},{"1":"Lauv","2":"2017-05-19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","_rn_":"6"},{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE","_rn_":"7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-handling.html#cb46-1" aria-hidden="true" tabindex="-1"></a>music_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="st">&quot;top10_artist_names&quot;</span>, <span class="st">&quot;top_10_track_release_date&quot;</span>)] <span class="co"># rows 1 to 5 and columns &quot;top10_artist_names&quot;&quot; and &quot;top_10_track_release_date&quot;</span></span></code></pre></div>
+<p>Typically we don’t want to remember which row or column number is needed but use names and conditions (e.g, all explicit tracks). In order to make that easier we will add more functions to R by installing a package (sometimes also referred to as “library”) called <code>tidyverse</code>. We only have to install it once and subsequently we can add the functions the package provides by calling <code>library(tidyverse)</code>. The <code>tidyverse</code> provides us with convenient tools to manipulate data.</p>
+<p>You may also create subsets of the data frame, e.g., using mathematical expressions using the <code>filter</code> function:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-handling.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-handling.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(music_data, top10_track_explicit <span class="sc">==</span> <span class="st">&quot;explicit&quot;</span>)<span class="co"># show only tracks with explicit lyrics  </span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_artist_names"],"name":[1],"type":["chr"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[2],"type":["date"],"align":["right"]}],"data":[{"1":"Axwell /\\\\ Ingrosso","2":"2017-05-24","_rn_":"1"},{"1":"Imagine Dragons","2":"2017-06-23","_rn_":"2"},{"1":"J. Balvin","2":"2017-07-03","_rn_":"3"},{"1":"Robin Schulz","2":"2017-06-30","_rn_":"4"},{"1":"Jonas Blue","2":"2017-05-05","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>You may also create subsets of the data frame, e.g., using mathematical expressions:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-handling.html#cb47-1" aria-hidden="true" tabindex="-1"></a>  music_data[top10_track_explicit <span class="sc">==</span> <span class="st">&quot;explicit&quot;</span>,] <span class="co"># show only tracks with explicit lyrics  </span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-handling.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(music_data, top10_track_streams <span class="sc">&gt;</span> <span class="dv">100000</span>) <span class="co"># show only tracks with more than 100,000 streams  </span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE","_rn_":"7"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-handling.html#cb48-1" aria-hidden="true" tabindex="-1"></a>  music_data[top10_track_streams <span class="sc">&gt;</span> <span class="dv">100000</span>,] <span class="co"># show only tracks with more than 100,000 streams  </span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-handling.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(music_data, top10_artist_names <span class="sc">==</span> <span class="st">&#39;Robin Schulz&#39;</span>) <span class="co"># returns all observations from artist &quot;Robin Schulz&quot;</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","_rn_":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="data-handling.html#cb49-1" aria-hidden="true" tabindex="-1"></a>  music_data[top10_artist_names <span class="sc">==</span> <span class="st">&#39;Robin Schulz&#39;</span>,] <span class="co"># returns all observations from artist &quot;Robin Schulz&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-handling.html#cb51-1" aria-hidden="true" tabindex="-1"></a>explicit_tracks <span class="ot">&lt;-</span> <span class="fu">filter</span>(music_data, top10_track_explicit <span class="sc">==</span> <span class="st">&quot;explicit&quot;</span>) <span class="co"># assign a new data.frame for explicit tracs only</span></span></code></pre></div>
+<p>You may also change the order of the rows in a <code>data.frame</code> by using the <code>arrange()</code>-function</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-handling.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Arrange by genre (ascending: A - Z) and streams (descending: maximum - minimum)</span></span>
+<span id="cb52-2"><a href="data-handling.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(music_data, top10_artist_genre, <span class="fu">desc</span>(top10_track_streams))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-handling.html#cb50-1" aria-hidden="true" tabindex="-1"></a>  music_data[top10_track_explicit <span class="sc">==</span> <span class="st">&quot;explicit&quot;</span>,] <span class="co"># show only explicit tracks</span></span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE","_rn_":"7"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<p>The same can be achieved using the <code>subset()</code>-function</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-handling.html#cb51-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subset</span>(music_data,top10_track_explicit <span class="sc">==</span> <span class="st">&quot;explicit&quot;</span>) <span class="co"># selects subsets of observations in a data frame</span></span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE","_rn_":"7"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-handling.html#cb52-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">#creates a new data frame that only contains tracks from genre &quot;Dance&quot; </span></span>
-<span id="cb52-2"><a href="data-handling.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  music_data_dance <span class="ot">&lt;-</span> <span class="fu">subset</span>(music_data,top10_artist_genre <span class="sc">==</span> <span class="st">&quot;Dance&quot;</span>) </span>
-<span id="cb52-3"><a href="data-handling.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  music_data_dance</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","_rn_":"1"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","_rn_":"6"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-handling.html#cb53-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(music_data_dance) <span class="co"># removes an object from the workspace</span></span></code></pre></div>
-<p>You may also change the order of the variables in a data frame by using the <code>order()</code>-function</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-handling.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Orders by genre (ascending) and streams (descending)</span></span>
-<span id="cb54-2"><a href="data-handling.html#cb54-2" aria-hidden="true" tabindex="-1"></a>music_data[<span class="fu">order</span>(top10_artist_genre,<span class="sc">-</span>top10_track_streams),] </span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","_rn_":"2"},{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","_rn_":"1"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","_rn_":"6"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"},{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE","_rn_":"7"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","_rn_":"3"},{"1":"87869","2":"Liam Payne","3":"not explicit","4":"Pop","5":"2017-05-18","6":"FALSE","_rn_":"9"},{"1":"85599","2":"Lauv","3":"not explicit","4":"Pop","5":"2017-05-19","6":"FALSE","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE"},{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE"},{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap","5":"2017-07-14","6":"TRUE"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE"},{"1":"87869","2":"Liam Payne","3":"not explicit","4":"Pop","5":"2017-05-18","6":"FALSE"},{"1":"85599","2":"Lauv","3":"not explicit","4":"Pop","5":"2017-05-19","6":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 <div id="inspecting-the-content-of-a-data-frame" class="section level4 hasAnchor" number="3.1.3.2">
 <h4><span class="header-section-number">3.1.3.2</span> Inspecting the content of a data frame<a href="data-handling.html#inspecting-the-content-of-a-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>head()</code> function displays the first X elements/rows of a vector, matrix, table, data frame or function.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-handling.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">3</span>) <span class="co"># returns the first X rows (here, the first 3 rows)</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-handling.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">3</span>) <span class="co"># returns the first X rows (here, the first 3 rows)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>The <code>tail()</code> function is similar, except it displays the last elements/rows.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-handling.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(music_data, <span class="dv">3</span>) <span class="co"># returns the last X rows (here, the last 3 rows)</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-handling.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(music_data, <span class="dv">3</span>) <span class="co"># returns the last X rows (here, the last 3 rows)</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]}],"data":[{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance","5":"2017-06-16","6":"TRUE","_rn_":"8"},{"1":"87869","2":"Liam Payne","3":"not explicit","4":"Pop","5":"2017-05-18","6":"FALSE","_rn_":"9"},{"1":"85599","2":"Lauv","3":"not explicit","4":"Pop","5":"2017-05-19","6":"FALSE","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p><code>names()</code> returns the names of an R object. When, for example, it is called on a data frame, it returns the names of the columns.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-handling.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(music_data) <span class="co"># returns the names of the variables in the data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-handling.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(music_data) <span class="co"># returns the names of the variables in the data frame</span></span></code></pre></div>
 <pre><code>## [1] &quot;top10_track_streams&quot;       &quot;top10_artist_names&quot;       
 ## [3] &quot;top10_track_explicit&quot;      &quot;top10_artist_genre&quot;       
 ## [5] &quot;top_10_track_release_date&quot; &quot;top10_track_explicit_1&quot;</code></pre>
 <p><code>str()</code> displays the internal structure of an R object. In the case of a data frame, it returns the class (e.g., numeric, factor, etc.) of each variable, as well as the number of observations and the number of variables.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-handling.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(music_data) <span class="co"># returns the structure of the data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-handling.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(music_data) <span class="co"># returns the structure of the data frame</span></span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    10 obs. of  6 variables:
 ##  $ top10_track_streams      : num  163608 126687 120480 110022 108630 ...
 ##  $ top10_artist_names       : chr  &quot;Axwell /\\ Ingrosso&quot; &quot;Imagine Dragons&quot; &quot;J. Balvin&quot; &quot;Robin Schulz&quot; ...
@@ -702,23 +685,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ top_10_track_release_date: Date, format: &quot;2017-05-24&quot; &quot;2017-06-23&quot; ...
 ##  $ top10_track_explicit_1   : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...</code></pre>
 <p><code>nrow()</code> and <code>ncol()</code> return the rows and columns of a data frame or matrix, respectively. <code>dim()</code> displays the dimensions of an R object.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-handling.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(music_data) <span class="co"># returns the number of rows </span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-handling.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(music_data) <span class="co"># returns the number of rows </span></span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-handling.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(music_data) <span class="co"># returns the number of columns </span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-handling.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(music_data) <span class="co"># returns the number of columns </span></span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-handling.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(music_data) <span class="co"># returns the dimensions of a data frame</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-handling.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(music_data) <span class="co"># returns the dimensions of a data frame</span></span></code></pre></div>
 <pre><code>## [1] 10  6</code></pre>
 <p><code>ls()</code> can be used to list all objects that are associated with an R object.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-handling.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(music_data) <span class="co"># list all objects associated with an object</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-handling.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(music_data) <span class="co"># list all objects associated with an object</span></span></code></pre></div>
 <pre><code>## [1] &quot;top_10_track_release_date&quot; &quot;top10_artist_genre&quot;       
 ## [3] &quot;top10_artist_names&quot;        &quot;top10_track_explicit&quot;     
 ## [5] &quot;top10_track_explicit_1&quot;    &quot;top10_track_streams&quot;</code></pre>
 </div>
-<div id="append-and-delete-variables-tofrom-data-frames" class="section level4 hasAnchor" number="3.1.3.3">
-<h4><span class="header-section-number">3.1.3.3</span> Append and delete variables to/from data frames<a href="data-handling.html#append-and-delete-variables-tofrom-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="select-append-and-delete-variables-tofrom-data-frames" class="section level4 hasAnchor" number="3.1.3.3">
+<h4><span class="header-section-number">3.1.3.3</span> Select, append and delete variables to/from data frames<a href="data-handling.html#select-append-and-delete-variables-tofrom-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To call a certain column in a data frame, we may also use the <code>$</code> notation. For example, this returns all values associated with the variable “top10_track_streams”:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-handling.html#cb69-1" aria-hidden="true" tabindex="-1"></a>music_data<span class="sc">$</span>top10_track_streams</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-handling.html#cb67-1" aria-hidden="true" tabindex="-1"></a>music_data<span class="sc">$</span>top10_track_streams</span></code></pre></div>
 <pre><code>##  [1] 163608 126687 120480 110022 108630  95639  94690  89011  87869  85599</code></pre>
+<p>If you want to select more than one variable you can use the <code>select</code> function</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-handling.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(music_data, top10_artist_names, top10_track_streams, top10_track_explicit)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["top10_artist_names"],"name":[1],"type":["chr"],"align":["left"]},{"label":["top10_track_streams"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"Axwell /\\\\ Ingrosso","2":"163608","3":"not explicit"},{"1":"Imagine Dragons","2":"126687","3":"not explicit"},{"1":"J. Balvin","2":"120480","3":"not explicit"},{"1":"Robin Schulz","2":"110022","3":"not explicit"},{"1":"Jonas Blue","2":"108630","3":"not explicit"},{"1":"David Guetta","2":"95639","3":"not explicit"},{"1":"French Montana","2":"94690","3":"explicit"},{"1":"Calvin Harris","2":"89011","3":"explicit"},{"1":"Liam Payne","2":"87869","3":"not explicit"},{"1":"Lauv","2":"85599","3":"not explicit"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><code>select</code> can also be used to remove columns by prepending a <code>-</code> to their name:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-handling.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(music_data, <span class="sc">-</span>top_10_track_release_date, <span class="sc">-</span>top10_track_explicit_1)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance"},{"1":"94690","2":"French Montana","3":"explicit","4":"Hip-Hop/Rap"},{"1":"89011","2":"Calvin Harris","3":"explicit","4":"Dance"},{"1":"87869","2":"Liam Payne","3":"not explicit","4":"Pop"},{"1":"85599","2":"Lauv","3":"not explicit","4":"Pop"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>Assume that you wanted to add an additional variable to the data frame. You may use the <code>$</code> notation to achieve this:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-handling.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variable as the log of the number of streams </span></span>
 <span id="cb71-2"><a href="data-handling.html#cb71-2" aria-hidden="true" tabindex="-1"></a>music_data<span class="sc">$</span>log_streams <span class="ot">&lt;-</span> <span class="fu">log</span>(music_data<span class="sc">$</span>top10_track_streams) </span>
@@ -730,21 +727,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["log_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["obs_number"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"12.00523","8":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"11.74947","8":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"11.69924","8":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"11.60844","8":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"11.59570","8":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"11.46834","8":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>To delete a variable, you can simply create a <code>subset</code> of the full data frame that excludes the variables that you wish to drop:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-handling.html#cb72-1" aria-hidden="true" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(music_data,<span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(log_streams)) <span class="co"># deletes the variable log streams </span></span>
-<span id="cb72-2"><a href="data-handling.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data)</span></code></pre></div>
+<p>In order to add a function (e.g., <code>log</code>) of multiple existing variables to the <code>data.frame</code> use <code>mutate</code>. Multiple commands can be chained using so called pipes. Since R version 4.1 there are native pipes (<code>|&gt;</code>) as well as the ones provided by the <code>tidyverse</code> (<code>%&gt;%</code>):</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-handling.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(music_data, </span>
+<span id="cb72-2"><a href="data-handling.html#cb72-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">sqrt_streams =</span> <span class="fu">sqrt</span>(top10_track_streams),</span>
+<span id="cb72-3"><a href="data-handling.html#cb72-3" aria-hidden="true" tabindex="-1"></a>       <span class="co"># &quot;%Y&quot; extracts the year, format returns a character</span></span>
+<span id="cb72-4"><a href="data-handling.html#cb72-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">release_year =</span> <span class="fu">as.integer</span>(<span class="fu">format</span>(top_10_track_release_date, <span class="st">&quot;%Y&quot;</span>)) </span>
+<span id="cb72-5"><a href="data-handling.html#cb72-5" aria-hidden="true" tabindex="-1"></a>       ) <span class="sc">|&gt;</span></span>
+<span id="cb72-6"><a href="data-handling.html#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(top10_artist_names, sqrt_streams, release_year)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["obs_number"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["top10_artist_names"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sqrt_streams"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["release_year"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Axwell /\\\\ Ingrosso","2":"404.4849","3":"2017"},{"1":"Imagine Dragons","2":"355.9312","3":"2017"},{"1":"J. Balvin","2":"347.1023","3":"2017"},{"1":"Robin Schulz","2":"331.6956","3":"2017"},{"1":"Jonas Blue","2":"329.5907","3":"2017"},{"1":"David Guetta","2":"309.2556","3":"2017"},{"1":"French Montana","2":"307.7174","3":"2017"},{"1":"Calvin Harris","2":"298.3471","3":"2017"},{"1":"Liam Payne","2":"296.4271","3":"2017"},{"1":"Lauv","2":"292.5731","3":"2017"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>You can also rename variables in a data frame, e.g., using the <code>rename()</code>-function from the <code>plyr</code> package. In the following code “::” signifies that the function “rename” should be taken from the package “plyr”. This can be useful if multiple packages have a function with the same name. Calling a function this way also means that you can access a function without loading the entire package via <code>library()</code>.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-handling.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
-<span id="cb73-2"><a href="data-handling.html#cb73-2" aria-hidden="true" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> plyr<span class="sc">::</span><span class="fu">rename</span>(music_data, <span class="fu">c</span>(<span class="at">top10_artist_genre=</span><span class="st">&quot;genre&quot;</span>,<span class="at">top_10_track_release_date=</span><span class="st">&quot;release_date&quot;</span>))</span>
-<span id="cb73-3"><a href="data-handling.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data)</span></code></pre></div>
+<p>You can also rename variables in a data frame, e.g., using the <code>rename()</code>-function. In the following code “::” signifies that the function “rename” should be taken from the package “dplyr” (note: this package is part of the <code>tidyverse</code>). This can be useful if multiple packages have a function with the same name. Calling a function this way also means that you can access a function without loading the entire package via <code>library()</code>.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-handling.html#cb73-1" aria-hidden="true" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(music_data, <span class="at">genre =</span> top10_artist_genre, <span class="at">release_date =</span> top_10_track_release_date)</span>
+<span id="cb73-2"><a href="data-handling.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["obs_number"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["log_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["obs_number"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"12.00523","8":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"11.74947","8":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"11.69924","8":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"11.60844","8":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"11.59570","8":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"11.46834","8":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Note that the same can be achieved using:</p>
@@ -752,7 +752,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb74-2"><a href="data-handling.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["obs_number"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["log_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["obs_number"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"12.00523","8":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"11.74947","8":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"11.69924","8":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"11.60844","8":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"11.59570","8":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"11.46834","8":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Or by referring to the index of the variable:</p>
@@ -760,9 +760,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb75-2"><a href="data-handling.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["obs_number"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["log_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["obs_number"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"12.00523","8":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"11.74947","8":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"11.69924","8":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"11.60844","8":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"11.59570","8":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"11.46834","8":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<!-- TODO: change dataset, add summarize, group by -->
 <p><br><br></p>
 <div class="infobox_orange hint">
 <p>Note that the data handling approach explained in this chapter uses the so-called ‘base R’ dialect. There are other dialects in R, which are basically different ways of achieving the same thing. Two other popular dialects in R are ‘data.table’ and the ‘tidyverse’ see e.g., <a href="https://wetlandscapes.com/blog/a-comparison-of-r-dialects/">here</a> and <a href="https://atrebas.github.io/post/2019-03-03-datatable-dplyr/">here</a>. Once you become more advanced, you may want to look into the other dialects to achieve certain tasks more efficiently. For now, it is sufficient to be aware that there are other approaches to data handling and each dialect has it’s strengths and weaknesses. We will be mostly using ‘base R’ for the tutorial on this website.</p>
@@ -843,7 +844,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb81-5"><a href="data-handling.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(population)</span></code></pre></div>
 <pre><code>## {xml_nodeset (1)}
 ## [1] &lt;table class=&quot;wikitable sortable&quot;&gt;&lt;tbody&gt;\n&lt;tr&gt;\n&lt;th&gt;Rank&lt;/th&gt;\n&lt;th&gt;&lt;a hr ...</code></pre>
-<p>The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let’s read the first table using the <code>html_table()</code> function. Note that <code>population</code> is of class “list”. A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., <code>population[[1]]</code> gets us the first table from the list of tables on the website; the argument <code>fill = TRUE</code> ensures that empty cells are replaced with missing values when reading the table).</p>
+<p>The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let’s read the first table using the <code>html_table()</code> function. Note that <code>population</code> is of class “list.” A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., <code>population[[1]]</code> gets us the first table from the list of tables on the website; the argument <code>fill = TRUE</code> ensures that empty cells are replaced with missing values when reading the table).</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-handling.html#cb83-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> population[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb83-2"><a href="data-handling.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(population) <span class="co">#checks if we scraped the desired data</span></span></code></pre></div>
 <div data-pagedtable="false">
@@ -920,7 +921,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="scraping-data-from-apis-via-r-packages" class="section level5 hasAnchor" number="3.2.5.2.2">
 <h5><span class="header-section-number">3.2.5.2.2</span> Scraping data from APIs via R packages<a href="data-handling.html#scraping-data-from-apis-via-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>An even more convenient way to obtain data from web APIs is to use existing R packages that someone else has already created. There are R packages available for various web-services. For example, the <code>gtrendsR</code> package can be used to conveniently obtain data from the <a href="https://trends.google.at/trends/" target="_blank">Google Trends</a> page. The <code>gtrends()</code> function is easy to use and returns a list of elements (e.g., “interest over time”, “interest by city”, “related topics”), which can be inspected using the <code>ls()</code> function. The following example can be used to obtain data for the search term “data science” in the US between September 1 and October 6:</p>
+<p>An even more convenient way to obtain data from web APIs is to use existing R packages that someone else has already created. There are R packages available for various web-services. For example, the <code>gtrendsR</code> package can be used to conveniently obtain data from the <a href="https://trends.google.at/trends/" target="_blank">Google Trends</a> page. The <code>gtrends()</code> function is easy to use and returns a list of elements (e.g., “interest over time,” “interest by city,” “related topics”), which can be inspected using the <code>ls()</code> function. The following example can be used to obtain data for the search term “data science” in the US between September 1 and October 6:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-handling.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
 <span id="cb92-2"><a href="data-handling.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#specify search term, area, source and time frame</span></span>
 <span id="cb92-3"><a href="data-handling.html#cb92-3" aria-hidden="true" tabindex="-1"></a>google_trends <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="st">&quot;data science&quot;</span>, <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">&quot;US&quot;</span>), <span class="at">gprop =</span> <span class="fu">c</span>(<span class="st">&quot;web&quot;</span>), <span class="at">time =</span> <span class="st">&quot;2012-09-01 2020-10-06&quot;</span>)</span>
@@ -975,19 +976,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Learning check<a href="data-handling.html#learning-check-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC3.1) Which of the following are data types are recognized by R?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />Factor</li>
-<li><input type="checkbox" disabled="" checked="" />Date</li>
-<li><input type="checkbox" disabled="" />Decimal</li>
-<li><input type="checkbox" disabled="" />Vector</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+Factor</li>
+<li><input type="checkbox" disabled="" checked="" />
+Date</li>
+<li><input type="checkbox" disabled="" />
+Decimal</li>
+<li><input type="checkbox" disabled="" />
+Vector</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.2) What function should you use to check if an object is a data frame?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>type()</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>str()</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>class()</code></li>
-<li><input type="checkbox" disabled="" /><code>object.type()</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>type()</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>str()</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>class()</code></li>
+<li><input type="checkbox" disabled="" />
+<code>object.type()</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.3) You would like to combine three vectors (student, grade, date) in a data frame. What would happen when executing the following code?</strong></p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-handling.html#cb98-1" aria-hidden="true" tabindex="-1"></a>student <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Max&#39;</span>,<span class="st">&#39;Jonas&#39;</span>,<span class="st">&#39;Saskia&#39;</span>,<span class="st">&#39;Victoria&#39;</span>)</span>
@@ -995,11 +1006,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb98-3"><a href="data-handling.html#cb98-3" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&#39;2020-10-06&#39;</span>,<span class="st">&#39;2020-10-08&#39;</span>,<span class="st">&#39;2020-10-09&#39;</span>))</span>
 <span id="cb98-4"><a href="data-handling.html#cb98-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(student,grade,date)</span></code></pre></div>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Error because a data frame can not have different data types</li>
-<li><input type="checkbox" disabled="" />Error because you should use <code>as.data.frame()</code> instead of <code>data.frame()</code></li>
-<li><input type="checkbox" disabled="" checked="" />Error because all vectors need to have the same length</li>
-<li><input type="checkbox" disabled="" />Error because the column names are not specified</li>
-<li><input type="checkbox" disabled="" />This code should not report an error</li>
+<li><input type="checkbox" disabled="" />
+Error because a data frame can not have different data types</li>
+<li><input type="checkbox" disabled="" />
+Error because you should use <code>as.data.frame()</code> instead of <code>data.frame()</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+Error because all vectors need to have the same length</li>
+<li><input type="checkbox" disabled="" />
+Error because the column names are not specified</li>
+<li><input type="checkbox" disabled="" />
+This code should not report an error</li>
 </ul>
 <p><strong>You would like to analyze the following data frame</strong></p>
 <div data-pagedtable="false">
@@ -1009,59 +1025,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><strong>(LC3.4) How can you obtain Christina’s grade from the data frame?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" /><code>df[4,2]</code></li>
-<li><input type="checkbox" disabled="" /><code>df[2,4]</code></li>
-<li><input type="checkbox" disabled="" /><code>df[student="Christina","grade"]</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>df[student=="Christina","grade"]</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[4,2]</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df[2,4]</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df[student="Christina","grade"]</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[student=="Christina","grade"]</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.5) How can you add a new variable ‘student_id’ to the data frame that assigns numbers to students in an ascending order?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" /><code>df$student_id &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>df$student_id &lt;- 1:length(df)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df$student_id &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df$student_id &lt;- 1:length(df)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.6) How could you obtain all rows with students who obtained a 1?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" /><code>df[df$grade==1,]</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>df[grade == min(df$grade),]</code></li>
-<li><input type="checkbox" disabled="" /><code>df[,df$grade==1]</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>df[grade==1,]</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[df$grade==1,]</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[grade == min(df$grade),]</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df[,df$grade==1]</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df[grade==1,]</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.7) How could you create a subset of observations where the grade is not missing (NA) </strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[grade!=NA,]</code></li>
-<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[isnot.na(grade),]</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>df_subset &lt;- df[!is.na(grade),]</code></li>
-<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[,grade!=NA]</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>df_subset &lt;- df[grade!=NA,]</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df_subset &lt;- df[isnot.na(grade),]</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>df_subset &lt;- df[!is.na(grade),]</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df_subset &lt;- df[,grade!=NA]</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.8) What is the share of students with a grade better than 3?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>df[grade&lt;3,]/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>nrow(df[grade&lt;3,])/length(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>df[grade&lt;3,]/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>nrow(df[grade&lt;3,])/length(df)</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.9) You would like to load a .csv file from your working directory. What function would you use do it?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>read.table(file_name.csv)</code></li>
-<li><input type="checkbox" disabled="" /><code>load.csv("file.csv")</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>read.table("file.csv")</code></li>
-<li><input type="checkbox" disabled="" /><code>get.table(file_name.csv)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>read.table(file_name.csv)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>load.csv("file.csv")</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>read.table("file.csv")</code></li>
+<li><input type="checkbox" disabled="" />
+<code>get.table(file_name.csv)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC3.10) After you loaded the file, you would like to inspect the types of data contained in it. How would you do it?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>ncol(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>nrow(df)</code></li>
-<li><input type="checkbox" disabled="" /><code>dim(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" /><code>str(df)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>ncol(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>dim(df)</code></li>
+<li><input type="checkbox" disabled="" checked="" />
+<code>str(df)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 
 </div>

@@ -184,7 +184,7 @@ exp(coef(logit_model ))
 
 ```
 ##          (Intercept)         danceability 
-##        0.00004355897 26532731.71142430231
+##        0.00004355897 26532731.71142345294
 ```
 
 Notice that the coefficient is extremely large. That is (partly) due to the fact that the danceability variable is constrained to values between $0$ and $1$ and the coefficients are for a unit change. We can make the "unit-change" interpretation more meaningful by multiplying the danceability index by $100$. This linear transformation does not affect the model fit or the p-values.
