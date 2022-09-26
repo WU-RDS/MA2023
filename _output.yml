@@ -5,5 +5,5 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-          <li><strong><a href="./">MA</a></strong></li>
+          <li><strong><a href="./">MA 2022/23</a></strong></li>
   
