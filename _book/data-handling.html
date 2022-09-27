@@ -349,8 +349,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#r-code"><i class="fa fa-check"></i>R-Code</a></li>
 <li class="chapter" data-level="" data-path="r-markdown.html"><a href="r-markdown.html#latex-math"><i class="fa fa-check"></i>LaTeX Math</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="r-markdown.html"><a href="r-markdown.html#solution-assignment-2"><i class="fa fa-check"></i><b>10.2</b> Solution assignment 2</a></li>
-<li class="chapter" data-level="10.3" data-path="r-markdown.html"><a href="r-markdown.html#solution-assignment-3"><i class="fa fa-check"></i><b>10.3</b> Solution assignment 3</a></li>
 </ul></li>
 <li class="part"><span><b>IV Group project</b></span></li>
 <li class="chapter" data-level="11" data-path="survey-design-analysis.html"><a href="survey-design-analysis.html"><i class="fa fa-check"></i><b>11</b> Survey design &amp; analysis</a>
@@ -976,9 +974,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Learning check<a href="data-handling.html#learning-check-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC3.1) Which of the following are data types are recognized by R?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 Factor</li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 Date</li>
 <li><input type="checkbox" disabled="" />
 Decimal</li>
@@ -991,9 +989,9 @@ None of the above</li>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" />
 <code>type()</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>str()</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>class()</code></li>
 <li><input type="checkbox" disabled="" />
 <code>object.type()</code></li>
@@ -1010,7 +1008,7 @@ None of the above</li>
 Error because a data frame can not have different data types</li>
 <li><input type="checkbox" disabled="" />
 Error because you should use <code>as.data.frame()</code> instead of <code>data.frame()</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 Error because all vectors need to have the same length</li>
 <li><input type="checkbox" disabled="" />
 Error because the column names are not specified</li>
@@ -1025,24 +1023,24 @@ This code should not report an error</li>
 </div>
 <p><strong>(LC3.4) How can you obtain Christina’s grade from the data frame?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[4,2]</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df[2,4]</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df[student="Christina","grade"]</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[student=="Christina","grade"]</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
 <p><strong>(LC3.5) How can you add a new variable ‘student_id’ to the data frame that assigns numbers to students in an ascending order?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df$student_id &lt;- 1:nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df$student_id &lt;- 1:length(df)</code></li>
@@ -1051,13 +1049,13 @@ None of the above</li>
 </ul>
 <p><strong>(LC3.6) How could you obtain all rows with students who obtained a 1?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[df$grade==1,]</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[grade == min(df$grade),]</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df[,df$grade==1]</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df[grade==1,]</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
@@ -1068,7 +1066,7 @@ None of the above</li>
 <code>df_subset &lt;- df[grade!=NA,]</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df_subset &lt;- df[isnot.na(grade),]</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>df_subset &lt;- df[!is.na(grade),]</code></li>
 <li><input type="checkbox" disabled="" />
 <code>df_subset &lt;- df[,grade!=NA]</code></li>
@@ -1081,7 +1079,7 @@ None of the above</li>
 <code>df[grade&lt;3,]/nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>nrow(df[grade&lt;3,])/length(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
@@ -1094,7 +1092,7 @@ None of the above</li>
 <code>read.table(file_name.csv)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>load.csv("file.csv")</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>read.table("file.csv")</code></li>
 <li><input type="checkbox" disabled="" />
 <code>get.table(file_name.csv)</code></li>
@@ -1109,7 +1107,7 @@ None of the above</li>
 <code>nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
 <code>dim(df)</code></li>
-<li><input type="checkbox" disabled="" checked="" />
+<li><input type="checkbox" disabled="" />
 <code>str(df)</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
