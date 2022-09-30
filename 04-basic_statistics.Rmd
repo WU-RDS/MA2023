@@ -79,16 +79,14 @@ write.csv2(music_data, "data/music_data_fin.csv", row.names = FALSE)
 
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE, cache=TRUE}
-# read.csv2 is shorthand for 
-# read.csv(file, sep = ";")
+# read.csv2 is shorthand for read.csv(file, sep = ";")
 music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata")
 dim(music_data)
 head(music_data)
 names(music_data)
-summary(music_data)
 ```
 
-The data set contains information about all songs that appeared in the Top200 charts of a popular streaming service in Austria between 2017 and 2020. The `dim()`-function returns the dimensions of the data frame (i.e., the number of rows and columns). As can be seen, the data set comprises information for 6,196 songs and 19 variables. The variables in the data set are:
+The data set contains information about all songs that appeared in the Top200 charts of a popular streaming service in Austria between 2017 and 2020. The `dim()`-function returns the dimensions of the data frame (i.e., the number of rows and columns). As can be seen, the data set comprises information for 66,796 songs and 31 variables. The variables in the data set are:
 
 * isrc: unique song id
 * artist_id: unique artist ID
@@ -194,7 +192,7 @@ The 'expert_rating' variable is an example of an **ordinal variable**. Although 
 median_rating <- quantile(music_data$expert_rating, 0.5, type = 1)
 median_rating
 ```
-This means that the middle value when the data are arranged is rank number 85 (median = 50th percentile). Note that you could also compute other percentiles using the `quanile()`-function. For example, to get the median and the interquartile range, we could compute the 25th, 50th, and 75th percentile.  
+This means that the "middle" value when the data are arranged is expert rating "good" (median = 50th percentile). Note that you could also compute other percentiles using the `quanile()`-function. For example, to get the median and the interquartile range, we could compute the 25th, 50th, and 75th percentile.  
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE}
 quantile(music_data$expert_rating,c(0.25,0.5,0.75), type = 1)
@@ -210,8 +208,8 @@ rating_percentiles <- music_data |>
     value = quantile(expert_rating, percentiles, type = 1)) 
 rating_percentiles
 ```
+In this case, we don't observe any differences in the first, second, or third quantile of expert ratings between explicit and non-explicit songs.
 
-TODO: ADD TEXT 
 
 ### Continuous variables
 
@@ -230,7 +228,7 @@ We could, for example, compute the summary statistics for the variables "streams
 library(psych)
 psych::describe(select(music_data, streams, danceability, valence))
 ```
-You can see that the output contains measures of central tendency (e.g., the mean) and dispersion (e.g., sd) for the selected variables. It can be seen, for example, that the mean of the streams variable is 9,724 while the median is 6,006. This already tells us something about the distribution of the data. Because the mean is substantially higher than the median, we can conclude that there are a few songs with many streams, resulting in a right skew of the distribution. The median as a measure of central tendency is generally less susceptible to outliers.   
+You can see that the output contains measures of central tendency (e.g., the mean) and dispersion (e.g., sd) for the selected variables. It can be seen, for example, that the mean of the streams variable is 7,314,674 while the median is 333,336. This already tells us something about the distribution of the data. Because the mean is substantially higher than the median, we can conclude that there are a few songs with many streams, resulting in a right skew of the distribution. The median as a measure of central tendency is generally less susceptible to outliers.   
 
 In the above command, we used the ```psych::``` prefix to avoid confusion and to make sure that R uses the ```describe()``` function from the ```psych``` package since there are many other packages that also contain a ```desribe()``` function. Note that you could also compute these statistics separately by using the respective functions (e.g., ```mean()```, ```sd()```, ```median()```, ```min()```, ```max()```, etc.). There are many options for additional statistics for this function. For example, you could add the argument `IQR = TRUE` to add the interquartile range to the output.   
 
@@ -251,10 +249,10 @@ st_css()
 
 ```{r, message=FALSE, error = FALSE, warning = FALSE, results='asis'}
 library(summarytools)
-print(dfSummary(select(music_data, streams, valence, genre, label, explicit), plain.ascii = FALSE, style = "grid",valid.col = FALSE, tmp.img.dir = "tmp"),  method = 'render',headings = FALSE,footnote= NA)
+print(dfSummary(select(music_data, streams, valence, genre, label, explicit), plain.ascii = FALSE, style = "grid",valid.col = FALSE, tmp.img.dir = "tmp", graph.magnif = .65),  method = 'render',headings = FALSE,footnote= NA)
 ```
 
-The 'Missing' column in the output above tells us that there is one missing value on the 'valence' variables. We might want to exclude this observation by creating a subset of the data.  
+The 'Missing' column in the output above gives us information about missing values. It this case, there are no missing values; however, in reality there are usually at least a couple of lost or not recorded values. To get more precise analysis results, we might want to exclude these observations by creating a "complete" subset of our data. Imagine that we have a missing value in the variable "valence"; we would create a subset by filtering that hypothetical observation out:
 
 ```{r message=FALSE, warning=FALSE}
 music_data_valence <- filter(music_data, !is.na(valence))
@@ -308,7 +306,7 @@ If we create the histogram again, we can see that the scale has changed and now 
 ```{r message=FALSE, warning=FALSE,fig.align='center',fig.cap = "Histogram of standardized tempo variable"}
 hist(music_data$tempo_std)
 ```
-Not that you could have also used the `scale()`-function instead of computing the z-scores manually, which leads to the same result: 
+Note that you could have also used the `scale()`-function instead of computing the z-scores manually, which leads to the same result: 
 
 ```{r message=FALSE, warning=FALSE}
 music_data$tempo_std <- scale(music_data$tempo)

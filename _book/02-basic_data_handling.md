@@ -309,7 +309,7 @@ library(tidyverse)
 ```
 
 ```r
-filter(music_data, top10_track_explicit == "explicit")# show only tracks with explicit lyrics  
+filter(music_data, top10_track_explicit == "explicit") # show only tracks with explicit lyrics  
 ```
 
 <div data-pagedtable="false">
@@ -468,7 +468,7 @@ music_data$top10_track_streams
 ##  [1] 163608 126687 120480 110022 108630  95639  94690  89011  87869  85599
 ```
 
-If you want to select more than one variable you can use the `select` function
+If you want to select more than one variable you can use the `select` function by first calling the data frame (music_data) and listing the variables that you need after it:
 
 
 ```r
@@ -512,7 +512,7 @@ head(music_data)
   </script>
 </div>
 
-In order to add a function (e.g., `log`) of multiple existing variables to the `data.frame` use `mutate`. Multiple commands can be chained using so called pipes. Since R version 4.1 there are native pipes (`|>`) as well as the ones provided by the `tidyverse` (`%>%`):
+In order to add a function (e.g., `log`) of multiple existing variables to the `data.frame` use `mutate`. Multiple commands can be chained using so called pipes - operators that can be read as "then". Since R version 4.1 there are native pipes (`|>`) as well as the ones provided by the `tidyverse` (`%>%`):
 
 
 ```r
@@ -578,6 +578,6 @@ head(music_data)
 <br><br>
 
 ::: {.infobox_orange .hint data-latex="{hint}"}
-Note that the data handling approach explained in this chapter uses the so-called 'base R' dialect. There are other dialects in R, which are basically different ways of achieving the same thing. Two other popular dialects in R are 'data.table' and the 'tidyverse' see e.g., [here](https://wetlandscapes.com/blog/a-comparison-of-r-dialects/) and [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/). Once you become more advanced, you may want to look into the other dialects to achieve certain tasks more efficiently. For now, it is sufficient to be aware that there are other approaches to data handling and each dialect has it's strengths and weaknesses. We will be mostly using 'base R' for the tutorial on this website.   
+Note that the data handling approach explained in this chapter touches on the so-called 'base R' and 'tidyverse' dialects. There are other dialects in R, which are basically different ways of achieving the same thing. Another popular dialect in R is 'data.table', see e.g., [here](https://wetlandscapes.com/blog/a-comparison-of-r-dialects/) and [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/). Once you become more advanced, you may want to look into the other dialects to achieve certain tasks more efficiently. For now, it is sufficient to be aware that there are other approaches to data handling and each dialect has it's strengths and weaknesses. We will be mostly using 'base R' for the tutorial on this website.   
 :::
 
