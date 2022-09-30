@@ -57,29 +57,32 @@ ggplot2 is built around the idea of constructing plots by stacking layers on top
 To give you an example of how the graphics are composed, let's go back to the frequency table from the previous chapter, where we created a table showing the relative frequencies of songs in the Austrian streaming charts by genre.  
 
 ```{r message=FALSE, warning=FALSE}
-music_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_data_at.csv", 
-                        sep = ",", 
-                        header = TRUE)
-music_data$release_date <- as.Date(music_data$release_date) #convert to date
-music_data$explicit <- factor(music_data$explicit, levels = 0:1, labels = c("not explicit", "explicit")) #convert to factor
-music_data$label <- as.factor(music_data$label) #convert to factor
-music_data$rep_ctry <- as.factor(music_data$rep_ctry) #convert to factor
-music_data$genre <- as.factor(music_data$genre) #convert to factor
-prop.table(table(music_data[,c("genre")])) #relative frequencies
-music_data <- music_data[!is.na(music_data$valence) & !is.na(music_data$duration_ms),] # exclude cases with missing values
+library(tidyverse)
+music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata") |> # pipe music data into mutate
+  mutate(release_date = as.Date(release_date), # convert to date
+         explicit = factor(explicit, levels = 0:1, labels = c("not explicit", "explicit")), # convert to factor w. new labels
+         label = as.factor(label), # convert to factor with values as labels
+         genre = as.factor(genre),
+         top10 = as.logical(top10),
+         # Create an ordered factor for the ratings (e.g., for arranging the data)
+         expert_rating = factor(expert_rating, 
+                                levels = c("poor", "fair", "good", "excellent", "masterpiece"), 
+                                ordered = TRUE)
+         ) |>
+  filter(!is.na(valence))
+head(music_data)
 ```
 How can we plot this kind of data? Since we have a categorical variable, we will use a bar plot. However, to be able to use the table for your plot, you first need to assign it to an object as a data frame using the ```as.data.frame()```-function.
 
 ```{r message=FALSE, warning=FALSE}
-table_plot_rel <- as.data.frame(prop.table(table(music_data[,c("genre")]))) #relative frequencies #relative frequencies
+table_plot_rel <- as.data.frame(prop.table(table(music_data$genre))) #relative frequencies #relative frequencies
 head(table_plot_rel)
 ```
 
 Since ```Var1``` is not a very descriptive name, let's rename the variable to something more meaningful
 
 ```{r message=FALSE, warning=FALSE}
-library(plyr)
-table_plot_rel <- plyr::rename(table_plot_rel, c(Var1="Genre"))
+table_plot_rel <- rename(table_plot_rel, Genre = Var1)
 head(table_plot_rel)
 ```
 
@@ -120,7 +123,7 @@ We could go ahead and specify the appearance of every single element of the plot
 bar_chart + geom_col() +
   ylab("Relative frequency") + 
   xlab("Genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_bw()
 ```
 
@@ -130,7 +133,7 @@ and ```theme_minimal()``` looks like this:
 bar_chart + geom_col() +
   ylab("Relative frequency") + 
   xlab("Genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_minimal() 
 ```
 In a next step, let's prevent the axis labels from overlapping by rotating the labels.
@@ -139,7 +142,7 @@ In a next step, let's prevent the axis labels from overlapping by rotating the l
 bar_chart + geom_col() +
   ylab("Relative frequency") + 
   xlab("Genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle=45,vjust=0.75)) 
 ```
@@ -149,33 +152,50 @@ We could also add a title and combine all labels using the `labs` function.
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Bar chart (options 1)"}
 bar_chart + geom_col() +
   labs(x = "Genre", y = "Relative frequency", title = "Chart songs by genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle=45,vjust=0.75),
-        plot.title = element_text(hjust = 0.5,color = "#666666")
+        plot.title = element_text(hjust = 0.5, color = "#666666")
         ) 
 ```
-We could also add some color to the bars using `scale_fill_brewer`, which comes with a range of <a href="http://applied-r.com/rcolorbrewer-palettes/" target="_blank">color palettes</a>. 
+We could also add some color to the bars using the `colorspace` library, which comes with a range of <a href="https://colorspace.r-forge.r-project.org/articles/ggplot2_color_scales.html" target="_blank">color palettes</a>. For example the shading of the bar could reflect the frequency:
 
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Bar chart (options 1)"}
-bar_chart + geom_col(aes(fill = Genre)) +
+library(colorspace)
+bar_chart + geom_col(aes(fill = Freq)) +
   labs(x = "Genre", y = "Relative frequency", title = "Chart share by genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_minimal() +
   ylim(0,0.5) +
-  scale_fill_brewer(palette = "Blues") +
+  scale_fill_continuous_sequential(palette = "Blues") +
   theme(axis.text.x = element_text(angle=45,vjust=0.75),
         plot.title = element_text(hjust = 0.5,color = "#666666"),
         legend.title = element_blank()
         ) 
 ```
-These were examples of built-in formatting options of ```ggolot()```, where the default is ```theme_classic()```. For even more options, check out the ```ggthemes``` package, which includes formats for specific publications. You can check out the different themes <a href="https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html" target="_blank">here</a>. For example ```theme_economist()``` uses the formatting of the journal "The Economist":
+
+Finally, we can reorder the bars by size using `fct_reorder`. The first argument to the function is the `factor` we want to reorder (genre) and the second the variable by which we want to order it (frequency):
+
+```{r}
+bar_chart + geom_col(aes(x=fct_reorder(Genre, Freq), fill = Freq)) +
+  labs(x = "Genre", y = "Relative frequency", title = "Chart share by genre") + 
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  theme_minimal() +
+  ylim(0,0.5) +
+  scale_fill_continuous_sequential(palette = "Blues") +
+  theme(axis.text.x = element_text(angle=45,vjust=0.75),
+        plot.title = element_text(hjust = 0.5,color = "#666666"),
+        legend.title = element_blank()
+        )
+```
+
+The default theme in `ggplot` is ```theme_classic()```. For even more options, check out the ```ggthemes``` package, which includes formats for specific publications. You can check out the different themes <a href="https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html" target="_blank">here</a>. For example ```theme_economist()``` uses the formatting of the journal "The Economist":
 
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Bar chart (options 2)"}
 library(ggthemes)
-bar_chart + geom_col() +
+bar_chart + geom_col(aes(x=fct_reorder(Genre, Freq))) +
   labs(x = "Genre", y = "Relative frequency", title = "Chart songs by genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
+  geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
   theme_economist() +
   ylim(0,0.5) +
   theme(axis.text.x = element_text(angle=45,vjust=0.55),
@@ -190,20 +210,20 @@ There are various similar packages with pre-specified themes, like the <a href="
 In a next step, we might want to investigate whether the relative frequencies differ between songs with explicit and song without explicit lyrics. For this purpose we first construct the conditional relative frequency table from the previous chapter again. Recall that the latter gives us the relative frequency within a group (in our case genres), as compared to the relative frequency within the entire sample.
 
 ```{r}
-table_plot_cond_rel <- as.data.frame(prop.table(table(music_data[,c("genre", "explicit")]),2)) #conditional relative frequencies
+table_plot_cond_rel <- as.data.frame(prop.table(table(select(music_data, genre, explicit)),2)) #conditional relative frequencies
 table_plot_cond_rel
 ```
 We can now take these tables to construct plots grouped by explicitness. To achieve this we simply need to add the `facet_wrap()` function, which replicates a plot multiple times, split by a specified grouping factor. Note that the grouping factor has to be supplied in R’s formula notation, hence it is preceded by a “~” symbol.
 
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Grouped bar chart (facet_wrap)"}
-ggplot(table_plot_cond_rel, aes(x = genre, y = Freq)) + 
-  geom_col(aes(fill = genre)) +
-      facet_wrap(~explicit) +
+ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre, Freq), y = Freq)) + 
+  geom_col(aes(fill = Freq)) +
+      facet_wrap(~explicit, labeller = labeller(explicit = c("0" = "non-explicit", "1" = "explicit"))) +
   labs(x = "", y = "Relative frequency", title = "Distribution of genres for explicit and non-explicit songs") + 
   geom_text(aes(label = sprintf("%.0f%%", Freq * 100)), vjust=-0.2) +
   theme_minimal() +
   ylim(0,1) +
-  scale_fill_brewer(palette = "Blues") +
+  scale_fill_continuous_sequential(palette = "Blues") +
   theme(axis.text.x = element_text(angle=45,vjust=1.1,hjust=1),
         plot.title = element_text(hjust = 0.5,color = "#666666"),
         legend.position = "none"
@@ -213,11 +233,11 @@ ggplot(table_plot_cond_rel, aes(x = genre, y = Freq)) +
 Alternatively, we might be interested to investigate the relative frequencies of explicit and non-explicit lyrics for each genre. To achieve this, we can also use the fill argument, which tells ggplot to fill the bars by a specified variable (in our case “explicit”). The position = "dodge" argument causes the bars to be displayed next to each other (as opposed to stacked on top of one another).
 
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Grouped bar chart (fill)"}
-table_plot_cond_rel_1 <- as.data.frame(prop.table(table(music_data[,c("genre", "explicit")]),1)) #conditional relative frequencies
+table_plot_cond_rel_1 <- as.data.frame(prop.table(table(select(music_data, genre, explicit)),1)) #conditional relative frequencies
 ggplot(table_plot_cond_rel_1, aes(x = genre, y = Freq, fill = explicit)) + #use "fill" argument for different colors
   geom_col(position = "dodge") + #use "dodge" to display bars next to each other (instead of stacked on top)
   geom_text(aes(label = sprintf("%.0f%%", Freq * 100)),position=position_dodge(width=0.9), vjust=-0.25) +
-    scale_fill_brewer(palette = "Blues") +
+    scale_fill_discrete_qualitative(palette = "Dynamic") +
   labs(x = "Genre", y = "Relative frequency", title = "Explicit lyrics share by genre") + 
   theme_minimal() +
   theme(axis.text.x = element_text(angle=45,vjust=1.1,hjust=1),

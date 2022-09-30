@@ -274,26 +274,38 @@ mutate(music_data,
   select(top10_artist_names, sqrt_streams, release_year)
 ```
 
-You can also rename variables in a data frame, e.g., using the ```rename()```-function. In the following code "::" signifies that the function "rename" should be taken from the package "dplyr" (note: this package is part of the `tidyverse`). This can be useful if multiple packages have a function with the same name. Calling a function this way also means that you can access a function without loading the entire package via ```library()```.
+You can also rename variables in a data frame using the ```rename()```-function. In the following code "::" signifies that the function "rename" should be taken from the package "dplyr" (note: this package is part of the `tidyverse` so this is not strictly necessary here). This can be useful if multiple packages have a function with the same name. Calling a function this way also means that you can access a function without loading the entire package via ```library()```.
 
 ```{r, message=FALSE, warning=FALSE}
 music_data <- dplyr::rename(music_data, genre = top10_artist_genre, release_date = top_10_track_release_date)
 head(music_data)
 ```
 
-Note that the same can be achieved using:
+An important step in any data-project is to get an overview of the data. Summary statistics can help us understand what we can expect from a given variable. The `summarize` function helps us to get a quick overview. 
 
-```{r, message=FALSE, warning=FALSE}
-names(music_data)[names(music_data)=="genre"] <- "top10_artist_genre"
-head(music_data)
+```{r}
+summarize(music_data, 
+          mean_streams = mean(top10_track_streams),
+          min_streams = min(top10_track_streams),
+          max_streams = max(top10_track_streams),
+          n_genres = n_distinct(genre),
+          n_artists = n_distinct(top10_artist_names),
+          n_obs = n())
 ```
 
-Or by referring to the index of the variable:
+Usually it is also interesting to learn about groups of observations (e.g., summaries by genre, country, etc.). We can use the `group_by` function to group the data followed by `summarize` to calculate group-wise summaries:
 
-```{r, message=FALSE, warning=FALSE}
-names(music_data)[4] <- "genre"
-head(music_data)
+```{r}
+music_data |>
+  group_by(genre) |>
+  summarise( mean_streams = mean(top10_track_streams),
+          min_streams = min(top10_track_streams),
+          max_streams = max(top10_track_streams),
+          n_artists = n_distinct(top10_artist_names),
+          n_obs = n())
 ```
+
+What can you learn about the data by looking at the summaries?
 
 <!-- TODO: change dataset, add summarize, group by -->
 

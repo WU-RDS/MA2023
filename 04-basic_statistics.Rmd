@@ -79,11 +79,13 @@ write.csv2(music_data, "data/music_data_fin.csv", row.names = FALSE)
 
 
 ```{r, message=FALSE, warning=FALSE, eval=TRUE, cache=TRUE}
-# read.csv2 is shorthand for read.csv(file, sep = ";")
+# read.csv2 is shorthand for 
+# read.csv(file, sep = ";")
 music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata")
 dim(music_data)
 head(music_data)
 names(music_data)
+summary(music_data)
 ```
 
 The data set contains information about all songs that appeared in the Top200 charts of a popular streaming service in Austria between 2017 and 2020. The `dim()`-function returns the dimensions of the data frame (i.e., the number of rows and columns). As can be seen, the data set comprises information for 6,196 songs and 19 variables. The variables in the data set are:
