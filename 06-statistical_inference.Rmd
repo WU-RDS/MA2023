@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-```{r, include=FALSE}
+```{r, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 options(digits = 7)
 ```

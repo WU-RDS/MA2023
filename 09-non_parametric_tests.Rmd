@@ -7,7 +7,7 @@ output:
     toc: yes
 ---
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE, purl=FALSE}
 library(knitr)
 library(dplyr)
 library(psych)

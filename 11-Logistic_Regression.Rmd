@@ -7,7 +7,7 @@ output:
     toc: yes
 ---
 
-```{r eval=TRUE, echo=F, message=FALSE, warning=FALSE}
+```{r eval=TRUE, echo=F, message=FALSE, warning=FALSE, purl=FALSE}
 library(knitr)
 options(digits = 7, scipen = 999)
 opts_chunk$set(tidy.opts=list(width.cutoff=75),tidy=FALSE, rownames.print = FALSE, rows.print = 10, echo = TRUE, warning = FALSE, message = FALSE)
@@ -19,11 +19,16 @@ unloadNamespace("latex2exp") # unloads latex2exp to fix the specific error, that
 
 ## Logistic regression
 
+::: {.infobox .download data-latex="{download}"}
+[You can download the corresponding R-Code here](./Code/10-regression.R)
+:::
+
 <br>
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J7T7_ulyQ0I" frameborder="0" allowfullscreen></iframe>
 </div>
 <br>
+
 
 ### Motivation and intuition
 
