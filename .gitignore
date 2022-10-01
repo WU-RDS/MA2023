@@ -51,3 +51,5 @@ vignettes/*.pdf
 .*[exported].*
 *exported*
 .Rproj.user
+*.html
+**.exe
