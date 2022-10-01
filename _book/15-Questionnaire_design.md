@@ -38,7 +38,7 @@ extent to which their project requires this.
 
 ## Topics for the group project
 
-The first step is to select a topic from the list below. We will use an online survey, asking you to rank the top 5 topics that you would like to work on so that we can assign the topics according to your preferences. You can reach the online survey via [this link](https://wumarketing.eu.qualtrics.com/jfe/form/SV_bIbbROWUholqvsi). Please note that only one person per group needs to fill out the survey after you discussed which topic to chose within your groups. If two or more groups have the same preference for a topic, we will select one group randomly and the other group will receive the next topic in the order of their preference.
+The first step is to select a topic from the list below. We will use an online survey, asking you to rank the top 5 topics that you would like to work on so that we can assign the topics according to your preferences. You can reach the online survey via [this link](https://wumarketing.eu.qualtrics.com/jfe/form/SV_6VXQwdPZYddVFUq). Please note that only one person per group needs to fill out the survey after you discussed which topic to chose within your groups. If two or more groups have the same preference for a topic, we will select one group randomly and the other group will receive the next topic in the order of their preference.
 
 Below, you can find the **list of topics** including a short description and some references to published studies on the respective topics that should help you with the design of your questionnaire. We expect you to read the stated papers and incorporate the relevant aspects into your own survey design. 
 
