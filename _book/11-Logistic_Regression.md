@@ -13,11 +13,16 @@ output:
 
 ## Logistic regression
 
+::: {.infobox .download data-latex="{download}"}
+[You can download the corresponding R-Code here](./Code/10-regression.R)
+:::
+
 <br>
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J7T7_ulyQ0I" frameborder="0" allowfullscreen></iframe>
 </div>
 <br>
+
 
 ### Motivation and intuition
 
