@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -473,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can also explicitly tell R to print the value of an object:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="data-handling.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x) <span class="co">#print the value of x to the console</span></span></code></pre></div>
 <pre><code>## [1] &quot;hello world&quot;</code></pre>
-<p>Note that because we assign characters in this case (as opposed to e.g., numeric values), we need to wrap the words in quotation marks, which must always come in pairs. Although RStudio automatically adds a pair of quotation marks (i.e., opening and closing marks) when you enter the opening marks it could be that you end up with a mismatch by accident (e.g., <code>x &lt;- "hello</code>). In this case, R will show you the continuation character “+.” The same could happen if you did not execute the full command by accident. The “+” means that R is expecting more input. If this happens, either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
+<p>Note that because we assign characters in this case (as opposed to e.g., numeric values), we need to wrap the words in quotation marks, which must always come in pairs. Although RStudio automatically adds a pair of quotation marks (i.e., opening and closing marks) when you enter the opening marks it could be that you end up with a mismatch by accident (e.g., <code>x &lt;- "hello</code>). In this case, R will show you the continuation character “+”. The same could happen if you did not execute the full command by accident. The “+” means that R is expecting more input. If this happens, either add the missing pair, or press ESCAPE to abort the expression and try again.</p>
 <p>To change the value of an object, you can simply overwrite the previous value. For example, you could also assign a numeric value to “x” to perform some basic operations:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-handling.html#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co">#assigns the value of 2 to the object x</span></span>
 <span id="cb15-2"><a href="data-handling.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code></pre></div>
@@ -486,7 +486,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-handling.html#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">3</span>   <span class="co">#checks whether the value of x is greater than 3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>Note that the name of the object is completely arbitrary. We could also define a second object “y,” assign it a different value and use it to perform some basic mathematical operations:</p>
+<p>Note that the name of the object is completely arbitrary. We could also define a second object “y”, assign it a different value and use it to perform some basic mathematical operations:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-handling.html#cb25-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co">#assigns the value of 2 to the object x</span></span>
 <span id="cb25-2"><a href="data-handling.html#cb25-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">==</span> y <span class="co">#checks whether the value of x to the value of y</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
@@ -583,7 +583,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p style="text-align:center;">
 <img src="https://github.com/IMSMWU/Teaching/raw/master/MRDA2017/Graphics/dataframe.JPG" alt="data types" height="320">
 </p>
-<p>Data frames are similar to matrices but are more flexible in the sense that they may contain different data types (e.g., numeric, character, etc.), where all values of vectors and matrices have to be of the same type (e.g. character). It is often more convenient to use characters instead of numbers (e.g. when indicating a persons sex: “F,” “M” instead of 1 for female , 2 for male). Thus we would like to combine both numeric and character values while retaining the respective desired features. This is where “data frames” come into play. Data frames can have different types of data in each column. For example, we can combine the vectors created above in one data frame using <code>data.frame()</code>. This creates a separate column for each vector, which is usually what we want (similar to SPSS or Excel).</p>
+<p>Data frames are similar to matrices but are more flexible in the sense that they may contain different data types (e.g., numeric, character, etc.), where all values of vectors and matrices have to be of the same type (e.g. character). It is often more convenient to use characters instead of numbers (e.g. when indicating a persons sex: “F”, “M” instead of 1 for female , 2 for male). Thus we would like to combine both numeric and character values while retaining the respective desired features. This is where “data frames” come into play. Data frames can have different types of data in each column. For example, we can combine the vectors created above in one data frame using <code>data.frame()</code>. This creates a separate column for each vector, which is usually what we want (similar to SPSS or Excel).</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-handling.html#cb42-1" aria-hidden="true" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(top10_track_streams, </span>
 <span id="cb42-2"><a href="data-handling.html#cb42-2" aria-hidden="true" tabindex="-1"></a>                         top10_artist_names, </span>
 <span id="cb42-3"><a href="data-handling.html#cb42-3" aria-hidden="true" tabindex="-1"></a>                         top10_track_explicit, </span>
@@ -725,7 +725,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["top10_track_streams"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["top10_artist_names"],"name":[2],"type":["chr"],"align":["left"]},{"label":["top10_track_explicit"],"name":[3],"type":["fct"],"align":["left"]},{"label":["top10_artist_genre"],"name":[4],"type":["fct"],"align":["left"]},{"label":["top_10_track_release_date"],"name":[5],"type":["date"],"align":["right"]},{"label":["top10_track_explicit_1"],"name":[6],"type":["lgl"],"align":["right"]},{"label":["log_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["obs_number"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"163608","2":"Axwell /\\\\ Ingrosso","3":"not explicit","4":"Dance","5":"2017-05-24","6":"FALSE","7":"12.00523","8":"1","_rn_":"1"},{"1":"126687","2":"Imagine Dragons","3":"not explicit","4":"Alternative","5":"2017-06-23","6":"FALSE","7":"11.74947","8":"2","_rn_":"2"},{"1":"120480","2":"J. Balvin","3":"not explicit","4":"Latino","5":"2017-07-03","6":"FALSE","7":"11.69924","8":"3","_rn_":"3"},{"1":"110022","2":"Robin Schulz","3":"not explicit","4":"Dance","5":"2017-06-30","6":"FALSE","7":"11.60844","8":"4","_rn_":"4"},{"1":"108630","2":"Jonas Blue","3":"not explicit","4":"Dance","5":"2017-05-05","6":"FALSE","7":"11.59570","8":"5","_rn_":"5"},{"1":"95639","2":"David Guetta","3":"not explicit","4":"Dance","5":"2017-06-09","6":"FALSE","7":"11.46834","8":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>In order to add a function (e.g., <code>log</code>) of multiple existing variables to the <code>data.frame</code> use <code>mutate</code>. Multiple commands can be chained using so called pipes - operators that can be read as “then.” Since R version 4.1 there are native pipes (<code>|&gt;</code>) as well as the ones provided by the <code>tidyverse</code> (<code>%&gt;%</code>):</p>
+<p>In order to add a function (e.g., <code>log</code>) of multiple existing variables to the <code>data.frame</code> use <code>mutate</code>. Multiple commands can be chained using so called pipes - operators that can be read as “then”. Since R version 4.1 there are native pipes (<code>|&gt;</code>) as well as the ones provided by the <code>tidyverse</code> (<code>%&gt;%</code>):</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-handling.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(music_data, </span>
 <span id="cb72-2"><a href="data-handling.html#cb72-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">sqrt_streams =</span> <span class="fu">sqrt</span>(top10_track_streams),</span>
 <span id="cb72-3"><a href="data-handling.html#cb72-3" aria-hidden="true" tabindex="-1"></a>       <span class="co"># &quot;%Y&quot; extracts the year, format returns a character</span></span>
@@ -764,7 +764,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- TODO: change dataset, add summarize, group by -->
 <p><br><br></p>
 <div class="infobox_orange hint">
-<p>Note that the data handling approach explained in this chapter touches on the so-called ‘base R’ and ‘tidyverse’ dialects. There are other dialects in R, which are basically different ways of achieving the same thing. Another popular dialect in R is ‘data.table,’ see e.g., <a href="https://wetlandscapes.com/blog/a-comparison-of-r-dialects/">here</a> and <a href="https://atrebas.github.io/post/2019-03-03-datatable-dplyr/">here</a>. Once you become more advanced, you may want to look into the other dialects to achieve certain tasks more efficiently. For now, it is sufficient to be aware that there are other approaches to data handling and each dialect has it’s strengths and weaknesses. We will be mostly using ‘base R’ for the tutorial on this website.</p>
+<p>Note that the data handling approach explained in this chapter touches on the so-called ‘base R’ and ‘tidyverse’ dialects. There are other dialects in R, which are basically different ways of achieving the same thing. Another popular dialect in R is ‘data.table’, see e.g., <a href="https://wetlandscapes.com/blog/a-comparison-of-r-dialects/">here</a> and <a href="https://atrebas.github.io/post/2019-03-03-datatable-dplyr/">here</a>. Once you become more advanced, you may want to look into the other dialects to achieve certain tasks more efficiently. For now, it is sufficient to be aware that there are other approaches to data handling and each dialect has it’s strengths and weaknesses. We will be mostly using ‘base R’ for the tutorial on this website.</p>
 </div>
 
 </div>
@@ -786,14 +786,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In the previous chapter, we saw how we may use the keyboard to input data in R. In the following sections, we will learn how to import data from text files and other statistical software packages.</p>
 <div id="getting-data-for-this-course" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Getting data for this course<a href="data-handling.html#getting-data-for-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Most of the data sets we will be working with in this course will be stored in text files (i.e., .dat, .txt, .csv). All data sets we will be working with are stored in a repository on GitHub (similar to other cloud storage services such as Dropbox). You can directly import these data sets from GitHub without having to copy data sets from one place to another. If you know the location, where the files are stored, you may conveniently load the data directly from GitHub into R using the <code>read.table()</code> function. The <code>header=TRUE</code> argument indicates that the first line of data represents the header, i.e., it contains the names of the columns. The <code>sep="\t"</code>-argument specifies the delimiter (the character used to separate the columns), which is a TAB in this case.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-handling.html#cb76-1" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/test_data.dat&quot;</span>, </span>
-<span id="cb76-2"><a href="data-handling.html#cb76-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, </span>
-<span id="cb76-3"><a href="data-handling.html#cb76-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb76-4"><a href="data-handling.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test_data)</span></code></pre></div>
-<p>Note that it is also possible to download the data from the respective folder on the “Learn@WU” platform, placing it in the working directory and importing it from there. However, this requires an additional step to download the file manually first. If you chose this option, please <strong>remember to put the data file in the working directory first</strong>. If the import is not working, check your working directory setting using <code>getwd()</code>. Once you placed the file in the working directory, you can import it using the same command as above. Note that the file must be given as a character string (i.e., in quotation marks) and has to end with the file extension (e.g., .csv, .tsv, etc.).</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-handling.html#cb77-1" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;test_data.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb77-2"><a href="data-handling.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test_data)</span></code></pre></div>
+<p>Most of the data sets we will be working with in this course will be stored in text files (i.e., .dat, .txt, .csv). All data sets we will be working with are stored in a repository on GitHub (similar to other cloud storage services such as Dropbox). You can directly import these data sets from GitHub without having to copy data sets from one place to another. If you know the location, where the files are stored, you may conveniently load the data directly from GitHub into R using the <code>read.csv()</code> function. To figure out the structure of the data you can read the first couple of lines of a file using the <code>readLines</code> function. The <code>header=TRUE</code> argument in the <code>read.csv</code> function indicates that the first line of data represents the header, i.e., it contains the names of the columns. The <code>sep=";"</code>-argument specifies the delimiter (the character used to separate the columns), which is a “,” in this case.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-handling.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(<span class="st">&quot;https://short.wu.ac.at/ma22_musicdata&quot;</span>,</span>
+<span id="cb76-2"><a href="data-handling.html#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">3</span>)</span>
+<span id="cb76-3"><a href="data-handling.html#cb76-3" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://short.wu.ac.at/ma22_musicdata&quot;</span>,</span>
+<span id="cb76-4"><a href="data-handling.html#cb76-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb76-5"><a href="data-handling.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test_data)</span></code></pre></div>
+<p>Note that it is also possible to download the data, placing it in the working directory and importing it from there. However, this requires an additional step to download the file manually first. If you chose this option, please <strong>remember to put the data file in the working directory first</strong>. If the import is not working, check your working directory setting using <code>getwd()</code>. Once you placed the file in the working directory, you can import it using the same command as above. Note that the file must be given as a character string (i.e., in quotation marks) and has to end with the file extension (e.g., .csv, .tsv, etc.).</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-handling.html#cb77-1" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/music_data_fin.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb77-2"><a href="data-handling.html#cb77-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb77-3"><a href="data-handling.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test_data)</span></code></pre></div>
 </div>
 <div id="import-data-created-by-other-software-packages" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Import data created by other software packages<a href="data-handling.html#import-data-created-by-other-software-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -825,10 +827,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="export-data" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Export data<a href="data-handling.html#export-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Exporting to different formats is also easy, as you can just replace “read” with “write” in many of the previously discussed functions (e.g. <code>write.table(object, "file_name")</code>). This will save the data file to the working directory. To check what the current working directory is you can use <code>getwd()</code>. By default, the <code>write.table(object, "file_name")</code>function includes the row number as the first variable. By specifying <code>row.names = FALSE</code>, you may exclude this variable since it doesn’t contain any useful information.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-handling.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(music_data, <span class="st">&quot;musicData.dat&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) <span class="co">#writes to a tab-delimited text file</span></span>
-<span id="cb80-2"><a href="data-handling.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(music_data, <span class="st">&quot;musicData.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>) <span class="co">#writes to a comma-separated value file </span></span>
-<span id="cb80-3"><a href="data-handling.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(music_data, <span class="st">&quot;my_file.sav&quot;</span>)</span></code></pre></div>
+<p>Exporting to different formats is also easy, as you can just replace “read” with “write” in many of the previously discussed functions (e.g. <code>write.csv(object, "file_name")</code>). This will save the data file to the working directory. To check what the current working directory is you can use <code>getwd()</code>. By default, the <code>write.csv(object, "file_name")</code>function includes the row number as the first variable. By specifying <code>row.names = FALSE</code>, you may exclude this variable since it doesn’t contain any useful information.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-handling.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(music_data, <span class="st">&quot;musicData.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)  <span class="co">#writes to a comma-separated value file </span></span>
+<span id="cb80-2"><a href="data-handling.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(music_data, <span class="st">&quot;musicData.sav&quot;</span>)</span></code></pre></div>
 </div>
 <div id="import-data-from-the-web" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> Import data from the Web<a href="data-handling.html#import-data-from-the-web" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -842,7 +843,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb81-5"><a href="data-handling.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(population)</span></code></pre></div>
 <pre><code>## {xml_nodeset (1)}
 ## [1] &lt;table class=&quot;wikitable sortable&quot;&gt;&lt;tbody&gt;\n&lt;tr&gt;\n&lt;th&gt;Rank&lt;/th&gt;\n&lt;th&gt;&lt;a hr ...</code></pre>
-<p>The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let’s read the first table using the <code>html_table()</code> function. Note that <code>population</code> is of class “list.” A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., <code>population[[1]]</code> gets us the first table from the list of tables on the website; the argument <code>fill = TRUE</code> ensures that empty cells are replaced with missing values when reading the table).</p>
+<p>The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let’s read the first table using the <code>html_table()</code> function. Note that <code>population</code> is of class “list”. A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., <code>population[[1]]</code> gets us the first table from the list of tables on the website; the argument <code>fill = TRUE</code> ensures that empty cells are replaced with missing values when reading the table).</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="data-handling.html#cb83-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> population[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">html_table</span>(<span class="at">fill =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb83-2"><a href="data-handling.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(population) <span class="co">#checks if we scraped the desired data</span></span></code></pre></div>
 <div data-pagedtable="false">
@@ -919,7 +920,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="scraping-data-from-apis-via-r-packages" class="section level5 hasAnchor" number="3.2.5.2.2">
 <h5><span class="header-section-number">3.2.5.2.2</span> Scraping data from APIs via R packages<a href="data-handling.html#scraping-data-from-apis-via-r-packages" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>An even more convenient way to obtain data from web APIs is to use existing R packages that someone else has already created. There are R packages available for various web-services. For example, the <code>gtrendsR</code> package can be used to conveniently obtain data from the <a href="https://trends.google.at/trends/" target="_blank">Google Trends</a> page. The <code>gtrends()</code> function is easy to use and returns a list of elements (e.g., “interest over time,” “interest by city,” “related topics”), which can be inspected using the <code>ls()</code> function. The following example can be used to obtain data for the search term “data science” in the US between September 1 and October 6:</p>
+<p>An even more convenient way to obtain data from web APIs is to use existing R packages that someone else has already created. There are R packages available for various web-services. For example, the <code>gtrendsR</code> package can be used to conveniently obtain data from the <a href="https://trends.google.at/trends/" target="_blank">Google Trends</a> page. The <code>gtrends()</code> function is easy to use and returns a list of elements (e.g., “interest over time”, “interest by city”, “related topics”), which can be inspected using the <code>ls()</code> function. The following example can be used to obtain data for the search term “data science” in the US between September 1 and October 6:</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-handling.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
 <span id="cb92-2"><a href="data-handling.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#specify search term, area, source and time frame</span></span>
 <span id="cb92-3"><a href="data-handling.html#cb92-3" aria-hidden="true" tabindex="-1"></a>google_trends <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="st">&quot;data science&quot;</span>, <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">&quot;US&quot;</span>), <span class="at">gprop =</span> <span class="fu">c</span>(<span class="st">&quot;web&quot;</span>), <span class="at">time =</span> <span class="st">&quot;2012-09-01 2020-10-06&quot;</span>)</span>
@@ -974,29 +975,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Learning check<a href="data-handling.html#learning-check-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC3.1) Which of the following are data types are recognized by R?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Factor</li>
-<li><input type="checkbox" disabled="" />
-Date</li>
-<li><input type="checkbox" disabled="" />
-Decimal</li>
-<li><input type="checkbox" disabled="" />
-Vector</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Factor</li>
+<li><input type="checkbox" disabled="" />Date</li>
+<li><input type="checkbox" disabled="" />Decimal</li>
+<li><input type="checkbox" disabled="" />Vector</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.2) What function should you use to check if an object is a data frame?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>type()</code></li>
-<li><input type="checkbox" disabled="" />
-<code>str()</code></li>
-<li><input type="checkbox" disabled="" />
-<code>class()</code></li>
-<li><input type="checkbox" disabled="" />
-<code>object.type()</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>type()</code></li>
+<li><input type="checkbox" disabled="" /><code>str()</code></li>
+<li><input type="checkbox" disabled="" /><code>class()</code></li>
+<li><input type="checkbox" disabled="" /><code>object.type()</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.3) You would like to combine three vectors (student, grade, date) in a data frame. What would happen when executing the following code?</strong></p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-handling.html#cb98-1" aria-hidden="true" tabindex="-1"></a>student <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Max&#39;</span>,<span class="st">&#39;Jonas&#39;</span>,<span class="st">&#39;Saskia&#39;</span>,<span class="st">&#39;Victoria&#39;</span>)</span>
@@ -1004,16 +995,11 @@ None of the above</li>
 <span id="cb98-3"><a href="data-handling.html#cb98-3" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&#39;2020-10-06&#39;</span>,<span class="st">&#39;2020-10-08&#39;</span>,<span class="st">&#39;2020-10-09&#39;</span>))</span>
 <span id="cb98-4"><a href="data-handling.html#cb98-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(student,grade,date)</span></code></pre></div>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Error because a data frame can not have different data types</li>
-<li><input type="checkbox" disabled="" />
-Error because you should use <code>as.data.frame()</code> instead of <code>data.frame()</code></li>
-<li><input type="checkbox" disabled="" />
-Error because all vectors need to have the same length</li>
-<li><input type="checkbox" disabled="" />
-Error because the column names are not specified</li>
-<li><input type="checkbox" disabled="" />
-This code should not report an error</li>
+<li><input type="checkbox" disabled="" />Error because a data frame can not have different data types</li>
+<li><input type="checkbox" disabled="" />Error because you should use <code>as.data.frame()</code> instead of <code>data.frame()</code></li>
+<li><input type="checkbox" disabled="" />Error because all vectors need to have the same length</li>
+<li><input type="checkbox" disabled="" />Error because the column names are not specified</li>
+<li><input type="checkbox" disabled="" />This code should not report an error</li>
 </ul>
 <p><strong>You would like to analyze the following data frame</strong></p>
 <div data-pagedtable="false">
@@ -1023,94 +1009,59 @@ This code should not report an error</li>
 </div>
 <p><strong>(LC3.4) How can you obtain Christina’s grade from the data frame?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>df[4,2]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[2,4]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[student="Christina","grade"]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[student=="Christina","grade"]</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>df[4,2]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[2,4]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[student="Christina","grade"]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[student=="Christina","grade"]</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.5) How can you add a new variable ‘student_id’ to the data frame that assigns numbers to students in an ascending order?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>df$student_id &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df$student_id &lt;- 1:length(df)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>df$student_id &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>df$student_id &lt;- 1:length(df)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.6) How could you obtain all rows with students who obtained a 1?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>df[df$grade==1,]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[grade == min(df$grade),]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[,df$grade==1]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df[grade==1,]</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>df[df$grade==1,]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[grade == min(df$grade),]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[,df$grade==1]</code></li>
+<li><input type="checkbox" disabled="" /><code>df[grade==1,]</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.7) How could you create a subset of observations where the grade is not missing (NA) </strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[grade!=NA,]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[isnot.na(grade),]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[!is.na(grade),]</code></li>
-<li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[,grade!=NA]</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[grade!=NA,]</code></li>
+<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[isnot.na(grade),]</code></li>
+<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[!is.na(grade),]</code></li>
+<li><input type="checkbox" disabled="" /><code>df_subset &lt;- df[,grade!=NA]</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.8) What is the share of students with a grade better than 3?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>df[grade&lt;3,]/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>nrow(df[grade&lt;3,])/length(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>df[grade&lt;3,]/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>nrow(df[grade&lt;3,])/length(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.9) You would like to load a .csv file from your working directory. What function would you use do it?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>read.table(file_name.csv)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>load.csv("file.csv")</code></li>
-<li><input type="checkbox" disabled="" />
-<code>read.table("file.csv")</code></li>
-<li><input type="checkbox" disabled="" />
-<code>get.table(file_name.csv)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>read.table(file_name.csv)</code></li>
+<li><input type="checkbox" disabled="" /><code>load.csv("file.csv")</code></li>
+<li><input type="checkbox" disabled="" /><code>read.table("file.csv")</code></li>
+<li><input type="checkbox" disabled="" /><code>get.table(file_name.csv)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC3.10) After you loaded the file, you would like to inspect the types of data contained in it. How would you do it?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>ncol(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>nrow(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>dim(df)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>str(df)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>ncol(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>nrow(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>dim(df)</code></li>
+<li><input type="checkbox" disabled="" /><code>str(df)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 
 </div>

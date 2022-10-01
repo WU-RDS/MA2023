@@ -23,7 +23,6 @@ fig:unnamed-chunk-25
 fig:unnamed-chunk-26
 fig:unnamed-chunk-27
 fig:unnamed-chunk-28
-fig:unnamed-chunk-16
 fig:unnamed-chunk-29
 fig:unnamed-chunk-30
 fig:unnamed-chunk-31
@@ -37,6 +36,7 @@ fig:unnamed-chunk-44
 fig:unnamed-chunk-45
 fig:unnamed-chunk-46
 fig:unnamed-chunk-50
+fig:unnamed-chunk-52
 fig:unnamed-chunk-53
 fig:unnamed-chunk-6
 fig:unnamed-chunk-47
@@ -45,6 +45,7 @@ fig:unnamed-chunk-23-1
 fig:unnamed-chunk-23-2
 fig:unnamed-chunk-23-3
 eq:tukey
+fig:unnamed-chunk-16
 eq:variance
 eq:covariance
 eq:corcoeff
@@ -141,7 +142,6 @@ using-frequency-distributions-to-go-beyond-the-data
 data-visualization
 categorical-variables-1
 bar-plot
-pie-chart
 covariation-plots
 continuous-variables-1
 histogram
@@ -156,6 +156,7 @@ saving-plots
 ggplot-extensions
 results-of-statistical-tests-ggstatsplot
 combination-of-plots-ggextra
+appendix
 location-data-ggmap
 statistical-inference
 if-we-knew-it-all
