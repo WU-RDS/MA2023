@@ -9,7 +9,7 @@ output:
 
 ## Data import and export 
 
-```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, purl=FALSE}
 library(knitr)
 options(scipen = 999)
 #This code automatically tidies code so that it does not reach over the page

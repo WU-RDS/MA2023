@@ -68,7 +68,7 @@ ratio, or coefficient of variation  | No  | No  | No  | Yes
 
 As an example data set, we will be using a data set containing music streaming data from a popular streaming service. Let's load and inspect the data first.
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=FALSE, purl=FALSE}
 music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata")
 set.seed(1)
 music_data$expert_rating <- factor(sample(1:5, nrow(music_data), replace = TRUE, prob = c(0.08, 0.2, 0.35, 0.35, 0.02)), levels = 1:5, 
