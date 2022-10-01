@@ -1,3 +1,4 @@
+## Extract all R code files
 knitr::purl("02-basic_data_handling.Rmd", output="./Code/01-basic_data_handling.R")
 knitr::purl("03-data_import.Rmd", output="./Code/02-data_import.R")
 knitr::purl("04-basic_statistics.Rmd", output="./Code/03-basic_statistics.R")
@@ -23,9 +24,10 @@ all_reg <- paste(reg_10, logistic_start_str, logistic_reg_11, sep = '\n')
 readr::write_file(all_reg, "./Code/test_10-regression.R")
 ###
 knitr::purl("12-factor_analysis.Rmd", output="./Code/11-pca.R")
-knitr::purl("13-cluster_analysis.Rmd", output="./Code/02-data_import.R")
+knitr::purl("13-cluster_analysis.Rmd", output="./Code/12-cluster.R")
 
-
+## Finally move code files into book folder
+file.copy("Code", "_book/", recursive = TRUE)
 
 
 
