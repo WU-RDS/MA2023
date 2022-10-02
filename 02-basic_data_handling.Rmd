@@ -165,16 +165,16 @@ music_data # Returns the entire data frame
 
 Hint: You may also use the ```View()```-function to view the data in a table format (like in SPSS or Excel), i.e. enter the command ```View(data)```. Note that you can achieve the same by clicking on the small table icon next to the data frame in the "Environment"-window on the right in RStudio. 
 
-Sometimes it is convenient to return only specific values instead of the entire data frame. There are a variety of ways to identify the elements of a data frame. One easy way is to explicitly state, which rows and columns you wish to view. The general form of the command is ```data.frame[rows,columns]```. By leaving one of the arguments of ```data.frame[rows,columns]``` blank (e.g., ```data.frame[rows,]```) we tell R that we want to access either all rows or columns, respectively. Here are some examples:  
+Sometimes it is convenient to return only specific values instead of the entire data frame. There are a variety of ways to identify the elements of a data frame. One easy way is to explicitly state, which rows and columns you wish to view. The general form of the command is ```data.frame[rows,columns]```. By leaving one of the arguments of ```data.frame[rows,columns]``` blank (e.g., ```data.frame[rows,]```) we tell R that we want to access either all rows or columns, respectively. Note that `a:b` (where `a` and `b` are numbers and `a` < `b`) is short hand notation for `seq(from = a, to = b, by = 1)`. Here are some examples:  
 
 ```{r}
 music_data[ , 2:4] # all rows and columns 2,3,4
 music_data[5:7, ] # rows 5,6,7 and all columns
 ```
 
-Typically we don't want to remember which row or column number is needed but use names and conditions (e.g, all explicit tracks). In order to make that easier we will add more functions to R by installing a package (sometimes also referred to as "library") called ```tidyverse```. We only have to install it once and subsequently we can add the functions the package provides by calling ```library(tidyverse)```. The `tidyverse` provides us with convenient tools to manipulate data. 
+Typically we don't want to remember which row or column number is needed but use names and conditions (e.g, all explicit tracks). In order to make that easier we will add more functions to R by installing a package (sometimes also referred to as "library") called ```tidyverse```. We only have to install it once (per computer) and subsequently we can add the functions the package provides by calling ```library(tidyverse)```. Typically `library(PACKAGENAME)` has to be called again whenever you restart R/RStudio. If you see the error message `could not find function ...` make sure you have loaded all the required packages. The `tidyverse` provides us with convenient tools to manipulate data. 
 
-You may also create subsets of the data frame, e.g., using mathematical expressions using the `filter` function:
+You may create subsets of the data frame, e.g., using mathematical expressions using the `filter` function:
 
 ```{r}
 library(tidyverse)
@@ -234,13 +234,13 @@ ls(music_data) # list all objects associated with an object
 
 #### Select, append and delete variables to/from data frames
 
-To call a certain column in a data frame, we may also use the ```$``` notation. For example, this returns all values associated with the variable "top10_track_streams":
+To return a single column in a data frame, use the ```$``` notation. For example, this returns all values associated with the variable "top10_track_streams":
   
 ```{r}
 music_data$top10_track_streams
 ```
 
-If you want to select more than one variable you can use the `select` function by first calling the data frame (music_data) and listing the variables that you need after it:
+If you want to select more than one variable you can use the `select` function. It takes the `data.frame` containing the data as its first argument and  the variables that you need after it:
 
 ```{r}
 select(music_data, top10_artist_names, top10_track_streams, top10_track_explicit)

@@ -86,7 +86,7 @@ head(music_data)
 names(music_data)
 ```
 
-The data set contains information about all songs that appeared in the Top200 charts of a popular streaming service in Austria between 2017 and 2020. The `dim()`-function returns the dimensions of the data frame (i.e., the number of rows and columns). As can be seen, the data set comprises information for 66,796 songs and 31 variables. The variables in the data set are:
+The data set contains information about all songs that appeared in the Top200 charts of a popular streaming service between 2017 and 2020. The `dim()`-function returns the dimensions of the data frame (i.e., the number of rows and columns). As can be seen, the data set comprises information for 66,796 songs and 31 variables. The variables in the data set are:
 
 * isrc: unique song id
 * artist_id: unique artist ID
