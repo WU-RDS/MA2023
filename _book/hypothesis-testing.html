@@ -1230,11 +1230,11 @@ Figure 6.1: p-hacking (red indicates false positives)
 </div>
 <p><br></p>
 <p>Let’s use an example to see how ANOVA works. Similar to the previous example, imagine that the music streaming service experiments with a recommender system and manipulates the intensity of personalized recommendations using three levels: ‘low’, ‘medium’, and ‘high’. The service randomly assigns 100 users to each condition and records the listening times in hours in the following week. As always, we load and inspect the data first:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="hypothesis-testing.html#cb286-1" aria-hidden="true" tabindex="-1"></a>hours_abc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat&quot;</span>, </span>
-<span id="cb286-2"><a href="hypothesis-testing.html#cb286-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, </span>
-<span id="cb286-3"><a href="hypothesis-testing.html#cb286-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
-<span id="cb286-4"><a href="hypothesis-testing.html#cb286-4" aria-hidden="true" tabindex="-1"></a>hours_abc<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(hours_abc<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>,<span class="st">&quot;high&quot;</span>)) <span class="co">#convert grouping variable to factor</span></span>
-<span id="cb286-5"><a href="hypothesis-testing.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hours_abc) <span class="co">#inspect data</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="hypothesis-testing.html#cb286-1" aria-hidden="true" tabindex="-1"></a>hours_abc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat&quot;</span>,</span>
+<span id="cb286-2"><a href="hypothesis-testing.html#cb286-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
+<span id="cb286-3"><a href="hypothesis-testing.html#cb286-3" aria-hidden="true" tabindex="-1"></a>hours_abc<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(hours_abc<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,</span>
+<span id="cb286-4"><a href="hypothesis-testing.html#cb286-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;high&quot;</span>))  <span class="co">#convert grouping variable to factor</span></span>
+<span id="cb286-5"><a href="hypothesis-testing.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(hours_abc)  <span class="co">#inspect data</span></span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    300 obs. of  3 variables:
 ##  $ hours: int  18 13 3 13 20 18 18 10 11 20 ...
 ##  $ group: Factor w/ 3 levels &quot;low&quot;,&quot;medium&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -1247,7 +1247,7 @@ Figure 6.1: p-hacking (red indicates false positives)
 <p><span class="math display">\[H_1: \exists {i,j}: {\mu_i \ne \mu_j} \]</span></p>
 <p>To get a first impression if there are any differences in listening times across the experimental groups, we use the <code>describeBy(...)</code> function from the <code>psych</code> package:</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="hypothesis-testing.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb288-2"><a href="hypothesis-testing.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group) <span class="co">#inspect data</span></span></code></pre></div>
+<span id="cb288-2"><a href="hypothesis-testing.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group)  <span class="co">#inspect data</span></span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## group: low
@@ -1324,9 +1324,9 @@ Figure 1.5: Boxplot
   </script>
 </div>
 <p>In this example, X<sub>1</sub> from the generalized data matrix above would refer to the factor level “low”, X<sub>2</sub> to the level “medium”, and X<sub>3</sub> to the level “high”. Y<sub>11</sub> refers to the first data point in the first row (i.e., “13”), Y<sub>12</sub> to the second data point in the first row (i.e., “21”), etc.. The grand mean (<span class="math inline">\(\overline{Y}\)</span>) and the category means (<span class="math inline">\(\overline{Y}_c\)</span>) can be easily computed:</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="hypothesis-testing.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hours_abc<span class="sc">$</span>hours) <span class="co">#grand mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="hypothesis-testing.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hours_abc<span class="sc">$</span>hours)  <span class="co">#grand mean</span></span></code></pre></div>
 <pre><code>## [1] 24.67667</code></pre>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="hypothesis-testing.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, mean) <span class="co">#category mean</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="hypothesis-testing.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, mean)  <span class="co">#category mean</span></span></code></pre></div>
 <pre><code>## hours_abc$group: low
 ## [1] 14.34
 ## ------------------------------------------------------------ 
@@ -1400,8 +1400,9 @@ SS_M &amp;= 100*(15.47−24.67)^2 + 100*(24.88−24.67)^2 + 100*(33.66−24.67)^
 \end{align}
 \]</span></p>
 <p>You could also compute this manually in R using:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="hypothesis-testing.html#cb299-1" aria-hidden="true" tabindex="-1"></a>SSM <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="dv">100</span><span class="sc">*</span>(<span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, mean) <span class="sc">-</span> <span class="fu">mean</span>(hours_abc<span class="sc">$</span>hours))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb299-2"><a href="hypothesis-testing.html#cb299-2" aria-hidden="true" tabindex="-1"></a>SSM</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="hypothesis-testing.html#cb299-1" aria-hidden="true" tabindex="-1"></a>SSM <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="dv">100</span> <span class="sc">*</span> (<span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group,</span>
+<span id="cb299-2"><a href="hypothesis-testing.html#cb299-2" aria-hidden="true" tabindex="-1"></a>    mean) <span class="sc">-</span> <span class="fu">mean</span>(hours_abc<span class="sc">$</span>hours))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb299-3"><a href="hypothesis-testing.html#cb299-3" aria-hidden="true" tabindex="-1"></a>SSM</span></code></pre></div>
 <pre><code>## [1] 21321.21</code></pre>
 <p>In this case, we used the three group means to calculate the sum of squares, so the model degrees of freedom (df<sub>M</sub>) are:</p>
 <p><span class="math display">\[
@@ -1431,8 +1432,9 @@ SS_R =&amp; (13−14.34)^2 + (14−14.34)^2 + … + (2−14.34)^2 \\
 \end{align}
 \]</span></p>
 <p>You could also compute this in R using:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="hypothesis-testing.html#cb301-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">sum</span>((hours_abc<span class="sc">$</span>hours <span class="sc">-</span> <span class="fu">rep</span>(<span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, mean), <span class="at">each =</span> <span class="dv">100</span>))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb301-2"><a href="hypothesis-testing.html#cb301-2" aria-hidden="true" tabindex="-1"></a>SSR</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="hypothesis-testing.html#cb301-1" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">sum</span>((hours_abc<span class="sc">$</span>hours <span class="sc">-</span> <span class="fu">rep</span>(<span class="fu">by</span>(hours_abc<span class="sc">$</span>hours,</span>
+<span id="cb301-2"><a href="hypothesis-testing.html#cb301-2" aria-hidden="true" tabindex="-1"></a>    hours_abc<span class="sc">$</span>group, mean), <span class="at">each =</span> <span class="dv">100</span>))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb301-3"><a href="hypothesis-testing.html#cb301-3" aria-hidden="true" tabindex="-1"></a>SSR</span></code></pre></div>
 <pre><code>## [1] 9534.43</code></pre>
 <p>In this case, we used the 10 values for each of the SS for each group, so the residual degrees of freedom (df<sub>R</sub>) are:</p>
 <p><span class="math display">\[
@@ -1493,10 +1495,10 @@ F= \frac{MS_M}{MS_R}=\frac{\frac{SS_M}{c-1}}{\frac{SS_R}{N-c}}=\frac{\frac{21321
 <p class="caption">The F distribution</p>
 </div>
 <p>For 2 and 297 degrees of freedom, the critical value of F is 3.026 for α=0.05. As usual, you can either look up these values in a table or use the appropriate function in R:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="hypothesis-testing.html#cb307-1" aria-hidden="true" tabindex="-1"></a>f_crit <span class="ot">&lt;-</span> <span class="fu">qf</span>(.<span class="dv">95</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">297</span>) <span class="co">#critical value</span></span>
-<span id="cb307-2"><a href="hypothesis-testing.html#cb307-2" aria-hidden="true" tabindex="-1"></a>f_crit </span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="hypothesis-testing.html#cb307-1" aria-hidden="true" tabindex="-1"></a>f_crit <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.95</span>, <span class="at">df1 =</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="dv">297</span>)  <span class="co">#critical value</span></span>
+<span id="cb307-2"><a href="hypothesis-testing.html#cb307-2" aria-hidden="true" tabindex="-1"></a>f_crit</span></code></pre></div>
 <pre><code>## [1] 3.026153</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="hypothesis-testing.html#cb309-1" aria-hidden="true" tabindex="-1"></a>f_ratio <span class="sc">&gt;</span> f_crit <span class="co">#test if calculated test statistic is larger than critical value</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="hypothesis-testing.html#cb309-1" aria-hidden="true" tabindex="-1"></a>f_ratio <span class="sc">&gt;</span> f_crit  <span class="co">#test if calculated test statistic is larger than critical value</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>The output tells us that the calculated test statistic exceeds the critical value. We can also show the test result visually:</p>
 <div class="figure">
@@ -1531,9 +1533,10 @@ F= \frac{MS_M}{MS_R}=\frac{\frac{SS_M}{c-1}}{\frac{SS_R}{N-c}}=\frac{\frac{21321
 <h5>Distributional assumptions<a href="hypothesis-testing.html#distributional-assumptions" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>ANOVA is relatively immune to violations to the normality assumption when sample sizes are large due to the Central Limit Theorem. However, if your sample is small (i.e., n &lt; 30 per group) you may nevertheless want to check the normality of your data, e.g., by using the Shapiro-Wilk test or QQ-Plot. In our example, we have 100 observations in each group which is plenty but let’s create another example with only 10 observations in each group. In the latter case we cannot rely on the Central Limit Theorem and we should test the normality of our data. This can be done using the Shapiro-Wilk Test, which has the Null Hypothesis that the data is normally distributed. Hence, an insignificant test results means that the data can be assumed to be approximately normally distributed:</p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="hypothesis-testing.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">321</span>)</span>
-<span id="cb311-2"><a href="hypothesis-testing.html#cb311-2" aria-hidden="true" tabindex="-1"></a>hours_fewobs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hours =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">40</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">5</span>)),</span>
-<span id="cb311-3"><a href="hypothesis-testing.html#cb311-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">group =</span>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&#39;low&#39;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&#39;medium&#39;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&#39;high&#39;</span>, <span class="dv">10</span>)))</span>
-<span id="cb311-4"><a href="hypothesis-testing.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(hours_fewobs<span class="sc">$</span>hours, hours_fewobs<span class="sc">$</span>group, shapiro.test)</span></code></pre></div>
+<span id="cb311-2"><a href="hypothesis-testing.html#cb311-2" aria-hidden="true" tabindex="-1"></a>hours_fewobs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">hours =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">20</span>,</span>
+<span id="cb311-3"><a href="hypothesis-testing.html#cb311-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">40</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">5</span>)), <span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;low&quot;</span>,</span>
+<span id="cb311-4"><a href="hypothesis-testing.html#cb311-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;medium&quot;</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="st">&quot;high&quot;</span>, <span class="dv">10</span>)))</span>
+<span id="cb311-5"><a href="hypothesis-testing.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(hours_fewobs<span class="sc">$</span>hours, hours_fewobs<span class="sc">$</span>group, shapiro.test)</span></code></pre></div>
 <pre><code>## hours_fewobs$group: high
 ## 
 ##  Shapiro-Wilk normality test
@@ -1559,24 +1562,26 @@ F= \frac{MS_M}{MS_R}=\frac{\frac{SS_M}{c-1}}{\frac{SS_R}{N-c}}=\frac{\frac{21321
 <p>Since the test result is insignificant for all groups, we can conclude that the data approximately follow a normal distribution.</p>
 <p>We could also test the distributional assumptions visually using a Q-Q plot (i.e., quantile-quantile plot). This plot can be used to assess if a set of data plausibly came from some theoretical distribution such as the Normal distribution. Since this is just a visual check, it is somewhat subjective. But it may help us to judge if our assumption is plausible, and if not, which data points contribute to the violation. A Q-Q plot is a scatterplot created by plotting two sets of quantiles against one another. If both sets of quantiles came from the same distribution, we should see the points forming a line that’s roughly straight. In other words, Q-Q plots take your sample data, sort it in ascending order, and then plot them versus quantiles calculated from a theoretical distribution. Quantiles are often referred to as “percentiles” and refer to the points in your data below which a certain proportion of your data fall. Recall, for example, the standard Normal distribution with a mean of 0 and a standard deviation of 1. Since the 50th percentile (or 0.5 quantile) is 0, half the data lie below 0. The 95th percentile (or 0.95 quantile), is about 1.64, which means that 95 percent of the data lie below 1.64. The 97.5th quantile is about 1.96, which means that 97.5% of the data lie below 1.96. In the Q-Q plot, the number of quantiles is selected to match the size of your sample data.</p>
 <p>To create the Q-Q plot for the normal distribution, you may use the <code>qqnorm()</code> function, which takes the data to be tested as an argument. Using the <code>qqline()</code> function subsequently on the data creates the line on which the data points should fall based on the theoretical quantiles. If the individual data points deviate a lot from this line, it means that the data is not likely to follow a normal distribution.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="hypothesis-testing.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;low&quot;</span>,]<span class="sc">$</span>hours) </span>
-<span id="cb313-2"><a href="hypothesis-testing.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;low&quot;</span>,]<span class="sc">$</span>hours)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="hypothesis-testing.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;low&quot;</span>, ]<span class="sc">$</span>hours)</span>
+<span id="cb313-2"><a href="hypothesis-testing.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;low&quot;</span>, ]<span class="sc">$</span>hours)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-1"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-1.png" alt="Q-Q plot 1" width="672" />
 <p class="caption">
 Figure 6.2: Q-Q plot 1
 </p>
 </div>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="hypothesis-testing.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;medium&quot;</span>,]<span class="sc">$</span>hours) </span>
-<span id="cb314-2"><a href="hypothesis-testing.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;medium&quot;</span>,]<span class="sc">$</span>hours)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="hypothesis-testing.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb314-2"><a href="hypothesis-testing.html#cb314-2" aria-hidden="true" tabindex="-1"></a>    ]<span class="sc">$</span>hours)</span>
+<span id="cb314-3"><a href="hypothesis-testing.html#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb314-4"><a href="hypothesis-testing.html#cb314-4" aria-hidden="true" tabindex="-1"></a>    ]<span class="sc">$</span>hours)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-2"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-2.png" alt="Q-Q plot 2" width="672" />
 <p class="caption">
 Figure 6.3: Q-Q plot 2
 </p>
 </div>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="hypothesis-testing.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;high&quot;</span>,]<span class="sc">$</span>hours) </span>
-<span id="cb315-2"><a href="hypothesis-testing.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;high&quot;</span>,]<span class="sc">$</span>hours)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="hypothesis-testing.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;high&quot;</span>, ]<span class="sc">$</span>hours)</span>
+<span id="cb315-2"><a href="hypothesis-testing.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;high&quot;</span>, ]<span class="sc">$</span>hours)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-3"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-3.png" alt="Q-Q plot 3" width="672" />
 <p class="caption">
@@ -1607,16 +1612,17 @@ Figure 6.4: Q-Q plot 3
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>You can see that the p-value is smaller than 0.05. This means that, if there really was no difference between the population means (i.e., the Null hypothesis was true), the probability of the observed differences (or larger differences) is less than 5%.</p>
 <p>To compute η<sup>2</sup> from the output, we can extract the relevant sum of squares as follows</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="hypothesis-testing.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&#39;Sum Sq&#39;</span>[<span class="dv">1</span>]<span class="sc">/</span>(<span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&#39;Sum Sq&#39;</span>[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&#39;Sum Sq&#39;</span>[<span class="dv">2</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="hypothesis-testing.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&quot;Sum Sq&quot;</span>[<span class="dv">1</span>]<span class="sc">/</span>(<span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&quot;Sum Sq&quot;</span>[<span class="dv">1</span>] <span class="sc">+</span></span>
+<span id="cb320-2"><a href="hypothesis-testing.html#cb320-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&quot;Sum Sq&quot;</span>[<span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## [1] 0.6909988</code></pre>
 <p>You can see that the results match the results from our manual computation above (<span class="math inline">\(\eta^2 =\)</span> 0.69).</p>
 <p>The <code>aov()</code> function also automatically generates some plots that you can use to judge if the model assumptions are met. We will inspect two of the plots here.</p>
 <p>We will use the first plot to inspect if the residual variances are equal across the experimental groups:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="hypothesis-testing.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="hypothesis-testing.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="08-Anova_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>Generally, the residual variance (i.e., the range of values on the y-axis) should be the same for different levels of our independent variable. The plot shows, that there are some slight differences. Notably, the range of residuals is higher in group “medium” than in group “high”. However, the differences are not that large and since the Levene’s test could not reject the Null of equal variances, we conclude that the variances are similar enough in this case.</p>
 <p>The second plot can be used to test the assumption that the residuals are approximately normally distributed. We use a Q-Q plot to test this assumption:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="hypothesis-testing.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="hypothesis-testing.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="08-Anova_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>The plot suggests that, the residuals are approximately normally distributed. We could also test this by extracting the residuals from the anova output using the <code>resid()</code> function and using the Shapiro-Wilk test:</p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="hypothesis-testing.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(aov))</span></code></pre></div>
@@ -1627,7 +1633,7 @@ Figure 6.4: Q-Q plot 3
 ## W = 0.99723, p-value = 0.8925</code></pre>
 <p>Confirming the impression from the Q-Q plot, we cannot reject the Null that the residuals are approximately normally distributed.</p>
 <p>Note that if Levene’s test would have been significant (i.e., variances are not equal), we would have needed to either resort to non-parametric tests (see below), or compute the Welch’s F-ratio instead, which is correcting for unequal variances between the groups:</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="hypothesis-testing.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co">#oneway.test(hours ~ group, hours_abc)</span></span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="hypothesis-testing.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># oneway.test(hours ~ group, hours_abc)</span></span></code></pre></div>
 <p>You can see that the results are fairly similar, since the variances turned out to be fairly equal across groups.</p>
 </div>
 </div>
@@ -1657,8 +1663,9 @@ p_{CR}= \frac{\alpha}{k}
 <p>In our example with three groups:</p>
 <p><span class="math display">\[p_{CR}= \frac{0.05}{3}=0.017\]</span></p>
 <p>Thus, the “corrected” critical p-value is now 0.017 instead of 0.05 (i.e., the critical t value is higher). This means that the test is more conservative to account for the family-wise error. Remember that, to reject the null hypothesis at a 5% significance level, we usually check if the p-value in our analysis is smaller than 0.05. The corrected p-value above requires us to obtain a p-value smaller than 0.017 in order to reject the null hypothesis at the 5% significance level, which means that the critical value of the test statistic is higher. You can implement the Bonferroni procedure in R using:</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="hypothesis-testing.html#cb327-1" aria-hidden="true" tabindex="-1"></a>bonferroni <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, <span class="at">data =</span> hours_abc, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb327-2"><a href="hypothesis-testing.html#cb327-2" aria-hidden="true" tabindex="-1"></a>bonferroni</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="hypothesis-testing.html#cb327-1" aria-hidden="true" tabindex="-1"></a>bonferroni <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group,</span>
+<span id="cb327-2"><a href="hypothesis-testing.html#cb327-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> hours_abc, <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
+<span id="cb327-3"><a href="hypothesis-testing.html#cb327-3" aria-hidden="true" tabindex="-1"></a>bonferroni</span></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using t tests with pooled SD 
 ## 
@@ -1672,8 +1679,9 @@ p_{CR}= \frac{\alpha}{k}
 <p>In the output, you will get the corrected p-values for the individual tests. This mean, to reject the null hypothesis, we require the p-value to be smaller than 0.05 again, since the reported p-values are already corrected for the family-wise error. In our example, we can reject H<sub>0</sub> of equal means for all three tests, since p &lt; 0.05 for all combinations of groups.</p>
 <p>Note the difference between the results from the post-hoc test compared to individual t-tests. For example, when we test the “medium” vs. “high” groups, the result from a t-test would be:</p>
 <div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="hypothesis-testing.html#cb329-1" aria-hidden="true" tabindex="-1"></a>data_subset <span class="ot">&lt;-</span> <span class="fu">subset</span>(hours_abc, group <span class="sc">!=</span> <span class="st">&quot;low&quot;</span>)</span>
-<span id="cb329-2"><a href="hypothesis-testing.html#cb329-2" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(hours <span class="sc">~</span> group, <span class="at">data =</span> data_subset, <span class="at">var.equal=</span> <span class="cn">TRUE</span>)</span>
-<span id="cb329-3"><a href="hypothesis-testing.html#cb329-3" aria-hidden="true" tabindex="-1"></a>ttest</span></code></pre></div>
+<span id="cb329-2"><a href="hypothesis-testing.html#cb329-2" aria-hidden="true" tabindex="-1"></a>ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(hours <span class="sc">~</span> group, <span class="at">data =</span> data_subset,</span>
+<span id="cb329-3"><a href="hypothesis-testing.html#cb329-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb329-4"><a href="hypothesis-testing.html#cb329-4" aria-hidden="true" tabindex="-1"></a>ttest</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -1712,7 +1720,7 @@ HSD= q\sqrt{\frac{MS_R}{n_c}}
 <p>Hence:</p>
 <p><span class="math display">\[HSD= 3.33\sqrt{\frac{33.99}{100}}=1.94\]</span></p>
 <p>Or, in R:</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="hypothesis-testing.html#cb333-1" aria-hidden="true" tabindex="-1"></a>hsd <span class="ot">&lt;-</span> q <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&#39;Mean Sq&#39;</span>[<span class="dv">2</span>]<span class="sc">/</span><span class="dv">100</span>)</span>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="hypothesis-testing.html#cb333-1" aria-hidden="true" tabindex="-1"></a>hsd <span class="ot">&lt;-</span> q <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fu">summary</span>(aov)[[<span class="dv">1</span>]]<span class="sc">$</span><span class="st">&quot;Mean Sq&quot;</span>[<span class="dv">2</span>]<span class="sc">/</span><span class="dv">100</span>)</span>
 <span id="cb333-2"><a href="hypothesis-testing.html#cb333-2" aria-hidden="true" tabindex="-1"></a>hsd</span></code></pre></div>
 <pre><code>## [1] 1.887434</code></pre>
 <p>Since all mean differences between groups are larger than 1.906, we can reject the null hypothesis for all individual tests, confirming the results from the Bonferroni test. To compute Tukey’s HSD, we can use the appropriate function from the <code>multcomp</code> package.</p>
@@ -1763,41 +1771,43 @@ Figure 4.5: Tukey’s HSD
 </p>
 </div>
 <p>You can see that the CIs do not cross zero, which means that the true difference between group means is unlikely zero. It is sufficient to report the results in the way described above. However, you could also manually compute the differences between the groups and their confidence interval as follows:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="hypothesis-testing.html#cb340-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;low&quot;</span>,<span class="st">&quot;hours&quot;</span>]) <span class="co">#mean group &quot;low&quot;</span></span>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="hypothesis-testing.html#cb340-1" aria-hidden="true" tabindex="-1"></a>mean1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;low&quot;</span>, <span class="st">&quot;hours&quot;</span>])  <span class="co">#mean group &#39;low&#39;</span></span>
 <span id="cb340-2"><a href="hypothesis-testing.html#cb340-2" aria-hidden="true" tabindex="-1"></a>mean1</span></code></pre></div>
 <pre><code>## [1] 14.34</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="hypothesis-testing.html#cb342-1" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;medium&quot;</span>,<span class="st">&quot;hours&quot;</span>]) <span class="co">#mean group &quot;medium&quot;</span></span>
-<span id="cb342-2"><a href="hypothesis-testing.html#cb342-2" aria-hidden="true" tabindex="-1"></a>mean2</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="hypothesis-testing.html#cb342-1" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;medium&quot;</span>,</span>
+<span id="cb342-2"><a href="hypothesis-testing.html#cb342-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;hours&quot;</span>])  <span class="co">#mean group &#39;medium&#39;</span></span>
+<span id="cb342-3"><a href="hypothesis-testing.html#cb342-3" aria-hidden="true" tabindex="-1"></a>mean2</span></code></pre></div>
 <pre><code>## [1] 24.7</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="hypothesis-testing.html#cb344-1" aria-hidden="true" tabindex="-1"></a>mean3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group<span class="sc">==</span><span class="st">&quot;high&quot;</span>,<span class="st">&quot;hours&quot;</span>]) <span class="co">#mean group &quot;high&quot;</span></span>
-<span id="cb344-2"><a href="hypothesis-testing.html#cb344-2" aria-hidden="true" tabindex="-1"></a>mean3</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="hypothesis-testing.html#cb344-1" aria-hidden="true" tabindex="-1"></a>mean3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(hours_abc[hours_abc<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;high&quot;</span>,</span>
+<span id="cb344-2"><a href="hypothesis-testing.html#cb344-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;hours&quot;</span>])  <span class="co">#mean group &#39;high&#39;</span></span>
+<span id="cb344-3"><a href="hypothesis-testing.html#cb344-3" aria-hidden="true" tabindex="-1"></a>mean3</span></code></pre></div>
 <pre><code>## [1] 34.99</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="hypothesis-testing.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CI high vs. medium</span></span>
-<span id="cb346-2"><a href="hypothesis-testing.html#cb346-2" aria-hidden="true" tabindex="-1"></a>mean_diff_high_med <span class="ot">&lt;-</span> mean2<span class="sc">-</span>mean1</span>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="hypothesis-testing.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CI high vs. medium</span></span>
+<span id="cb346-2"><a href="hypothesis-testing.html#cb346-2" aria-hidden="true" tabindex="-1"></a>mean_diff_high_med <span class="ot">&lt;-</span> mean2 <span class="sc">-</span> mean1</span>
 <span id="cb346-3"><a href="hypothesis-testing.html#cb346-3" aria-hidden="true" tabindex="-1"></a>mean_diff_high_med</span></code></pre></div>
 <pre><code>## [1] 10.36</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="hypothesis-testing.html#cb348-1" aria-hidden="true" tabindex="-1"></a>ci_med_high_lower <span class="ot">&lt;-</span> mean_diff_high_med<span class="sc">-</span>hsd</span>
-<span id="cb348-2"><a href="hypothesis-testing.html#cb348-2" aria-hidden="true" tabindex="-1"></a>ci_med_high_upper <span class="ot">&lt;-</span> mean_diff_high_med<span class="sc">+</span>hsd</span>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="hypothesis-testing.html#cb348-1" aria-hidden="true" tabindex="-1"></a>ci_med_high_lower <span class="ot">&lt;-</span> mean_diff_high_med <span class="sc">-</span> hsd</span>
+<span id="cb348-2"><a href="hypothesis-testing.html#cb348-2" aria-hidden="true" tabindex="-1"></a>ci_med_high_upper <span class="ot">&lt;-</span> mean_diff_high_med <span class="sc">+</span> hsd</span>
 <span id="cb348-3"><a href="hypothesis-testing.html#cb348-3" aria-hidden="true" tabindex="-1"></a>ci_med_high_lower</span></code></pre></div>
 <pre><code>## [1] 8.472566</code></pre>
 <div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="hypothesis-testing.html#cb350-1" aria-hidden="true" tabindex="-1"></a>ci_med_high_upper</span></code></pre></div>
 <pre><code>## [1] 12.24743</code></pre>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="hypothesis-testing.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CI high vs.low</span></span>
-<span id="cb352-2"><a href="hypothesis-testing.html#cb352-2" aria-hidden="true" tabindex="-1"></a>mean_diff_high_low <span class="ot">&lt;-</span> mean3<span class="sc">-</span>mean1</span>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="hypothesis-testing.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CI high vs.low</span></span>
+<span id="cb352-2"><a href="hypothesis-testing.html#cb352-2" aria-hidden="true" tabindex="-1"></a>mean_diff_high_low <span class="ot">&lt;-</span> mean3 <span class="sc">-</span> mean1</span>
 <span id="cb352-3"><a href="hypothesis-testing.html#cb352-3" aria-hidden="true" tabindex="-1"></a>mean_diff_high_low</span></code></pre></div>
 <pre><code>## [1] 20.65</code></pre>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="hypothesis-testing.html#cb354-1" aria-hidden="true" tabindex="-1"></a>ci_low_high_lower <span class="ot">&lt;-</span> mean_diff_high_low<span class="sc">-</span>hsd</span>
-<span id="cb354-2"><a href="hypothesis-testing.html#cb354-2" aria-hidden="true" tabindex="-1"></a>ci_low_high_upper <span class="ot">&lt;-</span> mean_diff_high_low<span class="sc">+</span>hsd</span>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="hypothesis-testing.html#cb354-1" aria-hidden="true" tabindex="-1"></a>ci_low_high_lower <span class="ot">&lt;-</span> mean_diff_high_low <span class="sc">-</span> hsd</span>
+<span id="cb354-2"><a href="hypothesis-testing.html#cb354-2" aria-hidden="true" tabindex="-1"></a>ci_low_high_upper <span class="ot">&lt;-</span> mean_diff_high_low <span class="sc">+</span> hsd</span>
 <span id="cb354-3"><a href="hypothesis-testing.html#cb354-3" aria-hidden="true" tabindex="-1"></a>ci_low_high_lower</span></code></pre></div>
 <pre><code>## [1] 18.76257</code></pre>
 <div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="hypothesis-testing.html#cb356-1" aria-hidden="true" tabindex="-1"></a>ci_low_high_upper</span></code></pre></div>
 <pre><code>## [1] 22.53743</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="hypothesis-testing.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CI medium vs.low</span></span>
-<span id="cb358-2"><a href="hypothesis-testing.html#cb358-2" aria-hidden="true" tabindex="-1"></a>mean_diff_med_low <span class="ot">&lt;-</span> mean3<span class="sc">-</span>mean2</span>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="hypothesis-testing.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CI medium vs.low</span></span>
+<span id="cb358-2"><a href="hypothesis-testing.html#cb358-2" aria-hidden="true" tabindex="-1"></a>mean_diff_med_low <span class="ot">&lt;-</span> mean3 <span class="sc">-</span> mean2</span>
 <span id="cb358-3"><a href="hypothesis-testing.html#cb358-3" aria-hidden="true" tabindex="-1"></a>mean_diff_med_low</span></code></pre></div>
 <pre><code>## [1] 10.29</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="hypothesis-testing.html#cb360-1" aria-hidden="true" tabindex="-1"></a>ci_low_med_lower <span class="ot">&lt;-</span> mean_diff_med_low<span class="sc">-</span>hsd</span>
-<span id="cb360-2"><a href="hypothesis-testing.html#cb360-2" aria-hidden="true" tabindex="-1"></a>ci_low_med_upper <span class="ot">&lt;-</span> mean_diff_med_low<span class="sc">+</span>hsd</span>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="hypothesis-testing.html#cb360-1" aria-hidden="true" tabindex="-1"></a>ci_low_med_lower <span class="ot">&lt;-</span> mean_diff_med_low <span class="sc">-</span> hsd</span>
+<span id="cb360-2"><a href="hypothesis-testing.html#cb360-2" aria-hidden="true" tabindex="-1"></a>ci_low_med_upper <span class="ot">&lt;-</span> mean_diff_med_low <span class="sc">+</span> hsd</span>
 <span id="cb360-3"><a href="hypothesis-testing.html#cb360-3" aria-hidden="true" tabindex="-1"></a>ci_low_med_lower</span></code></pre></div>
 <pre><code>## [1] 8.402566</code></pre>
 <div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="hypothesis-testing.html#cb362-1" aria-hidden="true" tabindex="-1"></a>ci_low_med_upper</span></code></pre></div>

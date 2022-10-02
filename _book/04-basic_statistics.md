@@ -67,7 +67,8 @@ As an example data set, we will be using a data set containing music streaming d
 
 
 ```r
-# read.csv2 is shorthand for read.csv(file, sep = ";")
+# read.csv2 is shorthand for read.csv(file, sep =
+# ';')
 music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata")
 dim(music_data)
 ```
@@ -184,7 +185,7 @@ As the table above shows, the only permissible operation with nominal variables 
 
 
 ```r
-table(music_data$genre) #absolute frequencies
+table(music_data$genre)  #absolute frequencies
 ```
 
 ```
@@ -198,7 +199,7 @@ table(music_data$genre) #absolute frequencies
 ```
 
 ```r
-table(music_data$label) #absolute frequencies
+table(music_data$label)  #absolute frequencies
 ```
 
 ```
@@ -208,7 +209,7 @@ table(music_data$label) #absolute frequencies
 ```
 
 ```r
-table(music_data$explicit) #absolute frequencies
+table(music_data$explicit)  #absolute frequencies
 ```
 
 ```
@@ -223,7 +224,7 @@ Often, we are interested in the relative frequencies, which can be obtained by u
 
 
 ```r
-prop.table(table(music_data$genre)) #relative frequencies
+prop.table(table(music_data$genre))  #relative frequencies
 ```
 
 ```
@@ -237,7 +238,7 @@ prop.table(table(music_data$genre)) #relative frequencies
 ```
 
 ```r
-prop.table(table(music_data$label)) #relative frequencies
+prop.table(table(music_data$label))  #relative frequencies
 ```
 
 ```
@@ -247,7 +248,7 @@ prop.table(table(music_data$label)) #relative frequencies
 ```
 
 ```r
-prop.table(table(music_data$explicit)) #relative frequencies
+prop.table(table(music_data$explicit))  #relative frequencies
 ```
 
 ```
@@ -264,7 +265,8 @@ Note that the above output shows the overall relative frequencies. In many cases
 
 
 ```r
-prop.table(table(select(music_data, genre, explicit)),1) #conditional relative frequencies
+prop.table(table(select(music_data, genre, explicit)),
+    1)  #conditional relative frequencies
 ```
 
 ```
@@ -288,7 +290,8 @@ The 'expert_rating' variable is an example of an **ordinal variable**. Although 
 
 
 ```r
-median_rating <- quantile(music_data$expert_rating, 0.5, type = 1)
+median_rating <- quantile(music_data$expert_rating,
+    0.5, type = 1)
 median_rating
 ```
 
@@ -301,7 +304,8 @@ This means that the "middle" value when the data are arranged is expert rating "
 
 
 ```r
-quantile(music_data$expert_rating,c(0.25,0.5,0.75), type = 1)
+quantile(music_data$expert_rating, c(0.25, 0.5, 0.75),
+    type = 1)
 ```
 
 ```
@@ -315,10 +319,9 @@ This means that the interquartile range is between "fair" and "excellent". If yo
 ```r
 percentiles <- c(0.25, 0.5, 0.75)
 rating_percentiles <- music_data |>
-  group_by(explicit) |>
-  summarize(
-    percentile = percentiles,
-    value = quantile(expert_rating, percentiles, type = 1)) 
+    group_by(explicit) |>
+    summarize(percentile = percentiles, value = quantile(expert_rating,
+        percentiles, type = 1))
 rating_percentiles
 ```
 
@@ -346,7 +349,8 @@ We could, for example, compute the summary statistics for the variables "streams
 
 ```r
 library(psych)
-psych::describe(select(music_data, streams, danceability, valence))
+psych::describe(select(music_data, streams, danceability,
+    valence))
 ```
 
 ```
@@ -367,7 +371,8 @@ The ```psych``` package also contains the ```describeBy()``` function, which let
 
 
 ```r
-describeBy(select(music_data, streams, danceability, valence), music_data$genre,skew = FALSE, range = FALSE)
+describeBy(select(music_data, streams, danceability,
+    valence), music_data$genre, skew = FALSE, range = FALSE)
 ```
 
 ```
@@ -450,7 +455,10 @@ R is open to user contributions and various users have contributed packages that
 
 ```r
 library(summarytools)
-print(dfSummary(select(music_data, streams, valence, genre, label, explicit), plain.ascii = FALSE, style = "grid",valid.col = FALSE, tmp.img.dir = "tmp", graph.magnif = .65),  method = 'render',headings = FALSE,footnote= NA)
+print(dfSummary(select(music_data, streams, valence,
+    genre, label, explicit), plain.ascii = FALSE, style = "grid",
+    valid.col = FALSE, tmp.img.dir = "tmp", graph.magnif = 0.65),
+    method = "render", headings = FALSE, footnote = NA)
 ```
 
 ```{=html}
@@ -472,7 +480,7 @@ print(dfSummary(select(music_data, streams, valence, genre, label, explicit), pl
 [numeric]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean (sd) : 7314674 (39956264)</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">min &le; med &le; max:</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">1003 &le; 333335.5 &le; 2165692479</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">IQR (CV) : 2125326 (5.5)</td></tr></table></td>
       <td align="left" style="vertical-align:middle">63462 distinct values</td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGcAAABKCAQAAAAMeoKaAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmCR4ONjVkLmi+AAAAp0lEQVRo3u3bsQ2AIBBA0cOwo0M4j+7glFpp0EZjwwf/6wjN/QTKS1v0ZKg9gDn/ycnlYTk/0pRqD/Ze+fvz9WqMiIi19oSfdfbYzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcMnPIzCEzh8wcstv+zrG5M7e04VesTqWW5n7W2WMzh2wH1egI1RDbGbwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMDktMzBUMTQ6NTQ6NTMrMDA6MDDzF/oKAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTA5LTMwVDE0OjU0OjUzKzAwOjAwgkpCtgAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg=="></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGcAAABJBAMAAADSySWMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5goCDBo0dPN1HwAAADVJREFUSMftyzEBABAQAMCPQANeBP27WQRg5W6/iDdl9nqs7DSmJEmSJEmSJEnSdylvtHjTAm862kkOB9vNAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTEwLTAyVDEyOjI2OjUyKzAwOjAwt1UzoQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0xMC0wMlQxMjoyNjo1MiswMDowMMYIix0AAAAASUVORK5CYII="></td>
       <td align="center">0
 (0.0%)</td>
     </tr>
@@ -482,7 +490,7 @@ print(dfSummary(select(music_data, streams, valence, genre, label, explicit), pl
 [numeric]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">Mean (sd) : 50.4 (22.3)</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">min &le; med &le; max:</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">0 &le; 50 &le; 99</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">IQR (CV) : 34.2 (0.4)</td></tr></table></td>
       <td align="left" style="vertical-align:middle">1420 distinct values</td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGcAAABKCAQAAAAMeoKaAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmCR4ONjb9JzkEAAABU0lEQVRo3u2YWw7CIBBFwXSP7kHXU/fgKvWrLYaHPAa4M8z5MyRNT3q5jNiPkcRt9guozjo6m/vDNj5sPzfi08ZW/LVW3N2/VT8lyN0YY8w7uhJeo0Ny2OjZB58DnXVS8WOp43N8MepKINIpDVTP70XydfzWGr1nSHVyBMegRU1FfIZgqdMjkBN1LuiqG0KHrrq1Cg5mnS2ddEbPY911qGmvbiid9uoWVgXCdIrDhthnDTrzpuUcVg/bGGqnOFCd2gNaWNiE6WSHDbugi3UQB06fVcM2h9IZG1yndAIRFjbVQUZ1kBGmA17UF3l/Gdjo5I1Ya4WNxxydrYN90eGzVtjwSM/Y7HTS4RcWNtVBRnWQiTQbt2ngjw6PW7UCHXzOBDnHKWOdUH6EVYHqIKM6yAjT+SlqrrNARIfbzYCPsLBZN18vlmF7OEOOZWkQRVjYVAeZL/XcPqACrQVYAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA5LTMwVDE0OjU0OjU0KzAwOjAwNrDEhAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wOS0zMFQxNDo1NDo1NCswMDowMEftfDgAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII="></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGcAAABJBAMAAADSySWMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5goCDBo0dPN1HwAAAMpJREFUSMft1lEOgyAMBmCPMHeCrb0B//3vNkBHADFpWePU0AcfTL8gTSlO0z1jroLo7Z9PorkRjx3EiAjuEOQ/rgPBwS2bEyC/REKAFAGdiMKOtIgj6UXbUggQ4zhEVQuKEFeNYYVCy+lRyvwVFaWQomItG7T0qRJxkXkdlJ0QOcpOowUKY0iNUsJ/UaqfBqVhMdDJ0TqfdWgdgDmKV60a1QkXRKF+ahTWGmiDivtZjFoJrXdELz0CBrJA1T+HDPFOgj0iTXzR3eIDdhKhqxe0o5cAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMTAtMDJUMTI6MjY6NTIrMDA6MDC3VTOhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTEwLTAyVDEyOjI2OjUyKzAwOjAwxgiLHQAAAABJRU5ErkJggg=="></td>
       <td align="center">0
 (0.0%)</td>
     </tr>
@@ -492,7 +500,7 @@ print(dfSummary(select(music_data, streams, valence, genre, label, explicit), pl
 [factor]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">1. Classics/Jazz</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">2. Country</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">3. Electro/Dance</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">4. German Folk</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">5. HipHop/Rap</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">6. other</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">7. Pop</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">8. R&B</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">9. Reggae</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">10. Rock</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">11. Soundtrack</td></tr></table></td>
       <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">80</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">0.1%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">504</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">0.8%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">2703</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">4.0%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">539</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">0.8%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">21131</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">31.6%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">5228</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">7.8%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">30069</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">45.0%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">1881</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">2.8%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">121</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">0.2%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">4214</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">6.3%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">326</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">0.5%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr></table></td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADgAAACwCAQAAADwbGUgAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmCR4ONjb9JzkEAAABHElEQVR42u3cQRKCMBBE0YnlHTmE5+EQnhIXLAxiAgV0ojO/Xbl6FYk0Q1Gkydrm1tgLANqUfUbRAc0N/z8pICAgoEMw5QWRREhuLFY4TqqCKoAtAggICAh4Pn3rqUXu+Zd3Gz5Ui12CZoOZmT2FK/S/SwEBAfuDH6c25Ultjv96YlwDBAQEBNyO/z4sjGtHsm/E+zquHcneqyH/uxQQELA/yLh2ear1pLinWKknzfH0/7cABAQMCPrvwwunp9qyCuCZ6amc5WHyv0sBAQEDgv7r6TfGNd2jH6sVDpJGrID6AAICAuoTrA/1j35E2DSAgICADsGg49oczdBWvH2putjwv0sBAQH7g8GmpxZhXAMEBAQE3E7iXV9/D74AlX5DonrBNp4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMDktMzBUMTQ6NTQ6NTQrMDA6MDA2sMSEAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTA5LTMwVDE0OjU0OjU0KzAwOjAwR+18OAAAAD10RVh0aWNjOmNvcHlyaWdodABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLp5m3CkAAAAjdEVYdGljYzpkZXNjcmlwdGlvbgBHZW5lcmljIFJHQiBQcm9maWxlGqc4jgAAAABJRU5ErkJggg=="></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADgAAACwBAMAAACoS7CYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5goCDBo0dPN1HwAAAIpJREFUWMPt1rENwCAMBEBW8Ag2G8D+uyVSigjJvIgRgeK/vQa9DSKlPVHxQtyLEkYj7kEJo5n2MVfiKoTFi5tTt484eQWbaIO5NiF+Q9jt3Mi6eB+oENcgLB6ODKK58RfsSSEOIux2ZmQAcyGuQli8CEAlHogSRnP/sO+bQIwj7BZOBaISD8S/cwEoD0WI9I+a0gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMi0xMC0wMlQxMjoyNjo1MiswMDowMLdVM6EAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjItMTAtMDJUMTI6MjY6NTIrMDA6MDDGCIsdAAAAAElFTkSuQmCC"></td>
       <td align="center">0
 (0.0%)</td>
     </tr>
@@ -502,7 +510,7 @@ print(dfSummary(select(music_data, streams, valence, genre, label, explicit), pl
 [factor]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">1. Independent</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">2. Sony Music</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">3. Universal Music</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">4. Warner Music</td></tr></table></td>
       <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">22570</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">33.8%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">12390</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">18.5%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">21632</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">32.4%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">10204</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">15.3%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr></table></td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAC4AAABECAQAAABU38+AAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmCR4ONjb9JzkEAAAAmklEQVRYw+2Wyw2AIBBEWWOP9qD1aA9UqUcJgmF/JJvM3Li8hNnlBbqTXxZHdmD4Wh4ugwHs1IGntCnReV4tgAMOuDLV888ySidUuorEmDclb14t55Byj+ELspXLmUrcVQQccMCVgc+bEfi8n9r0hl/o77ziriLggAOuTFyfs5Q7/nlu1vKnXH5lcbcFcMABV2aecq0Tt3NX+APNZRc7yBQaIgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMi0wOS0zMFQxNDo1NDo1NCswMDowMDawxIQAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjItMDktMzBUMTQ6NTQ6NTQrMDA6MDBH7Xw4AAAAPXRFWHRpY2M6Y29weXJpZ2h0AENvcHlyaWdodCAyMDA3IEFwcGxlIEluYy4sIGFsbCByaWdodHMgcmVzZXJ2ZWQunmbcKQAAACN0RVh0aWNjOmRlc2NyaXB0aW9uAEdlbmVyaWMgUkdCIFByb2ZpbGUapziOAAAAAElFTkSuQmCC"></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAC0AAABEBAMAAADnz6E7AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5goCDBo0dPN1HwAAAFBJREFUOMtjYKA9UEIDClBxZWNUMCqOKo4r3ATRgAC6ekVUcbj5o+JYxXGFG65wJhj+UIBhLwQYjYqjiuMKN0LhjC4ONd9oVBy7OK5woyUAAI5glsNJfR49AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTEwLTAyVDEyOjI2OjUyKzAwOjAwt1UzoQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0xMC0wMlQxMjoyNjo1MiswMDowMMYIix0AAAAASUVORK5CYII="></td>
       <td align="center">0
 (0.0%)</td>
     </tr>
@@ -512,7 +520,7 @@ print(dfSummary(select(music_data, streams, valence, genre, label, explicit), pl
 [factor]</td>
       <td align="left" style="padding:8;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">1. not explicit</td></tr><tr style="background-color:transparent"><td style="padding:0;margin:0;border:0" align="left">2. explicit</td></tr></table></td>
       <td align="left" style="padding:0;vertical-align:middle"><table style="border-collapse:collapse;border:none;margin:0"><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">58603</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">87.7%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr><tr style="background-color:transparent"><td style="padding:0 5px 0 7px;margin:0;border:0" align="right">8193</td><td style="padding:0 2px 0 0;border:0;" align="left">(</td><td style="padding:0;border:0" align="right">12.3%</td><td style="padding:0 4px 0 2px;border:0" align="left">)</td></tr></table></td>
-      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGIAAAAlCAQAAAAT8fRRAAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmCR4ONjb9JzkEAAAAh0lEQVRYw+2XQQqAMAwEE/GP/kHfo3/oK/UahULpwWyWnVsuIUMT2Ppt9VmyB5AEk8Qai6vQgezekTDbsmcbpL0qinWSBAqSQEESKEgCBQqJT+xoc12S8Zj5fLrN/8S5+dbp7EbxA/qRhqI4+qVQrJMkUJAECpJAQRIoSAIFvv9EVSjWSRIoPI/AC6MtXfnhAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA5LTMwVDE0OjU0OjU0KzAwOjAwNrDEhAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wOS0zMFQxNDo1NDo1NCswMDowMEftfDgAAAA9dEVYdGljYzpjb3B5cmlnaHQAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC6eZtwpAAAAI3RFWHRpY2M6ZGVzY3JpcHRpb24AR2VuZXJpYyBSR0IgUHJvZmlsZRqnOI4AAAAASUVORK5CYII="></td>
+      <td align="left" style="vertical-align:middle;padding:0;background-color:transparent;"><img style="border:none;background-color:transparent;padding:0;max-width:max-content;" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAGEAAAAlBAMAAACg4ZrqAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEX////9/v2mpqbw8PD///+xh0SBAAAAAnRSTlMAAHaTzTgAAAABYktHRACIBR1IAAAAB3RJTUUH5goCDBo0dPN1HwAAADdJREFUOMtjYBg+QIlooADVoWxMLBjVMaqDeB2kp0RBooEAih2KJOiA+GNUx6gO6uogPSUOBwAAJaKl00rgu8kAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMTAtMDJUMTI6MjY6NTIrMDA6MDC3VTOhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTEwLTAyVDEyOjI2OjUyKzAwOjAwxgiLHQAAAABJRU5ErkJggg=="></td>
       <td align="center">0
 (0.0%)</td>
     </tr>
@@ -611,7 +619,7 @@ To also take the other end of the distribution into consideration, we would need
 
 
 ```r
-pnorm(-1.96)*2
+pnorm(-1.96) * 2
 ```
 
 ```
@@ -637,7 +645,7 @@ And the associated probability is:
 
 
 ```r
-pnorm(min(music_data$tempo_std))*2
+pnorm(min(music_data$tempo_std)) * 2
 ```
 
 ```

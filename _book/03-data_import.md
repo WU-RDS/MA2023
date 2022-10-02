@@ -78,14 +78,14 @@ Sometimes, you may need to import data files created by other software packages,
 
 
 ```r
-#import excel files
-library(readxl) #load package to import Excel files
+# import excel files
+library(readxl)  #load package to import Excel files
 excel_sheets("test_data.xlsx")
-survey_data_xlsx <- read_excel("test_data.xlsx", sheet = "mrda_2016_survey") # "sheet=x"" specifies which sheet to import
+survey_data_xlsx <- read_excel("test_data.xlsx", sheet = "mrda_2016_survey")  # 'sheet=x'' specifies which sheet to import
 head(survey_data_xlsx)
 
-library(haven) #load package to import SPSS files
-#import SPSS files
+library(haven)  #load package to import SPSS files
+# import SPSS files
 survey_data_spss <- read_sav("test_data.sav")
 head(survey_data_spss)
 ```
@@ -99,7 +99,7 @@ There is also a dedicated package 'qualtRics' which lets you conveniently import
 
 ```r
 library(qualtRics)
-qualtrics <- read_survey('qualtrics_survey.csv')
+qualtrics <- read_survey("qualtrics_survey.csv")
 head(qualtrics)
 ```
 
@@ -131,27 +131,28 @@ Sometimes you may come across interesting data on websites that you would like t
 ```r
 library(rvest)
 url <- "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
-population <- read_html(url) 
+population <- read_html(url)
 population <- html_nodes(population, "table.wikitable")
 print(population)
 ```
 
 ```
 ## {xml_nodeset (1)}
-## [1] <table class="wikitable sortable"><tbody>\n<tr>\n<th>Rank</th>\n<th><a hr ...
+## [1] <table class="wikitable sortable"><tbody>\n<tr>\n<th>Rank</th>\n<th>\n<a  ...
 ```
 
 The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let's read the first table using the  ```html_table()``` function. Note that ```population``` is of class "list". A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., ```population[[1]]``` gets us the first table from the list of tables on the website; the argument ```fill = TRUE``` ensures that empty cells are replaced with missing values when reading the table).
 
 
 ```r
-population <- population[[1]] %>% html_table(fill = TRUE)
-head(population) #checks if we scraped the desired data
+population <- population[[1]] %>%
+    html_table(fill = TRUE)
+head(population)  #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country or dependent territory"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["chr"],"align":["left"]},{"label":["% of world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"N/A","3":"World","4":"7,911,029,000","5":"N/A","6":"22 Nov 2021","7":"UN projection[2]","8":"N/A"},{"1":"1","2":"China","3":"Asia","4":"1,411,778,724","5":"17.8%","6":"1 Nov 2020","7":"2020 census result[3]","8":"The census figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty on 1 July 1997 and the latter on 20 December 1999.\\nChina's status is disputed, as it is currently not recognized by certain countries. See List of states with limited recognition."},{"1":"2","2":"India","3":"Asia","4":"1,384,652,149","5":"17.5%","6":"22 Nov 2021","7":"National population clock[4]","8":"The figure includes the population of India-administered Kashmir but not of China- or Pakistan-administered Kashmir."},{"1":"3","2":"United States","3":"Americas","4":"332,751,452","5":"4.21%","6":"22 Nov 2021","7":"National population clock[5]","8":"Includes the 50 states and the District of Columbia, but excludes the U.S. territories."},{"1":"4","2":"Indonesia","3":"Asia","4":"271,350,000","5":"3.43%","6":"31 Dec 2020","7":"National annual estimate[6]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"225,200,000","5":"2.85%","6":"1 Jul 2021","7":"UN projection[2]","8":"The figure includes the population of Pakistan-administered Kashmir but not of China- or India-administered Kashmir."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country / Dependency"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Continent"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Percentage of the world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"All","4":"7,981,873,000","5":"100%","6":"2 Oct 2022","7":"UN projection[3]","8":""},{"1":"1","2":"China","3":"Asia","4":"1,412,600,000","5":"17.7%","6":"31 Dec 2021","7":"Official estimate[4]","8":"The population figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty in 1997 and the latter in 1999."},{"1":"2","2":"India","3":"Asia","4":"1,375,586,000","5":"17.2%","6":"1 Mar 2022","7":"Official projection[5]","8":"The figure includes the population of Indian-administered Jammu and Kashmir and Ladakh."},{"1":"3","2":"United States","3":"North America","4":"331,893,745","5":"4.16%","6":"1 Jul 2021","7":"Official estimate[6]","8":"The figure includes the 50 states and the District of Columbia, but excludes the territories of the United States."},{"1":"4","2":"Indonesia","3":"Asia[b]","4":"275,773,800","5":"3.46%","6":"1 Jul 2022","7":"Official estimate[7]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"229,489,000","5":"2.88%","6":"1 Jul 2022","7":"UN projection[3]","8":"The figure includes the population of Pakistan-administered Azad Kashmir and Gilgit-Baltistan."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -171,13 +172,14 @@ If we wanted to use this variable for some kind of analysis, we would first need
 
 ```r
 library(stringr)
-population$Population <- as.numeric(str_replace_all(population$Population, pattern = ",", replacement = "")) #convert to numeric
-head(population) #checks if we scraped the desired data
+population$Population <- as.numeric(str_replace_all(population$Population,
+    pattern = ",", replacement = ""))  #convert to numeric
+head(population)  #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country or dependent territory"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Region"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["% of world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"N/A","3":"World","4":"7911029000","5":"N/A","6":"22 Nov 2021","7":"UN projection[2]","8":"N/A"},{"1":"1","2":"China","3":"Asia","4":"1411778724","5":"17.8%","6":"1 Nov 2020","7":"2020 census result[3]","8":"The census figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty on 1 July 1997 and the latter on 20 December 1999.\\nChina's status is disputed, as it is currently not recognized by certain countries. See List of states with limited recognition."},{"1":"2","2":"India","3":"Asia","4":"1384652149","5":"17.5%","6":"22 Nov 2021","7":"National population clock[4]","8":"The figure includes the population of India-administered Kashmir but not of China- or Pakistan-administered Kashmir."},{"1":"3","2":"United States","3":"Americas","4":"332751452","5":"4.21%","6":"22 Nov 2021","7":"National population clock[5]","8":"Includes the 50 states and the District of Columbia, but excludes the U.S. territories."},{"1":"4","2":"Indonesia","3":"Asia","4":"271350000","5":"3.43%","6":"31 Dec 2020","7":"National annual estimate[6]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"225200000","5":"2.85%","6":"1 Jul 2021","7":"UN projection[2]","8":"The figure includes the population of Pakistan-administered Kashmir but not of China- or India-administered Kashmir."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country / Dependency"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Continent"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Percentage of the world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"All","4":"7981873000","5":"100%","6":"2 Oct 2022","7":"UN projection[3]","8":""},{"1":"1","2":"China","3":"Asia","4":"1412600000","5":"17.7%","6":"31 Dec 2021","7":"Official estimate[4]","8":"The population figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty in 1997 and the latter in 1999."},{"1":"2","2":"India","3":"Asia","4":"1375586000","5":"17.2%","6":"1 Mar 2022","7":"Official projection[5]","8":"The figure includes the population of Indian-administered Jammu and Kashmir and Ladakh."},{"1":"3","2":"United States","3":"North America","4":"331893745","5":"4.16%","6":"1 Jul 2021","7":"Official estimate[6]","8":"The figure includes the 50 states and the District of Columbia, but excludes the territories of the United States."},{"1":"4","2":"Indonesia","3":"Asia[b]","4":"275773800","5":"3.46%","6":"1 Jul 2022","7":"Official estimate[7]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"229489000","5":"2.88%","6":"1 Jul 2022","7":"UN projection[3]","8":"The figure includes the population of Pakistan-administered Azad Kashmir and Gilgit-Baltistan."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -213,8 +215,8 @@ Let's assume that you would like to obtain population data again. The World Bank
 
 ```r
 library(jsonlite)
-url <- "http://api.worldbank.org/v2/countries/AT/indicators/SP.POP.TOTL/?date=1960:2019&format=json&per_page=100" #specifies url
-ctrydata <- fromJSON(url) #parses the data 
+url <- "http://api.worldbank.org/v2/countries/AT/indicators/SP.POP.TOTL/?date=1960:2019&format=json&per_page=100"  #specifies url
+ctrydata <- fromJSON(url)  #parses the data 
 str(ctrydata)
 ```
 
@@ -227,7 +229,7 @@ str(ctrydata)
 ##   ..$ total      : int 60
 ##   ..$ sourceid   : chr "2"
 ##   ..$ sourcename : chr "World Development Indicators"
-##   ..$ lastupdated: chr "2021-10-28"
+##   ..$ lastupdated: chr "2022-09-16"
 ##  $ :'data.frame':	60 obs. of  8 variables:
 ##   ..$ indicator      :'data.frame':	60 obs. of  2 variables:
 ##   .. ..$ id   : chr [1:60] "SP.POP.TOTL" "SP.POP.TOTL" "SP.POP.TOTL" "SP.POP.TOTL" ...
@@ -244,7 +246,7 @@ str(ctrydata)
 ```
 
 ```r
-head(ctrydata[[2]][,c("value","date")]) #checks if we scraped the desired data
+head(ctrydata[[2]][, c("value", "date")])  #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
@@ -260,15 +262,17 @@ An even more convenient way to obtain data from web APIs is to use existing R pa
 
 ```r
 library(gtrendsR)
-#specify search term, area, source and time frame
-google_trends <- gtrends("data science", geo = c("US"), gprop = c("web"), time = "2012-09-01 2020-10-06")
-#inspect trend over time data frame
+# specify search term, area, source and time
+# frame
+google_trends <- gtrends("data science", geo = c("US"),
+    gprop = c("web"), time = "2012-09-01 2020-10-06")
+# inspect trend over time data frame
 head(google_trends$interest_over_time)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["date"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["hits"],"name":[2],"type":["int"],"align":["right"]},{"label":["keyword"],"name":[3],"type":["chr"],"align":["left"]},{"label":["geo"],"name":[4],"type":["chr"],"align":["left"]},{"label":["time"],"name":[5],"type":["chr"],"align":["left"]},{"label":["gprop"],"name":[6],"type":["chr"],"align":["left"]},{"label":["category"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"2012-09-01","2":"16","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-10-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-11-01","2":"11","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-12-01","2":"9","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-01-01","2":"14","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-02-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["date"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["hits"],"name":[2],"type":["int"],"align":["right"]},{"label":["keyword"],"name":[3],"type":["chr"],"align":["left"]},{"label":["geo"],"name":[4],"type":["chr"],"align":["left"]},{"label":["time"],"name":[5],"type":["chr"],"align":["left"]},{"label":["gprop"],"name":[6],"type":["chr"],"align":["left"]},{"label":["category"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"2012-09-01","2":"16","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-10-01","2":"13","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-11-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-12-01","2":"10","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-01-01","2":"13","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-02-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -277,7 +281,8 @@ Although we haven't covered data visualization yet (see chapter 5), you could al
 
 ```r
 # plot data
-plot(google_trends$interest_over_time[,c("date","hits")],type = "b")
+plot(google_trends$interest_over_time[, c("date", "hits")],
+    type = "b")
 ```
 
 <img src="03-data_import_files/figure-html/unnamed-chunk-15-1.png" width="672" />
@@ -287,11 +292,13 @@ Another advantage of R is that it is open to user contributions. This often mean
 
 ```r
 library(COVID19)
-covid_data <- covid19(country = "US",level = 2,start = "2020-01-01")
+covid_data <- covid19(country = "US", level = 2, start = "2020-01-01")
 ```
 
 ```
 ## We have invested a lot of time and effort in creating COVID-19 Data Hub, please cite the following when using it:
+## 
+## To cite package 'COVID19' in publications use:
 ## 
 ##   Guidotti, E., Ardia, D., (2020), "COVID-19 Data Hub", Journal of Open
 ##   Source Software 5(51):2376, doi: 10.21105/joss.02376.
@@ -309,7 +316,7 @@ covid_data <- covid19(country = "US",level = 2,start = "2020-01-01")
 ##     pages = {2376},
 ##   }
 ## 
-## To retrieve citation and metadata of the data sources see ?covid19cite. To hide this message use 'verbose = FALSE'.
+## To hide this message use 'verbose = FALSE'.
 ```
 
 ```r
@@ -318,7 +325,7 @@ head(covid_data)
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["confirmed"],"name":[3],"type":["int"],"align":["right"]},{"label":["deaths"],"name":[4],"type":["int"],"align":["right"]},{"label":["recovered"],"name":[5],"type":["int"],"align":["right"]},{"label":["tests"],"name":[6],"type":["int"],"align":["right"]},{"label":["vaccines"],"name":[7],"type":["int"],"align":["right"]},{"label":["people_vaccinated"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["people_fully_vaccinated"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["hosp"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["icu"],"name":[11],"type":["int"],"align":["right"]},{"label":["vent"],"name":[12],"type":["int"],"align":["right"]},{"label":["school_closing"],"name":[13],"type":["int"],"align":["right"]},{"label":["workplace_closing"],"name":[14],"type":["int"],"align":["right"]},{"label":["cancel_events"],"name":[15],"type":["int"],"align":["right"]},{"label":["gatherings_restrictions"],"name":[16],"type":["int"],"align":["right"]},{"label":["transport_closing"],"name":[17],"type":["int"],"align":["right"]},{"label":["stay_home_restrictions"],"name":[18],"type":["int"],"align":["right"]},{"label":["internal_movement_restrictions"],"name":[19],"type":["int"],"align":["right"]},{"label":["international_movement_restrictions"],"name":[20],"type":["int"],"align":["right"]},{"label":["information_campaigns"],"name":[21],"type":["int"],"align":["right"]},{"label":["testing_policy"],"name":[22],"type":["int"],"align":["right"]},{"label":["contact_tracing"],"name":[23],"type":["int"],"align":["right"]},{"label":["facial_coverings"],"name":[24],"type":["int"],"align":["right"]},{"label":["vaccination_policy"],"name":[25],"type":["int"],"align":["right"]},{"label":["elderly_people_protection"],"name":[26],"type":["int"],"align":["right"]},{"label":["government_response_index"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["stringency_index"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["containment_health_index"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["economic_support_index"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["administrative_area_level"],"name":[31],"type":["int"],"align":["right"]},{"label":["administrative_area_level_1"],"name":[32],"type":["chr"],"align":["left"]},{"label":["administrative_area_level_2"],"name":[33],"type":["chr"],"align":["left"]},{"label":["administrative_area_level_3"],"name":[34],"type":["lgl"],"align":["right"]},{"label":["latitude"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["longitude"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[37],"type":["int"],"align":["right"]},{"label":["iso_alpha_3"],"name":[38],"type":["chr"],"align":["left"]},{"label":["iso_alpha_2"],"name":[39],"type":["chr"],"align":["left"]},{"label":["iso_numeric"],"name":[40],"type":["int"],"align":["right"]},{"label":["iso_currency"],"name":[41],"type":["chr"],"align":["left"]},{"label":["key_local"],"name":[42],"type":["chr"],"align":["left"]},{"label":["key_google_mobility"],"name":[43],"type":["chr"],"align":["left"]},{"label":["key_apple_mobility"],"name":[44],"type":["chr"],"align":["left"]},{"label":["key_jhu_csse"],"name":[45],"type":["chr"],"align":["left"]},{"label":["key_nuts"],"name":[46],"type":["chr"],"align":["left"]},{"label":["key_gadm"],"name":[47],"type":["chr"],"align":["left"]}],"data":[{"1":"10b692cc","2":"2020-03-16","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-17","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-18","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-19","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-20","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-21","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["date"],"name":[2],"type":["date"],"align":["right"]},{"label":["confirmed"],"name":[3],"type":["int"],"align":["right"]},{"label":["deaths"],"name":[4],"type":["int"],"align":["right"]},{"label":["recovered"],"name":[5],"type":["int"],"align":["right"]},{"label":["tests"],"name":[6],"type":["int"],"align":["right"]},{"label":["vaccines"],"name":[7],"type":["int"],"align":["right"]},{"label":["people_vaccinated"],"name":[8],"type":["int"],"align":["right"]},{"label":["people_fully_vaccinated"],"name":[9],"type":["int"],"align":["right"]},{"label":["hosp"],"name":[10],"type":["int"],"align":["right"]},{"label":["icu"],"name":[11],"type":["int"],"align":["right"]},{"label":["vent"],"name":[12],"type":["int"],"align":["right"]},{"label":["school_closing"],"name":[13],"type":["int"],"align":["right"]},{"label":["workplace_closing"],"name":[14],"type":["int"],"align":["right"]},{"label":["cancel_events"],"name":[15],"type":["int"],"align":["right"]},{"label":["gatherings_restrictions"],"name":[16],"type":["int"],"align":["right"]},{"label":["transport_closing"],"name":[17],"type":["int"],"align":["right"]},{"label":["stay_home_restrictions"],"name":[18],"type":["int"],"align":["right"]},{"label":["internal_movement_restrictions"],"name":[19],"type":["int"],"align":["right"]},{"label":["international_movement_restrictions"],"name":[20],"type":["int"],"align":["right"]},{"label":["information_campaigns"],"name":[21],"type":["int"],"align":["right"]},{"label":["testing_policy"],"name":[22],"type":["int"],"align":["right"]},{"label":["contact_tracing"],"name":[23],"type":["int"],"align":["right"]},{"label":["facial_coverings"],"name":[24],"type":["int"],"align":["right"]},{"label":["vaccination_policy"],"name":[25],"type":["int"],"align":["right"]},{"label":["elderly_people_protection"],"name":[26],"type":["int"],"align":["right"]},{"label":["government_response_index"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["stringency_index"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["containment_health_index"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["economic_support_index"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["administrative_area_level"],"name":[31],"type":["int"],"align":["right"]},{"label":["administrative_area_level_1"],"name":[32],"type":["chr"],"align":["left"]},{"label":["administrative_area_level_2"],"name":[33],"type":["chr"],"align":["left"]},{"label":["administrative_area_level_3"],"name":[34],"type":["chr"],"align":["left"]},{"label":["latitude"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["longitude"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["population"],"name":[37],"type":["int"],"align":["right"]},{"label":["iso_alpha_3"],"name":[38],"type":["chr"],"align":["left"]},{"label":["iso_alpha_2"],"name":[39],"type":["chr"],"align":["left"]},{"label":["iso_numeric"],"name":[40],"type":["int"],"align":["right"]},{"label":["iso_currency"],"name":[41],"type":["chr"],"align":["left"]},{"label":["key_local"],"name":[42],"type":["chr"],"align":["left"]},{"label":["key_google_mobility"],"name":[43],"type":["chr"],"align":["left"]},{"label":["key_apple_mobility"],"name":[44],"type":["chr"],"align":["left"]},{"label":["key_jhu_csse"],"name":[45],"type":["chr"],"align":["left"]},{"label":["key_nuts"],"name":[46],"type":["lgl"],"align":["right"]},{"label":["key_gadm"],"name":[47],"type":["chr"],"align":["left"]}],"data":[{"1":"10b692cc","2":"2020-03-16","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-17","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-18","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-19","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-20","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"},{"1":"10b692cc","2":"2020-03-21","3":"NA","4":"NA","5":"NA","6":"NA","7":"NA","8":"NA","9":"NA","10":"NA","11":"NA","12":"NA","13":"NA","14":"NA","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"NA","21":"NA","22":"NA","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"NA","31":"2","32":"United States","33":"Northern Mariana Islands","34":"NA","35":"14.15569","36":"145.2119","37":"55144","38":"USA","39":"US","40":"840","41":"USD","42":"69","43":"NA","44":"Northern Mariana Islands","45":"US69","46":"NA","47":"MNP"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -327,7 +334,8 @@ Again, we could plot this data easily. In the following example, we first subset
 
 ```r
 # plot data
-plot(covid_data[covid_data$administrative_area_level_2=="New York",c("date","confirmed")],type = "l")
+plot(covid_data[covid_data$administrative_area_level_2 ==
+    "New York", c("date", "confirmed")], type = "l")
 ```
 
 <img src="03-data_import_files/figure-html/unnamed-chunk-17-1.png" width="672" />
@@ -354,10 +362,10 @@ plot(covid_data[covid_data$administrative_area_level_2=="New York",c("date","con
 
 
 ```r
-student <- c('Max','Jonas','Saskia','Victoria')
-grade <- c(3,2,1,2)
-date <- as.Date(c('2020-10-06','2020-10-08','2020-10-09'))
-df <- data.frame(student,grade,date)
+student <- c("Max", "Jonas", "Saskia", "Victoria")
+grade <- c(3, 2, 1, 2)
+date <- as.Date(c("2020-10-06", "2020-10-08", "2020-10-09"))
+df <- data.frame(student, grade, date)
 ```
 
 - [ ] Error because a data frame can not have different data types

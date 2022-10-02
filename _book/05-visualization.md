@@ -101,7 +101,8 @@ Once we have our data set we can begin constructing the plot. As mentioned previ
 
 ```r
 library(ggplot2)
-bar_chart <- ggplot(table_plot_rel, aes(x = Genre,y = Freq))
+bar_chart <- ggplot(table_plot_rel, aes(x = Genre,
+    y = Freq))
 bar_chart
 ```
 
@@ -114,7 +115,7 @@ You can see that the coordinate system is empty. This is because so far, we have
 
 
 ```r
-bar_chart + geom_col() 
+bar_chart + geom_col()
 ```
 
 <div class="figure" style="text-align: center">
@@ -126,9 +127,8 @@ Now we have specified the data, the scales and the shape. Specifying this inform
 
 
 ```r
-bar_chart + geom_col() +
-  ylab("Relative frequency") + 
-  xlab("Genre") 
+bar_chart + geom_col() + ylab("Relative frequency") +
+    xlab("Genre")
 ```
 
 <div class="figure" style="text-align: center">
@@ -140,10 +140,9 @@ How about adding some value labels to the bars? This can be done using ```geom_t
 
 
 ```r
-bar_chart + geom_col() +
-  ylab("Relative frequency") + 
-  xlab("Genre") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq/sum(Freq) * 100)), vjust=-0.2) 
+bar_chart + geom_col() + ylab("Relative frequency") +
+    xlab("Genre") + geom_text(aes(label = sprintf("%.0f%%",
+    Freq/sum(Freq) * 100)), vjust = -0.2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -333,23 +332,26 @@ To visualize the co-variation between categorical variables, you’ll need to co
 
 ```r
 library(gtools)
-music_data$streams_cat <- as.numeric(quantcut(music_data$streams, 5, na.rm=TRUE))
-music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness, 3, na.rm=TRUE))
+music_data$streams_cat <- as.numeric(quantcut(music_data$streams,
+    5, na.rm = TRUE))
+music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness,
+    3, na.rm = TRUE))
 
-music_data$streams_cat <- factor(music_data$streams_cat, levels = 1:5, labels = c("low", "low-med", "medium", "med-high", "high")) #convert to factor
-music_data$speech_cat <- factor(music_data$speech_cat, levels = 1:3, labels = c("low", "medium", "high")) #convert to factor
+music_data$streams_cat <- factor(music_data$streams_cat,
+    levels = 1:5, labels = c("low", "low-med", "medium",
+        "med-high", "high"))  #convert to factor
+music_data$speech_cat <- factor(music_data$speech_cat,
+    levels = 1:3, labels = c("low", "medium", "high"))  #convert to factor
 ```
 
 Now we have multiple ways to visualize a relationship between the two variables with ggplot. One option would be to use a variation of the scatterplot which counts how many points overlap at any given point and increases the dot size accordingly. This can be achieved with ```geom_count()``` as the example below shows where the `stat(prop)` argument assures that we get relative frequencies and with the `group` argument we tell R to compute the relative frequencies by speechiness.
 
 
 ```r
-ggplot(data = music_data) + 
-  geom_count(aes(x = speech_cat, y = streams_cat, size = stat(prop), group = speech_cat))  + 
-  ylab("Popularity") + 
-  xlab("Speechiness") + 
-  labs(size = "Proportion") +
-  theme_bw()
+ggplot(data = music_data) + geom_count(aes(x = speech_cat,
+    y = streams_cat, size = stat(prop), group = speech_cat)) +
+    ylab("Popularity") + xlab("Speechiness") + labs(size = "Proportion") +
+    theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -362,14 +364,13 @@ Another option would be to use a tile plot that changes the color of the tile ba
 
 
 ```r
-table_plot_rel <- prop.table(table(music_data[,c("speech_cat", "streams_cat")]),1)
+table_plot_rel <- prop.table(table(music_data[, c("speech_cat",
+    "streams_cat")]), 1)
 table_plot_rel <- as.data.frame(table_plot_rel)
 
-ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) + 
-  geom_tile(aes(fill = Freq)) + 
-  ylab("Populartiy") + 
-  xlab("Speechiness") + 
-  theme_bw()
+ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) +
+    geom_tile(aes(fill = Freq)) + ylab("Populartiy") +
+    xlab("Speechiness") + theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -396,7 +397,7 @@ head(music_data)
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["track_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["min_rank"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["int"],"align":["right"]},{"label":["isrc"],"name":[4],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[5],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[6],"type":["date"],"align":["right"]},{"label":["explicit"],"name":[7],"type":["fct"],"align":["left"]},{"label":["danceability"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["duration_ms"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["loudness"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["label"],"name":[17],"type":["fct"],"align":["left"]},{"label":["rep_ctry"],"name":[18],"type":["fct"],"align":["left"]},{"label":["genre"],"name":[19],"type":["fct"],"align":["left"]},{"label":["streams_cat"],"name":[20],"type":["fct"],"align":["left"]},{"label":["speech_cat"],"name":[21],"type":["fct"],"align":["left"]}],"data":[{"1":"000xQL6tZNLJzIrtIgxqSl","2":"65","3":"4066","4":"USRC11700675","5":"5ZsFI1h6hIdQRw2ti0hz81","6":"2017-03-23","7":"not explicit","8":"0.748","9":"188491","10":"0.627","11":"-6.029","12":"0.0644","13":"0.0000","14":"0.0852","15":"0.524","16":"120.963","17":"SONY","18":"US","19":"Rock","20":"low-med","21":"medium"},{"1":"003eoIwxETJujVWmNFMoZy","2":"136","3":"3871","4":"USUM71808193","5":"2wUjUUtkb5lvLKcGKsKqsR","6":"2018-06-15","7":"not explicit","8":"0.353","9":"193680","10":"0.755","11":"-6.276","12":"0.7330","13":"0.0000","14":"0.3900","15":"0.437","16":"191.153","17":"UMG","18":"US","19":"Pop","20":"low-med","21":"high"},{"1":"003vvx7Niy0yvhvHt4a68B","2":"197","3":"4574","4":"USIR20400274","5":"0C0XlULifJtAgn6ZNCW2eu","6":"2004-06-01","7":"not explicit","8":"0.352","9":"222973","10":"0.911","11":"-5.230","12":"0.0747","13":"0.0000","14":"0.0995","15":"0.236","16":"148.033","17":"UMG","18":"US","19":"Rock","20":"low-med","21":"medium"},{"1":"009CKw0AJZiyaIFG8uGl5C","2":"22","3":"11633","4":"ATR211823101","5":"5DxtpBc8OxcLW5KvAwtzBy","6":"2018-07-27","7":"not explicit","8":"0.761","9":"184274","10":"0.956","11":"-4.320","12":"0.0283","13":"0.0000","14":"0.3160","15":"0.973","16":"133.989","17":"INDEP","18":"AT","19":"Pop","20":"med-high","21":"low"},{"1":"00adbfJZUIpz8vRycsR7WV","2":"168","3":"5076","4":"DEA621801609","5":"6gto7HVNhu4ARE3P3g8Y5Y","6":"2018-12-07","7":"explicit","8":"0.560","9":"183400","10":"0.734","11":"-5.976","12":"0.0635","13":"0.0001","14":"0.1700","15":"0.191","16":"76.042","17":"WARNER","18":"DE","19":"HipHop & Rap","20":"medium","21":"medium"},{"1":"00gv2BypA7ieovRSsD7rO8","2":"32","3":"11951","4":"DEYD21901001","5":"0lFLP59V4TY3XgnrkFIwxK","6":"2019-07-26","7":"explicit","8":"0.827","9":"163195","10":"0.671","11":"-5.942","12":"0.0394","13":"0.0007","14":"0.0694","15":"0.668","16":"102.003","17":"WARNER","18":"DE","19":"HipHop & Rap","20":"med-high","21":"low"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["fct"],"align":["left"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["date"],"align":["right"]},{"label":["genre"],"name":[28],"type":["fct"],"align":["left"]},{"label":["label"],"name":[29],"type":["fct"],"align":["left"]},{"label":["top10"],"name":[30],"type":["lgl"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["ord"],"align":["right"]},{"label":["streams_cat"],"name":[32],"type":["fct"],"align":["left"]},{"label":["speech_cat"],"name":[33],"type":["fct"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"not explicit","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"TRUE","31":"excellent","32":"high","33":"low"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"not explicit","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"FALSE","31":"good","32":"high","33":"high"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"not explicit","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"FALSE","31":"good","32":"low","33":"high"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"not explicit","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"FALSE","31":"poor","32":"low-med","33":"high"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"not explicit","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"FALSE","31":"excellent","32":"med-high","33":"high"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"not explicit","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"TRUE","31":"fair","32":"high","33":"medium"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -505,9 +506,9 @@ In case you would like to create the boxplot on the total data (i.e., not by gro
 
 
 ```r
-ggplot(music_data,aes(x = log_streams, y = "")) +
-  geom_boxplot(coef = 3,width=0.3) + 
-  labs(x = "Number of streams (log-scale)", y = "") 
+ggplot(music_data, aes(x = log_streams, y = "")) +
+    geom_boxplot(coef = 3, width = 0.3) + labs(x = "Number of streams (log-scale)",
+    y = "")
 ```
 
 <div class="figure" style="text-align: center">
@@ -531,13 +532,14 @@ To make plotting the desired comparison easier, we can compute all relevant stat
 
 ```r
 library(Rmisc)
-mean_data <- summarySE(music_data, measurevar="streams", groupvars=c("genre_dummy"))
+mean_data <- summarySE(music_data, measurevar = "streams",
+    groupvars = c("genre_dummy"))
 mean_data
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["genre_dummy"],"name":[1],"type":["fct"],"align":["left"]},{"label":["N"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"HipHop & Rap","2":"2897","3":"11616.835","4":"12425.353","5":"230.8524","6":"452.6517"},{"1":"other","2":"3298","3":"8063.757","4":"9603.244","5":"167.2217","6":"327.8689"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["genre_dummy"],"name":[1],"type":["fct"],"align":["left"]},{"label":["N"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"HipHop & Rap","2":"21131","3":"6772815","4":"37100201","5":"255220.9","6":"500252.4"},{"1":"other","2":"45665","3":"7565413","4":"41208925","5":"192841.1","6":"377971.6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -545,13 +547,15 @@ The output tells you how many observations there are per group, the mean number 
 
 
 ```r
-ggplot(mean_data,aes(x = genre_dummy, y = streams)) + 
-  geom_bar(position=position_dodge(.9), colour="black", fill = "#CCCCCC", stat="identity", width = 0.65) +
-  geom_errorbar(position=position_dodge(.9), width=.15, aes(ymin=streams-ci, ymax=streams+ci)) +
-  theme_bw() +
-  labs(x = "Genre", y = "Average number of streams", title = "Average number of streams by genre")+
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(mean_data, aes(x = genre_dummy, y = streams)) +
+    geom_bar(position = position_dodge(0.9), colour = "black",
+        fill = "#CCCCCC", stat = "identity", width = 0.65) +
+    geom_errorbar(position = position_dodge(0.9), width = 0.15,
+        aes(ymin = streams - ci, ymax = streams + ci)) +
+    theme_bw() + labs(x = "Genre", y = "Average number of streams",
+    title = "Average number of streams by genre") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -567,27 +571,29 @@ We might also be interested to investigate a second factor. Say, we would like t
 
 
 ```r
-mean_data2 <- summarySE(music_data, measurevar="streams", groupvars=c("genre_dummy","explicit"))
+mean_data2 <- summarySE(music_data, measurevar = "streams",
+    groupvars = c("genre_dummy", "explicit"))
 mean_data2
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["genre_dummy"],"name":[1],"type":["fct"],"align":["left"]},{"label":["explicit"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["streams"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"HipHop & Rap","2":"not explicit","3":"767","4":"12767.426","5":"13538.248","6":"488.8378","7":"959.6208"},{"1":"HipHop & Rap","2":"explicit","3":"2130","4":"11202.515","5":"11975.687","6":"259.4840","7":"508.8687"},{"1":"other","2":"not explicit","3":"2858","4":"8198.021","5":"10054.883","6":"188.0814","7":"368.7891"},{"1":"other","2":"explicit","3":"440","4":"7191.650","5":"5811.415","6":"277.0483","7":"544.5059"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["genre_dummy"],"name":[1],"type":["fct"],"align":["left"]},{"label":["explicit"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["streams"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"HipHop & Rap","2":"not explicit","3":"20042","4":"7009717","5":"38037891","6":"268686.5","7":"526647.7"},{"1":"HipHop & Rap","2":"explicit","3":"1089","4":"2412873","5":"7734491","6":"234378.5","7":"459885.0"},{"1":"other","2":"not explicit","3":"38561","4":"8459087","5":"44385299","6":"226029.4","7":"443023.5"},{"1":"other","2":"explicit","3":"7104","4":"2714494","5":"13949731","6":"165506.2","7":"324441.5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 Now we obtained the results for four different groups (2 genres x 2 lyric types) and we can amend the plot easily by adding the 'fill' argument to the ```ggplot()``` function. The ```scale_fill_manual()``` function is optional and specifies the color of the bars manually. 
 
 
 ```r
-ggplot(mean_data2,aes(x = genre_dummy, y = streams, fill = explicit)) + 
-  geom_bar(position=position_dodge(.9), colour="black", stat="identity") +
-  geom_errorbar(position=position_dodge(.9), width=.2, aes(ymin=streams-ci, ymax=streams+ci)) +
-  scale_fill_manual(values=c("#CCCCCC","#FFFFFF")) +
-  theme_bw() +
-  labs(x = "Genre", y = "Average number of streams", title = "Average number of streams by genre and lyric type")+
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(mean_data2, aes(x = genre_dummy, y = streams,
+    fill = explicit)) + geom_bar(position = position_dodge(0.9),
+    colour = "black", stat = "identity") + geom_errorbar(position = position_dodge(0.9),
+    width = 0.2, aes(ymin = streams - ci, ymax = streams +
+        ci)) + scale_fill_manual(values = c("#CCCCCC",
+    "#FFFFFF")) + theme_bw() + labs(x = "Genre", y = "Average number of streams",
+    title = "Average number of streams by genre and lyric type") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -602,13 +608,13 @@ The most common way to show the relationship between two continuous variables is
 
 
 ```r
-ggplot(music_data, aes(speechiness, log_streams)) + 
-  geom_point(shape =1) +
-  labs(x = "Genre", y = "Relative frequency") + 
-  geom_smooth(method = "lm", fill = "blue", alpha = 0.1) +
-  labs(x = "Speechiness", y = "Number of streams (log-scale)", title = "Scatterplot of streams and speechiness") + 
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(music_data, aes(speechiness, log_streams)) +
+    geom_point(shape = 1) + labs(x = "Genre", y = "Relative frequency") +
+    geom_smooth(method = "lm", fill = "blue", alpha = 0.1) +
+    labs(x = "Speechiness", y = "Number of streams (log-scale)",
+        title = "Scatterplot of streams and speechiness") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -624,12 +630,12 @@ It could be that customers from different store respond differently to advertisi
 
 ```r
 ggplot(music_data, aes(speechiness, log_streams, colour = explicit)) +
-  geom_point(shape =1) + 
-  geom_smooth(method="lm", alpha = 0.1) + 
-  labs(x = "Speechiness", y = "Number of streams (log-scale)", title = "Scatterplot of streams and speechiness by lyric type", colour="Explicit") + 
-  scale_color_manual(values=c("lightblue","darkblue")) +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    alpha = 0.1) + labs(x = "Speechiness", y = "Number of streams (log-scale)",
+    title = "Scatterplot of streams and speechiness by lyric type",
+    colour = "Explicit") + scale_color_manual(values = c("lightblue",
+    "darkblue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -707,12 +713,12 @@ One issue in plot like this can be that the scales between countries is very dif
 
 
 ```r
-ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) + 
-  geom_line() + 
-  facet_wrap(~region, scales = "free_y") +
-  labs(x = "Week", y = "Total streams (in million)", title = "Weekly number of streams by country") +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) +
+    geom_line() + facet_wrap(~region, scales = "free_y") +
+    labs(x = "Week", y = "Total streams (in million)",
+        title = "Weekly number of streams by country") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -727,12 +733,13 @@ A slightly different way to plot this data is through area plot using the ```geo
 
 
 ```r
-ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) + 
-  geom_area(fill = "steelblue", color = "steelblue", alpha = 0.5) + 
-  facet_wrap(~region, scales = "free_y") +
-  labs(x = "Week", y = "Total streams (in million)", title = "Weekly number of streams by country") +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) +
+    geom_area(fill = "steelblue", color = "steelblue",
+        alpha = 0.5) + facet_wrap(~region, scales = "free_y") +
+    labs(x = "Week", y = "Total streams (in million)",
+        title = "Weekly number of streams by country") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -744,11 +751,12 @@ If the relative share of the overall streaming volume is of interest, you could 
 
 
 ```r
-ggplot(music_data_at_compare, aes(x = week, y = streams/1000000,group=region,fill=region,color=region)) + 
-  geom_area(position="stack",alpha = 0.65) + 
-  labs(x = "Week", y = "Total streams (in million)", title = "Weekly number of streams by country") +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+ggplot(music_data_at_compare, aes(x = week, y = streams/1000000,
+    group = region, fill = region, color = region)) +
+    geom_area(position = "stack", alpha = 0.65) + labs(x = "Week",
+    y = "Total streams (in million)", title = "Weekly number of streams by country") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ```
 
 <div class="figure" style="text-align: center">
@@ -793,18 +801,18 @@ Now we can create the plot with the secondary y-axis as follows:
 
 
 ```r
-ggplot(data_wide) + 
-    geom_area(aes(x = week, y = at/1000000, colour = "Austria", fill = "Austria"), alpha = 0.5) + 
-    geom_area(aes(x = week, y = (se/1000000)*ratio, colour = "Sweden", fill = "Sweden"), alpha = 0.5) + 
-    scale_y_continuous(sec.axis = sec_axis(~./ratio, name = "Total streams SE (in million)")) +
-    scale_fill_manual(values = c("#999999", "#E69F00")) + 
-    scale_colour_manual(values = c("#999999", "#E69F00"),guide=FALSE) + 
-    theme_minimal() +
-    labs(x = "Week", y = "Total streams AT (in million)", title = "Weekly number of streams by country") +
-    theme(plot.title = element_text(hjust = 0.5,color = "#666666"),
-          legend.title = element_blank(),
-          legend.position = "bottom"
-          ) 
+ggplot(data_wide) + geom_area(aes(x = week, y = at/1000000,
+    colour = "Austria", fill = "Austria"), alpha = 0.5) +
+    geom_area(aes(x = week, y = (se/1000000) * ratio,
+        colour = "Sweden", fill = "Sweden"), alpha = 0.5) +
+    scale_y_continuous(sec.axis = sec_axis(~./ratio,
+        name = "Total streams SE (in million)")) +
+    scale_fill_manual(values = c("#999999", "#E69F00")) +
+    scale_colour_manual(values = c("#999999", "#E69F00"),
+        guide = FALSE) + theme_minimal() + labs(x = "Week",
+    y = "Total streams AT (in million)", title = "Weekly number of streams by country") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"),
+        legend.title = element_blank(), legend.position = "bottom")
 ```
 
 <div class="figure" style="text-align: center">
@@ -866,11 +874,11 @@ Using the ```ggExtra()``` package, you may combine two type of plots. For exampl
 
 ```r
 library(ggExtra)
-p <- ggplot(music_data, aes(x = speechiness, y = log_streams)) + 
-  geom_point() +
-    labs(x = "Speechiness", y = "Number of streams (log-scale)", title = "Scatterplot & histograms of streams and speechiness") + 
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+p <- ggplot(music_data, aes(x = speechiness, y = log_streams)) +
+    geom_point() + labs(x = "Speechiness", y = "Number of streams (log-scale)",
+    title = "Scatterplot & histograms of streams and speechiness") +
+    theme_bw() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 ggExtra::ggMarginal(p, type = "histogram")
 ```
 
@@ -891,9 +899,8 @@ Now that we have covered the most important plots, we can look at what other typ
 ```r
 library(ggmap)
 library(dplyr)
-geo_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/geo_data.dat", 
-                       sep = "\t", 
-                       header = TRUE)
+geo_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/geo_data.dat",
+    sep = "\t", header = TRUE)
 head(geo_data)
 ```
 
@@ -907,18 +914,19 @@ There is a package called "ggmap", which is an augmentation for the ggplot packa
 
 
 ```r
-#register_google(key = "your_api_key")
+# register_google(key = 'your_api_key')
 
 # Download the base map
-de_map_g_str <- get_map(location=c(10.018343,51.133481), zoom=6, scale=2) # results in below map (wohoo!)
+de_map_g_str <- get_map(location = c(10.018343, 51.133481),
+    zoom = 6, scale = 2)  # results in below map (wohoo!)
 
 # Draw the heat map
-ggmap(de_map_g_str, extent = "device") + 
-  geom_density2d(data = geo_data, aes(x = lon, y = lat), size = 0.3) + 
-  stat_density2d(data = geo_data, aes(x = lon, y = lat, fill = ..level.., alpha = ..level..), 
-                 size = 0.01, bins = 16, geom = "polygon") + 
-  scale_fill_gradient(low = "green", high = "red") + 
-  scale_alpha(range = c(0, 0.3), guide = FALSE)
+ggmap(de_map_g_str, extent = "device") + geom_density2d(data = geo_data,
+    aes(x = lon, y = lat), size = 0.3) + stat_density2d(data = geo_data,
+    aes(x = lon, y = lat, fill = ..level.., alpha = ..level..),
+    size = 0.01, bins = 16, geom = "polygon") + scale_fill_gradient(low = "green",
+    high = "red") + scale_alpha(range = c(0, 0.3),
+    guide = FALSE)
 ```
 
 <img src="05-visualization_files/figure-html/ggmaps-1.png" width="672" />

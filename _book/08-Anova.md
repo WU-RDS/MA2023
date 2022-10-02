@@ -44,11 +44,11 @@ Let's use an example to see how ANOVA works. Similar to the previous example, im
 
 
 ```r
-hours_abc <- read.table("https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat", 
-                                 sep = "\t", 
-                                 header = TRUE) #read in data
-hours_abc$group <- factor(hours_abc$group, levels = c("A","B","C"), labels = c("low", "medium","high")) #convert grouping variable to factor
-str(hours_abc) #inspect data
+hours_abc <- read.table("https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat",
+    sep = "\t", header = TRUE)  #read in data
+hours_abc$group <- factor(hours_abc$group, levels = c("A",
+    "B", "C"), labels = c("low", "medium", "high"))  #convert grouping variable to factor
+str(hours_abc)  #inspect data
 ```
 
 ```
@@ -77,7 +77,7 @@ To get a first impression if there are any differences in listening times across
 
 ```r
 library(psych)
-describeBy(hours_abc$hours, hours_abc$group) #inspect data
+describeBy(hours_abc$hours, hours_abc$group)  #inspect data
 ```
 
 ```
@@ -180,7 +180,7 @@ In this example, X<sub>1</sub> from the generalized data matrix above would refe
 
 
 ```r
-mean(hours_abc$hours) #grand mean
+mean(hours_abc$hours)  #grand mean
 ```
 
 ```
@@ -188,7 +188,7 @@ mean(hours_abc$hours) #grand mean
 ```
 
 ```r
-by(hours_abc$hours, hours_abc$group, mean) #category mean
+by(hours_abc$hours, hours_abc$group, mean)  #category mean
 ```
 
 ```
@@ -289,7 +289,8 @@ You could also compute this manually in R using:
 
 
 ```r
-SSM <- sum(100*(by(hours_abc$hours, hours_abc$group, mean) - mean(hours_abc$hours))^2)
+SSM <- sum(100 * (by(hours_abc$hours, hours_abc$group,
+    mean) - mean(hours_abc$hours))^2)
 SSM
 ```
 
@@ -333,7 +334,8 @@ You could also compute this in R using:
 
 
 ```r
-SSR <- sum((hours_abc$hours - rep(by(hours_abc$hours, hours_abc$group, mean), each = 100))^2)
+SSR <- sum((hours_abc$hours - rep(by(hours_abc$hours,
+    hours_abc$group, mean), each = 100))^2)
 SSR
 ```
 
@@ -432,8 +434,8 @@ For 2 and 297 degrees of freedom, the critical value of F is 3.026 for &alpha;=0
 
 
 ```r
-f_crit <- qf(.95, df1 = 2, df2 = 297) #critical value
-f_crit 
+f_crit <- qf(0.95, df1 = 2, df2 = 297)  #critical value
+f_crit
 ```
 
 ```
@@ -441,7 +443,7 @@ f_crit
 ```
 
 ```r
-f_ratio > f_crit #test if calculated test statistic is larger than critical value
+f_ratio > f_crit  #test if calculated test statistic is larger than critical value
 ```
 
 ```
@@ -489,8 +491,9 @@ ANOVA is relatively immune to violations to the normality assumption when sample
 
 ```r
 set.seed(321)
-hours_fewobs <- data.frame(hours = c(rnorm(10, 20, 5), rnorm(10, 40, 5), rnorm(10, 60, 5)),
-                          group =  c(rep('low', 10), rep('medium', 10), rep('high', 10)))
+hours_fewobs <- data.frame(hours = c(rnorm(10, 20,
+    5), rnorm(10, 40, 5), rnorm(10, 60, 5)), group = c(rep("low",
+    10), rep("medium", 10), rep("high", 10)))
 by(hours_fewobs$hours, hours_fewobs$group, shapiro.test)
 ```
 
@@ -527,8 +530,8 @@ To create the Q-Q plot for the normal distribution, you may use the ```qqnorm()`
 
 
 ```r
-qqnorm(hours_fewobs[hours_fewobs$group=="low",]$hours) 
-qqline(hours_fewobs[hours_fewobs$group=="low",]$hours)
+qqnorm(hours_fewobs[hours_fewobs$group == "low", ]$hours)
+qqline(hours_fewobs[hours_fewobs$group == "low", ]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -537,8 +540,10 @@ qqline(hours_fewobs[hours_fewobs$group=="low",]$hours)
 </div>
 
 ```r
-qqnorm(hours_fewobs[hours_fewobs$group=="medium",]$hours) 
-qqline(hours_fewobs[hours_fewobs$group=="medium",]$hours)
+qqnorm(hours_fewobs[hours_fewobs$group == "medium",
+    ]$hours)
+qqline(hours_fewobs[hours_fewobs$group == "medium",
+    ]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -547,8 +552,8 @@ qqline(hours_fewobs[hours_fewobs$group=="medium",]$hours)
 </div>
 
 ```r
-qqnorm(hours_fewobs[hours_fewobs$group=="high",]$hours) 
-qqline(hours_fewobs[hours_fewobs$group=="high",]$hours)
+qqnorm(hours_fewobs[hours_fewobs$group == "high", ]$hours)
+qqline(hours_fewobs[hours_fewobs$group == "high", ]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -601,7 +606,8 @@ To compute &eta;<sup>2</sup> from the output, we can extract the relevant sum of
 
 
 ```r
-summary(aov)[[1]]$'Sum Sq'[1]/(summary(aov)[[1]]$'Sum Sq'[1] + summary(aov)[[1]]$'Sum Sq'[2])
+summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
+    summary(aov)[[1]]$"Sum Sq"[2])
 ```
 
 ```
@@ -616,7 +622,7 @@ We will use the first plot to inspect if the residual variances are equal across
 
 
 ```r
-plot(aov,1)
+plot(aov, 1)
 ```
 
 <img src="08-Anova_files/figure-html/unnamed-chunk-27-1.png" width="672" />
@@ -627,7 +633,7 @@ The second plot can be used to test the assumption that the residuals are approx
 
 
 ```r
-plot(aov,2)
+plot(aov, 2)
 ```
 
 <img src="08-Anova_files/figure-html/unnamed-chunk-28-1.png" width="672" />
@@ -653,7 +659,7 @@ Note that if Levene's test would have been significant (i.e., variances are not 
 
 
 ```r
-#oneway.test(hours ~ group, hours_abc)
+# oneway.test(hours ~ group, hours_abc)
 ```
 
 You can see that the results are fairly similar, since the variances turned out to be fairly equal across groups.
@@ -700,7 +706,8 @@ Thus, the “corrected” critical p-value is now 0.017 instead of 0.05 (i.e., t
 
 
 ```r
-bonferroni <- pairwise.t.test(hours_abc$hours, hours_abc$group, data = hours_abc, p.adjust.method = "bonferroni")
+bonferroni <- pairwise.t.test(hours_abc$hours, hours_abc$group,
+    data = hours_abc, p.adjust.method = "bonferroni")
 bonferroni
 ```
 
@@ -724,7 +731,8 @@ Note the difference between the results from the post-hoc test compared to indiv
 
 ```r
 data_subset <- subset(hours_abc, group != "low")
-ttest <- t.test(hours ~ group, data = data_subset, var.equal= TRUE)
+ttest <- t.test(hours ~ group, data = data_subset,
+    var.equal = TRUE)
 ttest
 ```
 
@@ -786,7 +794,7 @@ Or, in R:
 
 
 ```r
-hsd <- q * sqrt(summary(aov)[[1]]$'Mean Sq'[2]/100)
+hsd <- q * sqrt(summary(aov)[[1]]$"Mean Sq"[2]/100)
 hsd
 ```
 
@@ -863,7 +871,7 @@ You can see that the CIs do not cross zero, which means that the true difference
 
 
 ```r
-mean1 <- mean(hours_abc[hours_abc$group=="low","hours"]) #mean group "low"
+mean1 <- mean(hours_abc[hours_abc$group == "low", "hours"])  #mean group 'low'
 mean1
 ```
 
@@ -872,7 +880,8 @@ mean1
 ```
 
 ```r
-mean2 <- mean(hours_abc[hours_abc$group=="medium","hours"]) #mean group "medium"
+mean2 <- mean(hours_abc[hours_abc$group == "medium",
+    "hours"])  #mean group 'medium'
 mean2
 ```
 
@@ -881,7 +890,8 @@ mean2
 ```
 
 ```r
-mean3 <- mean(hours_abc[hours_abc$group=="high","hours"]) #mean group "high"
+mean3 <- mean(hours_abc[hours_abc$group == "high",
+    "hours"])  #mean group 'high'
 mean3
 ```
 
@@ -890,8 +900,8 @@ mean3
 ```
 
 ```r
-#CI high vs. medium
-mean_diff_high_med <- mean2-mean1
+# CI high vs. medium
+mean_diff_high_med <- mean2 - mean1
 mean_diff_high_med
 ```
 
@@ -900,8 +910,8 @@ mean_diff_high_med
 ```
 
 ```r
-ci_med_high_lower <- mean_diff_high_med-hsd
-ci_med_high_upper <- mean_diff_high_med+hsd
+ci_med_high_lower <- mean_diff_high_med - hsd
+ci_med_high_upper <- mean_diff_high_med + hsd
 ci_med_high_lower
 ```
 
@@ -918,8 +928,8 @@ ci_med_high_upper
 ```
 
 ```r
-#CI high vs.low
-mean_diff_high_low <- mean3-mean1
+# CI high vs.low
+mean_diff_high_low <- mean3 - mean1
 mean_diff_high_low
 ```
 
@@ -928,8 +938,8 @@ mean_diff_high_low
 ```
 
 ```r
-ci_low_high_lower <- mean_diff_high_low-hsd
-ci_low_high_upper <- mean_diff_high_low+hsd
+ci_low_high_lower <- mean_diff_high_low - hsd
+ci_low_high_upper <- mean_diff_high_low + hsd
 ci_low_high_lower
 ```
 
@@ -946,8 +956,8 @@ ci_low_high_upper
 ```
 
 ```r
-#CI medium vs.low
-mean_diff_med_low <- mean3-mean2
+# CI medium vs.low
+mean_diff_med_low <- mean3 - mean2
 mean_diff_med_low
 ```
 
@@ -956,8 +966,8 @@ mean_diff_med_low
 ```
 
 ```r
-ci_low_med_lower <- mean_diff_med_low-hsd
-ci_low_med_upper <- mean_diff_med_low+hsd
+ci_low_med_lower <- mean_diff_med_low - hsd
+ci_low_med_upper <- mean_diff_med_low + hsd
 ci_low_med_lower
 ```
 

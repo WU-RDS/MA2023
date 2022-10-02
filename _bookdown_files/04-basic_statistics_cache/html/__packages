@@ -1,6 +1,4 @@
 knitr
-psych
-summarytools
 tidyverse
 ggplot2
 tibble
@@ -10,3 +8,5 @@ purrr
 dplyr
 stringr
 forcats
+psych
+summarytools
