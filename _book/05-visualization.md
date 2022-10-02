@@ -801,7 +801,7 @@ ggbetweenstats(
    data = music_data_subs,
    title = "Number of streams by genre", # title for the plot
    plot.type = "box",
-   x = genre, # 2 groups
+   x = genre, # 4 groups
    y = log_streams,
    type = "p", # default
    messages = FALSE,
@@ -973,10 +973,10 @@ ggmap(de_map_g_str, extent = "device") + geom_density2d(data = geo_data,
   </script>
 </div>
 
-- [ ] `describe(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `summary(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `table(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `str(mtcars[,c("hp","mpg","qsec")])`
+- [ ] `describe(select(mtcars, hp, mpg, qsec))`
+- [ ] `summary(select(mtcars, hp, mpg, qsec))`
+- [ ] `table(select(mtcars, hp, mpg, qsec))`
+- [ ] `str(select(mtcars, hp, mpg, qsec))`
 - [ ] None of the above 	
 
 **(LC4.5) The last column "carb" indicates the number of carburetors each model has. By using a function we got to know the number of car models that have a certain number carburetors. Which function helped us to obtain this information?** 

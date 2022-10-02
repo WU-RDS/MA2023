@@ -1594,7 +1594,7 @@ Figure 4.10: Secondary y-axis
 <span id="cb189-4"><a href="summarizing-data.html#cb189-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> music_data_subs,</span>
 <span id="cb189-5"><a href="summarizing-data.html#cb189-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">&quot;Number of streams by genre&quot;</span>, <span class="co"># title for the plot</span></span>
 <span id="cb189-6"><a href="summarizing-data.html#cb189-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">plot.type =</span> <span class="st">&quot;box&quot;</span>,</span>
-<span id="cb189-7"><a href="summarizing-data.html#cb189-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">x =</span> genre, <span class="co"># 2 groups</span></span>
+<span id="cb189-7"><a href="summarizing-data.html#cb189-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">x =</span> genre, <span class="co"># 4 groups</span></span>
 <span id="cb189-8"><a href="summarizing-data.html#cb189-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">y =</span> log_streams,</span>
 <span id="cb189-9"><a href="summarizing-data.html#cb189-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">type =</span> <span class="st">&quot;p&quot;</span>, <span class="co"># default</span></span>
 <span id="cb189-10"><a href="summarizing-data.html#cb189-10" aria-hidden="true" tabindex="-1"></a>   <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
@@ -1739,10 +1739,10 @@ Figure 4.14: Covariation between categorical data (2)
   </script>
 </div>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>describe(mtcars[,c("hp","mpg","qsec")])</code></li>
-<li><input type="checkbox" disabled="" /><code>summary(mtcars[,c("hp","mpg","qsec")])</code></li>
-<li><input type="checkbox" disabled="" /><code>table(mtcars[,c("hp","mpg","qsec")])</code></li>
-<li><input type="checkbox" disabled="" /><code>str(mtcars[,c("hp","mpg","qsec")])</code></li>
+<li><input type="checkbox" disabled="" /><code>describe(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" /><code>summary(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" /><code>table(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" /><code>str(select(mtcars, hp, mpg, qsec))</code></li>
 <li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC4.5) The last column “carb” indicates the number of carburetors each model has. By using a function we got to know the number of car models that have a certain number carburetors. Which function helped us to obtain this information?</strong></p>

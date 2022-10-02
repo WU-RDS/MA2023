@@ -1,4 +1,4 @@
-## ---- echo = FALSE, warning=FALSE, message=FALSE-------------------------------------
+## ---- echo = FALSE, warning=FALSE, message=FALSE---------------------------------
 library(Hmisc)
 library(knitr)
 library(ggmap)
@@ -10,7 +10,7 @@ register_google(key = "AIzaSyDMxadfjNH489ueRgo9S62PuZU6PbwAyiM")
 knitr::include_graphics("./images/story_telling.PNG")
 
 
-## ----message=FALSE, warning=FALSE----------------------------------------------------
+## ----message=FALSE, warning=FALSE------------------------------------------------
 library(tidyverse)
 music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata") |> # pipe music data into mutate
   mutate(release_date = as.Date(release_date), # convert to date
@@ -27,12 +27,12 @@ music_data <- read.csv2("https://short.wu.ac.at/ma22_musicdata") |> # pipe music
 head(music_data)
 
 
-## ----message=FALSE, warning=FALSE----------------------------------------------------
+## ----message=FALSE, warning=FALSE------------------------------------------------
 table_plot_rel <- as.data.frame(prop.table(table(music_data$genre))) #relative frequencies #relative frequencies
 head(table_plot_rel)
 
 
-## ----message=FALSE, warning=FALSE----------------------------------------------------
+## ----message=FALSE, warning=FALSE------------------------------------------------
 table_plot_rel <- rename(table_plot_rel, Genre = Var1)
 head(table_plot_rel)
 
@@ -109,7 +109,7 @@ bar_chart + geom_col(aes(fill = Freq)) +
         ) 
 
 
-## ------------------------------------------------------------------------------------
+## --------------------------------------------------------------------------------
 bar_chart + geom_col(aes(x=fct_reorder(Genre, Freq), fill = Freq)) +
   labs(x = "Genre", y = "Relative frequency", title = "Chart share by genre") + 
   geom_text(aes(label = sprintf("%.1f%%", Freq/sum(Freq) * 100)), vjust=-0.2) +
@@ -134,7 +134,7 @@ bar_chart + geom_col(aes(x=fct_reorder(Genre, Freq))) +
         ) 
 
 
-## ------------------------------------------------------------------------------------
+## --------------------------------------------------------------------------------
 table_plot_cond_rel <- as.data.frame(prop.table(table(select(music_data, genre, explicit)),2)) #conditional relative frequencies
 table_plot_cond_rel
 
@@ -168,35 +168,6 @@ ggplot(table_plot_cond_rel_1, aes(x = genre, y = Freq, fill = explicit)) + #use 
         ) 
 
 
-## ------------------------------------------------------------------------------------
-library(gtools)
-music_data$streams_cat <- as.numeric(quantcut(music_data$streams, 5, na.rm=TRUE))
-music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness, 3, na.rm=TRUE))
-
-music_data$streams_cat <- factor(music_data$streams_cat, levels = 1:5, labels = c("low", "low-med", "medium", "med-high", "high")) #convert to factor
-music_data$speech_cat <- factor(music_data$speech_cat, levels = 1:3, labels = c("low", "medium", "high")) #convert to factor
-
-
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Covariation between categorical data (1)"----
-ggplot(data = music_data) + 
-  geom_count(aes(x = speech_cat, y = streams_cat, size = stat(prop), group = speech_cat))  + 
-  ylab("Popularity") + 
-  xlab("Speechiness") + 
-  labs(size = "Proportion") +
-  theme_bw()
-
-
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Covariation between categorical data (2)"----
-table_plot_rel <- prop.table(table(music_data[,c("speech_cat", "streams_cat")]),1)
-table_plot_rel <- as.data.frame(table_plot_rel)
-
-ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) + 
-  geom_tile(aes(fill = Freq)) + 
-  ylab("Populartiy") + 
-  xlab("Speechiness") + 
-  theme_bw()
-
-
 ## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Histogram"----
 head(music_data)
 
@@ -225,7 +196,7 @@ ggplot(aes(streams)) +
 music_data$log_streams <- log(music_data$streams)
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group"----
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group", cache=FALSE----
 ggplot(music_data,aes(x = fct_reorder(genre, log_streams), y = log_streams)) +
   geom_boxplot(coef = 3) + 
   labs(x = "Genre", y = "Number of streams (log-scale)") + 
@@ -236,7 +207,7 @@ ggplot(music_data,aes(x = fct_reorder(genre, log_streams), y = log_streams)) +
         ) 
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group"----
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group", cache=FALSE----
 ggplot(music_data,aes(x = log_streams, y = fct_reorder(genre, log_streams))) +
   geom_boxplot(coef = 3) + 
   labs(x = "Number of streams (log-scale)", y = "Genre") + 
@@ -246,7 +217,7 @@ ggplot(music_data,aes(x = log_streams, y = fct_reorder(genre, log_streams))) +
         ) 
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group"----
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Boxplot by group",cache =FALSE----
 ggplot(music_data,aes(x = log_streams , y = fct_reorder(genre, log_streams))) +
   geom_jitter(colour="red", alpha = 0.1) +
   geom_boxplot(coef = 3, alpha =0.1) + 
@@ -260,11 +231,11 @@ ggplot(music_data,aes(x = log_streams, y = "")) +
   labs(x = "Number of streams (log-scale)", y = "") 
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE------------------------------
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE--------------------------
 music_data$genre_dummy <- as.factor(ifelse(music_data$genre=="HipHop/Rap","HipHop & Rap","other"))
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE------------------------------
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE--------------------------
 library(Rmisc)
 mean_data <- summarySE(music_data, measurevar="streams", groupvars=c("genre_dummy"))
 mean_data
@@ -280,7 +251,7 @@ ggplot(mean_data,aes(x = genre_dummy, y = streams)) +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 
 
-## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE------------------------------
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE--------------------------
 mean_data2 <- summarySE(music_data, measurevar="streams", groupvars=c("genre_dummy","explicit"))
 mean_data2
 
@@ -316,7 +287,7 @@ ggplot(music_data, aes(speechiness, log_streams, colour = explicit)) +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 
 
-## ----message=FALSE, warning=FALSE----------------------------------------------------
+## ----message=FALSE, warning=FALSE------------------------------------------------
 music_data_ctry <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/streaming_charts_ctry.csv", 
                         sep = ",", 
                         header = TRUE) |>
@@ -325,7 +296,7 @@ music_data_ctry <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching
 head(music_data_ctry)
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 music_data_at <- filter(music_data_ctry, region == 'at')
 
 
@@ -338,7 +309,7 @@ ggplot(music_data_at, aes(x = week, y = streams)) +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 music_data_at_compare <- filter(music_data_ctry, region %in% c('at','de','ch','se','dk','nl'))
 
 
@@ -377,17 +348,17 @@ ggplot(music_data_at_compare, aes(x = week, y = streams/1000000,group=region,fil
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 music_data_at_se_compare <- filter(music_data_ctry, region %in% c('at','se'))
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 library(tidyr)
 data_wide <- pivot_wider(music_data_at_se_compare, names_from = region, values_from = streams)
 data_wide
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 ratio <- mean(data_wide$at/1000000)/mean(data_wide$se/1000000)
 
 
@@ -406,7 +377,7 @@ ggplot(data_wide) +
           ) 
 
 
-## ----eval=FALSE----------------------------------------------------------------------
+## ----eval=FALSE------------------------------------------------------------------
 ## ggsave("test_plot.jpg", height = 5, width = 8.5)
 
 
@@ -417,7 +388,7 @@ ggbetweenstats(
    data = music_data_subs,
    title = "Number of streams by genre", # title for the plot
    plot.type = "box",
-   x = genre, # 2 groups
+   x = genre, # 4 groups
    y = log_streams,
    type = "p", # default
    messages = FALSE,
@@ -437,7 +408,36 @@ ggExtra::ggMarginal(p, type = "histogram")
 
 
 
-## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE-------------------------------
+## --------------------------------------------------------------------------------
+library(gtools)
+music_data$streams_cat <- as.numeric(quantcut(music_data$streams, 5, na.rm=TRUE))
+music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness, 3, na.rm=TRUE))
+
+music_data$streams_cat <- factor(music_data$streams_cat, levels = 1:5, labels = c("low", "low-med", "medium", "med-high", "high")) #convert to factor
+music_data$speech_cat <- factor(music_data$speech_cat, levels = 1:3, labels = c("low", "medium", "high")) #convert to factor
+
+
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Covariation between categorical data (1)"----
+ggplot(data = music_data) + 
+  geom_count(aes(x = speech_cat, y = streams_cat, size = stat(prop), group = speech_cat))  + 
+  ylab("Popularity") + 
+  xlab("Speechiness") + 
+  labs(size = "Proportion") +
+  theme_bw()
+
+
+## ----message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Covariation between categorical data (2)"----
+table_plot_rel <- prop.table(table(music_data[,c("speech_cat", "streams_cat")]),1)
+table_plot_rel <- as.data.frame(table_plot_rel)
+
+ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) + 
+  geom_tile(aes(fill = Freq)) + 
+  ylab("Populartiy") + 
+  xlab("Speechiness") + 
+  theme_bw()
+
+
+## ----message=FALSE, warning=FALSE,echo=TRUE, eval=TRUE---------------------------
 library(ggmap)
 library(dplyr)
 geo_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/geo_data.dat", 
@@ -446,7 +446,7 @@ geo_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master
 head(geo_data)
 
 
-## ----ggmaps, echo=TRUE, eval=TRUE,message=FALSE, warning=FALSE-----------------------
+## ----ggmaps, echo=TRUE, eval=TRUE,message=FALSE, warning=FALSE-------------------
 #register_google(key = "your_api_key")
 
 # Download the base map
@@ -462,23 +462,23 @@ ggmap(de_map_g_str, extent = "device") +
 
 
 
-## ----echo=FALSE----------------------------------------------------------------------
+## ----echo=FALSE------------------------------------------------------------------
 head(mtcars,6)
 
 
-## ----echo=FALSE,message=FALSE, warning=FALSE, error=FALSE----------------------------
+## ----echo=FALSE,message=FALSE, warning=FALSE, error=FALSE------------------------
 library(psych)
-as.data.frame(psych::describe(mtcars[,c("hp","mpg","qsec")]))
+as.data.frame(psych::describe(select(mtcars, hp, mpg, qsec)))
 
 
-## ----echo=FALSE----------------------------------------------------------------------
+## ----echo=FALSE------------------------------------------------------------------
 table(mtcars$carb)
 
 
-## ----echo=FALSE----------------------------------------------------------------------
+## ----echo=FALSE------------------------------------------------------------------
 hist(mtcars$mpg,xlab="miles per gallon", main="miles per gallon")
 
 
-## ---- echo=FALSE,strip.white=TRUE, out.width="50%"-----------------------------------
+## ---- echo=FALSE,strip.white=TRUE, out.width="50%"-------------------------------
 boxplot(mtcars$mpg, outline = T, notch = F)
 

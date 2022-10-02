@@ -7,12 +7,13 @@ output:
     toc: yes
 ---
 
-```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, purl=FALSE}
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, purl=FALSE, cache=FALSE}
 library(knitr)
 options(scipen = 999)
 #This code automatically tidies code so that it does not reach over the page
 opts_chunk$set(tidy.opts=list(width.cutoff=50),tidy=TRUE, rownames.print = FALSE, rows.print = 10)
 opts_chunk$set(cache=T)
+library(tidyverse)
 ```
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE}
@@ -581,7 +582,7 @@ ggbetweenstats(
    data = music_data_subs,
    title = "Number of streams by genre", # title for the plot
    plot.type = "box",
-   x = genre, # 2 groups
+   x = genre, # 4 groups
    y = log_streams,
    type = "p", # default
    messages = FALSE,
@@ -713,13 +714,13 @@ head(mtcars,6)
 
 ```{r,echo=FALSE,message=FALSE, warning=FALSE, error=FALSE}
 library(psych)
-as.data.frame(psych::describe(mtcars[,c("hp","mpg","qsec")]))
+as.data.frame(psych::describe(select(mtcars, hp, mpg, qsec)))
 ```
 
-- [ ] `describe(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `summary(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `table(mtcars[,c("hp","mpg","qsec")])`
-- [ ] `str(mtcars[,c("hp","mpg","qsec")])`
+- [ ] `describe(select(mtcars, hp, mpg, qsec))`
+- [ ] `summary(select(mtcars, hp, mpg, qsec))`
+- [ ] `table(select(mtcars, hp, mpg, qsec))`
+- [ ] `str(select(mtcars, hp, mpg, qsec))`
 - [ ] None of the above 	
 
 **(LC4.5) The last column "carb" indicates the number of carburetors each model has. By using a function we got to know the number of car models that have a certain number carburetors. Which function helped us to obtain this information?** 
