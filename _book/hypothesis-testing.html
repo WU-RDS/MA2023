@@ -1198,7 +1198,7 @@ H_0: \mu_D \ne 0
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-47"></span>
 <img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-47-1.png" alt="p-hacking (red indicates false positives)" width="672" />
 <p class="caption">
-Figure 6.1: p-hacking (red indicates false positives)
+Figure 4.10: p-hacking (red indicates false positives)
 </p>
 </div>
 
@@ -1567,7 +1567,7 @@ F= \frac{MS_M}{MS_R}=\frac{\frac{SS_M}{c-1}}{\frac{SS_R}{N-c}}=\frac{\frac{21321
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-1"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-1.png" alt="Q-Q plot 1" width="672" />
 <p class="caption">
-Figure 6.2: Q-Q plot 1
+Figure 6.1: Q-Q plot 1
 </p>
 </div>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="hypothesis-testing.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;medium&quot;</span>,</span>
@@ -1577,7 +1577,7 @@ Figure 6.2: Q-Q plot 1
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-2"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-2.png" alt="Q-Q plot 2" width="672" />
 <p class="caption">
-Figure 6.3: Q-Q plot 2
+Figure 6.2: Q-Q plot 2
 </p>
 </div>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="hypothesis-testing.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(hours_fewobs[hours_fewobs<span class="sc">$</span>group <span class="sc">==</span> <span class="st">&quot;high&quot;</span>, ]<span class="sc">$</span>hours)</span>
@@ -1585,7 +1585,7 @@ Figure 6.3: Q-Q plot 2
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23-3"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-23-3.png" alt="Q-Q plot 3" width="672" />
 <p class="caption">
-Figure 6.4: Q-Q plot 3
+Figure 6.3: Q-Q plot 3
 </p>
 </div>
 <p>The Q-Q plots suggest an approximately Normal distribution. If the assumption had been violated, you might consider transforming your data or resort to a non-parametric test.</p>
@@ -1767,7 +1767,7 @@ HSD= q\sqrt{\frac{MS_R}{n_c}}
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-36-1.png" alt="Tukey's HSD" width="672" />
 <p class="caption">
-Figure 4.5: Tukey’s HSD
+Figure 6.4: Tukey’s HSD
 </p>
 </div>
 <p>You can see that the CIs do not cross zero, which means that the true difference between group means is unlikely zero. It is sufficient to report the results in the way described above. However, you could also manually compute the differences between the groups and their confidence interval as follows:</p>
@@ -1841,7 +1841,7 @@ Figure 4.5: Tukey’s HSD
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-38"></span>
 <img src="08-Anova_files/figure-html/unnamed-chunk-38-1.png" alt="ANOVA using ggstatsplot" width="672" />
 <p class="caption">
-Figure 4.7: ANOVA using ggstatsplot
+Figure 4.5: ANOVA using ggstatsplot
 </p>
 </div>
 
@@ -2346,7 +2346,7 @@ df=(r-1)*(c-1)
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-31-1.png" alt="Visual depiction of the test result" width="672" />
 <p class="caption">
-Figure 4.3: Visual depiction of the test result
+Figure 4.1: Visual depiction of the test result
 </p>
 </div>
 <p>We could also compute the p-value using the <code>pchisq()</code> function, which tells us the probability of the observed cell frequencies if the null hypothesis was true (i.e., there was no association):</p>
@@ -2412,7 +2412,7 @@ V=\sqrt{\frac{\chi^2}{n*df_{min}}}
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-37-1.png" alt="Kruskal-Wallis test using ggstatsplot" width="672" />
 <p class="caption">
-Figure 4.6: Kruskal-Wallis test using ggstatsplot
+Figure 6.6: Kruskal-Wallis test using ggstatsplot
 </p>
 </div>
 <p>Caution is warranted when the cell counts in the contingency table are small. The usual rule of thumb is that all cell counts should be at least 5 (this may be a little too stringent though). When some cell counts are too small, you can use Fisher’s exact test using the <code>fisher.test()</code> function.</p>

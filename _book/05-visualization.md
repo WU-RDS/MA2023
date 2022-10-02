@@ -325,58 +325,6 @@ ggplot(table_plot_cond_rel_1, aes(x = genre, y = Freq, fill = explicit)) + #use 
 </div>
 
 
-#### Covariation plots
-
-To visualize the co-variation between categorical variables, you’ll need to count the number of observations for each combination stored in the frequency table. Say, we wanted to investigate the association between the popularity of a song and the level of 'speechiness'. For this exercise, let's assume we have both variables measured as categorical (factor) variables. We can use the `quantcut()` function to create categorical variables based on the continuous variables. All we need to do is tell the function how many categories we would like to obtain and it will divide the data based on the percentiles equally.  
-
-
-```r
-library(gtools)
-music_data$streams_cat <- as.numeric(quantcut(music_data$streams,
-    5, na.rm = TRUE))
-music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness,
-    3, na.rm = TRUE))
-
-music_data$streams_cat <- factor(music_data$streams_cat,
-    levels = 1:5, labels = c("low", "low-med", "medium",
-        "med-high", "high"))  #convert to factor
-music_data$speech_cat <- factor(music_data$speech_cat,
-    levels = 1:3, labels = c("low", "medium", "high"))  #convert to factor
-```
-
-Now we have multiple ways to visualize a relationship between the two variables with ggplot. One option would be to use a variation of the scatterplot which counts how many points overlap at any given point and increases the dot size accordingly. This can be achieved with ```geom_count()``` as the example below shows where the `stat(prop)` argument assures that we get relative frequencies and with the `group` argument we tell R to compute the relative frequencies by speechiness.
-
-
-```r
-ggplot(data = music_data) + geom_count(aes(x = speech_cat,
-    y = streams_cat, size = stat(prop), group = speech_cat)) +
-    ylab("Popularity") + xlab("Speechiness") + labs(size = "Proportion") +
-    theme_bw()
-```
-
-<div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-22-1.png" alt="Covariation between categorical data (1)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-22)Covariation between categorical data (1)</p>
-</div>
-The plot shows that there appears to be a positive association between the popularity of a song and its level of speechiness. 
-
-Another option would be to use a tile plot that changes the color of the tile based on the frequency of the combination of factors. To achieve this, we first have to create a dataframe that contains the relative frequencies of all combinations of factors. Then we can take this dataframe and pass it to ```geom_tile()```, while specifying that the fill of each tile should be dependent on the observed frequency of the factor combination, which is done by specifying the fill in the ```aes()``` function.  
-
-
-```r
-table_plot_rel <- prop.table(table(music_data[, c("speech_cat",
-    "streams_cat")]), 1)
-table_plot_rel <- as.data.frame(table_plot_rel)
-
-ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) +
-    geom_tile(aes(fill = Freq)) + ylab("Populartiy") +
-    xlab("Speechiness") + theme_bw()
-```
-
-<div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-23-1.png" alt="Covariation between categorical data (2)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-23)Covariation between categorical data (2)</p>
-</div>
 
 ### Continuous variables
 
@@ -397,7 +345,7 @@ head(music_data)
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["fct"],"align":["left"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["date"],"align":["right"]},{"label":["genre"],"name":[28],"type":["fct"],"align":["left"]},{"label":["label"],"name":[29],"type":["fct"],"align":["left"]},{"label":["top10"],"name":[30],"type":["lgl"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["ord"],"align":["right"]},{"label":["streams_cat"],"name":[32],"type":["fct"],"align":["left"]},{"label":["speech_cat"],"name":[33],"type":["fct"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"not explicit","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"TRUE","31":"excellent","32":"high","33":"low"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"not explicit","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"FALSE","31":"good","32":"high","33":"high"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"not explicit","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"FALSE","31":"good","32":"low","33":"high"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"not explicit","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"FALSE","31":"poor","32":"low-med","33":"high"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"not explicit","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"FALSE","31":"excellent","32":"med-high","33":"high"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"not explicit","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"TRUE","31":"fair","32":"high","33":"medium"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["fct"],"align":["left"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["date"],"align":["right"]},{"label":["genre"],"name":[28],"type":["fct"],"align":["left"]},{"label":["label"],"name":[29],"type":["fct"],"align":["left"]},{"label":["top10"],"name":[30],"type":["lgl"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["ord"],"align":["right"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"not explicit","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"TRUE","31":"excellent"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"not explicit","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"FALSE","31":"good"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"not explicit","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"FALSE","31":"good"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"not explicit","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"FALSE","31":"poor"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"not explicit","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"FALSE","31":"excellent"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"not explicit","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"TRUE","31":"fair"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -414,8 +362,8 @@ music_data |>
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-25-1.png" alt="Histogram" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-25)Histogram</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-22-1.png" alt="Histogram" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-22)Histogram</p>
 </div>
 
 If you would like to highlight certain points of the distribution, you can use the `geom_vline` (short for vertical line) function to do this. For example, we may want to highlight the mean and the median of the distribution.
@@ -434,8 +382,8 @@ music_data |>
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-26-1.png" alt="Histogram 2" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-26)Histogram 2</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-23-1.png" alt="Histogram 2" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-23)Histogram 2</p>
 </div>
 In this case, you should indicate what the lines refer to. In the plot above, the 'subtitle' argument was used to add this information to the plot. 
 
@@ -465,8 +413,8 @@ ggplot(music_data, aes(x = fct_reorder(genre, log_streams),
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-28-1.png" alt="Boxplot by group" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-28)Boxplot by group</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-25-1.png" alt="Boxplot by group" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-25)Boxplot by group</p>
 </div>
 The following graphic shows you how to interpret the boxplot:
 
@@ -483,8 +431,8 @@ ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-29-1.png" alt="Boxplot by group" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-29)Boxplot by group</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-26-1.png" alt="Boxplot by group" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-26)Boxplot by group</p>
 </div>
 
 It is often meaningful to augment the boxplot with the data points using ```geom_jitter()```. This way, differences in the distribution of the variable between the genres become even more apparent. 
@@ -498,8 +446,8 @@ ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-30-1.png" alt="Boxplot by group" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-30)Boxplot by group</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-27-1.png" alt="Boxplot by group" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-27)Boxplot by group</p>
 </div>
 
 In case you would like to create the boxplot on the total data (i.e., not by group), just leave the ```y = ``` argument within the ```aes()``` function empty: 
@@ -512,8 +460,8 @@ ggplot(music_data, aes(x = log_streams, y = "")) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-31-1.png" alt="Single Boxplot" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-31)Single Boxplot</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-28-1.png" alt="Single Boxplot" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-28)Single Boxplot</p>
 </div>
 
 
@@ -559,8 +507,8 @@ ggplot(mean_data, aes(x = genre_dummy, y = streams)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-34-1.png" alt="Plot of means" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-34)Plot of means</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-31-1.png" alt="Plot of means" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-31)Plot of means</p>
 </div>
 
 As can be seen, there is a large difference between the genres with respect to the average number of streams. 
@@ -597,8 +545,8 @@ ggplot(mean_data2, aes(x = genre_dummy, y = streams,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-36-1.png" alt="Grouped plot of means" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-36)Grouped plot of means</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-33-1.png" alt="Grouped plot of means" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-33)Grouped plot of means</p>
 </div>
 The results of the analysis show that also in the HipHop & Rap genre, songs with non-explicit lyrics obtain more streams on average, contrary to our expectations. 
 
@@ -618,8 +566,8 @@ ggplot(music_data, aes(speechiness, log_streams)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-37-1.png" alt="Scatter plot" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-37)Scatter plot</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-34-1.png" alt="Scatter plot" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-34)Scatter plot</p>
 </div>
 As you can see, there appears to be a positive relationship between advertising and sales.
 
@@ -639,8 +587,8 @@ ggplot(music_data, aes(speechiness, log_streams, colour = explicit)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-38-1.png" alt="Grouped scatter plot" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-38)Grouped scatter plot</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-35-1.png" alt="Grouped scatter plot" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-35)Grouped scatter plot</p>
 </div>
 
 It appears from the plot that the association between speechiness and the number of streams is stronger for songs without explicit lyrics. 
@@ -683,8 +631,8 @@ ggplot(music_data_at, aes(x = week, y = streams)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-41-1.png" alt="Line plot" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-41)Line plot</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-38-1.png" alt="Line plot" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-38)Line plot</p>
 </div>
 There appears to be a positive trend in the market. Now let's compare Austria to other countries. Note that the ```%in%``` operator checks for us if any of the region names specified in the vector are included in the region column. 
 
@@ -706,8 +654,8 @@ ggplot(music_data_at_compare, aes(x = week, y = streams,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-43-1.png" alt="Line plot (by region)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-43)Line plot (by region)</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-40-1.png" alt="Line plot (by region)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-40)Line plot (by region)</p>
 </div>
 One issue in plot like this can be that the scales between countries is very different (i.e., in Germany there are many more streams because Germany is larger than the other countries). You could also use the ```facet_wrap()``` function to create one individual plot by region and specify 'scales = "free_y"' so that each individual plot has its own scale on the y-axis. We should also indicate the number of streams in millions by dividing the number of streams. 
 
@@ -722,8 +670,8 @@ ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-44-1.png" alt="Line plot (facet wrap)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-44)Line plot (facet wrap)</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-41-1.png" alt="Line plot (facet wrap)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-41)Line plot (facet wrap)</p>
 </div>
 Now it's easier to see that the trends are different between countries. While Sweden and Denmark appear to be saturated, the other market show strong growth. 
 
@@ -743,8 +691,8 @@ ggplot(music_data_at_compare, aes(x = week, y = streams/1000000)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-45-1.png" alt="Line plot (facet wrap)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-45)Line plot (facet wrap)</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-42-1.png" alt="Line plot (facet wrap)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-42)Line plot (facet wrap)</p>
 </div>
 
 If the relative share of the overall streaming volume is of interest, you could use a stacked area plot to visualize this. 
@@ -760,8 +708,8 @@ ggplot(music_data_at_compare, aes(x = week, y = streams/1000000,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-46-1.png" alt="Line plot (facet wrap)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-46)Line plot (facet wrap)</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-43-1.png" alt="Line plot (facet wrap)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-43)Line plot (facet wrap)</p>
 </div>
 
 In this type of plot it is easy to spot the relative size of the regions. 
@@ -816,8 +764,8 @@ ggplot(data_wide) + geom_area(aes(x = week, y = at/1000000,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-50-1.png" alt="Secondary y-axis" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-50)Secondary y-axis</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-47-1.png" alt="Secondary y-axis" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-47)Secondary y-axis</p>
 </div>
 
 In this plot it is easy to see the difference in trends between the countries.  
@@ -863,8 +811,8 @@ ggbetweenstats(
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-52-1.png" alt="Boxplot using ggstatsplot package" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-52)Boxplot using ggstatsplot package</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-49-1.png" alt="Boxplot using ggstatsplot package" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-49)Boxplot using ggstatsplot package</p>
 </div>
 
 ##### Combination of plots (ggExtra)
@@ -883,13 +831,66 @@ ggExtra::ggMarginal(p, type = "histogram")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-visualization_files/figure-html/unnamed-chunk-53-1.png" alt="Scatter plot with histogram" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-53)Scatter plot with histogram</p>
+<img src="05-visualization_files/figure-html/unnamed-chunk-50-1.png" alt="Scatter plot with histogram" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-50)Scatter plot with histogram</p>
 </div>
 
 In this case, the ```type = "histogram"``` argument specifies that we would like to plot a histogram. However, you could also opt for ```type = "boxplot"``` or ```type = "density"``` to use a boxplot or density plot instead.
 
 #### Appendix 
+
+##### Covariation plots
+
+To visualize the co-variation between categorical variables, you’ll need to count the number of observations for each combination stored in the frequency table. Say, we wanted to investigate the association between the popularity of a song and the level of 'speechiness'. For this exercise, let's assume we have both variables measured as categorical (factor) variables. We can use the `quantcut()` function to create categorical variables based on the continuous variables. All we need to do is tell the function how many categories we would like to obtain and it will divide the data based on the percentiles equally.  
+
+
+```r
+library(gtools)
+music_data$streams_cat <- as.numeric(quantcut(music_data$streams,
+    5, na.rm = TRUE))
+music_data$speech_cat <- as.numeric(quantcut(music_data$speechiness,
+    3, na.rm = TRUE))
+
+music_data$streams_cat <- factor(music_data$streams_cat,
+    levels = 1:5, labels = c("low", "low-med", "medium",
+        "med-high", "high"))  #convert to factor
+music_data$speech_cat <- factor(music_data$speech_cat,
+    levels = 1:3, labels = c("low", "medium", "high"))  #convert to factor
+```
+
+Now we have multiple ways to visualize a relationship between the two variables with ggplot. One option would be to use a variation of the scatterplot which counts how many points overlap at any given point and increases the dot size accordingly. This can be achieved with ```geom_count()``` as the example below shows where the `stat(prop)` argument assures that we get relative frequencies and with the `group` argument we tell R to compute the relative frequencies by speechiness.
+
+
+```r
+ggplot(data = music_data) + geom_count(aes(x = speech_cat,
+    y = streams_cat, size = stat(prop), group = speech_cat)) +
+    ylab("Popularity") + xlab("Speechiness") + labs(size = "Proportion") +
+    theme_bw()
+```
+
+<div class="figure" style="text-align: center">
+<img src="05-visualization_files/figure-html/unnamed-chunk-52-1.png" alt="Covariation between categorical data (1)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-52)Covariation between categorical data (1)</p>
+</div>
+The plot shows that there appears to be a positive association between the popularity of a song and its level of speechiness. 
+
+Another option would be to use a tile plot that changes the color of the tile based on the frequency of the combination of factors. To achieve this, we first have to create a dataframe that contains the relative frequencies of all combinations of factors. Then we can take this dataframe and pass it to ```geom_tile()```, while specifying that the fill of each tile should be dependent on the observed frequency of the factor combination, which is done by specifying the fill in the ```aes()``` function.  
+
+
+```r
+table_plot_rel <- prop.table(table(music_data[, c("speech_cat",
+    "streams_cat")]), 1)
+table_plot_rel <- as.data.frame(table_plot_rel)
+
+ggplot(table_plot_rel, aes(x = speech_cat, y = streams_cat)) +
+    geom_tile(aes(fill = Freq)) + ylab("Populartiy") +
+    xlab("Speechiness") + theme_bw()
+```
+
+<div class="figure" style="text-align: center">
+<img src="05-visualization_files/figure-html/unnamed-chunk-53-1.png" alt="Covariation between categorical data (2)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-53)Covariation between categorical data (2)</p>
+</div>
 
 ##### Location data (ggmap)
 
