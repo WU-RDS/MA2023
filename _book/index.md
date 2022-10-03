@@ -261,7 +261,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -303,7 +303,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -360,7 +360,7 @@ Again, please make sure that you have exhausted all other resources to solve a p
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A.<br>           Sessions indicated with '*' are group coaching sessions. Slots of 40 min. are assigned to each group within the indicated times.</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A.<br>           Sessions indicated with '*' are group coaching sessions. Slots of 30 min. are assigned to each group within the indicated times.</td></tr></tfoot>
 </table>
 
 
@@ -398,7 +398,7 @@ Again, please make sure that you have exhausted all other resources to solve a p
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B.<br>           Sessions indicated with '*' are group coaching sessions. Slots of 40 min. are assigned to each group within the indicated times.</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B.<br>           Sessions indicated with '*' are group coaching sessions. Slots of 30 min. are assigned to each group within the indicated times.</td></tr></tfoot>
 </table>
 
 <br>
@@ -477,7 +477,7 @@ In case you would like to learn more about the capabilities of R related to the 
 
 ### Discussion forum {-}
 
-**We strongly encourage you to ask your questions via the online forum** on the course page on the WU learning platform. The purpose of the forum is to allow you to discuss questions related to the contents with your class mates and us. Please make use of this forum as much as possible and ask questions if something remained unclear. Remember that there are no stupid questions! And if you know the answer to a question that is asked in the forum, it is also a good exercise to explain the concepts to your class mates. 
+**We strongly encourage you to ask your questions via the online forum** on the course page on the WU learning platform. The purpose of the forum is to allow you to discuss questions related to the contents with your class mates and us. Please make use of this forum as much as possible and ask questions if something remained unclear. Remember that there are no stupid questions! And if you know the answer to a question that is asked in the forum, it is also a good exercise to explain the concepts to your classmates. 
 
 ### DataCamp {-}
 
