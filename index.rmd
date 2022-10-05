@@ -159,7 +159,7 @@ mytable = data.frame(
     Day = c("Wednesday", 
             "Wednesday", 
             "Wednesday",
-            "Wednesday",
+            "Friday",
             "Wednesday",
             "Wednesday",
             "Wednesday"
@@ -483,7 +483,7 @@ In case you would like to learn more about the capabilities of R related to the 
 
 <center>
 
-![](./images/logo_datacamp.jpeg){width=50%}
+![](./images/logo_datacamp.jpeg)
 
 </center>
 

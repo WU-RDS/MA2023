@@ -175,7 +175,7 @@ The contents on this website are divided into weekly readings. To be able to fol
   </tr>
   <tr>
    <td style="text-align:left;"> Oct. 28 </td>
-   <td style="text-align:left;"> Wednesday </td>
+   <td style="text-align:left;"> Friday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.5.03 </td>
    <td style="text-align:left;"> Hypothesis testing II </td>
@@ -483,7 +483,7 @@ In case you would like to learn more about the capabilities of R related to the 
 
 <center>
 
-![](./images/logo_datacamp.jpeg){width=50%}
+![](./images/logo_datacamp.jpeg)
 
 </center>
 
