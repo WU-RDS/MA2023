@@ -159,7 +159,7 @@ mytable = data.frame(
     Day = c("Wednesday", 
             "Wednesday", 
             "Wednesday",
-            "Wednesday",
+            "Friday",
             "Wednesday",
             "Wednesday",
             "Wednesday"
