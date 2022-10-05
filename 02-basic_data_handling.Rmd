@@ -297,7 +297,7 @@ head(music_data)
 
 <!-- TODO: change dataset, add summarize, group by -->
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, purl=FALSE}
 library(knitr)
 library(dplyr)
 library(stringr)
