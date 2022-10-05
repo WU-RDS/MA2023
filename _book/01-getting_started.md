@@ -60,6 +60,10 @@ The following video gives you an introduction to the R Studio interface.
 
 ## Functions
 
+::: {.infobox .download data-latex="{download}"}
+[You can download the corresponding R-Code here](./Code/00-functions_packages.R)
+:::
+
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FgIdsSKYVSM" frameborder="0" allowfullscreen></iframe>
 </div>
@@ -76,6 +80,7 @@ An important thing to note is that R is case-sensitive, meaning that ```Seq()```
 
 
 ```r
+# <- this is a comment and is ignored by the R-interpreter
 seq(from = 1, to = 10) #creates sequence from 1 to 10
 ```
 
@@ -112,7 +117,35 @@ seq(10,1) #produces reversed sequence
 
 ## Packages
 
-Most of the R functionalities are contained in distinct modules called <b>packages</b>. When R is installed, a small set of packages is also installed. For example, the Base R package contains the basic functions which let R function as a language: arithmetic, input/output, basic programming support, etc.. However, a large number of packages exist that contain specialized functions that will help you to achieve specific tasks. To access the functions outside the scope of the pre-installed packages, you have to install the package first using the ```install.packages()```-function. For example, to install the ggplot2 package to create graphics, type in ```install.packages("ggplot2")```. Note that you only have to install a package once. After you have installed a package, you may load it to access its functionalities using the ```library()```-function. E.g., to load the ggplot2-package, type in ```library(ggplot2)```. 
+Most of the R functionalities are contained in distinct modules called <b>packages</b>. When R is installed, a small set of packages is also installed. For example, the Base R package contains the basic functions which let R function as a language: arithmetic, input/output, basic programming support, etc.. However, a large number of packages exist that contain specialized functions that will help you to achieve specific tasks. To access the functions outside the scope of the pre-installed packages, you have to install the package first using the ```install.packages()```-function. For example, to install the tidyverse package to manipulate data and create graphics, type in ```install.packages("tidyverse")```. Note that you only have to install a package once. After you have installed a package, you may load it to access its functionalities using the ```library()```-function. E.g., to load the tidyverse-package, type in ```library(tidyverse)```. 
+
+
+```r
+# Only run for the first time:
+# install.packages("tidyverse")
+# Run to load package:
+library("tidyverse")
+```
+
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+## ✔ readr   2.1.3      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
+```r
+# Now we can use functionality provided by "tidyverse"
+# We will see in the coming lectures how the following code works:
+ggplot(economics, aes(x = date, y = pop)) +
+  geom_line()
+```
+
+<img src="01-getting_started_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 The number of R packages is rapidly increasing and there are many specialized packages to perform different types of analytics. 
 <p style="text-align:center;">
