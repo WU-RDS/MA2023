@@ -481,9 +481,11 @@ In case you would like to learn more about the capabilities of R related to the 
 
 ### DataCamp {-}
 
-<p style="text-align:center;">
-<img src="https://github.com/IMSMWU/Teaching/raw/master/MRDA2017/Graphics/DataCamp50h1.png" alt="DSUR cover" height="50"  />&nbsp;
-</p>
+<center>
+
+![](./images/logo_datacamp.jpeg)
+
+</center>
 
 Please also make use of the abundance of web resources. For students who would like to further train the materials covered in class, we recommend DataCamp, an online platform that offers interactive courses in data science at different levels. To facilitate the learning process you will obtain full access to the entire DataCamp course curriculum for the duration of the course. You will receive and invitation via your WU student email address.   
 
