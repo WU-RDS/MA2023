@@ -483,7 +483,7 @@ In case you would like to learn more about the capabilities of R related to the 
 
 <center>
 
-![](./images/logo_datacamp.jpeg)
+![](./images/logo_datacamp.jpeg){width=50%}
 
 </center>
 
