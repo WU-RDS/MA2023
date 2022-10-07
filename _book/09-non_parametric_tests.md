@@ -1037,7 +1037,7 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 
 **(LC6.11) When should you use an ANOVA rather than a t-test?**   
 
-- [ ] To compare the means for more than populations
+- [ ] To compare the means for more than two populations
 - [ ] To compare the means of two groups
 - [ ] To adjust the variance of different sets
 - [ ] To test for causality

@@ -650,7 +650,7 @@ The output tells us that we need `r round(power.prop.test(p1=0.02,p2=0.025,sig.l
 
 **(LC6.11) When should you use an ANOVA rather than a t-test?**   
 
-- [ ] To compare the means for more than populations
+- [ ] To compare the means for more than two populations
 - [ ] To compare the means of two groups
 - [ ] To adjust the variance of different sets
 - [ ] To test for causality
