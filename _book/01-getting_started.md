@@ -55,7 +55,7 @@ The following video gives you an overview of how to download and install the R a
 The following video gives you an introduction to the R Studio interface.  
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dGFJjUiclZ8" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/qUxWc23r4EM" frameborder="0" allowfullscreen></iframe>
 </div>
 
 ## Functions
@@ -65,7 +65,7 @@ The following video gives you an introduction to the R Studio interface.
 :::
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FgIdsSKYVSM" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/SBkmsT0vlOY" frameborder="0" allowfullscreen></iframe>
 </div>
 
 When analyzing data in R, you will access most of the functionalities by calling functions. A <b>function</b> is a piece of code written to carry out a specified task (e.g., the ```lm()```-function to run a linear regression). It may or may not accept arguments or parameters and it may or may not return one or more values. Functions are generally called like this:

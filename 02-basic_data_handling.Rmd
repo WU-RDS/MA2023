@@ -20,7 +20,7 @@ This chapter covers the basics of data handling in R.
 
 <br>
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7AdksOeawU" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-Ib9xY7pcAw" frameborder="0" allowfullscreen></iframe>
 </div>
 <br>
 
