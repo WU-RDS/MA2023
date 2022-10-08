@@ -1050,9 +1050,9 @@ This code should not report an error</li>
 <li><input type="checkbox" disabled="" />
 <code>df[2,4]</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[student="Christina","grade"]</code></li>
+<code>filter(df, student = Christina) %&gt;% select(grade)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[student=="Christina","grade"]</code></li>
+<code>filter(df, student == "Christina") %&gt;% select(grade)</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
@@ -1063,48 +1063,48 @@ None of the above</li>
 <li><input type="checkbox" disabled="" />
 <code>df&amp;student_id &lt;- 1:nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[,"student_id"] &lt;- 1:nrow(df)</code></li>
+<code>mutate(df, student_id = 1:nrow(df))</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df$student_id &lt;- 1:length(df)</code></li>
+<code>mutate(df, student_id = 1:length(df))</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
 <p><strong>(LC3.6) How could you obtain all rows with students who obtained a 1?</strong></p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" />
-<code>df[df$grade==1,]</code></li>
+<code>filter(df, grade == 1)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[grade == min(df$grade),]</code></li>
+<code>filter(df, grade == min(df$grade, na.rm = TRUE))</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[,df$grade==1]</code></li>
+<code>select(df, grade == 1)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df[grade==1,]</code></li>
+<code>filter(df, grade == min(df$grade))</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
 <p><strong>(LC3.7) How could you create a subset of observations where the grade is not missing (NA) </strong></p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[grade!=NA,]</code></li>
+<code>df_subset &lt;- filter(df, !is.na(grade))</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[isnot.na(grade),]</code></li>
+<code>df_subset &lt;- filter(df, isnot.na(grade))</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[!is.na(grade),]</code></li>
+<code>df_subset &lt;- filter(df, grade != NA)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>df_subset &lt;- df[,grade!=NA]</code></li>
+<code>df_subset &lt;- filter(df, grade != "NA")</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
 <p><strong>(LC3.8) What is the share of students with a grade better than 3?</strong></p>
 <ul class="task-list">
 <li><input type="checkbox" disabled="" />
-<code>df[grade&lt;3,]/nrow(df)</code></li>
+<code>filter(df, grade &lt; 3)/nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>nrow(df[grade&lt;3,])/length(df)</code></li>
+<code>nrow(filter(df, grade &lt; 3))/length(df)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>nrow(df[grade&lt;3,])/nrow(df)</code></li>
+<code>nrow(filter(df, grade &lt; 3))/nrow(df)</code></li>
 <li><input type="checkbox" disabled="" />
-<code>nrow(df[,grade&lt;3])/nrow(df)</code></li>
+<code>filter(df, grade &lt; 3)/length(df)</code></li>
 <li><input type="checkbox" disabled="" />
 None of the above</li>
 </ul>
