@@ -16,7 +16,7 @@ opts_chunk$set(cache=T)
 library(tidyverse)
 ```
 
-```{r, echo = FALSE, warning=FALSE, message=FALSE}
+```{r, echo = FALSE, warning=FALSE, message=FALSE, purl=FALSE}
 library(Hmisc)
 library(knitr)
 library(ggmap)
@@ -32,7 +32,7 @@ register_google(key = "AIzaSyDMxadfjNH489ueRgo9S62PuZU6PbwAyiM")
 
 This section discusses the important topic of data visualization and how to produce appropriate graphics to describe your data visually. You should always visualize your data first. 
 
-```{r,echo=FALSE,out.width = '25%',fig.align='center',fig.cap = "source: https://twitter.com/heyblake/status/1432070055949258752?s=20"}
+```{r,purl=FALSE,echo=FALSE,out.width = '25%',fig.align='center',fig.cap = "source: https://twitter.com/heyblake/status/1432070055949258752?s=20"}
 knitr::include_graphics("./images/story_telling.PNG")
 ```
 
@@ -76,7 +76,7 @@ head(music_data)
 How can we plot this kind of data? Since we have a categorical variable, we will use a bar plot. However, to be able to use the table for your plot, you first need to assign it to an object as a data frame using the ```as.data.frame()```-function.
 
 ```{r message=FALSE, warning=FALSE}
-table_plot_rel <- as.data.frame(prop.table(table(music_data$genre))) #relative frequencies #relative frequencies
+table_plot_rel <- as.data.frame(prop.table(table(music_data$genre))) #relative frequencies
 head(table_plot_rel)
 ```
 
