@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -534,14 +534,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p><br></p>
 <p>The answer to the question which measures to use depends on the level of measurement. Based on the discussion in chapter 1, we make a distinction between categorical and continuous variables, for which different statistics are permissible as summarized in the following table.</p>
-<table style="width:100%;">
-<colgroup>
-<col width="28%" />
-<col width="28%" />
-<col width="28%" />
-<col width="6%" />
-<col width="6%" />
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th>OK to compute…</th>
@@ -743,7 +736,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>##       25%       50%       75% 
 ##      fair      good excellent 
 ## Levels: poor &lt; fair &lt; good &lt; excellent &lt; masterpiece</code></pre>
-<p>This means that the interquartile range is between “fair” and “excellent”. If you wanted to compare different genres according to these statistics, you could do this using the <code>group_by()</code>-function as follows:</p>
+<p>This means that the interquartile range is between “fair” and “excellent.” If you wanted to compare different genres according to these statistics, you could do this using the <code>group_by()</code>-function as follows:</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="summarizing-data.html#cb128-1" aria-hidden="true" tabindex="-1"></a>percentiles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
 <span id="cb128-2"><a href="summarizing-data.html#cb128-2" aria-hidden="true" tabindex="-1"></a>rating_percentiles <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
 <span id="cb128-3"><a href="summarizing-data.html#cb128-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(explicit) <span class="sc">|&gt;</span></span>
@@ -767,7 +760,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>Ratio variables</strong>: has all the properties of an interval variable, but also has an absolute zero point. When the variable equals 0.0, it means that there is none of that variable (e.g., the number of streams or duration variables in our example).</li>
 </ul>
 <p>For interval and ratio variables we can also compute the mean as a measure of central tendency, as well as the variance and the standard deviation as measures of dispersion. Computing descriptive statistics for continuous variables is easy and there are many functions from different packages that let you calculate summary statistics (including the <code>summary()</code> function from the <code>base</code> package). In this tutorial, we will use the <code>describe()</code> function from the <code>psych</code> package. Note that you could just as well use other packages to compute the descriptive statistics (e.g., the <code>stat.desc()</code> function from the <code>pastecs</code> package). Which one you choose depends on what type of information you seek (the results provide slightly different information) and on personal preferences.</p>
-<p>We could, for example, compute the summary statistics for the variables “streams”, “danceability”, and “valence” in our data set as follows:</p>
+<p>We could, for example, compute the summary statistics for the variables “streams,” “danceability,” and “valence” in our data set as follows:</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="summarizing-data.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb129-2"><a href="summarizing-data.html#cb129-2" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(<span class="fu">select</span>(music_data, streams, danceability,</span>
 <span id="cb129-3"><a href="summarizing-data.html#cb129-3" aria-hidden="true" tabindex="-1"></a>    valence))</span></code></pre></div>
@@ -926,7 +919,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table></div>
 <p>The ‘Missing’ column in the output above gives us information about missing values. It this case, there are no missing values; however, in reality there are usually at least a couple of lost or not recorded values. To get more precise analysis results, we might want to exclude these observations by creating a “complete” subset of our data. Imagine that we have a missing value in the variable “valence”; we would create a subset by filtering that hypothetical observation out:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="summarizing-data.html#cb134-1" aria-hidden="true" tabindex="-1"></a>music_data_valence <span class="ot">&lt;-</span> <span class="fu">filter</span>(music_data, <span class="sc">!</span><span class="fu">is.na</span>(valence))</span></code></pre></div>
-<p>In the command above, <code>!is.na()</code> is used to filter the rows for observations where the respective variable does not have missing values. The “!” in this case translates to “is not” and the function <code>is.na()</code> checks for missing values. Hence, the entire statement can be read as “select the rows from the ‘music_data’ data set where the values of the ‘valence’ and ‘duration_ms’ variables are not missing”.</p>
+<p>In the command above, <code>!is.na()</code> is used to filter the rows for observations where the respective variable does not have missing values. The “!” in this case translates to “is not” and the function <code>is.na()</code> checks for missing values. Hence, the entire statement can be read as “select the rows from the ‘music_data’ data set where the values of the ‘valence’ and ‘duration_ms’ variables are not missing.”</p>
 <p>As you can see, the output also includes a visualization of the frequency distribution using a histogram for the continuous variables and a bar chart for the categorical variables. The frequency distribution is an important element that allows us to assign probabilities to observed values if the observations come from a known probability distribution. How to derive these probability statements will be discussed next.</p>
 </div>
 <div id="using-frequency-distributions-to-go-beyond-the-data" class="section level4 hasAnchor" number="4.1.2.2">
@@ -965,7 +958,7 @@ Z=\frac{X_i-\bar{X}}{s}
 Figure 1.16: Histogram of tempo variable
 </p>
 </div>
-<p>In this case, the variable is measured on the scale “beats per minute”. To standardize this variable, we will subtract the mean of this variable from each observation and then divide by the standard deviation. We can compute the standardized variable by hand as follows:</p>
+<p>In this case, the variable is measured on the scale “beats per minute.” To standardize this variable, we will subtract the mean of this variable from each observation and then divide by the standard deviation. We can compute the standardized variable by hand as follows:</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="summarizing-data.html#cb136-1" aria-hidden="true" tabindex="-1"></a>music_data<span class="sc">$</span>tempo_std <span class="ot">&lt;-</span> (music_data<span class="sc">$</span>tempo <span class="sc">-</span> <span class="fu">mean</span>(music_data<span class="sc">$</span>tempo))<span class="sc">/</span><span class="fu">sd</span>(music_data<span class="sc">$</span>tempo)</span></code></pre></div>
 <p>If we create the histogram again, we can see that the scale has changed and now we can compare the standardized values to the values we find in the probability table.</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="summarizing-data.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(music_data<span class="sc">$</span>tempo_std)</span></code></pre></div>
@@ -1459,7 +1452,7 @@ Figure 4.4: Grouped scatter plot
 {"columns":[{"label":["week"],"name":[1],"type":["date"],"align":["right"]},{"label":["region"],"name":[2],"type":["fct"],"align":["left"]},{"label":["streams"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2017-01-01","2":"ar","3":"45390029"},{"1":"2017-01-01","2":"at","3":"5111149"},{"1":"2017-01-01","2":"au","3":"46201117"},{"1":"2017-01-01","2":"be","3":"8082253"},{"1":"2017-01-01","2":"bg","3":"86293"},{"1":"2017-01-01","2":"bo","3":"1055670"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>In a first step, let’s investigate the development for Austria, by filtering the data to region ‘at’.</p>
+<p>In a first step, let’s investigate the development for Austria, by filtering the data to region ‘at.’</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="summarizing-data.html#cb180-1" aria-hidden="true" tabindex="-1"></a>music_data_at <span class="ot">&lt;-</span> <span class="fu">filter</span>(music_data_ctry, region <span class="sc">==</span></span>
 <span id="cb180-2"><a href="summarizing-data.html#cb180-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;at&quot;</span>)</span></code></pre></div>
 <p>Given the correct <code>aes()</code> and geom specification ggplot constructs the correct plot for us. In order to make large numbers more readable we use the <code>label_comma</code> function from the <code>scales</code> package in the <code>scale_y_continuous</code> layer.</p>
@@ -1630,7 +1623,7 @@ Figure 4.12: Scatter plot with histogram
 <h4><span class="header-section-number">4.2.4.2</span> Appendix<a href="summarizing-data.html#appendix" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div id="covariation-plots" class="section level5 hasAnchor" number="4.2.4.2.1">
 <h5><span class="header-section-number">4.2.4.2.1</span> Covariation plots<a href="summarizing-data.html#covariation-plots" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>To visualize the co-variation between categorical variables, you’ll need to count the number of observations for each combination stored in the frequency table. Say, we wanted to investigate the association between the popularity of a song and the level of ‘speechiness’. For this exercise, let’s assume we have both variables measured as categorical (factor) variables. We can use the <code>quantcut()</code> function to create categorical variables based on the continuous variables. All we need to do is tell the function how many categories we would like to obtain and it will divide the data based on the percentiles equally.</p>
+<p>To visualize the co-variation between categorical variables, you’ll need to count the number of observations for each combination stored in the frequency table. Say, we wanted to investigate the association between the popularity of a song and the level of ‘speechiness.’ For this exercise, let’s assume we have both variables measured as categorical (factor) variables. We can use the <code>quantcut()</code> function to create categorical variables based on the continuous variables. All we need to do is tell the function how many categories we would like to obtain and it will divide the data based on the percentiles equally.</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="summarizing-data.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtools)</span>
 <span id="cb194-2"><a href="summarizing-data.html#cb194-2" aria-hidden="true" tabindex="-1"></a>music_data<span class="sc">$</span>streams_cat <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">quantcut</span>(music_data<span class="sc">$</span>streams,</span>
 <span id="cb194-3"><a href="summarizing-data.html#cb194-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
@@ -1671,7 +1664,7 @@ Figure 4.14: Covariation between categorical data (2)
 </div>
 <div id="location-data-ggmap" class="section level5 hasAnchor" number="4.2.4.2.2">
 <h5><span class="header-section-number">4.2.4.2.2</span> Location data (ggmap)<a href="summarizing-data.html#location-data-ggmap" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Now that we have covered the most important plots, we can look at what other type of data you may come across. One type of data that is increasingly available is the geo-location of customers and users (e.g., from app usage data). The following data set contains the app usage data of Shazam users from Germany. The data contains the latitude and longitude information where a music track was “shazamed”.</p>
+<p>Now that we have covered the most important plots, we can look at what other type of data you may come across. One type of data that is increasingly available is the geo-location of customers and users (e.g., from app usage data). The following data set contains the app usage data of Shazam users from Germany. The data contains the latitude and longitude information where a music track was “shazamed.”</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="summarizing-data.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
 <span id="cb197-2"><a href="summarizing-data.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb197-3"><a href="summarizing-data.html#cb197-3" aria-hidden="true" tabindex="-1"></a>geo_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/geo_data.dat&quot;</span>,</span>
@@ -1682,7 +1675,7 @@ Figure 4.14: Covariation between categorical data (2)
 {"columns":[{"label":["lat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["lon"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["latlon"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"50.7","2":"7.7","3":"50.7_7.7"},{"1":"51.0","2":"6.3","3":"51_6.3"},{"1":"52.2","2":"10.5","3":"52.2_10.5"},{"1":"50.9","2":"11.0","3":"50.9_11"},{"1":"49.9","2":"8.2","3":"49.9_8.2"},{"1":"53.3","2":"13.4","3":"53.3_13.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>There is a package called “ggmap”, which is an augmentation for the ggplot packages. It lets you load maps from different web services (e.g., Google maps) and maps the user location within the coordination system of ggplot. With this information, you can create interesting plots like heat maps. We won’t go into detail here but you may go through the following code on your own if you are interested. However, please note that you need to register an API with Google in order to make use of this package.</p>
+<p>There is a package called “ggmap,” which is an augmentation for the ggplot packages. It lets you load maps from different web services (e.g., Google maps) and maps the user location within the coordination system of ggplot. With this information, you can create interesting plots like heat maps. We won’t go into detail here but you may go through the following code on your own if you are interested. However, please note that you need to register an API with Google in order to make use of this package.</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="summarizing-data.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># register_google(key = &#39;your_api_key&#39;)</span></span>
 <span id="cb198-2"><a href="summarizing-data.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb198-3"><a href="summarizing-data.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the base map</span></span>
@@ -1705,18 +1698,27 @@ Figure 4.14: Covariation between categorical data (2)
 <h2>Learning check<a href="summarizing-data.html#learning-check-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC4.1) For which data types is it meaningful to compute the mean?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Nominal</li>
-<li><input type="checkbox" disabled="" />Ordinal</li>
-<li><input type="checkbox" disabled="" />Interval</li>
-<li><input type="checkbox" disabled="" />Ratio</li>
+<li><input type="checkbox" disabled="" />
+Nominal</li>
+<li><input type="checkbox" disabled="" />
+Ordinal</li>
+<li><input type="checkbox" disabled="" />
+Interval</li>
+<li><input type="checkbox" disabled="" />
+Ratio</li>
 </ul>
 <p><strong>(LC4.2) How can you compute the standardized variate of a variable X?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><span class="math inline">\(Z=\frac{X_i-\bar{X}}{s}\)</span></li>
-<li><input type="checkbox" disabled="" /><span class="math inline">\(Z=\frac{\bar{X}+X_i}{s}\)</span></li>
-<li><input type="checkbox" disabled="" /><span class="math inline">\(Z=\frac{s}{\bar{X}+X_i}\)</span></li>
-<li><input type="checkbox" disabled="" /><span class="math inline">\(Z=s*({\bar{X}+X_i)}\)</span></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\(Z=\frac{X_i-\bar{X}}{s}\)</span></li>
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\(Z=\frac{\bar{X}+X_i}{s}\)</span></li>
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\(Z=\frac{s}{\bar{X}+X_i}\)</span></li>
+<li><input type="checkbox" disabled="" />
+<span class="math inline">\(Z=s*({\bar{X}+X_i)}\)</span></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>You wish to analyze the following data frame ‘df’ containing information about cars</strong></p>
 <div data-pagedtable="false">
@@ -1726,11 +1728,16 @@ Figure 4.14: Covariation between categorical data (2)
 </div>
 <p><strong>(LC4.3) How could you add a new variable containing the z-scores of the variable ‘mpg’ in R?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>df$mpg_std &lt;- zscore(df$mpg)</code></li>
-<li><input type="checkbox" disabled="" /><code>df$mpg_std &lt;- stdv(df$mpg)</code></li>
-<li><input type="checkbox" disabled="" /><code>df$mpg_std &lt;- std.scale(df$mpg)</code></li>
-<li><input type="checkbox" disabled="" /><code>df$mpg_std &lt;- scale(df$mpg)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>df$mpg_std &lt;- zscore(df$mpg)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df$mpg_std &lt;- stdv(df$mpg)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df$mpg_std &lt;- std.scale(df$mpg)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>df$mpg_std &lt;- scale(df$mpg)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.4) How could you produce the below output?</strong></p>
 <div data-pagedtable="false">
@@ -1739,63 +1746,97 @@ Figure 4.14: Covariation between categorical data (2)
   </script>
 </div>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>describe(select(mtcars, hp, mpg, qsec))</code></li>
-<li><input type="checkbox" disabled="" /><code>summary(select(mtcars, hp, mpg, qsec))</code></li>
-<li><input type="checkbox" disabled="" /><code>table(select(mtcars, hp, mpg, qsec))</code></li>
-<li><input type="checkbox" disabled="" /><code>str(select(mtcars, hp, mpg, qsec))</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>describe(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" />
+<code>summary(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" />
+<code>table(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" />
+<code>str(select(mtcars, hp, mpg, qsec))</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.5) The last column “carb” indicates the number of carburetors each model has. By using a function we got to know the number of car models that have a certain number carburetors. Which function helped us to obtain this information?</strong></p>
 <pre><code>## 
 ##  1  2  3  4  6  8 
 ##  7 10  3 10  1  1</code></pre>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>describe(mtcars$carb)</code></li>
-<li><input type="checkbox" disabled="" /><code>table(mtcars$carb)</code></li>
-<li><input type="checkbox" disabled="" /><code>str(mtcars$carb)</code></li>
-<li><input type="checkbox" disabled="" /><code>prop.table(mtcars$carb)</code></li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+<code>describe(mtcars$carb)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>table(mtcars$carb)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>str(mtcars$carb)</code></li>
+<li><input type="checkbox" disabled="" />
+<code>prop.table(mtcars$carb)</code></li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.6) What type of data can be meaningfully depicted in a scatter plot?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />Two categorical variables</li>
-<li><input type="checkbox" disabled="" />One categorical and one continuous variable</li>
-<li><input type="checkbox" disabled="" />Two continuous variables</li>
-<li><input type="checkbox" disabled="" />One continuous variable</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+Two categorical variables</li>
+<li><input type="checkbox" disabled="" />
+One categorical and one continuous variable</li>
+<li><input type="checkbox" disabled="" />
+Two continuous variables</li>
+<li><input type="checkbox" disabled="" />
+One continuous variable</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.7) Which statement about the graph below is true?</strong></p>
 <p><img src="05-visualization_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />This is a bar chart</li>
-<li><input type="checkbox" disabled="" />This is a histogram</li>
-<li><input type="checkbox" disabled="" />It shows the frequency distribution of a continuous variable</li>
-<li><input type="checkbox" disabled="" />It shows the frequency distribution of a categorical variable</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+This is a bar chart</li>
+<li><input type="checkbox" disabled="" />
+This is a histogram</li>
+<li><input type="checkbox" disabled="" />
+It shows the frequency distribution of a continuous variable</li>
+<li><input type="checkbox" disabled="" />
+It shows the frequency distribution of a categorical variable</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.8) Which statement about the graph below is true?</strong></p>
 <p><img src="05-visualization_files/figure-html/unnamed-chunk-59-1.png" width="50%" /></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />This is a bar chart</li>
-<li><input type="checkbox" disabled="" />50% of observations are contained in the gray area</li>
-<li><input type="checkbox" disabled="" />The horizontal black line indicates the mean</li>
-<li><input type="checkbox" disabled="" />This is a boxplot</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+This is a bar chart</li>
+<li><input type="checkbox" disabled="" />
+50% of observations are contained in the gray area</li>
+<li><input type="checkbox" disabled="" />
+The horizontal black line indicates the mean</li>
+<li><input type="checkbox" disabled="" />
+This is a boxplot</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 <p><strong>(LC4.9) Which function can help you to save a graph made with <code>ggplot()</code>?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" /><code>ggsave()</code></li>
-<li><input type="checkbox" disabled="" /><code>write.plot()</code></li>
-<li><input type="checkbox" disabled="" /><code>save.plot()</code></li>
-<li><input type="checkbox" disabled="" /><code>export.plot()</code></li>
+<li><input type="checkbox" disabled="" />
+<code>ggsave()</code></li>
+<li><input type="checkbox" disabled="" />
+<code>write.plot()</code></li>
+<li><input type="checkbox" disabled="" />
+<code>save.plot()</code></li>
+<li><input type="checkbox" disabled="" />
+<code>export.plot()</code></li>
 </ul>
 <p><strong>(LC4.10) For a variable that follows a normal distribution, within how many standard deviations of the mean are 95% of values?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />1.645</li>
-<li><input type="checkbox" disabled="" />1.960</li>
-<li><input type="checkbox" disabled="" />2.580</li>
-<li><input type="checkbox" disabled="" />3.210</li>
-<li><input type="checkbox" disabled="" />None of the above</li>
+<li><input type="checkbox" disabled="" />
+1.645</li>
+<li><input type="checkbox" disabled="" />
+1.960</li>
+<li><input type="checkbox" disabled="" />
+2.580</li>
+<li><input type="checkbox" disabled="" />
+3.210</li>
+<li><input type="checkbox" disabled="" />
+None of the above</li>
 </ul>
 </div>
 <div id="references-1" class="section level2 unnumbered hasAnchor">

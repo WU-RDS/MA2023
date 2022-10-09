@@ -251,40 +251,40 @@ df
 
 - [ ] `df[4,2]`
 - [ ] `df[2,4]`
-- [ ] `df[student="Christina","grade"]`
-- [ ] `df[student=="Christina","grade"]`
+- [ ] `filter(df, student = Christina) %>% select(grade)`
+- [ ] `filter(df, student == "Christina") %>% select(grade)`
 - [ ] None of the above 	
 
 **(LC3.5) How can you add a new variable 'student_id' to the data frame that assigns numbers to students in an ascending order?**
 
 - [ ] `df$student_id <- 1:nrow(df)`
 - [ ] `df&student_id <- 1:nrow(df)`
-- [ ] `df[,"student_id"] <- 1:nrow(df)`
-- [ ] `df$student_id <- 1:length(df)`
+- [ ] `mutate(df, student_id = 1:nrow(df))`
+- [ ] `mutate(df, student_id = 1:length(df))`
 - [ ] None of the above 	
 
 **(LC3.6) How could you obtain all rows with students who obtained a 1?**
 
-- [ ] `df[df$grade==1,]`
-- [ ] `df[grade == min(df$grade),]`
-- [ ] `df[,df$grade==1]`
-- [ ] `df[grade==1,]`
+- [ ] `filter(df, grade == 1)`
+- [ ] `filter(df, grade == min(df$grade, na.rm = TRUE))`
+- [ ] `select(df, grade == 1)`
+- [ ] `filter(df, grade == min(df$grade))`
 - [ ] None of the above 	
 
 **(LC3.7) How could you create a subset of observations where the grade is not missing (NA) **
 
-- [ ] `df_subset <- df[grade!=NA,]`
-- [ ] `df_subset <- df[isnot.na(grade),]`
-- [ ] `df_subset <- df[!is.na(grade),]`
-- [ ] `df_subset <- df[,grade!=NA]`
+- [ ] `df_subset <- filter(df, !is.na(grade))`
+- [ ] `df_subset <- filter(df, isnot.na(grade))`
+- [ ] `df_subset <- filter(df, grade != NA)`
+- [ ] `df_subset <- filter(df, grade != "NA")`
 - [ ] None of the above 
 
 **(LC3.8) What is the share of students with a grade better than 3?**
 
-- [ ] `df[grade<3,]/nrow(df)`
-- [ ] `nrow(df[grade<3,])/length(df)`
-- [ ] `nrow(df[grade<3,])/nrow(df)`
-- [ ] `nrow(df[,grade<3])/nrow(df)`
+- [ ] `filter(df, grade < 3)/nrow(df)`
+- [ ] `nrow(filter(df, grade < 3))/length(df)`
+- [ ] `nrow(filter(df, grade < 3))/nrow(df)`
+- [ ] `filter(df, grade < 3)/length(df)`
 - [ ] None of the above
 
 **(LC3.9) You would like to load a .csv file from your working directory. What function would you use do it?**

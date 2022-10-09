@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -596,7 +596,7 @@ In file(file, &quot;rt&quot;) :
 <p>There are multiple ways to install a package:</p>
 <ul>
 <li>Enter <code>install.packages("PACKAGENAME")</code> in the console (attention: the name of the package needs to be in quotation marks)</li>
-<li>Go to the “Packages” pane in RStudio (lower right by default), then click on “Install”, then enter the package name</li>
+<li>Go to the “Packages” pane in RStudio (lower right by default), then click on “Install,” then enter the package name</li>
 <li>Using the two methods above would load the package from the official R server, the so-called Comprehensive R Archive Network (CRAN). There may be instances when you would like to install packages from other sources. This could be the case, for example, when a package is not available for the version of R that you are using. Sometimes an new version of R is released and some packages may require updating to be compatible with this new version. The updating process on the official server may take some time and usually the most recent version of a package are available from other sources, such as GitHub. Using the <code>devtools</code> package, you can install packages from GitHub directly: <code>devtools::install_github(repo = "USERNAME/PACKAGENAME")</code>. Of course, this requires the <code>devtools</code> package to be installed already; i.e., you need to run <code>install.packages("devtools")</code> first, if the <code>devtools</code> package is not installed yet.</li>
 </ul>
 </div>
@@ -627,11 +627,11 @@ In file(file, &quot;rt&quot;) :
 <div id="i-cannot-install-some-packages-on-macos" class="section level3 unnumbered hasAnchor">
 <h3>I cannot install some packages on MacOS<a href="faq.html#i-cannot-install-some-packages-on-macos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
-<li>When asked whether R should try to install a package from sources a package which needs compilation, enter “no” or “n”.</li>
+<li>When asked whether R should try to install a package from sources a package which needs compilation, enter “no” or “n.”</li>
 </ol>
 <p><img src="images/error.png" width="70%" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>If this doesn’t solve the issue, try installing the free XCode package from the Apple Appstore, open a Terminal and enter “xcode-select –install”. After that try to install the package again (answering “yes” to the question above).</li>
+<li>If this doesn’t solve the issue, try installing the free XCode package from the Apple Appstore, open a Terminal and enter “xcode-select –install.” After that try to install the package again (answering “yes” to the question above).</li>
 </ol>
 </div>
 </div>
@@ -639,7 +639,7 @@ In file(file, &quot;rt&quot;) :
 <h2><span class="header-section-number">12.3</span> Issues with statistics and data<a href="faq.html#issues-with-statistics-and-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="why-does-a-multi-item-scale-lead-to-increased-reliability" class="section level3 unnumbered hasAnchor">
 <h3>Why does a multi-item scale lead to increased reliability?<a href="faq.html#why-does-a-multi-item-scale-lead-to-increased-reliability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>“When combining several items into a scale, random error that is inherent in every item is averaged out, which leads to increased levels of reliability”. There could, for example, be individual-level differences in the interpretation of certain items. When you have multiple items measuring the same underlying construct, these differences will average out.</p>
+<p>“When combining several items into a scale, random error that is inherent in every item is averaged out, which leads to increased levels of reliability.” There could, for example, be individual-level differences in the interpretation of certain items. When you have multiple items measuring the same underlying construct, these differences will average out.</p>
 <p>See <a href="https://link.springer.com/article/10.1007/s11747-011-0300-3">Diamantopoulos, Sarstedt, Fuchs, et al. (2012)</a></p>
 </div>
 <div id="why-can-demeaningstandardization-lead-to-missing-values" class="section level3 unnumbered hasAnchor">
