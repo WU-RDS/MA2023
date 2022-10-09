@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -459,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </iframe>
 </div>
 <p><br></p>
-<p>In the previous chapter on factor analysis we tried to reduce the number of variables or columns by identifying underlying dimensions. In order to do so we exploited the fact that some items are highly correlated and therefore might represent the same underlying concept (e.g., health benefits or social benefits). Similarly, in cluster analysis we again do not distinguish between dependent and independent variables. However, in the case of cluster analysis we do not try to reduce the number of variables but the number of observations by grouping similar ones into “clusters.” What exactly defines “similarity” depends on the use case. In the case of music, audio features of songs might be used to identify clusters of similar songs (similar to the genre classification) which can be used for recommendation systems. Other use cases are customer segmentation and anomaly (e.g., fraud) detection.</p>
+<p>In the previous chapter on factor analysis we tried to reduce the number of variables or columns by identifying underlying dimensions. In order to do so we exploited the fact that some items are highly correlated and therefore might represent the same underlying concept (e.g., health benefits or social benefits). Similarly, in cluster analysis we again do not distinguish between dependent and independent variables. However, in the case of cluster analysis we do not try to reduce the number of variables but the number of observations by grouping similar ones into “clusters”. What exactly defines “similarity” depends on the use case. In the case of music, audio features of songs might be used to identify clusters of similar songs (similar to the genre classification) which can be used for recommendation systems. Other use cases are customer segmentation and anomaly (e.g., fraud) detection.</p>
 <br>
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Pv7gf-2lMHE" frameborder="0" allowfullscreen>
@@ -509,7 +509,7 @@ Let’s try it out with our two artists. In order to perform clustering we first
 ##                 1  2
 ##   Adele        14  9
 ##   Robin Schulz  2 37</code></pre>
-<p>In the previous example it was easy to set the number of clusters. However, if we use all artists in our data the best value for “K” is not immediately obvious. Surely some artists should be in the same cluster. We can user the <code>NbClust</code> package to determine the best number of clusters according to various indices (see <code>?NbClust</code>). First we scale all our variables and then we use the scaled versions to determine “K.” To make computations faster we will use songs by 5 famous artists. Then we count how many indices would choose a certain number of clusters. The two best candidates are 3 clusters, chosen by 13 indices and 2 clusters, chosen by 5 indices.</p>
+<p>In the previous example it was easy to set the number of clusters. However, if we use all artists in our data the best value for “K” is not immediately obvious. Surely some artists should be in the same cluster. We can user the <code>NbClust</code> package to determine the best number of clusters according to various indices (see <code>?NbClust</code>). First we scale all our variables and then we use the scaled versions to determine “K”. To make computations faster we will use songs by 5 famous artists. Then we count how many indices would choose a certain number of clusters. The two best candidates are 3 clusters, chosen by 13 indices and 2 clusters, chosen by 5 indices.</p>
 <div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="cluster-analysis.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
 <span id="cb736-2"><a href="cluster-analysis.html#cb736-2" aria-hidden="true" tabindex="-1"></a>famous_artists <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ed Sheeran&quot;</span>, <span class="st">&quot;Eminem&quot;</span>, <span class="st">&quot;Rihanna&quot;</span>,</span>
 <span id="cb736-3"><a href="cluster-analysis.html#cb736-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Taylor Swift&quot;</span>, <span class="st">&quot;Queen&quot;</span>)</span>
@@ -588,7 +588,7 @@ Let’s try it out with our two artists. In order to perform clustering we first
 <span id="cb748-5"><a href="cluster-analysis.html#cb748-5" aria-hidden="true" tabindex="-1"></a>hclust_tracks <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(pf_ri_scale))</span>
 <span id="cb748-6"><a href="cluster-analysis.html#cb748-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hclust_tracks)</span></code></pre></div>
 <p><img src="13-cluster_analysis_files/figure-html/unnamed-chunk-15-1.png" width="1440" /></p>
-<p>Again, we have to decide on the number of clusters. Based on a visual inspection of the hierarchy, choosing 4 clusters seems reasonable. We can get cluster assignments by “cutting the tree” such that we get the desired number of clusters. With hierarchical clustering we do not get the centers of each cluster as a return value as it is not calculated by the method. However we can reduce the clusters manually by calculating the mean of each variable for each cluster using the <code>aggregate</code> function. The <code>.</code> in the formula stands for “all other variables.” As we can see in the middle of the dendrogram there will be two small clusters with 1 and 2 songs in them respectively (“Needed me” in cluster 1 and “dogs,” “pigs” in cluster 4).</p>
+<p>Again, we have to decide on the number of clusters. Based on a visual inspection of the hierarchy, choosing 4 clusters seems reasonable. We can get cluster assignments by “cutting the tree” such that we get the desired number of clusters. With hierarchical clustering we do not get the centers of each cluster as a return value as it is not calculated by the method. However we can reduce the clusters manually by calculating the mean of each variable for each cluster using the <code>aggregate</code> function. The <code>.</code> in the formula stands for “all other variables”. As we can see in the middle of the dendrogram there will be two small clusters with 1 and 2 songs in them respectively (“Needed me” in cluster 1 and “dogs”, “pigs” in cluster 4).</p>
 <div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="cluster-analysis.html#cb749-1" aria-hidden="true" tabindex="-1"></a>hclusters <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hclust_tracks, <span class="dv">4</span>)</span>
 <span id="cb749-2"><a href="cluster-analysis.html#cb749-2" aria-hidden="true" tabindex="-1"></a>pf_ri_hier <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pf_ri_scale)</span>
 <span id="cb749-3"><a href="cluster-analysis.html#cb749-3" aria-hidden="true" tabindex="-1"></a>pf_ri_hier<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(hclusters)</span>

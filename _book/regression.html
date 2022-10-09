@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -526,7 +526,7 @@ Figure 1.5: Scatterplot for durationand attitute variables
 </p>
 </div>
 <p>How can we compute the correlation coefficient? Remember that the variance measures the average deviation from the mean of a variable:</p>
-<p><span class="math display" id="eq:variance">\[\begin{equation} 
+<p><span class="math display" id="eq:variance">\[\begin{equation}
 \begin{split}
 s_x^2&amp;=\frac{\sum_{i=1}^{N} (X_i-\overline{X})^2}{N-1} \\
      &amp;= \frac{\sum_{i=1}^{N} (X_i-\overline{X})*(X_i-\overline{X})}{N-1}
@@ -542,7 +542,7 @@ s_x^2&amp;=\frac{\sum_{i=1}^{N} (X_i-\overline{X})^2}{N-1} \\
 <span class="math inline">\(\sum_{i=1}^{N}(X_i-\overline{X})*(Y_i-\overline{Y})\)</span>
 </p>
 <p>… and compute the average of the sum of all cross-product deviations to get the <b>covariance</b>:</p>
-<p><span class="math display" id="eq:covariance">\[\begin{equation} 
+<p><span class="math display" id="eq:covariance">\[\begin{equation}
 Cov(x, y) =\frac{\sum_{i=1}^{N}(X_i-\overline{X})*(Y_i-\overline{Y})}{N-1}
 \tag{7.2}
 \end{equation}\]</span></p>
@@ -561,7 +561,7 @@ Cov(x, y) =\frac{\sum_{i=1}^{N}(X_i-\overline{X})*(Y_i-\overline{Y})}{N-1}
 <p>A positive covariance indicates that as one variable deviates from the mean, the other variable deviates in the same direction. A negative covariance indicates that as one variable deviates from the mean (e.g., increases), the other variable deviates in the opposite direction (e.g., decreases).</p>
 <p>However, the size of the covariance depends on the scale of measurement. Larger scale units will lead to larger covariance. To overcome the problem of dependence on measurement scale, we need to convert the covariance to a standard set of units through standardization by dividing the covariance by the standard deviation (similar to how we compute z-scores).</p>
 <p>With two variables, there are two standard deviations. We simply multiply the two standard deviations. We then divide the covariance by the product of the two standard deviations to get the standardized covariance, which is known as a correlation coefficient r:</p>
-<p><span class="math display" id="eq:corcoeff">\[\begin{equation} 
+<p><span class="math display" id="eq:corcoeff">\[\begin{equation}
 r=\frac{Cov_{xy}}{s_x*s_y}
 \tag{7.3}
 \end{equation}\]</span></p>
@@ -594,7 +594,7 @@ r=\frac{Cov_{xy}}{s_x*s_y}
 <p><span class="math display">\[H_0:\rho=0\]</span>
 <span class="math display">\[H_1:\rho\ne0\]</span></p>
 <p>The test statistic is:</p>
-<p><span class="math display" id="eq:cortest">\[\begin{equation} 
+<p><span class="math display" id="eq:cortest">\[\begin{equation}
 t=\frac{r*\sqrt{N-2}}{\sqrt{1-r^2}}
 \tag{7.4}
 \end{equation}\]</span></p>
@@ -747,18 +747,18 @@ t=\frac{r*\sqrt{N-2}}{\sqrt{1-r^2}}
 <div id="estimating-the-coefficients" class="section level4 hasAnchor" number="7.2.1.1">
 <h4><span class="header-section-number">7.2.1.1</span> Estimating the coefficients<a href="regression.html#estimating-the-coefficients" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A simple linear regression model only has one predictor and can be written as:</p>
-<p><span class="math display" id="eq:regequ">\[\begin{equation} 
+<p><span class="math display" id="eq:regequ">\[\begin{equation}
 Y=\beta_0+\beta_1X+\epsilon
 \tag{7.5}
 \end{equation}\]</span></p>
 <p>In our specific context, let’s consider only the influence of advertising on sales for now:</p>
-<p><span class="math display" id="eq:regequadv">\[\begin{equation} 
+<p><span class="math display" id="eq:regequadv">\[\begin{equation}
 Sales=\beta_0+\beta_1*adspend+\epsilon
 \tag{7.6}
 \end{equation}\]</span></p>
 <p>The word “adspend” represents data on advertising expenditures that we have observed and β<sub>1</sub> (the “slope”“) represents the unknown relationship between advertising expenditures and sales. It tells you by how much sales will increase for an additional Euro spent on advertising. β<sub>0</sub> (the”intercept”) is the number of sales we would expect if no money is spent on advertising. Together, β<sub>0</sub> and β<sub>1</sub> represent the model coefficients or <em>parameters</em>. The error term (ε) captures everything that we miss by using our model, including, (1) misspecifications (the true relationship might not be linear), (2) omitted variables (other variables might drive sales), and (3) measurement error (our measurement of the variables might be imperfect).</p>
 <p>Once we have used our training data to produce estimates for the model coefficients, we can predict future sales on the basis of a particular value of advertising expenditures by computing:</p>
-<p><span class="math display" id="eq:predreg">\[\begin{equation} 
+<p><span class="math display" id="eq:predreg">\[\begin{equation}
 \hat{Sales}=\hat{\beta_0}+\hat{\beta_1}*adspend
 \tag{7.7}
 \end{equation}\]</span></p>
@@ -774,7 +774,7 @@ Figure 1.14: Ordinary least squares (OLS)
 <span class="math inline">\(e_i = Y_i-(\beta_0+\beta_1X_i)\)</span>
 </p>
 <p>This difference is then minimized by minimizing the sum of the squared residuals:</p>
-<p><span class="math display" id="eq:rss">\[\begin{equation} 
+<p><span class="math display" id="eq:rss">\[\begin{equation}
 \sum_{i=1}^{N} e_i^2= \sum_{i=1}^{N} [Y_i-(\beta_0+\beta_1X_i)]^2\rightarrow min!
 \tag{7.8}
 \end{equation}\]</span></p>
@@ -785,7 +785,7 @@ Y<sub>i</sub>: Values of the dependent variable (i = 1,2,…,N) <br>
 X<sub>ni</sub>: Values of the nth independent variables and the i<em>th</em> observation<br>
 N: Number of observations<br></p>
 <p>This is also referred to as the <b>residual sum of squares (RSS)</b>, which you may still remember from the previous chapter on ANOVA. Now we need to choose the values for β<sub>0</sub> and β<sub>1</sub> that minimize RSS. So how can we derive these values for the regression coefficient? The equation for β<sub>1</sub> is given by:</p>
-<p><span class="math display" id="eq:slope">\[\begin{equation} 
+<p><span class="math display" id="eq:slope">\[\begin{equation}
 \hat{\beta_1}=\frac{COV_{XY}}{s_x^2}
 \tag{7.9}
 \end{equation}\]</span></p>
@@ -802,7 +802,7 @@ N: Number of observations<br></p>
 <p>The interpretation of β<sub>1</sub> is as follows:</p>
 <p>For every extra Euro spent on advertising, sales can be expected to increase by 0.096 units. Or, in other words, if we increase our marketing budget by 1,000 Euros, sales can be expected to increase by 96 units.</p>
 <p>Using the estimated coefficient for β<sub>1</sub>, it is easy to compute β<sub>0</sub> (the intercept) as follows:</p>
-<p><span class="math display" id="eq:intercept">\[\begin{equation} 
+<p><span class="math display" id="eq:intercept">\[\begin{equation}
 \hat{\beta_0}=\overline{Y}-\hat{\beta_1}\overline{X}
 \tag{7.10}
 \end{equation}\]</span></p>
@@ -827,21 +827,21 @@ Figure 1.17: Scatterplot
 </div>
 <div id="significance-testing-1" class="section level4 hasAnchor" number="7.2.1.2">
 <h4><span class="header-section-number">7.2.1.2</span> Significance testing<a href="regression.html#significance-testing-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In a next step, we assess if the effect of advertising on sales is statistically significant. This means that we test the null hypothesis H<sub>0</sub>: “There is no relationship between advertising and sales” versus the alternative hypothesis H<sub>1</sub>: “The is some relationship between advertising and sales.” Or, to state this formally:</p>
+<p>In a next step, we assess if the effect of advertising on sales is statistically significant. This means that we test the null hypothesis H<sub>0</sub>: “There is no relationship between advertising and sales” versus the alternative hypothesis H<sub>1</sub>: “The is some relationship between advertising and sales”. Or, to state this formally:</p>
 <p><span class="math display">\[H_0:\beta_1=0\]</span>
 <span class="math display">\[H_1:\beta_1\ne0\]</span></p>
 <p>How can we test if the effect is statistically significant? Recall the generalized equation to derive a test statistic:</p>
-<p><span class="math display" id="eq:teststatgeneral">\[\begin{equation} 
+<p><span class="math display" id="eq:teststatgeneral">\[\begin{equation}
 test\ statistic = \frac{effect}{error}
 \tag{7.11}
 \end{equation}\]</span></p>
 <p>The effect is given by the β<sub>1</sub> coefficient in this case. To compute the test statistic, we need to come up with a measure of uncertainty around this estimate (the error). This is because we use information from a sample to estimate the least squares line to make inferences regarding the regression line in the entire population. Since we only have access to one sample, the regression line will be slightly different every time we take a different sample from the population. This is sampling variation and it is perfectly normal! It just means that we need to take into account the uncertainty around the estimate, which is achieved by the standard error. Thus, the test statistic for our hypothesis is given by:</p>
-<p><span class="math display" id="eq:teststatreg">\[\begin{equation} 
+<p><span class="math display" id="eq:teststatreg">\[\begin{equation}
 t = \frac{\hat{\beta_1}}{SE(\hat{\beta_1})}
 \tag{7.12}
 \end{equation}\]</span></p>
 <p>After calculating the test statistic, we compare its value to the values that we would expect to find if there was no effect based on the t-distribution. In a regression context, the degrees of freedom are given by <code>N - p - 1</code> where N is the sample size and p is the number of predictors. In our case, we have 200 observations and one predictor. Thus, the degrees of freedom is 200 - 1 - 1 = 198. In the regression output below, R provides the exact probability of observing a t value of this magnitude (or larger) if the null hypothesis was true. This probability - as we already saw in chapter 6 - is the p-value. A small p-value indicates that it is unlikely to observe such a substantial association between the predictor and the outcome variable due to chance in the absence of any real association between the predictor and the outcome.</p>
-<p>To estimate the regression model in R, you can use the <code>lm()</code> function. Within the function, you first specify the dependent variable (“sales”) and independent variable (“adspend”) separated by a <code>~</code> (tilde). As mentioned previously, this is known as <em>formula notation</em> in R. The <code>data = regression</code> argument specifies that the variables come from the data frame named “regression.” Strictly speaking, you use the <code>lm()</code> function to create an object called “simple_regression,” which holds the regression output. You can then view the results using the <code>summary()</code> function:</p>
+<p>To estimate the regression model in R, you can use the <code>lm()</code> function. Within the function, you first specify the dependent variable (“sales”) and independent variable (“adspend”) separated by a <code>~</code> (tilde). As mentioned previously, this is known as <em>formula notation</em> in R. The <code>data = regression</code> argument specifies that the variables come from the data frame named “regression”. Strictly speaking, you use the <code>lm()</code> function to create an object called “simple_regression,” which holds the regression output. You can then view the results using the <code>summary()</code> function:</p>
 <div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="regression.html#cb494-1" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adspend, <span class="at">data =</span> regression)  <span class="co">#estimate linear model</span></span>
 <span id="cb494-2"><a href="regression.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simple_regression)  <span class="co">#summary of results</span></span></code></pre></div>
 <pre><code>## 
@@ -864,7 +864,7 @@ t = \frac{\hat{\beta_1}}{SE(\hat{\beta_1})}
 ## F-statistic: 99.587 on 1 and 198 DF,  p-value: &lt; 0.000000000000000222</code></pre>
 <p>Note that the estimated coefficients for β<sub>0</sub> (134.14) and β<sub>1</sub> (0.096) correspond to the results of our manual computation above. The associated t-values and p-values are given in the output. The t-values are larger than the critical t-values for the 95% confidence level, since the associated p-values are smaller than 0.05. In case of the coefficient for β<sub>1</sub>, this means that the probability of an association between the advertising and sales of the observed magnitude (or larger) is smaller than 0.05, if the value of β<sub>1</sub> was, in fact, 0. This finding leads us to reject the null hypothesis of no association between advertising and sales.</p>
 <p>The coefficients associated with the respective variables represent <b>point estimates</b>. To obtain a better understanding of the range of values that the coefficients could take, it is helpful to compute <b>confidence intervals</b>. A 95% confidence interval is defined as a range of values such that with a 95% probability, the range will contain the true unknown value of the parameter. For example, for β<sub>1</sub>, the confidence interval can be computed as.</p>
-<p><span class="math display" id="eq:regCI">\[\begin{equation} 
+<p><span class="math display" id="eq:regCI">\[\begin{equation}
 CI = \hat{\beta_1}\pm(t_{1-\frac{\alpha}{2}}*SE(\beta_1))
 \tag{7.13}
 \end{equation}\]</span></p>
@@ -892,7 +892,7 @@ CI = \hat{\beta_1}\pm(t_{1-\frac{\alpha}{2}}*SE(\beta_1))
 <li>The F-ratio measures how much the model has improved the prediction of the outcome compared to the level of inaccuracy in the model</li>
 </ul>
 <p>Similar to ANOVA, the calculation of model fit statistics relies on estimating the different sum of squares values. SS<sub>T</sub> is the difference between the observed data and the mean value of Y (aka. total variation). In the absence of any other information, the mean value of Y (<span class="math inline">\(\overline{Y}\)</span>) represents the best guess on where a particular observation <span class="math inline">\(Y_{i}\)</span> at a given level of advertising will fall:</p>
-<p><span class="math display" id="eq:regSST">\[\begin{equation} 
+<p><span class="math display" id="eq:regSST">\[\begin{equation}
 SS_T= \sum_{i=1}^{N} (Y_i-\overline{Y})^2
 \tag{7.14}
 \end{equation}\]</span></p>
@@ -904,7 +904,7 @@ Figure 1.20: Total sum of squares
 </p>
 </div>
 <p>Based on our linear model, the best guess about the sales level at a given level of advertising is the predicted value <span class="math inline">\(\hat{Y}_i\)</span>. The model sum of squares (SS<sub>M</sub>) therefore has the mathematical representation:</p>
-<p><span class="math display" id="eq:regSSM">\[\begin{equation} 
+<p><span class="math display" id="eq:regSSM">\[\begin{equation}
 SS_M= \sum_{i=1}^{N}  (\hat{Y}_i-\overline{Y})^2
 \tag{7.15}
 \end{equation}\]</span></p>
@@ -916,7 +916,7 @@ Figure 1.21: Ordinary least squares (OLS)
 </p>
 </div>
 <p>The residual sum of squares (SS<sub>R</sub>) is the difference between the observed data points (<span class="math inline">\(Y_{i}\)</span>) and the predicted values along the regression line (<span class="math inline">\(\hat{Y}_{i}\)</span>), i.e., the variation <em>not</em> explained by the model.</p>
-<p><span class="math display" id="eq:regSSR">\[\begin{equation} 
+<p><span class="math display" id="eq:regSSR">\[\begin{equation}
 SS_R= \sum_{i=1}^{N} ({Y}_{i}-\hat{Y}_{i})^2
 \tag{7.16}
 \end{equation}\]</span></p>
@@ -931,7 +931,7 @@ Figure 1.22: Ordinary least squares (OLS)
 <div id="r-squared" class="section level5 unnumbered hasAnchor">
 <h5>R-squared<a href="regression.html#r-squared" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>The R<sup>2</sup> statistic represents the proportion of variance that is explained by the model and is computed as:</p>
-<p><span class="math display" id="eq:regSSR">\[\begin{equation} 
+<p><span class="math display" id="eq:regSSR">\[\begin{equation}
 R^2= \frac{SS_M}{SS_T}
 \tag{7.16}
 \end{equation}\]</span></p>
@@ -963,7 +963,7 @@ Figure 1.23: Good vs. bad model fit
 <h5>Adjusted R-squared<a href="regression.html#adjusted-r-squared" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Due to the way the R<sup>2</sup> statistic is calculated, it will never decrease if a new explanatory variable is introduced into the model. This means that every new independent variable either doesn’t change the R<sup>2</sup> or increases it, even if there is no real relationship between the new variable and the dependent variable. Hence, one could be tempted to just add as many variables as possible to increase the R<sup>2</sup> and thus obtain a “better” model. However, this actually only leads to more noise and therefore a worse model.</p>
 <p>To account for this, there exists a test statistic closely related to the R<sup>2</sup>, the <strong>adjusted R<sup>2</sup></strong>. It can be calculated as follows:</p>
-<p><span class="math display" id="eq:adjustedR2">\[\begin{equation} 
+<p><span class="math display" id="eq:adjustedR2">\[\begin{equation}
 \overline{R^2} = 1 - (1 - R^2)\frac{n-1}{n - k - 1}
 \tag{7.17}
 \end{equation}\]</span></p>
@@ -979,7 +979,7 @@ Figure 1.23: Good vs. bad model fit
 <br>
 This means that, similar to the ANOVA, we test whether any of the included independent variables has a significant effect on the dependent variable. So far, we have only included one independent variable, but we will extend the set of predictor variables below.</p>
 <p>The F-test statistic is calculated as follows:</p>
-<p><span class="math display" id="eq:regSSR">\[\begin{equation} 
+<p><span class="math display" id="eq:regSSR">\[\begin{equation}
 F=\frac{\frac{SS_M}{k}}{\frac{SS_R}{(n-k-1)}}=\frac{MS_M}{MS_R}
 \tag{7.16}
 \end{equation}\]</span></p>
@@ -1025,13 +1025,13 @@ F=\frac{\frac{SS_M}{k}}{\frac{SS_R}{(n-k-1)}}=\frac{MS_M}{MS_R}
 </div>
 <p><br></p>
 <p>Multiple linear regression is a statistical technique that simultaneously tests the relationships between two or more independent variables and an interval-scaled dependent variable. The general form of the equation is given by:</p>
-<p><span class="math display" id="eq:regequ">\[\begin{equation} 
+<p><span class="math display" id="eq:regequ">\[\begin{equation}
 Y=(\beta_0+\beta_1*X_1+\beta_2*X_2+\beta_n*X_n)+\epsilon
 \tag{7.5}
 \end{equation}\]</span></p>
 <p>Again, we aim to find the linear combination of predictors that correlate maximally with the outcome variable. Note that if you change the composition of predictors, the partial regression coefficient of an independent variable will be different from that of the bivariate regression coefficient. This is because the regressors are usually correlated, and any variation in Y that was shared by X1 and X2 was attributed to X1. The interpretation of the partial regression coefficients is the expected change in Y when X is changed by one unit and all other predictors are held constant.</p>
 <p>Let’s extend the previous example. Say, in addition to the influence of advertising, you are interested in estimating the influence of radio airplay on the number of album downloads. The corresponding equation would then be given by:</p>
-<p><span class="math display" id="eq:regequadv">\[\begin{equation} 
+<p><span class="math display" id="eq:regequadv">\[\begin{equation}
 Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\epsilon
 \tag{7.6}
 \end{equation}\]</span></p>
@@ -1053,7 +1053,7 @@ Figure 4.1: Regression plane
 <li>R<sup>2</sup> is the amount of variation in the outcome variable explained by the model</li>
 </ul>
 <p>Estimating multiple regression models is straightforward using the <code>lm()</code> function. You just need to separate the individual predictors on the right hand side of the equation using the <code>+</code> symbol. For example, the model:</p>
-<p><span class="math display" id="eq:regequadv">\[\begin{equation} 
+<p><span class="math display" id="eq:regequadv">\[\begin{equation}
 Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 \tag{7.6}
 \end{equation}\]</span></p>
@@ -1087,7 +1087,7 @@ Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 <li>airplay (β<sub>2</sub>): when radio airplay increases by 1 play per week, sales will increase by 3.367 units</li>
 <li>starpower (β<sub>3</sub>): when the number of previous albums increases by 1, sales will increase by 11.086 units</li>
 </ul>
-<p>The associated t-values and p-values are also given in the output. You can see that the p-values are smaller than 0.05 for all three coefficients. Hence, all effects are “significant.” This means that if the null hypothesis was true (i.e., there was no effect between the variables and sales), the probability of observing associations of the estimated magnitudes (or larger) is very small (e.g., smaller than 0.05).</p>
+<p>The associated t-values and p-values are also given in the output. You can see that the p-values are smaller than 0.05 for all three coefficients. Hence, all effects are “significant”. This means that if the null hypothesis was true (i.e., there was no effect between the variables and sales), the probability of observing associations of the estimated magnitudes (or larger) is very small (e.g., smaller than 0.05).</p>
 <p>Again, to get a better feeling for the range of values that the coefficients could take, it is helpful to compute <b>confidence intervals</b>.</p>
 <div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="regression.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(multiple_regression)</span></code></pre></div>
 <pre><code>##               2.5 % 97.5 %
@@ -1142,7 +1142,7 @@ Figure 6.6: Partial plots
 <p>The predicted value of the dependent variable is 198 units, i.e., the product will sell 198 units.</p>
 <p><strong>Comparing effects</strong></p>
 <p>Using the output from the regression model above, it is difficult to compare the effects of the independent variables because they are all measured on different scales (Euros, radio plays, releases). Standardized regression coefficients can be used to judge the relative importance of the predictor variables. Standardization is achieved by multiplying the unstandardized coefficient by the ratio of the standard deviations of the independent and dependent variables:</p>
-<p><span class="math display" id="eq:stdcoeff">\[\begin{equation} 
+<p><span class="math display" id="eq:stdcoeff">\[\begin{equation}
 B_{k}=\beta_{k} * \frac{s_{x_k}}{s_y}
 \tag{7.18}
 \end{equation}\]</span></p>
@@ -1462,7 +1462,7 @@ Figure 7.4: Bivariate correlation plots
 </p>
 </div>
 <p>However, this only spots bivariate multicollinearity. Variance inflation factors can be used to spot more subtle multicollinearity arising from multivariate relationships. It is calculated by regressing X<sub>i</sub> on all other X and using the resulting R<sup>2</sup> to calculate</p>
-<p><span class="math display" id="eq:VIF">\[\begin{equation} 
+<p><span class="math display" id="eq:VIF">\[\begin{equation}
 \begin{split}
 \frac{1}{1 - R_i^2}
 \end{split}
@@ -1485,7 +1485,7 @@ Figure 7.4: Bivariate correlation plots
 </iframe>
 </div>
 <p>If the goal of your analysis is to explain the effect of one variable on an outcome (rather than just predicting an outcome), one main concern that you need to be aware of is related to omitted variables. This issue relates back to the choice of research design. If you are interested in causal inference and you did not obtain your data from a randomized trial, the issue of omitted variables bias is of great importance. If your goal is to make predictions, you don’t need to worry about this too much - in this case other potential problems such as overfitting (see below) should receive more attention.</p>
-<p>What do we mean by “omitted variables?” If a variable that influences the outcome is left out of the model (i.e., it is “omitted”), a bias in other variables’ coefficients might be introduced. Specifically, the other coefficients will be biased if the omitted variable influences the outcome <em>and</em> the independent variable(s) in your model. Intuitively, the variables left in the model “pick up” the effect of the omitted variable to the degree that they are related. Let’s illustrate this with an example.</p>
+<p>What do we mean by “omitted variables”? If a variable that influences the outcome is left out of the model (i.e., it is “omitted”), a bias in other variables’ coefficients might be introduced. Specifically, the other coefficients will be biased if the omitted variable influences the outcome <em>and</em> the independent variable(s) in your model. Intuitively, the variables left in the model “pick up” the effect of the omitted variable to the degree that they are related. Let’s illustrate this with an example.</p>
 <p>Consider the following data set containing information on the number of streams that a sample of artists receive on a streaming service in one month.</p>
 <div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="regression.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(streaming_data)</span></code></pre></div>
 <div data-pagedtable="false">
@@ -1681,7 +1681,7 @@ Figure 7.4: Bivariate correlation plots
 <div id="two-categories" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> Two categories<a href="regression.html#two-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose, you wish to investigate the effect of the variable “country” on sales, which is a categorical variable that can only take two levels (i.e., 0 = local artist, 1 = international artist). Categorical variables with two levels are also called binary predictors. It is straightforward to include these variables in your model as “dummy” variables. Dummy variables are factor variables that can only take two values. For our “country” variable, we can create a new predictor variable that takes the form:</p>
-<p><span class="math display" id="eq:dummycoding">\[\begin{equation} 
+<p><span class="math display" id="eq:dummycoding">\[\begin{equation}
 x_4 =
   \begin{cases}
     1       &amp; \quad \text{if } i \text{th artist is international}\\
@@ -1693,7 +1693,7 @@ x_4 =
 <p><span class="math display">\[\begin{align}
 Sales =\beta_0 &amp;+\beta_1*adspend\\
       &amp;+\beta_2*airplay\\
-      &amp;+\beta_3*starpower\\ 
+      &amp;+\beta_3*starpower\\
       &amp;+\beta_4*international+\epsilon
 \end{align}\]</span></p>
 <p>where “international” represents the new dummy variable and <span class="math inline">\(\beta_4\)</span> is the coefficient associated with this variable. Estimating the model is straightforward - you just need to include the variable as an additional predictor variable. Note that the variable needs to be specified as a factor variable before including it in your model. If you haven’t converted it to a factor variable before, you could also use the wrapper function <code>as.factor()</code> within the equation.</p>
@@ -1727,7 +1727,7 @@ Sales =\beta_0 &amp;+\beta_1*adspend\\
 <div id="more-than-two-categories" class="section level3 hasAnchor" number="7.4.2">
 <h3><span class="header-section-number">7.4.2</span> More than two categories<a href="regression.html#more-than-two-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Predictors with more than two categories, like our “genre”” variable, can also be included in your model. However, in this case one dummy variable cannot represent all possible values, since there are three genres (i.e., 1 = Rock, 2 = Pop, 3 = Electronic). Thus, we need to create additional dummy variables. For example, for our “genre” variable, we create two dummy variables as follows:</p>
-<p><span class="math display" id="eq:dummycoding1">\[\begin{equation} 
+<p><span class="math display" id="eq:dummycoding1">\[\begin{equation}
 x_5 =
   \begin{cases}
     1       &amp; \quad \text{if } i \text{th  product is from Pop genre}\\
@@ -1735,7 +1735,7 @@ x_5 =
   \end{cases}
 \tag{7.21}
 \end{equation}\]</span></p>
-<p><span class="math display" id="eq:dummycoding2">\[\begin{equation} 
+<p><span class="math display" id="eq:dummycoding2">\[\begin{equation}
 x_6 =
   \begin{cases}
     1       &amp; \quad \text{if } i \text{th  product is from Electronic genre}\\
@@ -1747,13 +1747,13 @@ x_6 =
 <p><span class="math display">\[\begin{align}
 Sales =\beta_0 &amp;+\beta_1*adspend\\
       &amp;+\beta_2*airplay\\
-      &amp;+\beta_3*starpower\\ 
+      &amp;+\beta_3*starpower\\
       &amp;+\beta_4*international\\
       &amp;+\beta_5*Pop\\
       &amp;+\beta_6*Electronic+\epsilon
 \end{align}\]</span></p>
 <p>where “Pop” and “Rock” represent our new dummy variables, and <span class="math inline">\(\beta_5\)</span> and <span class="math inline">\(\beta_6\)</span> represent the associated regression coefficients.</p>
-<p>The interpretation of the coefficients is as follows: <span class="math inline">\(\beta_5\)</span> is the difference in average sales between the genres “Rock” and “Pop,” while <span class="math inline">\(\beta_6\)</span> is the difference in average sales between the genres “Rock” and “Electro.” Note that the level for which no dummy variable is created is also referred to as the <em>baseline</em>. In our case, “Rock” would be the baseline genre. This means that there will always be one fewer dummy variable than the number of levels.</p>
+<p>The interpretation of the coefficients is as follows: <span class="math inline">\(\beta_5\)</span> is the difference in average sales between the genres “Rock” and “Pop”, while <span class="math inline">\(\beta_6\)</span> is the difference in average sales between the genres “Rock” and “Electro”. Note that the level for which no dummy variable is created is also referred to as the <em>baseline</em>. In our case, “Rock” would be the baseline genre. This means that there will always be one fewer dummy variable than the number of levels.</p>
 <p>You don’t have to create the dummy variables manually as R will do this automatically when you add the variable to your equation:</p>
 <div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="regression.html#cb578-1" aria-hidden="true" tabindex="-1"></a>multiple_regression <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adspend <span class="sc">+</span> airplay <span class="sc">+</span></span>
 <span id="cb578-2"><a href="regression.html#cb578-2" aria-hidden="true" tabindex="-1"></a>    starpower <span class="sc">+</span> country <span class="sc">+</span> genre, <span class="at">data =</span> regression)  <span class="co">#estimate linear model</span></span>
@@ -1847,7 +1847,7 @@ Figure 7.5: Effect of advertising by group
 <p><span class="math display">\[\begin{align}
 Sales =\beta_0 &amp;+\beta_1*adspend\\
       &amp;+\beta_2*airplay\\
-      &amp;+\beta_3*starpower\\ 
+      &amp;+\beta_3*starpower\\
       &amp;+\beta_4*international\\
       &amp;+\beta_5*(adspend*international)\\
       &amp;+\epsilon
@@ -1891,7 +1891,7 @@ Sales =\beta_0 &amp;+\beta_1*adspend\\
 <p><span class="math display">\[\begin{align}
 Sales =\beta_0 &amp;+\beta_1*adspend\\
       &amp;+\beta_2*airplay\\
-      &amp;+\beta_3*starpower\\ 
+      &amp;+\beta_3*starpower\\
       &amp;+\beta_4*(adspend*airplay)\\
       &amp;+\epsilon
 \end{align}\]</span></p>
@@ -1996,12 +1996,12 @@ Figure 7.8: Q-Q plot
 </div>
 <p>To sum up, a linear specification might not be the best model for this data set.</p>
 <p>In this case, a multiplicative model might be a better representation of the data. The multiplicative model has the following formal representation:</p>
-<p><span class="math display" id="eq:multiplicative">\[\begin{equation} 
+<p><span class="math display" id="eq:multiplicative">\[\begin{equation}
 Y =\beta_0 *X_1^{\beta_1}*X_2^{\beta_2}*...*X_J^{\beta_J}*\epsilon
 \tag{7.23}
 \end{equation}\]</span></p>
 <p>This functional form can be linearized by taking the logarithm of both sides of the equation:</p>
-<p><span class="math display" id="eq:multiplicativetransformed">\[\begin{equation} 
+<p><span class="math display" id="eq:multiplicativetransformed">\[\begin{equation}
 log(Y) =log(\beta_0) + \beta_1*log(X_1) + \beta_2*log(X_2) + ...+ \beta_J*log(X_J) + log(\epsilon)
 \tag{7.24}
 \end{equation}\]</span></p>
@@ -2021,7 +2021,7 @@ Figure 7.9: Linearized effect
 </p>
 </div>
 <p>It appears that now, with the log-transformed variables, a linear specification is a much better representation of the data. Hence, we can log-transform our variables and estimate the following equation:</p>
-<p><span class="math display" id="eq:multiplicativetransformed1">\[\begin{equation} 
+<p><span class="math display" id="eq:multiplicativetransformed1">\[\begin{equation}
 log(sales) = log(\beta_0) + \beta_1*log(advertising) + log(\epsilon)
 \tag{7.25}
 \end{equation}\]</span></p>
@@ -2310,7 +2310,7 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 ## AIC: 262.49
 ## 
 ## Number of Fisher Scoring iterations: 6</code></pre>
-<p>Noticeably this output does not include an <span class="math inline">\(R^2\)</span> value to asses model fit. Multiple “Pseudo <span class="math inline">\(R^2\)</span>s,” similar to the one used in OLS, have been developed. There are packages that return the <span class="math inline">\(R^2\)</span> given a logit model (see <code>rcompanion</code> or <code>pscl</code>). The calculation by hand is also fairly simple. We define the function <code>logisticPseudoR2s()</code> that takes a logit model as an input and returns three popular pseudo <span class="math inline">\(R^2\)</span> values.</p>
+<p>Noticeably this output does not include an <span class="math inline">\(R^2\)</span> value to asses model fit. Multiple “Pseudo <span class="math inline">\(R^2\)</span>s”, similar to the one used in OLS, have been developed. There are packages that return the <span class="math inline">\(R^2\)</span> given a logit model (see <code>rcompanion</code> or <code>pscl</code>). The calculation by hand is also fairly simple. We define the function <code>logisticPseudoR2s()</code> that takes a logit model as an input and returns three popular pseudo <span class="math inline">\(R^2\)</span> values.</p>
 <div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="regression.html#cb622-1" aria-hidden="true" tabindex="-1"></a>logisticPseudoR2s <span class="ot">&lt;-</span> <span class="cf">function</span>(LogModel) {</span>
 <span id="cb622-2"><a href="regression.html#cb622-2" aria-hidden="true" tabindex="-1"></a>  dev <span class="ot">&lt;-</span> LogModel<span class="sc">$</span>deviance </span>
 <span id="cb622-3"><a href="regression.html#cb622-3" aria-hidden="true" tabindex="-1"></a>  nullDev <span class="ot">&lt;-</span> LogModel<span class="sc">$</span>null.deviance </span>
@@ -2332,7 +2332,7 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 <p>The coefficients of the model give the change in the <a href="https://en.wikipedia.org/wiki/Odds#Statistical_usage">log odds</a> of the dependent variable due to a unit change in the regressor. This makes the exact interpretation of the coefficients difficult, but we can still interpret the signs and the p-values which will tell us if a variable has a significant positive or negative impact on the probability of the dependent variable being <span class="math inline">\(1\)</span>. In order to get the odds ratios we can simply take the exponent of the coefficients.</p>
 <div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="regression.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(logit_model ))</span></code></pre></div>
 <pre><code>##          (Intercept)         danceability 
-##        0.00004355897 26532731.71142345294</code></pre>
+##        0.00004355897 26532731.71142430231</code></pre>
 <p>Notice that the coefficient is extremely large. That is (partly) due to the fact that the danceability variable is constrained to values between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> and the coefficients are for a unit change. We can make the “unit-change” interpretation more meaningful by multiplying the danceability index by <span class="math inline">\(100\)</span>. This linear transformation does not affect the model fit or the p-values.</p>
 <div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="regression.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Re-scale independet variable</span></span>
 <span id="cb626-2"><a href="regression.html#cb626-2" aria-hidden="true" tabindex="-1"></a>chart_data<span class="sc">$</span>danceability_100 <span class="ot">&lt;-</span> chart_data<span class="sc">$</span>danceability<span class="sc">*</span><span class="dv">100</span> </span>
@@ -2565,131 +2565,82 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 <h2>Learning check<a href="regression.html#learning-check-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC7.1) What is a correlation coefficient?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-It describes the difference in means of two variables</li>
-<li><input type="checkbox" disabled="" />
-It describes the causal relation between two variables</li>
-<li><input type="checkbox" disabled="" />
-It is the standardized covariance</li>
-<li><input type="checkbox" disabled="" />
-It describes the degree to which the variation in one variable is related to the variation in another variable</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />It describes the difference in means of two variables</li>
+<li><input type="checkbox" disabled="" />It describes the causal relation between two variables</li>
+<li><input type="checkbox" disabled="" />It is the standardized covariance</li>
+<li><input type="checkbox" disabled="" />It describes the degree to which the variation in one variable is related to the variation in another variable</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The line associated with the steepest slope parameter</li>
-<li><input type="checkbox" disabled="" />
-The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values</li>
-<li><input type="checkbox" disabled="" />
-The line that minimizes the sum of the squared residuals</li>
-<li><input type="checkbox" disabled="" />
-The line that maximizes the sum of the squared residuals</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The line associated with the steepest slope parameter</li>
+<li><input type="checkbox" disabled="" />The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values</li>
+<li><input type="checkbox" disabled="" />The line that minimizes the sum of the squared residuals</li>
+<li><input type="checkbox" disabled="" />The line that maximizes the sum of the squared residuals</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.3) What is the interpretation of the regression coefficient (<span class="math inline">\(\beta_1\)</span>=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., <span class="math inline">\(log(sales)=13.4+0.05∗log(advertising)\)</span>)?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-An increase in advertising by 1€ leads to an increase in sales by 0.5 units</li>
-<li><input type="checkbox" disabled="" />
-A 1% increase in advertising leads to a 0.05% increase in sales</li>
-<li><input type="checkbox" disabled="" />
-A 1% increase in advertising leads to a 5% decrease in sales</li>
-<li><input type="checkbox" disabled="" />
-An increase in advertising by 1€ leads to an increase in sales by 0.005 units</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />An increase in advertising by 1€ leads to an increase in sales by 0.5 units</li>
+<li><input type="checkbox" disabled="" />A 1% increase in advertising leads to a 0.05% increase in sales</li>
+<li><input type="checkbox" disabled="" />A 1% increase in advertising leads to a 5% decrease in sales</li>
+<li><input type="checkbox" disabled="" />An increase in advertising by 1€ leads to an increase in sales by 0.005 units</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.4) Which of the following statements about the adjusted R-squared is TRUE?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-It is always larger than the regular <span class="math inline">\(R^{2}\)</span></li>
-<li><input type="checkbox" disabled="" />
-It increases with every additional variable</li>
-<li><input type="checkbox" disabled="" />
-It increases only with additional variables that add more explanatory power than pure chance</li>
-<li><input type="checkbox" disabled="" />
-It contains a “penalty” for including unnecessary variables</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />It is always larger than the regular <span class="math inline">\(R^{2}\)</span></li>
+<li><input type="checkbox" disabled="" />It increases with every additional variable</li>
+<li><input type="checkbox" disabled="" />It increases only with additional variables that add more explanatory power than pure chance</li>
+<li><input type="checkbox" disabled="" />It contains a “penalty” for including unnecessary variables</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.5) What does the term overfitting refer to?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-A regression model that has too many predictor variables</li>
-<li><input type="checkbox" disabled="" />
-A regression model that fits to a specific data set so poorly, that it will not generalize to other samples</li>
-<li><input type="checkbox" disabled="" />
-A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples</li>
-<li><input type="checkbox" disabled="" />
-A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />A regression model that has too many predictor variables</li>
+<li><input type="checkbox" disabled="" />A regression model that fits to a specific data set so poorly, that it will not generalize to other samples</li>
+<li><input type="checkbox" disabled="" />A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples</li>
+<li><input type="checkbox" disabled="" />A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.6) What are assumptions of the linear regression model?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Endogeneity</li>
-<li><input type="checkbox" disabled="" />
-Independent errors</li>
-<li><input type="checkbox" disabled="" />
-Heteroscedasticity</li>
-<li><input type="checkbox" disabled="" />
-Linear dependence of regressors</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Endogeneity</li>
+<li><input type="checkbox" disabled="" />Independent errors</li>
+<li><input type="checkbox" disabled="" />Heteroscedasticity</li>
+<li><input type="checkbox" disabled="" />Linear dependence of regressors</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The variance of the error term is not constant</li>
-<li><input type="checkbox" disabled="" />
-A strong linear relationship between the independent variables</li>
-<li><input type="checkbox" disabled="" />
-The variance of the error term is constant</li>
-<li><input type="checkbox" disabled="" />
-A correlation between the error term and the independent variables</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The variance of the error term is not constant</li>
+<li><input type="checkbox" disabled="" />A strong linear relationship between the independent variables</li>
+<li><input type="checkbox" disabled="" />The variance of the error term is constant</li>
+<li><input type="checkbox" disabled="" />A correlation between the error term and the independent variables</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Constant marginal returns</li>
-<li><input type="checkbox" disabled="" />
-Decreasing marginal returns</li>
-<li><input type="checkbox" disabled="" />
-Constant elasticity</li>
-<li><input type="checkbox" disabled="" />
-Increasing marginal returns</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Constant marginal returns</li>
+<li><input type="checkbox" disabled="" />Decreasing marginal returns</li>
+<li><input type="checkbox" disabled="" />Constant elasticity</li>
+<li><input type="checkbox" disabled="" />Increasing marginal returns</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.9) When do you use a logistic regression model?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-When the dependent variable is continuous</li>
-<li><input type="checkbox" disabled="" />
-When the independent and dependent variables are binary</li>
-<li><input type="checkbox" disabled="" />
-When the dependent variable is binary</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />When the dependent variable is continuous</li>
+<li><input type="checkbox" disabled="" />When the independent and dependent variables are binary</li>
+<li><input type="checkbox" disabled="" />When the dependent variable is binary</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>lm(y~x, data=data)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>lm(x~y + error, data=data)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>lm(x~y, data=data)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>lm(y~x + error, data=data)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>lm(y~x, data=data)</code></li>
+<li><input type="checkbox" disabled="" /><code>lm(x~y + error, data=data)</code></li>
+<li><input type="checkbox" disabled="" /><code>lm(x~y, data=data)</code></li>
+<li><input type="checkbox" disabled="" /><code>lm(y~x + error, data=data)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 </div>
 <div id="references-4" class="section level2 unnumbered hasAnchor">

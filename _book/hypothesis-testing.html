@@ -101,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -114,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -501,7 +501,7 @@ Accepting the alternative hypothesis in turn will often lead to changes in opini
 <pre><code>## [1] 2.001639</code></pre>
 <p>Since we know from the central limit theorem that the sampling distribution is normal for large enough samples, we can now visualize the expected sampling distribution <strong>if our null hypothesis was in fact true</strong> (i.e., if the was no difference between the true population mean and the hypothesized mean of 10).</p>
 <p><img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
-<p>We also know that 95% of the probability is within 1.96 standard deviations from the mean. Values higher than that are rather unlikely, if our hypothesis about the population mean was indeed true. This is shown by the shaded area, also known as the “rejection region.” To test our hypothesis that the population mean is equal to <span class="math inline">\(10\)</span>, let us take a random sample from the population.</p>
+<p>We also know that 95% of the probability is within 1.96 standard deviations from the mean. Values higher than that are rather unlikely, if our hypothesis about the population mean was indeed true. This is shown by the shaded area, also known as the “rejection region”. To test our hypothesis that the population mean is equal to <span class="math inline">\(10\)</span>, let us take a random sample from the population.</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="hypothesis-testing.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12567</span>)</span>
 <span id="cb213-2"><a href="hypothesis-testing.html#cb213-2" aria-hidden="true" tabindex="-1"></a>H_0 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb213-3"><a href="hypothesis-testing.html#cb213-3" aria-hidden="true" tabindex="-1"></a>student_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25000</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
@@ -549,7 +549,7 @@ z = {\bar x-  \mu_0 \over \sigma_{\bar x}}={\bar x-  \mu_0 \over \sigma / \sqrt{
 <p><span class="math display">\[
 t = {\bar x-  \mu_0 \over SE_{\bar x}}={\bar x-  \mu_0 \over s / \sqrt{n}}
 \]</span></p>
-<p>Here, <span class="math inline">\(\bar X\)</span> denotes the sample mean and <span class="math inline">\(s\)</span> the sample standard deviation. The t-distribution has more probability in its “tails,” i.e. farther away from the mean. This reflects the higher uncertainty introduced by replacing the population standard deviation by its sample estimate. Intuitively, this is particularly relevant for small samples, since the uncertainty about the true population parameters decreases with increasing sample size. This is reflected by the fact that the exact shape of the t-distribution depends on the <strong>degrees of freedom</strong>, which is the sample size minus one (i.e., <span class="math inline">\(n-1\)</span>). To see this, the following graph shows the t-distribution with different degrees of freedom for a two-tailed test and <span class="math inline">\(\alpha = 0.05\)</span>. The grey curve shows the normal distribution.</p>
+<p>Here, <span class="math inline">\(\bar X\)</span> denotes the sample mean and <span class="math inline">\(s\)</span> the sample standard deviation. The t-distribution has more probability in its “tails”, i.e. farther away from the mean. This reflects the higher uncertainty introduced by replacing the population standard deviation by its sample estimate. Intuitively, this is particularly relevant for small samples, since the uncertainty about the true population parameters decreases with increasing sample size. This is reflected by the fact that the exact shape of the t-distribution depends on the <strong>degrees of freedom</strong>, which is the sample size minus one (i.e., <span class="math inline">\(n-1\)</span>). To see this, the following graph shows the t-distribution with different degrees of freedom for a two-tailed test and <span class="math inline">\(\alpha = 0.05\)</span>. The grey curve shows the normal distribution.</p>
 <p><img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-9-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>Notice that as <span class="math inline">\(n\)</span> gets larger, the t-distribution gets closer and closer to the normal distribution, reflecting the fact that the uncertainty introduced by <span class="math inline">\(s\)</span> is reduced. To summarize, we now have an estimate for the standard deviation of the distribution of the sample mean (i.e., <span class="math inline">\(SE_{\bar x}\)</span>) and an appropriate distribution that takes into account the necessary uncertainty (i.e., the t-distribution). Let us now compute the t-statistic according to the formula above:</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="hypothesis-testing.html#cb220-1" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> (<span class="fu">sd</span>(music_listening_sample<span class="sc">$</span>hours)<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
@@ -827,11 +827,11 @@ SE_{\bar x_1-\bar x_2} = \sqrt{{s_1^2 \over n_1}+{s_2^2 \over n_2}}
 <pre><code>## [1] 2.092373</code></pre>
 <p>Recall from above that we can calculate the t-statistic as:</p>
 <p><span class="math display">\[
-t= {\bar x - \mu_0 \over {s \over \sqrt{n}}} 
+t= {\bar x - \mu_0 \over {s \over \sqrt{n}}}
 \]</span></p>
 <p>Exchanging <span class="math inline">\(\bar x\)</span> for <span class="math inline">\(d\)</span>, we get</p>
 <p><span class="math display">\[
-t= {(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2) \over {\sqrt{{s_1^2 \over n_1}+{s_2^2 \over n_2}}}} 
+t= {(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2) \over {\sqrt{{s_1^2 \over n_1}+{s_2^2 \over n_2}}}}
 \]</span></p>
 <p>Note that according to our hypothesis <span class="math inline">\(\mu_1-\mu_2=0\)</span>, so that we can calculate the t-statistic as:</p>
 <div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="hypothesis-testing.html#cb255-1" aria-hidden="true" tabindex="-1"></a>t_score <span class="ot">&lt;-</span> d<span class="sc">/</span>SE_x1_x2</span>
@@ -1229,7 +1229,7 @@ Figure 4.10: p-hacking (red indicates false positives)
 </iframe>
 </div>
 <p><br></p>
-<p>Let’s use an example to see how ANOVA works. Similar to the previous example, imagine that the music streaming service experiments with a recommender system and manipulates the intensity of personalized recommendations using three levels: ‘low,’ ‘medium,’ and ‘high.’ The service randomly assigns 100 users to each condition and records the listening times in hours in the following week. As always, we load and inspect the data first:</p>
+<p>Let’s use an example to see how ANOVA works. Similar to the previous example, imagine that the music streaming service experiments with a recommender system and manipulates the intensity of personalized recommendations using three levels: ‘low’, ‘medium’, and ‘high’. The service randomly assigns 100 users to each condition and records the listening times in hours in the following week. As always, we load and inspect the data first:</p>
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="hypothesis-testing.html#cb289-1" aria-hidden="true" tabindex="-1"></a>hours_abc <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat&quot;</span>,</span>
 <span id="cb289-2"><a href="hypothesis-testing.html#cb289-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
 <span id="cb289-3"><a href="hypothesis-testing.html#cb289-3" aria-hidden="true" tabindex="-1"></a>hours_abc<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(hours_abc<span class="sc">$</span>group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,</span>
@@ -1293,7 +1293,7 @@ Figure 1.5: Boxplot
 </p>
 </div>
 <p>Note that ANOVA is an omnibus test, which means that we test for an overall difference between groups. Hence, the test will only tell you if the group means are different, but it won’t tell you exactly which groups are different from another.</p>
-<p>So why don’t we then just conduct a series of t-tests for all combinations of groups (i.e., “low” vs. “medium,” “low” vs. “high,” “medium” vs. “high”)? The reason is that if we assume each test to be independent, then there is a 5% probability of falsely rejecting the null hypothesis (Type I error) for each test. In our case:</p>
+<p>So why don’t we then just conduct a series of t-tests for all combinations of groups (i.e., “low” vs. “medium”, “low” vs. “high”, “medium” vs. “high”)? The reason is that if we assume each test to be independent, then there is a 5% probability of falsely rejecting the null hypothesis (Type I error) for each test. In our case:</p>
 <ul>
 <li>“low” vs. “medium” (α = 0.05)</li>
 <li>“low” vs. “high” (α = 0.05)</li>
@@ -1323,7 +1323,7 @@ Figure 1.5: Boxplot
 {"columns":[{"label":["index"],"name":[1],"type":["int"],"align":["right"]},{"label":["low"],"name":[2],"type":["int"],"align":["right"]},{"label":["medium"],"name":[3],"type":["int"],"align":["right"]},{"label":["high"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"18","3":"26","4":"34"},{"1":"2","2":"13","3":"32","4":"34"},{"1":"3","2":"3","3":"29","4":"32"},{"1":"4","2":"13","3":"31","4":"25"},{"1":"5","2":"20","3":"13","4":"35"},{"1":"6","2":"18","3":"31","4":"20"},{"1":"7","2":"18","3":"26","4":"30"},{"1":"8","2":"10","3":"21","4":"33"},{"1":"9","2":"11","3":"31","4":"31"},{"1":"10","2":"20","3":"24","4":"42"},{"1":"11","2":"23","3":"13","4":"40"},{"1":"12","2":"14","3":"21","4":"44"},{"1":"13","2":"25","3":"31","4":"39"},{"1":"14","2":"16","3":"21","4":"33"},{"1":"15","2":"14","3":"28","4":"27"},{"1":"16","2":"14","3":"39","4":"48"},{"1":"17","2":"22","3":"22","4":"32"},{"1":"18","2":"23","3":"27","4":"35"},{"1":"19","2":"20","3":"28","4":"32"},{"1":"20","2":"15","3":"19","4":"35"},{"1":"21","2":"19","3":"20","4":"44"},{"1":"22","2":"16","3":"20","4":"32"},{"1":"23","2":"15","3":"26","4":"39"},{"1":"24","2":"15","3":"26","4":"35"},{"1":"25","2":"6","3":"12","4":"42"},{"1":"26","2":"12","3":"25","4":"29"},{"1":"27","2":"12","3":"23","4":"45"},{"1":"28","2":"15","3":"24","4":"27"},{"1":"29","2":"11","3":"24","4":"35"},{"1":"30","2":"10","3":"22","4":"38"},{"1":"31","2":"14","3":"16","4":"44"},{"1":"32","2":"5","3":"14","4":"39"},{"1":"33","2":"13","3":"29","4":"38"},{"1":"34","2":"12","3":"32","4":"44"},{"1":"35","2":"22","3":"29","4":"17"},{"1":"36","2":"16","3":"20","4":"38"},{"1":"37","2":"7","3":"32","4":"34"},{"1":"38","2":"20","3":"34","4":"31"},{"1":"39","2":"13","3":"27","4":"29"},{"1":"40","2":"21","3":"26","4":"46"},{"1":"41","2":"13","3":"20","4":"36"},{"1":"42","2":"13","3":"23","4":"32"},{"1":"43","2":"12","3":"42","4":"35"},{"1":"44","2":"5","3":"19","4":"30"},{"1":"45","2":"17","3":"26","4":"27"},{"1":"46","2":"18","3":"32","4":"44"},{"1":"47","2":"12","3":"29","4":"40"},{"1":"48","2":"8","3":"22","4":"31"},{"1":"49","2":"5","3":"25","4":"21"},{"1":"50","2":"18","3":"24","4":"29"},{"1":"51","2":"18","3":"28","4":"29"},{"1":"52","2":"19","3":"38","4":"32"},{"1":"53","2":"12","3":"26","4":"33"},{"1":"54","2":"11","3":"16","4":"28"},{"1":"55","2":"13","3":"21","4":"44"},{"1":"56","2":"16","3":"27","4":"37"},{"1":"57","2":"5","3":"24","4":"33"},{"1":"58","2":"17","3":"28","4":"45"},{"1":"59","2":"9","3":"28","4":"41"},{"1":"60","2":"8","3":"24","4":"33"},{"1":"61","2":"11","3":"32","4":"31"},{"1":"62","2":"12","3":"25","4":"42"},{"1":"63","2":"13","3":"18","4":"31"},{"1":"64","2":"10","3":"29","4":"25"},{"1":"65","2":"15","3":"25","4":"43"},{"1":"66","2":"16","3":"20","4":"38"},{"1":"67","2":"22","3":"18","4":"40"},{"1":"68","2":"10","3":"28","4":"36"},{"1":"69","2":"16","3":"27","4":"25"},{"1":"70","2":"18","3":"32","4":"30"},{"1":"71","2":"12","3":"22","4":"36"},{"1":"72","2":"22","3":"21","4":"46"},{"1":"73","2":"13","3":"28","4":"33"},{"1":"74","2":"14","3":"30","4":"39"},{"1":"75","2":"10","3":"30","4":"40"},{"1":"76","2":"9","3":"12","4":"31"},{"1":"77","2":"9","3":"21","4":"39"},{"1":"78","2":"11","3":"23","4":"43"},{"1":"79","2":"17","3":"22","4":"36"},{"1":"80","2":"17","3":"17","4":"37"},{"1":"81","2":"16","3":"29","4":"46"},{"1":"82","2":"14","3":"29","4":"28"},{"1":"83","2":"16","3":"22","4":"30"},{"1":"84","2":"14","3":"12","4":"31"},{"1":"85","2":"19","3":"23","4":"32"},{"1":"86","2":"24","3":"32","4":"31"},{"1":"87","2":"17","3":"21","4":"29"},{"1":"88","2":"12","3":"18","4":"50"},{"1":"89","2":"12","3":"27","4":"37"},{"1":"90","2":"17","3":"31","4":"32"},{"1":"91","2":"14","3":"23","4":"41"},{"1":"92","2":"20","3":"21","4":"36"},{"1":"93","2":"10","3":"27","4":"33"},{"1":"94","2":"13","3":"17","4":"40"},{"1":"95","2":"12","3":"21","4":"25"},{"1":"96","2":"20","3":"22","4":"38"},{"1":"97","2":"9","3":"25","4":"31"},{"1":"98","2":"16","3":"28","4":"28"},{"1":"99","2":"12","3":"27","4":"39"},{"1":"100","2":"17","3":"19","4":"34"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>In this example, X<sub>1</sub> from the generalized data matrix above would refer to the factor level “low,” X<sub>2</sub> to the level “medium,” and X<sub>3</sub> to the level “high.” Y<sub>11</sub> refers to the first data point in the first row (i.e., “13”), Y<sub>12</sub> to the second data point in the first row (i.e., “21”), etc.. The grand mean (<span class="math inline">\(\overline{Y}\)</span>) and the category means (<span class="math inline">\(\overline{Y}_c\)</span>) can be easily computed:</p>
+<p>In this example, X<sub>1</sub> from the generalized data matrix above would refer to the factor level “low”, X<sub>2</sub> to the level “medium”, and X<sub>3</sub> to the level “high”. Y<sub>11</sub> refers to the first data point in the first row (i.e., “13”), Y<sub>12</sub> to the second data point in the first row (i.e., “21”), etc.. The grand mean (<span class="math inline">\(\overline{Y}\)</span>) and the category means (<span class="math inline">\(\overline{Y}_c\)</span>) can be easily computed:</p>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="hypothesis-testing.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hours_abc<span class="sc">$</span>hours)  <span class="co">#grand mean</span></span></code></pre></div>
 <pre><code>## [1] 24.67667</code></pre>
 <div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="hypothesis-testing.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(hours_abc<span class="sc">$</span>hours, hours_abc<span class="sc">$</span>group, mean)  <span class="co">#category mean</span></span></code></pre></div>
@@ -1356,11 +1356,11 @@ Figure 1.9: Total Sum of Squares
 SS_T= \sum_{i=1}^{N} (Y_i-\bar{Y})^2
 \]</span></p>
 <p>This means that we need to subtract the grand mean from each individual data point, square the difference, and sum up over all the squared differences. Thus, in our example, the total sum of squares can be calculated as:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 SS_T =&amp;(13−24.67)^2 + (14−24.67)^2 + … + (2−24.67)^2\\
       &amp;+(21−24.67)^2 + (18-24.67)^2 + … + (17−24.67)^2\\
-      &amp;+(30−24.67)^2 + (37−24.67)^2 + … + (28−24.67)^2\\ 
+      &amp;+(30−24.67)^2 + (37−24.67)^2 + … + (28−24.67)^2\\
       &amp;=30855.64
 \end{align}
 \]</span></p>
@@ -1369,14 +1369,14 @@ SS_T =&amp;(13−24.67)^2 + (14−24.67)^2 + … + (2−24.67)^2\\
 <span id="cb300-2"><a href="hypothesis-testing.html#cb300-2" aria-hidden="true" tabindex="-1"></a>SST</span></code></pre></div>
 <pre><code>## [1] 30855.64</code></pre>
 <p>For the subsequent analyses, it is important to understand the concept behind the <b>degrees of freedom</b> (df). Remember that in order to estimate a population value from a sample, we need to hold something in the population constant. In ANOVA, the df are generally one less than the number of values used to calculate the SS. For example, when we estimate the population mean from a sample, we assume that the sample mean is equal to the population mean. Then, in order to estimate the population mean from the sample, all but one scores are free to vary and the remaining score needs to be the value that keeps the population mean constant. Thus, the degrees of freedom of an estimate can also be thought of as the number of independent pieces of information that went into calculating the estimate. In our example, we used all 300 observations to calculate the sum of square, so the total degrees of freedom (df<sub>T</sub>) are:</p>
-<p><span class="math display" id="eq:dfT">\[\begin{equation} 
+<p><span class="math display" id="eq:dfT">\[\begin{equation}
 \begin{split}
 df_T = N-1=300-1=299
 \end{split}
 \tag{6.1}
 \end{equation}\]</span></p>
 <div class="infobox_orange hint">
-<p>Why do we subtract 1 from the number of items when computing the <strong>degrees of freedom</strong>? As mentioned above, the degrees of freedom refer to the number of values that are free to vary in a data set. To understand what this means, imagine that we try to estimate the mean hours of music listening in a population and that mean is 20 hours. We could take different samples from the population and we assume that the sample mean is equal to the population mean. Imagine, we only take three small samples of 3 students each: i) 19, 20, 21, ii) 18, 20, 22, iii) 15, 20, 25. Once you have chosen the first two values in each set, the third item cannot be chosen freely (i.e., it is fixed) because it needs to be the value that gets you to the population mean. Hence, only the first two values are ‘free to vary.’ You can select 19 + 20 or 15 + 25, but once you have chosen the first two values, you must choose a particular value that will give you the population mean you are looking for (i.e., 20 hours). In this case, the degrees of freedom for each set of three numbers is two.</p>
+<p>Why do we subtract 1 from the number of items when computing the <strong>degrees of freedom</strong>? As mentioned above, the degrees of freedom refer to the number of values that are free to vary in a data set. To understand what this means, imagine that we try to estimate the mean hours of music listening in a population and that mean is 20 hours. We could take different samples from the population and we assume that the sample mean is equal to the population mean. Imagine, we only take three small samples of 3 students each: i) 19, 20, 21, ii) 18, 20, 22, iii) 15, 20, 25. Once you have chosen the first two values in each set, the third item cannot be chosen freely (i.e., it is fixed) because it needs to be the value that gets you to the population mean. Hence, only the first two values are ‘free to vary’. You can select 19 + 20 or 15 + 25, but once you have chosen the first two values, you must choose a particular value that will give you the population mean you are looking for (i.e., 20 hours). In this case, the degrees of freedom for each set of three numbers is two.</p>
 </div>
 </div>
 <div id="model-sum-of-squares" class="section level4 hasAnchor" number="6.5.2.2">
@@ -1393,7 +1393,7 @@ Figure 1.11: Model Sum of Squares
 SS_M= \sum_{j=1}^{c} n_j(\bar{Y}_j-\bar{Y})^2
 \]</span></p>
 <p>where c denotes the number of categories (experimental groups). This means that we need to subtract the grand mean from each group mean, square the difference, and sum up over all the squared differences. Thus, in our example, the model sum of squares can be calculated as:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 SS_M &amp;= 100*(15.47−24.67)^2 + 100*(24.88−24.67)^2 + 100*(33.66−24.67)^2 \\
      &amp;= 21321.21
@@ -1423,7 +1423,7 @@ Figure 1.13: Residual Sum of Squares
 SS_R= \sum_{j=1}^{c} \sum_{i=1}^{n} ({Y}_{ij}-\bar{Y}_{j})^2
 \]</span></p>
 <p>This means that we need to subtract the group mean from each individual observation, square the difference, and sum up over all the squared differences. Thus, in our example, the model sum of squares can be calculated as:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \begin{align}
 SS_R =&amp; (13−14.34)^2 + (14−14.34)^2 + … + (2−14.34)^2 \\
      +&amp;(21−24.7)^2 + (18−24.7)^2 + … + (17−24.7)^2 \\
@@ -1508,7 +1508,7 @@ F= \frac{MS_M}{MS_R}=\frac{\frac{SS_M}{c-1}}{\frac{SS_R}{N-c}}=\frac{\frac{21321
 <p>Thus, we conclude that because F<sub>CAL</sub> = 332.08 &gt; F<sub>CR</sub> = 3.03, H<sub>0</sub> is rejected!</p>
 <p>Now we can interpret our findings as follows: one or more of the differences between means are statistically significant.</p>
 <div class="infobox_red caution">
-<p>Remember: The ANOVA tests for an overall difference in means between the groups. It doesn’t tell us where the differences between groups lie, e.g., whether group “low” is different from “medium” or “high” is different from “medium” or “high” is different from “low.” To find out which group means exactly differ, we need to use post-hoc procedures, which are described below. However, when the ANOVA tells you that the there is no differences between the means, then you also shouldn’t proceed to conduct post-hoc tests. In other words, you should only proceed to conduct post-hoc tests when you found a significant overall effect in your ANOVA.</p>
+<p>Remember: The ANOVA tests for an overall difference in means between the groups. It doesn’t tell us where the differences between groups lie, e.g., whether group “low” is different from “medium” or “high” is different from “medium” or “high” is different from “low”. To find out which group means exactly differ, we need to use post-hoc procedures, which are described below. However, when the ANOVA tells you that the there is no differences between the means, then you also shouldn’t proceed to conduct post-hoc tests. In other words, you should only proceed to conduct post-hoc tests when you found a significant overall effect in your ANOVA.</p>
 </div>
 <p>Finally, you should report your findings in an appropriate way. You could do this by saying: There was a significant effect of playlists and personalized recommendations on listening times, F(2,297) = 332.08, p &lt; 0.05, <span class="math inline">\(\eta^2\)</span> = 0.69.</p>
 <p>As usual, you don’t have to compute these statistics manually! Luckily, there is a function for ANOVA in R, which does the above calculations for you as we will see in the next section.</p>
@@ -1620,7 +1620,7 @@ Figure 6.3: Q-Q plot 3
 <p>We will use the first plot to inspect if the residual variances are equal across the experimental groups:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="hypothesis-testing.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="08-Anova_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
-<p>Generally, the residual variance (i.e., the range of values on the y-axis) should be the same for different levels of our independent variable. The plot shows, that there are some slight differences. Notably, the range of residuals is higher in group “medium” than in group “high.” However, the differences are not that large and since the Levene’s test could not reject the Null of equal variances, we conclude that the variances are similar enough in this case.</p>
+<p>Generally, the residual variance (i.e., the range of values on the y-axis) should be the same for different levels of our independent variable. The plot shows, that there are some slight differences. Notably, the range of residuals is higher in group “medium” than in group “high”. However, the differences are not that large and since the Levene’s test could not reject the Null of equal variances, we conclude that the variances are similar enough in this case.</p>
 <p>The second plot can be used to test the assumption that the residuals are approximately normally distributed. We use a Q-Q plot to test this assumption:</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="hypothesis-testing.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="08-Anova_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
@@ -1699,7 +1699,7 @@ p_{CR}= \frac{\alpha}{k}
 <h5><span class="header-section-number">6.5.3.2.2</span> Tukey’s HSD<a href="hypothesis-testing.html#tukeys-hsd" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Tukey’s HSD also compares all possible pairs of means (two-by-two combinations; i.e., like a t-test, except that it corrects for family-wise error rate).</p>
 <p>Test statistic:</p>
-<p><span class="math display" id="eq:tukey">\[\begin{equation} 
+<p><span class="math display" id="eq:tukey">\[\begin{equation}
 \begin{split}
 HSD= q\sqrt{\frac{MS_R}{n_c}}
 \end{split}
@@ -2086,7 +2086,7 @@ Figure 1.8: Wilcoxon signed-rank test using ggstatsplot
 <div id="kruskal-wallis-test" class="section level3 hasAnchor" number="6.6.3">
 <h3><span class="header-section-number">6.6.3</span> Kruskal-Wallis test<a href="hypothesis-testing.html#kruskal-wallis-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The Kruskal–Wallis test is the non-parametric counterpart of the one-way ANOVA. It is designed to test for significant differences in population medians when you have more than two groups (with two groups, you would use the Mann-Whitney U-test). The theory is very similar to that of the Mann–Whitney U-test since it is also based on ranked data.</p>
-<p>As an example, let’s use a data set containing data from an experiment at an online store where products were randomly assigned to three groups with three different levels of promotion (i.e., “low,” “medium,” “high”) and the sales where recorded for these groups.</p>
+<p>As an example, let’s use a data set containing data from an experiment at an online store where products were randomly assigned to three groups with three different levels of promotion (i.e., “low”, “medium”, “high”) and the sales where recorded for these groups.</p>
 <div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="hypothesis-testing.html#cb399-1" aria-hidden="true" tabindex="-1"></a>online_store_promo <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/online_store_promo.dat&quot;</span>,</span>
 <span id="cb399-2"><a href="hypothesis-testing.html#cb399-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
 <span id="cb399-3"><a href="hypothesis-testing.html#cb399-3" aria-hidden="true" tabindex="-1"></a>online_store_promo<span class="sc">$</span>Promotion <span class="ot">&lt;-</span> <span class="fu">factor</span>(online_store_promo<span class="sc">$</span>Promotion,</span>
@@ -2453,113 +2453,73 @@ Figure 6.6: Kruskal-Wallis test using ggstatsplot
 <h2>Learning check<a href="hypothesis-testing.html#learning-check-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>(LC6.1) The Null Hypothesis (<span class="math inline">\(H_0\)</span>) is a statement of:</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The status-quo/no effect</li>
-<li><input type="checkbox" disabled="" />
-The desired status</li>
-<li><input type="checkbox" disabled="" />
-The expected status</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The status-quo/no effect</li>
+<li><input type="checkbox" disabled="" />The desired status</li>
+<li><input type="checkbox" disabled="" />The expected status</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.2) Which statements about the Null Hypothesis (<span class="math inline">\(H_0\)</span>) are TRUE?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-In scientific research, the goal is usually to confirm it</li>
-<li><input type="checkbox" disabled="" />
-In scientific research, the goal is usually to reject it</li>
-<li><input type="checkbox" disabled="" />
-It can be confirmed with one test</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />In scientific research, the goal is usually to confirm it</li>
+<li><input type="checkbox" disabled="" />In scientific research, the goal is usually to reject it</li>
+<li><input type="checkbox" disabled="" />It can be confirmed with one test</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.3) The t-distribution:</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples</li>
-<li><input type="checkbox" disabled="" />
-Approaches the normal distribution as n increases</li>
-<li><input type="checkbox" disabled="" />
-Is the distribution of the t-statistic</li>
-<li><input type="checkbox" disabled="" />
-Has less probability mass in its tails compared to the normal distribution and therefore corrects for small samples</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples</li>
+<li><input type="checkbox" disabled="" />Approaches the normal distribution as n increases</li>
+<li><input type="checkbox" disabled="" />Is the distribution of the t-statistic</li>
+<li><input type="checkbox" disabled="" />Has less probability mass in its tails compared to the normal distribution and therefore corrects for small samples</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.4) Type I vs. Type II Errors: Which of the following statements is TRUE?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Type II Error: We believe there is no effect, when in fact there is</li>
-<li><input type="checkbox" disabled="" />
-Type I Error: We believe there is an effect, when in fact there isn’t</li>
-<li><input type="checkbox" disabled="" />
-Type I Error: We believe there is no effect, when in fact there is</li>
-<li><input type="checkbox" disabled="" />
-Type II Error: We believe there is an effect, when in fact there isn’t</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Type II Error: We believe there is no effect, when in fact there is</li>
+<li><input type="checkbox" disabled="" />Type I Error: We believe there is an effect, when in fact there isn’t</li>
+<li><input type="checkbox" disabled="" />Type I Error: We believe there is no effect, when in fact there is</li>
+<li><input type="checkbox" disabled="" />Type II Error: We believe there is an effect, when in fact there isn’t</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.5) When planning an experiment, which of the following information would you need to compute the required sample size?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The p-value (p)</li>
-<li><input type="checkbox" disabled="" />
-The significance level (alpha)</li>
-<li><input type="checkbox" disabled="" />
-The effect size (d)</li>
-<li><input type="checkbox" disabled="" />
-The critical value of the test statistic (t)</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The p-value (p)</li>
+<li><input type="checkbox" disabled="" />The significance level (alpha)</li>
+<li><input type="checkbox" disabled="" />The effect size (d)</li>
+<li><input type="checkbox" disabled="" />The critical value of the test statistic (t)</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.6) In which setting would you reject the null hypothesis when conducting a statistical test?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)</li>
-<li><input type="checkbox" disabled="" />
-When the p-value is smaller than your specified significance level (e.g., 0.05)</li>
-<li><input type="checkbox" disabled="" />
-When the confidence interval associated with the test does not contain zero</li>
-<li><input type="checkbox" disabled="" />
-When the test-statistic (e.g., t-value) is lower than the critical value of the test statistic at your specified significance level (e.g., 0.05)</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)</li>
+<li><input type="checkbox" disabled="" />When the p-value is smaller than your specified significance level (e.g., 0.05)</li>
+<li><input type="checkbox" disabled="" />When the confidence interval associated with the test does not contain zero</li>
+<li><input type="checkbox" disabled="" />When the test-statistic (e.g., t-value) is lower than the critical value of the test statistic at your specified significance level (e.g., 0.05)</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.7) After conducting a statistical test, what is the relationship between the test statistic (e.g., t-value) and the p-value?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The lower the absolute value of the test statistic, the lower the p-value</li>
-<li><input type="checkbox" disabled="" />
-The higher the absolute value of the test statistic, the higher the p-value</li>
-<li><input type="checkbox" disabled="" />
-There is no connection between the test statistic and the p-value</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The lower the absolute value of the test statistic, the lower the p-value</li>
+<li><input type="checkbox" disabled="" />The higher the absolute value of the test statistic, the higher the p-value</li>
+<li><input type="checkbox" disabled="" />There is no connection between the test statistic and the p-value</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.8) What does a significant test result tell you?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-The importance of an effect</li>
-<li><input type="checkbox" disabled="" />
-That the null hypothesis is false</li>
-<li><input type="checkbox" disabled="" />
-That the null hypothesis is true</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />The importance of an effect</li>
+<li><input type="checkbox" disabled="" />That the null hypothesis is false</li>
+<li><input type="checkbox" disabled="" />That the null hypothesis is true</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.9) In an experiment in which you compare the means between two groups, you should collect data until your test shows a significant results. True or false?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-True</li>
-<li><input type="checkbox" disabled="" />
-False</li>
+<li><input type="checkbox" disabled="" />True</li>
+<li><input type="checkbox" disabled="" />False</li>
 </ul>
 <p><strong>(LC6.10) If you have data from an within-subjects experimental design, you should use the independent-means t-test. True or false?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-True</li>
-<li><input type="checkbox" disabled="" />
-False</li>
+<li><input type="checkbox" disabled="" />True</li>
+<li><input type="checkbox" disabled="" />False</li>
 </ul>
 <table>
 <tbody>
@@ -2570,133 +2530,83 @@ False</li>
 </table>
 <p><strong>(LC6.11) When should you use an ANOVA rather than a t-test?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-To compare the means for more than two populations</li>
-<li><input type="checkbox" disabled="" />
-To compare the means of two groups</li>
-<li><input type="checkbox" disabled="" />
-To adjust the variance of different sets</li>
-<li><input type="checkbox" disabled="" />
-To test for causality</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />To compare the means for more than two populations</li>
+<li><input type="checkbox" disabled="" />To compare the means of two groups</li>
+<li><input type="checkbox" disabled="" />To adjust the variance of different sets</li>
+<li><input type="checkbox" disabled="" />To test for causality</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.12) What is the correct representation of the null hypothesis for an ANOVA??</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-H0:μ1≠μ2≠μ3</li>
-<li><input type="checkbox" disabled="" />
-H1:μ1=μ2=μ3</li>
-<li><input type="checkbox" disabled="" />
-H0:μ1=μ2=μ3</li>
-<li><input type="checkbox" disabled="" />
-H0:μ1≠μ2=μ3</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />H0:μ1≠μ2≠μ3</li>
+<li><input type="checkbox" disabled="" />H1:μ1=μ2=μ3</li>
+<li><input type="checkbox" disabled="" />H0:μ1=μ2=μ3</li>
+<li><input type="checkbox" disabled="" />H0:μ1≠μ2=μ3</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.13) Using an experimental design with three groups, why can’t we just compare the means between the groups using multiple t-test?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Because the parametric assumptions of the t-test are not met</li>
-<li><input type="checkbox" disabled="" />
-Because of deflated Type III Error rates</li>
-<li><input type="checkbox" disabled="" />
-Due to the family-wise error rate the Type II Error is inflated</li>
-<li><input type="checkbox" disabled="" />
-Because the Type I Error rate (alpha) wouldn’t be 0.05</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Because the parametric assumptions of the t-test are not met</li>
+<li><input type="checkbox" disabled="" />Because of deflated Type III Error rates</li>
+<li><input type="checkbox" disabled="" />Due to the family-wise error rate the Type II Error is inflated</li>
+<li><input type="checkbox" disabled="" />Because the Type I Error rate (alpha) wouldn’t be 0.05</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.14) Which assumptions have to be satisfied to be able to use ANOVA on data from a between-subject design with three groups?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Same mean for all groups</li>
-<li><input type="checkbox" disabled="" />
-Normal distribution of data</li>
-<li><input type="checkbox" disabled="" />
-Homogeneity of variances</li>
-<li><input type="checkbox" disabled="" />
-Independence of observation</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Same mean for all groups</li>
+<li><input type="checkbox" disabled="" />Normal distribution of data</li>
+<li><input type="checkbox" disabled="" />Homogeneity of variances</li>
+<li><input type="checkbox" disabled="" />Independence of observation</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.15) What procedures are designed to correct of family-wise error rate in ANOVA?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Bonferroni correction</li>
-<li><input type="checkbox" disabled="" />
-Tukey’s HSD</li>
-<li><input type="checkbox" disabled="" />
-t-test</li>
-<li><input type="checkbox" disabled="" />
-Post-hoc tests</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Bonferroni correction</li>
+<li><input type="checkbox" disabled="" />Tukey’s HSD</li>
+<li><input type="checkbox" disabled="" />t-test</li>
+<li><input type="checkbox" disabled="" />Post-hoc tests</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.16) Which of the following are examples for non-parametric tests?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Chi-Squared test</li>
-<li><input type="checkbox" disabled="" />
-ANOVA</li>
-<li><input type="checkbox" disabled="" />
-Kruskal-Wilcoxon test</li>
-<li><input type="checkbox" disabled="" />
-T-test</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Chi-Squared test</li>
+<li><input type="checkbox" disabled="" />ANOVA</li>
+<li><input type="checkbox" disabled="" />Kruskal-Wilcoxon test</li>
+<li><input type="checkbox" disabled="" />T-test</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.17) When should you use non-parametric tests?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)</li>
-<li><input type="checkbox" disabled="" />
-You have a very small sample size</li>
-<li><input type="checkbox" disabled="" />
-When your dependent variable is measured on an ordinal scale</li>
-<li><input type="checkbox" disabled="" />
-When your data is better represented by the median</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)</li>
+<li><input type="checkbox" disabled="" />You have a very small sample size</li>
+<li><input type="checkbox" disabled="" />When your dependent variable is measured on an ordinal scale</li>
+<li><input type="checkbox" disabled="" />When your data is better represented by the median</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.18) When should you use a Wilcoxon Rank Sum Test (= Mann-Whitney U Test)?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-When the assumptions of the t-test have been violated</li>
-<li><input type="checkbox" disabled="" />
-The variances are not significantly different between groups</li>
-<li><input type="checkbox" disabled="" />
-As a non-parametric alternative to the independent-means t-test</li>
-<li><input type="checkbox" disabled="" />
-When the assumptions of the ANOVA have been violated</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />When the assumptions of the t-test have been violated</li>
+<li><input type="checkbox" disabled="" />The variances are not significantly different between groups</li>
+<li><input type="checkbox" disabled="" />As a non-parametric alternative to the independent-means t-test</li>
+<li><input type="checkbox" disabled="" />When the assumptions of the ANOVA have been violated</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.19) What does a Chi squared test do?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-Tests the statistical significance of the observed association in a cross-tabulation</li>
-<li><input type="checkbox" disabled="" />
-Tests whether group A affects group B</li>
-<li><input type="checkbox" disabled="" />
-Produces a test statistic that is Chi Squared distributed</li>
-<li><input type="checkbox" disabled="" />
-Tests for the association between two or more categorical variables</li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" />Tests the statistical significance of the observed association in a cross-tabulation</li>
+<li><input type="checkbox" disabled="" />Tests whether group A affects group B</li>
+<li><input type="checkbox" disabled="" />Produces a test statistic that is Chi Squared distributed</li>
+<li><input type="checkbox" disabled="" />Tests for the association between two or more categorical variables</li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 <p><strong>(LC6.20) Which R-function would be suitable if you wanted to perform a test with ranked (ordinal) data in a two-group between-subject design?</strong></p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" />
-<code>kruskal.test(x, ...)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>wilcox.test(x, ...)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>aov(formula, data = ,...)</code></li>
-<li><input type="checkbox" disabled="" />
-<code>t.test(x, ...)</code></li>
-<li><input type="checkbox" disabled="" />
-None of the above</li>
+<li><input type="checkbox" disabled="" /><code>kruskal.test(x, ...)</code></li>
+<li><input type="checkbox" disabled="" /><code>wilcox.test(x, ...)</code></li>
+<li><input type="checkbox" disabled="" /><code>aov(formula, data = ,...)</code></li>
+<li><input type="checkbox" disabled="" /><code>t.test(x, ...)</code></li>
+<li><input type="checkbox" disabled="" />None of the above</li>
 </ul>
 </div>
 <div id="references-3" class="section level2 unnumbered hasAnchor">

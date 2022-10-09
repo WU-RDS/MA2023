@@ -72,7 +72,7 @@ How can we plot this kind of data? Since we have a categorical variable, we will
 
 
 ```r
-table_plot_rel <- as.data.frame(prop.table(table(music_data$genre)))  #relative frequencies #relative frequencies
+table_plot_rel <- as.data.frame(prop.table(table(music_data$genre)))  #relative frequencies
 head(table_plot_rel)
 ```
 
@@ -100,7 +100,6 @@ Once we have our data set we can begin constructing the plot. As mentioned previ
 
 
 ```r
-library(ggplot2)
 bar_chart <- ggplot(table_plot_rel, aes(x = Genre,
     y = Freq))
 bar_chart
@@ -111,7 +110,7 @@ bar_chart
 <p class="caption">(\#fig:unnamed-chunk-7)Bar chart (step 1)</p>
 </div>
 
-You can see that the coordinate system is empty. This is because so far, we have told R only which variables we would like to plot but we haven't specified which geometric figures (points, bars, lines, etc.) we would like to use. This is done using the ```geom_xxx()``` function. ggplot includes many different geoms, for a wide range of plots (e.g., geom_line, geom_histogram, geom_boxplot, etc.). A good overview of the various geom functions can be found <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" target="_blank">here</a>. In our case, we would like to use a bar chart for which ```geom_col``` is appropriate.
+You can see that the coordinate system is empty. This is because so far, we have told R only which variables we would like to plot but we haven't specified which geometric figures (points, bars, lines, etc.) we would like to use. This is done using the ```geom_xxx()``` function. ggplot includes many different geoms, for a wide range of plots (e.g., geom_line, geom_histogram, geom_boxplot, etc.). A good overview of the various geom functions can be found <a href="https://github.com/rstudio/cheatsheets/blob/a9d72b61746ceabb94ef247af14b263ab5fbf15f/data-visualization-2.1.pdf" target="_blank">here</a>. In our case, we would like to use a bar chart for which ```geom_col``` is appropriate.
 
 
 ```r
@@ -142,7 +141,7 @@ How about adding some value labels to the bars? This can be done using ```geom_t
 ```r
 bar_chart + geom_col() + ylab("Relative frequency") +
     xlab("Genre") + geom_text(aes(label = sprintf("%.0f%%",
-    Freq/sum(Freq) * 100)), vjust = -0.2)
+    Freq * 100)), vjust = -0.2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -286,8 +285,7 @@ We can now take these tables to construct plots grouped by explicitness. To achi
 ```r
 ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre,
     Freq), y = Freq)) + geom_col(aes(fill = Freq)) +
-    facet_wrap(~explicit, labeller = labeller(explicit = c(`0` = "non-explicit",
-        `1` = "explicit"))) + labs(x = "", y = "Relative frequency",
+    facet_wrap(~explicit) + labs(x = "", y = "Relative frequency",
     title = "Distribution of genres for explicit and non-explicit songs") +
     geom_text(aes(label = sprintf("%.0f%%", Freq *
         100)), vjust = -0.2) + theme_minimal() + ylim(0,

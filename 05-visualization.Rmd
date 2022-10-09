@@ -218,7 +218,7 @@ We can now take these tables to construct plots grouped by explicitness. To achi
 ```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Grouped bar chart (facet_wrap)"}
 ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre, Freq), y = Freq)) + 
   geom_col(aes(fill = Freq)) +
-      facet_wrap(~explicit, labeller = labeller(explicit = c("0" = "non-explicit", "1" = "explicit"))) +
+      facet_wrap(~explicit) +
   labs(x = "", y = "Relative frequency", title = "Distribution of genres for explicit and non-explicit songs") + 
   geom_text(aes(label = sprintf("%.0f%%", Freq * 100)), vjust=-0.2) +
   theme_minimal() +
