@@ -14,6 +14,8 @@ options(scipen = 999)
 opts_chunk$set(tidy.opts=list(width.cutoff=50),tidy=TRUE, rownames.print = FALSE, rows.print = 10)
 opts_chunk$set(cache=T)
 library(tidyverse)
+library(colorspace)
+library(ggthemes)
 ```
 
 ```{r, echo = FALSE, warning=FALSE, message=FALSE, purl=FALSE}
@@ -215,7 +217,7 @@ table_plot_cond_rel
 ```
 We can now take these tables to construct plots grouped by explicitness. To achieve this we simply need to add the `facet_wrap()` function, which replicates a plot multiple times, split by a specified grouping factor. Note that the grouping factor has to be supplied in R’s formula notation, hence it is preceded by a “~” symbol.
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Grouped bar chart (facet_wrap)"}
+```{r message=FALSE, cache=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.cap = "Grouped bar chart (facet_wrap)"}
 ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre, Freq), y = Freq)) + 
   geom_col(aes(fill = Freq)) +
       facet_wrap(~explicit) +
