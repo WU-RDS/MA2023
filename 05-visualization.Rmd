@@ -51,7 +51,7 @@ ggplot2 is built around the idea of constructing plots by stacking layers on top
 
 <br>
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Eer3BHhS5IY" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FCx9yrkwm68" frameborder="0" allowfullscreen></iframe>
 </div>
 <br>
 
@@ -254,7 +254,7 @@ ggplot(table_plot_cond_rel_1, aes(x = genre, y = Freq, fill = explicit)) + #use 
 
 <br>
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1ttdoi_QMAw" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/WuMp80qZGc4" frameborder="0" allowfullscreen></iframe>
 </div>
 <br>
 
