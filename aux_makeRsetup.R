@@ -10,7 +10,7 @@ if(!"robCompositions" %in% installed.packages()) devtools::install_github("matth
 '
 write(non_standard_installs, output, append = TRUE)
 
-standard_installs <- packrat:::dirDependencies(".")
+standard_installs <- c(packrat:::dirDependencies("."), packrat:::dirDependencies("Code"))
 standard_installer <- "lapply(function(x) install.packages(x), standard_installs[!standard_installs %in% installed.packages()])\n"
 dump("standard_installs", file = output, append = TRUE)
 write(standard_installer, file = output, append = TRUE)

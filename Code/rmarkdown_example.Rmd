@@ -1,11 +1,11 @@
 ---
 title: "Getting started with R"
-subtitle: "Data-based storytelling"
+subtitle: "Marketing Analytics"
 author: "Daniel Winkler"
 output: 
   html_document:
     df_print: paged
-date: '2022-03-07'
+date: '2022-10-10'
 ---
 
 ```{r setup, include=FALSE}
