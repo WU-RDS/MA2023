@@ -36,7 +36,7 @@ print(y)
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Numeric:
 top10_track_streams <- c(163608, 126687, 120480, 110022, 108630, 95639, 94690, 89011, 87869, 85599) 
-
+log(top10_track_streams)
 #Character:
 top10_artist_names <- c("Axwell /\\ Ingrosso", "Imagine Dragons", "J. Balvin", "Robin Schulz", "Jonas Blue", "David Guetta", "French Montana", "Calvin Harris", "Liam Payne", "Lauv") # Characters have to be put in ""
 
@@ -46,7 +46,7 @@ top10_track_explicit <- factor(top10_track_explicit,
                                levels = 0:1, 
                                labels = c("not explicit", "explicit"))
 
-#Factor variable with more than two categories:
+# Factor variable with more than two categories:
 top10_artist_genre <- c("Dance","Alternative","Latino","Dance","Dance","Dance","Hip-Hop/Rap","Dance","Pop","Pop")
 top10_artist_genre <- as.factor(top10_artist_genre)
 
@@ -124,7 +124,7 @@ dim(music_data) # returns the dimensions of a data frame
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------
 ls(music_data) # list all objects associated with an object
 
-
+ls()
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------
 music_data$top10_track_streams
 
@@ -146,11 +146,11 @@ head(music_data)
 
 
 ## --------------------------------------------------------------------------------------------------------------------------------------------------------------
-mutate(music_data, 
+music_data_new <- mutate(music_data, 
        sqrt_streams = sqrt(top10_track_streams),
        # "%Y" extracts the year, format returns a character
        release_year = as.integer(format(top_10_track_release_date, "%Y")) 
-       ) |>
+       ) %>%
   select(top10_artist_names, sqrt_streams, release_year)
 
 
@@ -158,7 +158,7 @@ mutate(music_data,
 music_data <- dplyr::rename(music_data, genre = top10_artist_genre, release_date = top_10_track_release_date)
 head(music_data)
 
-
+drn <- dplyr::rename
 ## ---- message=FALSE, warning=FALSE-----------------------------------------------------------------------------------------------------------------------------
 names(music_data)[names(music_data)=="genre"] <- "top10_artist_genre"
 head(music_data)

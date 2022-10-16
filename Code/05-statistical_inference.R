@@ -1,11 +1,11 @@
 # The following code is taken from the fifth chapter of the online script, which provides more detailed explanations:
-# https://imsmwu.github.io/MRDA2020/introduction-to-statistical-inference.html
+# https://wu-rds.github.io/MA2022/hypothesis-testing.html
 
 #-------------------------------------------------------------------#
 #---------------------Install missing packages----------------------#
 #-------------------------------------------------------------------#
 
-req_pacakges <- c("ggplot2","psych","tidyverse","ggplot2")
+req_pacakges <- c("ggplot2","psych","tidyverse")
 req_pacakges <- req_pacakges[!req_pacakges %in% installed.packages()]
 lapply(req_pacakges, install.packages)
 # Useful options setting that prevents R from using scientific notation on numeric values
