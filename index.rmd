@@ -341,7 +341,7 @@ mytable_sub = data.frame(
       "Nov. 21, 01:00PM - 05:00PM",
       "Nov. 28, 12:30PM - 04:30PM",
       "Dec. 12, 01:00PM - 05:00PM",
-      "TBA"
+      "Jan. 6, 11:59PM"
     ),
     Room = c(
       "TC.-1.61",
@@ -380,7 +380,7 @@ mytable_sub = data.frame(
       "Nov. 23, 12:00PM - 04:00PM",
       "Nov. 30, 12:00PM - 04:00PM",
       "Dec. 14, 12:00PM - 04:00PM",
-      "TBA"
+      "Jan. 6, 11:59PM"
     ),
     Room = c(
       "TC.-1.61",

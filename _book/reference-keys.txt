@@ -265,6 +265,7 @@ k-means
 hierarchical-clustering
 r-markdown
 introduction-to-r-markdown
+assignment-1-solution
 survey-design-analysis
 your-tasks
 topics-for-the-group-project

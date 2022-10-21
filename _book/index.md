@@ -355,7 +355,7 @@ Again, please make sure that you have exhausted all other resources to solve a p
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
-   <td style="text-align:left;"> TBA </td>
+   <td style="text-align:left;"> Jan. 6, 11:59PM </td>
    <td style="text-align:left;"> --- </td>
   </tr>
 </tbody>
@@ -393,7 +393,7 @@ Again, please make sure that you have exhausted all other resources to solve a p
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
-   <td style="text-align:left;"> TBA </td>
+   <td style="text-align:left;"> Jan. 6, 11:59PM </td>
    <td style="text-align:left;"> --- </td>
   </tr>
 </tbody>
