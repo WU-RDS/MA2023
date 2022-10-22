@@ -280,7 +280,7 @@ mytable_sub_1 = data.frame(
       "Nov. 16"
     ),
     Coaching = c("Oct. 14, 02:00PM-06:00PM (online)*", 
-                 "Oct. 31, 09:00AM-01:00PM (online)*",
+                 "Oct. 31, 12:00PM-04:00PM (online)*",
                  "Nov. 11, 02:00PM-06:00PM (online)*",
                  "Nov. 25, 02:00PM-06:00PM (online)*"
              ),

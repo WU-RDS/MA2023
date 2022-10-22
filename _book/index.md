@@ -286,7 +286,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   <tr>
    <td style="text-align:left;"> Assignment 2: Hypothesis testing </td>
    <td style="text-align:left;"> Oct. 19 </td>
-   <td style="text-align:left;"> Oct. 31, 09:00AM-01:00PM (online)* </td>
+   <td style="text-align:left;"> Oct. 31, 12:00PM-04:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 01, 11:59PM </td>
   </tr>
   <tr>
