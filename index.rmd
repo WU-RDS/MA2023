@@ -254,7 +254,7 @@ mytable_sub_1 %>% kable(escape = F,  col.names = gsub("[_]", " ", names(mytable_
   kable_paper(c("hover"), full_width = F) %>%
   footnote(general = "Dates and times are indicated for group A. 
            Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.
-           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).",
+           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).",
            general_title = "Note: ", 
            footnote_as_chunk = T, title_format = c("italic")
            ) 
@@ -297,7 +297,7 @@ mytable_sub_1 %>% kable(escape = F,  col.names = gsub("[_]", " ", names(mytable_
   kable_paper(c("hover"), full_width = F) %>%
   footnote(general = "Dates and times are indicated for group B. 
            Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.
-           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).",
+           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).",
            general_title = "Note: ", 
            footnote_as_chunk = T, title_format = c("italic")
            ) 

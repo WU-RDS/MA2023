@@ -261,7 +261,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -303,7 +303,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you would like to schedule a meeting during the indicated times, please contact Daria before (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
