@@ -1,5 +1,5 @@
 # The following code is taken from the fourth chapter of the online script, which provides more detailed explanations:
-# https://imsmwu.github.io/MRDA2020/hypothesis-testing.html#categorical-data
+# https://wu-rds.github.io/MA2022/hypothesis-testing.html#categorical-data
 
 #-------------------------------------------------------------------#
 #---------------------Install missing packages----------------------#
@@ -137,11 +137,8 @@ phi2 <- sqrt(test_stat/(n/10))
 phi1
 phi2
 
-## Use Yates correction
-chisq.test(contigency_table)
-
 ## The same can be achieved using prop.test()
-prop.test(contigency_table)
+prop.test(contigency_table, correct = FALSE)
 
 # Alternatively you can use the "ggstatsplot" package
 ## ------------------------------------------------------------------------

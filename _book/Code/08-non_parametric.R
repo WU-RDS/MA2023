@@ -1,5 +1,5 @@
 # The following code is taken from the fourth chapter of the online script, which provides more detailed explanations:
-# https://imsmwu.github.io/MRDA2020/hypothesis-testing.html#non-parametric-tests
+# https://wu-rds.github.io/MA2022/hypothesis-testing.html#non-parametric-tests
 
 
 #-------------------------------------------------------------------#
@@ -145,8 +145,8 @@ kruskal.test(Sales ~ Promotion, data = online_store_promo)
 
 # Post hoc test
 ## ------------------------------------------------------------------------
-library(PMCMR)
-posthoc.kruskal.nemenyi.test(x = online_store_promo$Sales, g = online_store_promo$Promotion, dist = "Tukey")
+library(PMCMRplus)
+PMCMRplus::kwAllPairsNemenyiTest(x = online_store_promo$Sales, g = online_store_promo$Promotion, dist = "Tukey")
 
 # Alternatively you can use the "ggstatsplot" package
 ## ------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 # The following code is taken from the fourth chapter of the online script, which provides more detailed explanations:
-# https://imsmwu.github.io/MRDA2020/hypothesis-testing.html#comparing-several-means
+# https://wu-rds.github.io/MA2022/hypothesis-testing.html#comparing-several-means
 
 #-------------------------------------------------------------------#
 #---------------------Install missing packages----------------------#
@@ -154,6 +154,7 @@ summary(tukeys)
 # compute CIs
 confint(tukeys)
 # plot CIs
+par(mar = c(5,8,4,2))
 plot(tukeys)
 
 # Using the ggstatsplot package
