@@ -555,10 +555,10 @@ The most common way to show the relationship between two continuous variables is
 
 ```r
 ggplot(music_data, aes(speechiness, log_streams)) +
-    geom_point(shape = 1) + labs(x = "Genre", y = "Relative frequency") +
-    geom_smooth(method = "lm", fill = "blue", alpha = 0.1) +
-    labs(x = "Speechiness", y = "Number of streams (log-scale)",
-        title = "Scatterplot of streams and speechiness") +
+    geom_point(shape = 1) + labs(x = "Speechiness",
+    y = "Streams (log scale)") + geom_smooth(method = "lm",
+    fill = "blue", alpha = 0.1) + labs(x = "Speechiness",
+    y = "Number of streams (log-scale)", title = "Scatterplot of streams and speechiness") +
     theme_bw() + theme(plot.title = element_text(hjust = 0.5,
     color = "#666666"))
 ```
@@ -567,7 +567,7 @@ ggplot(music_data, aes(speechiness, log_streams)) +
 <img src="05-visualization_files/figure-html/unnamed-chunk-34-1.png" alt="Scatter plot" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-34)Scatter plot</p>
 </div>
-As you can see, there appears to be a positive relationship between advertising and sales.
+As you can see, there appears to be a positive relationship between the speechiness and number of streams.
 
 ##### Grouped scatter plot
 

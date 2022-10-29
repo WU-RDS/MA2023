@@ -938,8 +938,6 @@ ggwithinstats(
   y = hours,
   path.point = FALSE,
   path.mean = TRUE,
-  sort = "descending", # ordering groups along the x-axis based on
-  sort.fun = median, # values of `y` variable
   title = "Mean listening times for different treatments",
   messages = FALSE,
   bf.message = FALSE,

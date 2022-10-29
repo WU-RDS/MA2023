@@ -1042,20 +1042,12 @@ H_0: \mu_D \ne 0
 ##          -11.65</code></pre>
 <p>Again, we could combine the results of the statistical test and the visualization using the <code>ggstatsplot</code> package.</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="hypothesis-testing.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb280-2"><a href="hypothesis-testing.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggwithinstats</span>(</span>
-<span id="cb280-3"><a href="hypothesis-testing.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> hours_a_b_paired_long,</span>
-<span id="cb280-4"><a href="hypothesis-testing.html#cb280-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> group,</span>
-<span id="cb280-5"><a href="hypothesis-testing.html#cb280-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> hours,</span>
-<span id="cb280-6"><a href="hypothesis-testing.html#cb280-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">path.point =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb280-7"><a href="hypothesis-testing.html#cb280-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">path.mean =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb280-8"><a href="hypothesis-testing.html#cb280-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sort =</span> <span class="st">&quot;descending&quot;</span>, <span class="co"># ordering groups along the x-axis based on</span></span>
-<span id="cb280-9"><a href="hypothesis-testing.html#cb280-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sort.fun =</span> median, <span class="co"># values of `y` variable</span></span>
-<span id="cb280-10"><a href="hypothesis-testing.html#cb280-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Mean listening times for different treatments&quot;</span>,</span>
-<span id="cb280-11"><a href="hypothesis-testing.html#cb280-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb280-12"><a href="hypothesis-testing.html#cb280-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">bf.message =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb280-13"><a href="hypothesis-testing.html#cb280-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb280-14"><a href="hypothesis-testing.html#cb280-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">effsize.type =</span> <span class="st">&quot;d&quot;</span> <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
-<span id="cb280-15"><a href="hypothesis-testing.html#cb280-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb280-2"><a href="hypothesis-testing.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggwithinstats</span>(<span class="at">data =</span> hours_a_b_paired_long, <span class="at">x =</span> group,</span>
+<span id="cb280-3"><a href="hypothesis-testing.html#cb280-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> hours, <span class="at">path.point =</span> <span class="cn">FALSE</span>, <span class="at">path.mean =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb280-4"><a href="hypothesis-testing.html#cb280-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Mean listening times for different treatments&quot;</span>,</span>
+<span id="cb280-5"><a href="hypothesis-testing.html#cb280-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">messages =</span> <span class="cn">FALSE</span>, <span class="at">bf.message =</span> <span class="cn">FALSE</span>, <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb280-6"><a href="hypothesis-testing.html#cb280-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">effsize.type =</span> <span class="st">&quot;d&quot;</span>  <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
+<span id="cb280-7"><a href="hypothesis-testing.html#cb280-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><strong>6. Report results and draw a marketing conclusion</strong></p>
 <p>On average, the same users used the service more when it included the new feature (M = 29.58, SE = 1.84) compared to the service without the feature (M = 17.93, SE = 1.21). This difference was significant t(99) = 5.41, p &lt; .05 (95% CI = [7.38, 15.91]).</p>
@@ -1825,7 +1817,7 @@ Figure 6.4: Tukey’s HSD
 <span id="cb367-7"><a href="hypothesis-testing.html#cb367-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb367-8"><a href="hypothesis-testing.html#cb367-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pairwise.annotation =</span> <span class="st">&quot;p.value&quot;</span>,</span>
 <span id="cb367-9"><a href="hypothesis-testing.html#cb367-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</span>
-<span id="cb367-10"><a href="hypothesis-testing.html#cb367-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">effsize.type =</span> <span class="st">&quot;eta&quot;</span>,</span>
+<span id="cb367-10"><a href="hypothesis-testing.html#cb367-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#effsize.type = &quot;eta&quot;, #partial eta^2, not eta^2</span></span>
 <span id="cb367-11"><a href="hypothesis-testing.html#cb367-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb367-12"><a href="hypothesis-testing.html#cb367-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.plotting =</span> <span class="cn">TRUE</span>, <span class="co"># whether mean for each group is to be displayed</span></span>
 <span id="cb367-13"><a href="hypothesis-testing.html#cb367-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, <span class="co"># whether to display confidence interval for means</span></span>
@@ -1969,8 +1961,7 @@ Figure 4.5: ANOVA using ggstatsplot
 <span id="cb387-3"><a href="hypothesis-testing.html#cb387-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb387-4"><a href="hypothesis-testing.html#cb387-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb387-5"><a href="hypothesis-testing.html#cb387-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Sales by group&quot;</span>)<span class="sc">+</span></span>
-<span id="cb387-6"><a href="hypothesis-testing.html#cb387-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb387-7"><a href="hypothesis-testing.html#cb387-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
+<span id="cb387-6"><a href="hypothesis-testing.html#cb387-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-4-1.png" alt="Boxplot" width="672" />
 <p class="caption">
@@ -2042,8 +2033,7 @@ Figure 5.1: Mann-Whitney U Test using ggstatsplot
 <span id="cb395-3"><a href="hypothesis-testing.html#cb395-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb395-4"><a href="hypothesis-testing.html#cb395-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb395-5"><a href="hypothesis-testing.html#cb395-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Average number of sales&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Average number of sales by group&quot;</span>)<span class="sc">+</span></span>
-<span id="cb395-6"><a href="hypothesis-testing.html#cb395-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb395-7"><a href="hypothesis-testing.html#cb395-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
+<span id="cb395-6"><a href="hypothesis-testing.html#cb395-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-8-1.png" alt="Boxplot" width="672" />
 <p class="caption">
@@ -2062,21 +2052,12 @@ Figure 1.6: Boxplot
 <p>Using the 95% confidence level, the result would suggest a significant effect of price on sales (i.e., p &lt; 0.05).</p>
 <p>Again, you could also use the <code>ggstatsplot</code> package to obtain the result of the test by specifying the argument <code>type = "nonparametric"</code> as follows:</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="hypothesis-testing.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
-<span id="cb398-2"><a href="hypothesis-testing.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggwithinstats</span>(</span>
-<span id="cb398-3"><a href="hypothesis-testing.html#cb398-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> music_sales_dep_long,</span>
-<span id="cb398-4"><a href="hypothesis-testing.html#cb398-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> group,</span>
-<span id="cb398-5"><a href="hypothesis-testing.html#cb398-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> sales,</span>
-<span id="cb398-6"><a href="hypothesis-testing.html#cb398-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">path.point =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb398-7"><a href="hypothesis-testing.html#cb398-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type=</span><span class="st">&quot;nonparametric&quot;</span>,</span>
-<span id="cb398-8"><a href="hypothesis-testing.html#cb398-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">sort =</span> <span class="st">&quot;descending&quot;</span>, <span class="co"># ordering groups along the x-axis based on</span></span>
-<span id="cb398-9"><a href="hypothesis-testing.html#cb398-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">sort.fun =</span> median, <span class="co"># values of `y` variable</span></span>
-<span id="cb398-10"><a href="hypothesis-testing.html#cb398-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Mean sales for different treatments&quot;</span>,</span>
-<span id="cb398-11"><a href="hypothesis-testing.html#cb398-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb398-12"><a href="hypothesis-testing.html#cb398-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">bf.message =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb398-13"><a href="hypothesis-testing.html#cb398-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb398-14"><a href="hypothesis-testing.html#cb398-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean.plotting =</span> F,</span>
-<span id="cb398-15"><a href="hypothesis-testing.html#cb398-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">effsize.type =</span> <span class="st">&quot;r&quot;</span> <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
-<span id="cb398-16"><a href="hypothesis-testing.html#cb398-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb398-2"><a href="hypothesis-testing.html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggwithinstats</span>(<span class="at">data =</span> music_sales_dep_long, <span class="at">x =</span> group,</span>
+<span id="cb398-3"><a href="hypothesis-testing.html#cb398-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> sales, <span class="at">path.point =</span> <span class="cn">FALSE</span>, <span class="at">type =</span> <span class="st">&quot;nonparametric&quot;</span>,</span>
+<span id="cb398-4"><a href="hypothesis-testing.html#cb398-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Mean sales for different treatments&quot;</span>,</span>
+<span id="cb398-5"><a href="hypothesis-testing.html#cb398-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">messages =</span> <span class="cn">FALSE</span>, <span class="at">bf.message =</span> <span class="cn">FALSE</span>, <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb398-6"><a href="hypothesis-testing.html#cb398-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean.plotting =</span> F, <span class="at">effsize.type =</span> <span class="st">&quot;r&quot;</span>  <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
+<span id="cb398-7"><a href="hypothesis-testing.html#cb398-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-10-1.png" alt="Wilcoxon signed-rank test using ggstatsplot" width="672" />
 <p class="caption">
@@ -2105,8 +2086,7 @@ Figure 1.8: Wilcoxon signed-rank test using ggstatsplot
 <span id="cb400-4"><a href="hypothesis-testing.html#cb400-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
 <span id="cb400-5"><a href="hypothesis-testing.html#cb400-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb400-6"><a href="hypothesis-testing.html#cb400-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Experimental group (promotion level)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of sales&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Number of sales by group&quot;</span>)<span class="sc">+</span></span>
-<span id="cb400-7"><a href="hypothesis-testing.html#cb400-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb400-8"><a href="hypothesis-testing.html#cb400-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
+<span id="cb400-7"><a href="hypothesis-testing.html#cb400-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>)) </span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
 <img src="09-non_parametric_tests_files/figure-html/unnamed-chunk-12-1.png" alt="Boxplot" width="672" />
 <p class="caption">
@@ -2149,7 +2129,7 @@ Figure 1.10: Boxplot
 <span id="cb407-3"><a href="hypothesis-testing.html#cb407-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> online_store_promo,</span>
 <span id="cb407-4"><a href="hypothesis-testing.html#cb407-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">plot.type =</span> <span class="st">&quot;box&quot;</span>,</span>
 <span id="cb407-5"><a href="hypothesis-testing.html#cb407-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> Promotion, <span class="co"># 2 groups</span></span>
-<span id="cb407-6"><a href="hypothesis-testing.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> Sales ,</span>
+<span id="cb407-6"><a href="hypothesis-testing.html#cb407-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> Sales,</span>
 <span id="cb407-7"><a href="hypothesis-testing.html#cb407-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;nonparametric&quot;</span>,</span>
 <span id="cb407-8"><a href="hypothesis-testing.html#cb407-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb407-9"><a href="hypothesis-testing.html#cb407-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Mean sales for different groups&quot;</span></span>

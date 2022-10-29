@@ -994,19 +994,11 @@ Again, we could combine the results of the statistical test and the visualizatio
 
 ```r
 library(ggstatsplot)
-ggwithinstats(
-  data = hours_a_b_paired_long,
-  x = group,
-  y = hours,
-  path.point = FALSE,
-  path.mean = TRUE,
-  sort = "descending", # ordering groups along the x-axis based on
-  sort.fun = median, # values of `y` variable
-  title = "Mean listening times for different treatments",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  effsize.type = "d" # display effect size (Cohen's d in output)
+ggwithinstats(data = hours_a_b_paired_long, x = group,
+    y = hours, path.point = FALSE, path.mean = TRUE,
+    title = "Mean listening times for different treatments",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    effsize.type = "d"  # display effect size (Cohen's d in output)
 )
 ```
 

@@ -182,7 +182,6 @@ ggplot(music_sales,aes(x = group, y = unit_sales)) +
   geom_jitter(colour="red", alpha = 0.1) +
   theme_bw() +
   labs(x = "Group", y = "Sales", title = "Sales by group")+
-  theme_bw() +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 ```
 
@@ -290,7 +289,6 @@ ggplot(music_sales_dep_long,aes(x = group, y = sales)) +
   geom_jitter(colour="red", alpha = 0.1) +
   theme_bw() +
   labs(x = "Group", y = "Average number of sales", title = "Average number of sales by group")+
-  theme_bw() +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 ```
 
@@ -323,20 +321,11 @@ Again, you could also use the `ggstatsplot` package to obtain the result of the 
 
 ```r
 library(ggstatsplot)
-ggwithinstats(
-  data = music_sales_dep_long,
-  x = group,
-  y = sales,
-  path.point = FALSE,
-  type="nonparametric",
-  sort = "descending", # ordering groups along the x-axis based on
-  sort.fun = median, # values of `y` variable
-  title = "Mean sales for different treatments",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  mean.plotting = F,
-  effsize.type = "r" # display effect size (Cohen's d in output)
+ggwithinstats(data = music_sales_dep_long, x = group,
+    y = sales, path.point = FALSE, type = "nonparametric",
+    title = "Mean sales for different treatments",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    mean.plotting = F, effsize.type = "r"  # display effect size (Cohen's d in output)
 )
 ```
 
@@ -376,7 +365,6 @@ ggplot(online_store_promo,aes(x = Promotion, y = Sales)) +
   geom_jitter(colour="red", alpha = 0.1) +
   theme_bw() +
   labs(x = "Experimental group (promotion level)", y = "Number of sales", title = "Number of sales by group")+
-  theme_bw() +
   theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
 ```
 
@@ -448,7 +436,7 @@ ggbetweenstats(
   data = online_store_promo,
   plot.type = "box",
   x = Promotion, # 2 groups
-  y = Sales ,
+  y = Sales,
   type = "nonparametric",
   messages = FALSE,
   title = "Mean sales for different groups"
