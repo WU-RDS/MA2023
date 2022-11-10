@@ -538,8 +538,8 @@ ggplot(genres_popularity, aes(x = genre, y = streams)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-4-1.png" alt="Total streams by genre" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Total streams by genre</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-10-1.png" alt="Total streams by genre" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-10)Total streams by genre</p>
 </div>
 
 
@@ -555,8 +555,8 @@ ggplot(genres_popularity, aes(x = genre, y = streams)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-5-1.png" alt="Total streams by genre, ordered" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Total streams by genre, ordered</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-11-1.png" alt="Total streams by genre, ordered" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Total streams by genre, ordered</p>
 </div>
 
 
@@ -845,8 +845,8 @@ ggplot(genres_explicit_rel,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-6-1.png" alt="Explicit lyrics share by genre" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Explicit lyrics share by genre</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-1.png" alt="Explicit lyrics share by genre" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-17)Explicit lyrics share by genre</p>
 </div>
 
 From the plot above it can be concluded, that Electro/Dance has the greatest share of explicit songs across all genres (34%); Country, in contrast, has the least share of explicit songs (only 2%).
@@ -862,8 +862,8 @@ ggplot(music_data, aes(x = fct_reorder(genre, energy),
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-7-1.png" alt="Boxplot of energy by genre" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Boxplot of energy by genre</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-18-1.png" alt="Boxplot of energy by genre" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-18)Boxplot of energy by genre</p>
 </div>
 
 
@@ -886,8 +886,8 @@ ggplot(mean_data, aes(x = fct_reorder(genre, energy),
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-8-1.png" alt="Average energy of songs by genre" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-8)Average energy of songs by genre</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-19-1.png" alt="Average energy of songs by genre" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-19)Average energy of songs by genre</p>
 </div>
 
 
@@ -913,8 +913,8 @@ ggplot(labels_songs, aes(x = label, y = number_of_songs)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-9-1.png" alt="Count of songs by label" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-9)Count of songs by label</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-21-1.png" alt="Count of songs by label" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-21)Count of songs by label</p>
 </div>
 Here we can see a confirmation of one of our previous conclusions about the difference in songs count between Warner Music and Independent labels, which resulted in the lower average streams of the latter.
 
@@ -943,8 +943,8 @@ ggplot(genres_songs_rel, aes(x = genre, y = share)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-10-1.png" alt="Share of songs by genre" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-10)Share of songs by genre</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-1.png" alt="Share of songs by genre" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-23)Share of songs by genre</p>
 </div>
 
 
@@ -962,8 +962,8 @@ music_data |>
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-11-1.png" alt="Distribution of valence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Distribution of valence</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-24-1.png" alt="Distribution of valence" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-24)Distribution of valence</p>
 </div>
 
 **Task 9**
@@ -979,8 +979,8 @@ ggplot(music_data, aes(speechiness, valence)) + geom_point(shape = 1) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-12-1.png" alt="Scatterplot of speechiness and valence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Scatterplot of speechiness and valence</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-25-1.png" alt="Scatterplot of speechiness and valence" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-25)Scatterplot of speechiness and valence</p>
 </div>
 
 **Bonus:** to add regression line, use `geom_smooth()` function:
@@ -995,8 +995,1211 @@ ggplot(music_data,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="14-rmdIntro_files/figure-html/unnamed-chunk-13-1.png" alt="Scatterplot of speechiness and valence" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Scatterplot of speechiness and valence</p>
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-26-1.png" alt="Scatterplot of speechiness and valence" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-26)Scatterplot of speechiness and valence</p>
 </div>
 The slope of the regression line suggests that there is positive relationship between valence and speechiness.
+
+
+
+## Assignment 2: Solution
+
+**Assignment 2a**  
+
+**Load data**
+
+
+```r
+library(pastecs)
+library(ggplot2)
+library(psych)
+library(pwr)
+library(lsr)
+library(reshape2)
+library(ggstatsplot)
+library(Rmisc)
+library(plyr)
+library(car)
+options(scipen = 999)  #scientific notation
+customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_a) str(customer_data_a)
+```
+
+
+**Question 1**  
+
+Let's have a quick look at the revenues that we have in our data:
+
+```r
+psych::describe(customer_data_a$revenue)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["vars"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1429","3":"1401.919","4":"724.1796","5":"1354","6":"1376.383","7":"770.952","8":"1","9":"4179","10":"4178","11":"0.3668801","12":"-0.1604489","13":"19.15712"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+ggplot(customer_data_a, aes(revenue)) + geom_histogram(col = "white",
+    fill = "lavenderblush3", bins = 50) + geom_vline(data = customer_data_a %>%
+    dplyr::summarise(mean = mean(revenue)), aes(xintercept = mean),
+    size = 0.7, color = "gray19") + labs(x = "Revenue",
+    y = "Frequency") + ggtitle("Distribution of revenue per customer") +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
+
+To compute the confidence interval for the average revenue per customer, we will need three things: 1) the *mean* $\bar x$, 2) the *standard error* ($s \over \sqrt{n}$), and 3) the *critical value* for a t-distribution ($t_{crit}$; we will use a t-distribution, because we are not sure of the variance in the population; for this assignment, also the normal distribution and the corresponding $z$-score would have been counted as correct).
+
+
+```r
+mean <- mean(customer_data_a$revenue)  #calculate the mean
+sd <- sd(customer_data_a$revenue)
+n <- nrow(customer_data_a)
+se <- sd/sqrt(n)  #calculate the standard error
+df <- n - 1
+t_crit <- qt(0.975, df)  #calculate the critical value
+```
+
+The confidence interval can be computed as follows: 
+$$CI_{rev} = \bar x \pm t_{ \alpha \over 2}*SE_{\bar x}$$
+
+
+```r
+ci_lower <- mean - t_crit * se
+ci_upper <- mean + t_crit * se
+ci_lower
+```
+
+```
+## [1] 1364.34
+```
+
+```r
+ci_upper
+```
+
+```
+## [1] 1439.498
+```
+
+You could also use one-sample `t.test()` function to calculate the CIs around the mean:
+
+```r
+t.test(customer_data_a$revenue)$conf.int
+```
+
+```
+## [1] 1364.340 1439.498
+## attr(,"conf.level")
+## [1] 0.95
+```
+
+We can see now that the confidence interval for revenues is $CI_{rev} = [1364.34,1439.50]$.
+To communicate this information with the accounting department, you should interpret the intervals as follows: **If we'd taken 100 samples and calculated the mean and confidence interval for each of them, then the true population mean would be included in 95% of these intervals. In the sample at hand, this interval spans from 1364.34 to 1439.50 EUR**.  
+  
+  
+
+**Question 2**
+
+First we will analyze whether the personalization feature that was tested in the A/B-test had an effect on *revenues*. We need to formulate a hypothesis which we can test. In this case, *the null hypothesis is that the feature had no effect on the mean revenue*, i.e. that there is **no difference in the mean revenue between the two populations**. The alternative hypothesis states that the campaign *did have an effect*, meaning that there is a difference in the mean revenue between the populations. In more formal notation this is:
+
+$$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
+
+We need to transform the variable *exp_group* into a factor variable and inspect the data using descriptive statistics:
+
+```r
+customer_data_a$exp_group <- factor(customer_data_a$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
+
+describeBy(customer_data_a$revenue, customer_data_a$exp_group)  #describe control and treatment groups 
+```
+
+```
+## 
+##  Descriptive statistics by group 
+## group: control
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 1288.58 675.54   1245 1269.56 751.68   1 3726  3725 0.31    -0.35
+##       se
+## X1 25.81
+## ------------------------------------------------------------ 
+## group: treatment
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 1506.27 751.71 1507.5 1480.48 774.66   3 4179  4176 0.34    -0.17
+##       se
+## X1 27.56
+```
+It can already be seen that the mean revenue is higher in the treatment group. 
+
+Next, we should visualize the data. For this, we can use plot of means or boxplot:
+
+```r
+mean_data <- summarySE(customer_data_a, measurevar = "revenue",
+    groupvars = c("exp_group"))
+
+# Plot of means
+ggplot(mean_data, aes(x = exp_group, y = revenue)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average revenue", title = "Average revenue by group") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = revenue)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-33-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-33-2.png" width="50%" />
+
+As we can see in both the descriptive statistics and the plot, the revenues were higher for the group that was exposed to the new personalization feature. To test whether or not this difference is significant, we need to use an __independent-means t-test__, since we have different customers in each group, meaning that we have collected the data using a between-subjects design (i.e., the customers in one condition are *independent* of the customers in the other condition). The requirements are clearly met:
+
+* Our dependent variable (revenue) is measured on an ratio scale;
+* Since we have more than 30 observations per group we do not really have to concern ourselves with whether the data is normally distributed or not (see central limit theorem);
+* If a customer was exposed to the feature or not was assigned randomly (i.e., the groups are independent);
+* R automatically performs Welch's t-test, which corrects for unequal variance.  
+
+
+```r
+t.test(revenue ~ exp_group, data = customer_data_a,
+    paired = FALSE)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  revenue by exp_group
+## t = -5.7652, df = 1426.2, p-value = 0.00000000998
+## alternative hypothesis: true difference in means between group control and group treatment is not equal to 0
+## 95 percent confidence interval:
+##  -291.7562 -143.6193
+## sample estimates:
+##   mean in group control mean in group treatment 
+##                1288.581                1506.269
+```
+
+The test is significant, since the **p-value is smaller than 0.05**, leading us to **reject the null hypothesis that there is no difference in the mean revenue**. The p-value states the probability of finding a difference of the observed magnitude or higher, if the null hypothesis was in fact true (i.e., if there was in fact no difference between the populations). Effectively, this means that **the personalization feature had an effect on the average expenditure**. Another thing we can extract from this test result is the confidence interval around the difference in means. **Since 0** (i.e., hypothetical difference in means from H0) **is not included in the interval**, it is not a plausible value, confirming the conclusion to reject the null hypothesis.
+
+We should also calculate the effect size:
+
+```r
+cohensD(revenue ~ exp_group, data = customer_data_a)
+```
+
+```
+## [1] 0.303943
+```
+This magnitude of the effect size (0.30) suggests that the **effect of the personalization feature on the revenue is small to medium**.
+
+We can visualize the results of the test using `ggstatsplot`:
+
+```r
+ggbetweenstats(
+  data = customer_data_a,
+  plot.type = "box",
+  x = exp_group, #2 groups
+  y = revenue ,
+  type = "p", #default
+  effsize.type = "d", #display effect size (Cohen's d in output)
+  messages = FALSE,
+  bf.message = FALSE,
+  mean.ci = TRUE,
+  title = "Average revenue per customer by group"
+) 
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" />
+
+The results show that revenues are **higher in the treatment group (Mean = 1506.27, SE = 27.56) compared to the control group (Mean = 1288.58, SE = 25.81)**. This means that, on average, the revenues were **€217.69 higher** in the treatment group, compared to the control group. An independent-means t-test showed that **this difference is significant: t(1426.2) = 5.77, p < .05 (95% CI = [143.62, 291.76]); effect size is small to medium = 0.30**.
+
+
+Now we can test if the new personalization feature has an effect on *time spent on our website*. 
+
+```r
+describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe control and treatment groups for time on site
+```
+
+```
+## 
+##  Descriptive statistics by group 
+## group: control
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 626.28 285.76    607  621.75 309.86   1 1504  1503 0.17    -0.44
+##       se
+## X1 10.92
+## ------------------------------------------------------------ 
+## group: treatment
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 640.45 287.01    629  634.19 292.07  23 1622  1599 0.23    -0.23
+##       se
+## X1 10.52
+```
+
+
+```r
+mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site",
+    groupvars = c("exp_group"))
+
+# Plot of means
+ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average time on site", title = "Average time on site by group") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Time on site",
+        title = "Boxplot of time on site by group") +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-38-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-38-2.png" width="50%" />
+
+There is some difference in average time spent on site, however, we need to conduct a statistical test. We are examining if there is difference in mean time on site between the populations; our formal notation for the null and alternative hypotheses stays the same:
+$$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
+
+We use the __independent-means t-test__ again:
+
+* The dependent variable (time on site) is measured on an ratio scale
+* We still have more than 30 observations per group
+* The groups are independent
+
+
+```r
+t.test(time_on_site ~ exp_group, data = customer_data_a,
+    paired = FALSE)
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  time_on_site by exp_group
+## t = -0.93495, df = 1418.3, p-value = 0.35
+## alternative hypothesis: true difference in means between group control and group treatment is not equal to 0
+## 95 percent confidence interval:
+##  -43.92214  15.56805
+## sample estimates:
+##   mean in group control mean in group treatment 
+##                626.2759                640.4530
+```
+
+```r
+cohensD(time_on_site ~ exp_group, data = customer_data_a)
+```
+
+```
+## [1] 0.04949881
+```
+
+The test results show that the difference that we observed before is **not statistically significant as p-value is >0.05**. Alternatively, we can see that **the confidence interval around the difference in means includes 0** (which is the value of difference in means from the null hypothesis). Therefore, **we cannot reject the null hypothesis**. The effect is very small.
+
+
+```r
+ggbetweenstats(
+  data = customer_data_a,
+  plot.type = "box",
+  x = exp_group, #2 groups
+  y = time_on_site,
+  type = "p", # default
+  effsize.type = "d", #display effect size (Cohen's d in output)
+  messages = FALSE,
+  bf.message = FALSE,
+  mean.ci = TRUE,
+  title = "Average time on site per customer by group"
+)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" />
+
+This test revealed that time on site was **slightly higher in the treatment group (Mean = 640.45, SE = 10.52) compared to the control group (Mean = 626.28, SE = 10.92)**. This difference is **not statistically significant: t(1418.3) = 0.93, p > .05 (95% CI = [-15.56; 43.92])**.
+
+
+Finally, we can conclude from this study that the personalization feature causes users to increase their expenditures, but does not result in increased time spent on the website. If the primary goal of the company is to increase the revenues, this feature might be implemented on the website.  
+  
+  
+**Question 3**
+
+To define the number of users that should be placed in two different conditions, `pwr.t.test()` function should be used. As far as the aim of the experiment is to simply detect *significant difference* between the groups, the sample size definition should be based on *two-sided test*.  
+
+Given the **effect size = 0.1**, **significance level = 0.05**, and **power = 0.8**, sample size for each group will be:
+
+```r
+pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8,
+    type = c("two.sample"), alternative = c("two.sided"))
+```
+
+```
+## 
+##      Two-sample t test power calculation 
+## 
+##               n = 1570.733
+##               d = 0.1
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group
+```
+
+To achieve our desired effect size of 0.1, a significance level of 0.5 and a power of 0.8 we would need to include **at least 1,571 customers per group** in the planned experiment.
+
+
+**Assignment 2b: Question 4**  
+  
+**Load data**
+
+
+```r
+customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_b) str(customer_data_b)
+```
+
+Next we want to examine whether the alternative page layout has an effect on the time that a user spends on the website. The null hypothesis here is that *there is no difference in the mean time spend on the website for the same customers between the two page layouts*. Because the observations come from *the same population* of customers (i.e., a within-subject design), we refer to the difference in the means for the same population as $\mu_D$ when stating our hypotheses. The alternative hypothesis states that that *there is a difference* between the time on site variables for the same customers. In mathematical notation this can be written as
+
+$$H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0$$
+
+Again, we start with descriptive statistics to get a feel for the data: 
+
+```r
+psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["vars"],"name":[1],"type":["int"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"741","3":"625.2726","4":"281.9098","5":"620","6":"620.0927","7":"289.107","8":"6","9":"1408","10":"1402","11":"0.17601185","12":"-0.3311236","13":"10.35621"},{"1":"2","2":"741","3":"747.5479","4":"300.9633","5":"740","6":"746.3137","7":"311.346","8":"17","9":"1643","10":"1626","11":"0.07594395","12":"-0.3373002","13":"11.05616"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+We can observe the difference in means from the table above; we can also visualize the data:
+
+```r
+# Plot of means
+customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
+names(customer_data_long) <- c("layout", "time_on_site")
+
+mean_data <- summarySE(customer_data_long, measurevar = "time_on_site",
+    groupvars = c("layout"))
+
+# Plot of means
+ggplot(mean_data, aes(x = layout, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "", y = "Average time on site",
+    title = "Average time on site by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
+
+# Boxplot
+ggplot(customer_data_long, aes(x = layout, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-44-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-44-2.png" width="50%" />
+It appears that there is a difference in the means. To test whether it is significant, we need to run a t-test again. However, this time we need a slightly different version of the t-test because *the same customers* are observed for the two page layouts (i.e., the same customers are shown both layouts). This means that we need a __dependent means t-test__, or **paired samples t-test**. The other assumptions are virtually identical to the independent-means t-test. The test can be executed in R by adding ```paired = TRUE``` to the code.   
+
+
+```r
+t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1,
+    mu = 0, alternative = "two.sided", conf.level = 0.95,
+    paired = TRUE)
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  customer_data_b$time_on_site_2 and customer_data_b$time_on_site_1
+## t = 8.0093, df = 740, p-value = 0.000000000000004478
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##   92.30401 152.24660
+## sample estimates:
+## mean difference 
+##        122.2753
+```
+
+The p-value is again lower than the chosen significance level of 5% (i.e., p < .05), which means that we can reject the null hypothesis that there is no difference in the mean time on site between the two page layouts. The confidence interval confirms the conclusion to reject the null hypothesis since $0$ is not contained in the range of plausible values.
+
+We can now find out how strong this effect is: it is actually rather small.
+
+```r
+cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2,
+    method = "paired")
+```
+
+```
+## [1] 0.2942274
+```
+
+Alternatively, you could also use the `ggstatsplot` package to conduct the tests and extract the relevant information from there: 
+
+
+```r
+ggwithinstats(data = customer_data_long, x = layout,
+    y = time_on_site, path.point = FALSE, path.mean = TRUE,
+    title = "Time on site for different page layouts",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    effsize.type = "d"  # display effect size (Cohen's d in output)
+)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" />
+
+
+The results of this experiment show that, on average, **the same users used the service more** when it included the alternative layout **(M = 747.55, SE = 11.06)** compared to the service without the previous personalization feature only **(M = 625.27, SE = 10.36)**. This difference was significant: **t(740) = 8.01, p < .05 (95% CI = [92.30, 152.25]); effect size is small = 0.29**. 
+
+The conclusion from this test would be that the alternative page layout increases the time that users spend on the website and, thus, the alternative layout might be implemented as the new standard. 
+
+
+**Assignment 2c: Question 5**  
+  
+**Load data**
+
+
+```r
+customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_c) str(customer_data_c)
+```
+
+To answer the question of whether the type of advertising has an effect on revenue, we need to formulate a testable null hypothesis. In our case, the null hypothesis is stating that **the average level of sales is equal for all three advertising types**. In mathematical notation this implies:
+$$H_0: \mu_1 = \mu_2 = \mu_3 $$
+
+The alternate hypothesis is simply that the means are not all equal, i.e., 
+$$H_1: \exists {i,j}: {\mu_i \ne \mu_j} $$
+or $$H_1: \textrm{Means are not all equal} $$
+
+The appropriate test for such a hypothesis is one-way ANOVA since we have a *metric-scaled dependent variable* and a *categorical independent variable with more than two levels*.
+
+First, we need to recode relevant variables into factors and give them more descriptive level names: 
+
+```r
+customer_data_c$retargeting <- factor(customer_data_c$retargeting,
+    levels = c(1, 2, 3), labels = c("no retargeting",
+        "generic retargeting", "dynamic retargeting"))
+```
+
+Next we calculate summary statistics for the data and build an appropriate plot.
+
+```r
+describeBy(customer_data_c$revenue, customer_data_c$retargeting)
+```
+
+```
+## 
+##  Descriptive statistics by group 
+## group: no retargeting
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 737 2166.14 791.85   2168 2158.39 796.16 190 4462  4272 0.08    -0.32
+##       se
+## X1 29.17
+## ------------------------------------------------------------ 
+## group: generic retargeting
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 777 2299.26 786.85   2289 2291.99 770.95  89 5541  5452 0.15     0.22
+##       se
+## X1 28.23
+## ------------------------------------------------------------ 
+## group: dynamic retargeting
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 690 2609.56 826.81   2594 2605.37 836.19 513 5036  4523 0.05    -0.24
+##       se
+## X1 31.48
+```
+
+```r
+# Plot of means
+mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue",
+    groupvars = c("retargeting"))
+ggplot(mean_data_2, aes(x = retargeting, y = revenue)) +
+    geom_bar(position = position_dodge(1), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "", y = "Average revenue",
+    title = "Average revenue by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
+
+# Boxplot
+ggplot(customer_data_c, aes(x = retargeting, y = revenue)) +
+    geom_boxplot() + geom_jitter(colour = "lavenderblush4",
+    alpha = 0.1) + theme_minimal() + labs(x = "", y = "Revenue") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-50-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-50-2.png" width="50%" />
+
+Both the summary statistics and the plots hint at the fact that the means may not be equal. Especially the difference between dynamic retargeting and no retargeting/generic regtargeting seem to be quite high. Before we move to the formal test, we need to see if a series of **assumptions** are met, namely:
+
+* Independence of observations
+* Distributional assumptions
+* Homogeneity of variances
+
+
+The first assumption is satisfied due to the fact that *the participants were randomly assigned* to the advertisement groups. To see if we need to worry about distributional assumptions we first take a look at the number of observations in each advertising group.
+
+
+```r
+table(customer_data_c$retargeting)  #check number of observations by group
+```
+
+```
+## 
+##      no retargeting generic retargeting dynamic retargeting 
+##                 737                 777                 690
+```
+Due to the fact that there are always *more than 30 observations in each group* we can rely on the central limit theorem to satisfy the distributional assumptions. You can still test this assumption using Shapiro-Wilk normality test and plots:
+
+```r
+# test for normal distribution of variables - no
+# need because n > 30
+by(customer_data_c$revenue, customer_data_c$retargeting,
+    shapiro.test)
+```
+
+```
+## customer_data_c$retargeting: no retargeting
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  dd[x, ]
+## W = 0.99692, p-value = 0.1719
+## 
+## ------------------------------------------------------------ 
+## customer_data_c$retargeting: generic retargeting
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  dd[x, ]
+## W = 0.99705, p-value = 0.1682
+## 
+## ------------------------------------------------------------ 
+## customer_data_c$retargeting: dynamic retargeting
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  dd[x, ]
+## W = 0.99777, p-value = 0.4959
+```
+
+```r
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'no retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'generic retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'dynamic retargeting', ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-52-1.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-52-2.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-52-3.png" width="30%" />
+
+
+Homogeneity of variances can be checked with *Levene's test* (implemented as ```leveneTest()``` from the ```car``` package). The null hypothesis of this test is that the variances are equal, with the alternative hypothesis being that the variances are not all equal. Note that this step could also be skipped and replaced by the use of the robust ANOVA using the `oneway.test()` function. 
+
+```r
+leveneTest(revenue ~ retargeting, data = customer_data_c)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Df"],"name":[1],"type":["int"],"align":["right"]},{"label":["F value"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2","2":"1.145271","3":"0.3183271"},{"1":"2201","2":"NA","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+As we can see, we cannot reject the H0 of variances being equal, thus we can proceed with ANOVA. 
+
+```r
+aov <- aov(revenue ~ retargeting, data = customer_data_c)
+summary(aov)  #if levene's test would be significant, compute the Welch's F-ratio instead
+```
+
+```
+##               Df     Sum Sq  Mean Sq F value              Pr(>F)    
+## retargeting    2   73393103 36696551   57.16 <0.0000000000000002 ***
+## Residuals   2201 1412939750   641954                                
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+```r
+lsr::etaSquared(aov)
+```
+
+```
+##                 eta.sq eta.sq.part
+## retargeting 0.04937865  0.04937865
+```
+
+```r
+summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
+    summary(aov)[[1]]$"Sum Sq"[2])  #another way
+```
+
+```
+## [1] 0.04937865
+```
+
+Or, as was mentioned, you could also run a more robust test with `oneway.test()`:
+
+```r
+oneway.test(revenue ~ retargeting, data = customer_data_c)
+```
+
+```
+## 
+## 	One-way analysis of means (not assuming equal variances)
+## 
+## data:  revenue and retargeting
+## F = 55.412, num df = 2.0, denom df = 1454.6, p-value <
+## 0.00000000000000022
+```
+
+In both tests, the **p-value is way smaller than 0.05**, which we chose as our significance level, meaning that we **reject the null hypothesis of the means being equal** in the three advertising groups. 
+
+Again, there is an option to show the test results in a graph:
+
+```r
+library(ggstatsplot)
+ggbetweenstats(
+  data = customer_data_c,
+  x = retargeting,
+  y = revenue,
+  plot.type = "box",
+  pairwise.comparisons = TRUE,
+  pairwise.annotation = "p.value",
+  p.adjust.method = "bonferroni",
+  effsize.type = "eta", #if var.equal = FALSE, returns partial eta^2 
+  var.equal = TRUE,
+  mean.plotting = TRUE, 
+  mean.ci = TRUE, 
+  mean.label.size = 2.5,
+  type = "parametric", 
+  k = 3, 
+  outlier.label.color = "darkgreen", 
+  title = "Comparison of revenues between groups",
+  xlab = "Experimental group", 
+  ylab = "Revenue", 
+  messages = FALSE,
+  bf.message = FALSE,
+)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-1.png" width="576" style="display: block; margin: auto;" />
+
+Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
+
+```r
+plot(aov, 1)
+plot(aov, 2)
+```
+
+<img src="14-rmdIntro_files/figure-html/figures-side-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/figures-side-2.png" width="50%" />
+
+The first plot gives us a feel for the distribution of the residuals of the three groups. The residuals seem to be roughly equally distributed, which speaks for the fact that *the homogeneity of variances assumption is fulfilled*. 
+
+The second plot is a QQ-plot of the residuals, meant as a quick visual check to see if the normality assumption is fulfilled. Leading up to the test we only checked if there were more than 30 observations per group to satisfy the normality assumption but despite this being fulfilled it is still important to check the normality of the residuals, as any strange behavior here may indicate problems with the model specification. 
+
+To further confirm that the residuals are roughly normally distributed we employ the **Shapiro-Wilk test**. The null hypothesis is that the distribution of the data is normal, with the alternative hypothesis positing that the data is not normally distributed.
+
+
+```r
+shapiro.test(resid(aov))
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  resid(aov)
+## W = 0.99865, p-value = 0.07655
+```
+
+The p-value is above the significance level and thus we cannot reject the null hypothesis of normal distribution, which further implies that *the normality assumption is fulfilled*.
+
+According to the test, the effect of different types of advertising on revenues was detected: **F(2, 2201) = 57.16, p < 0.05, $\eta^2$ = 0.049**.
+
+The ANOVA result only tells us that *the means of the three groups are not equal*, but it does not tell us anything about _which_ pairs of means are unequal. To find this out we need to conduct **post-hoc tests** to check the following null hypotheses for the respective pairwise comparisons:
+
+$$1) H_0: \mu_1 = \mu_2; H_1: \mu_1 \neq \mu_2 \\
+2) H_0: \mu_2 = \mu_3; H_1: \mu_2 \neq \mu_3 \\
+3) H_0: \mu_1 = \mu_3; H_1: \mu_1 \neq \mu_3 $$
+
+Here we will conduct both the Bonferroni correction as well as Tukey's HSD test, however, either would be sufficient for your homework. Bonferroni's correction conducts multiple pairwise t-tests, with the null hypothesis being that of equal means in each case and the alternative hypothesis stating that the means are unequal.
+
+
+```r
+# bonferroni
+pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting,
+    data = customer_data_c, p.adjust.method = "bonferroni")
+```
+
+```
+## 
+## 	Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  customer_data_c$revenue and customer_data_c$retargeting 
+## 
+##                     no retargeting       generic retargeting
+## generic retargeting 0.0038               -                  
+## dynamic retargeting < 0.0000000000000002 0.00000000000056   
+## 
+## P value adjustment method: bonferroni
+```
+
+
+According to the Bonferroni test, we can **reject the null hypotheses in all cases**, which means that the revenue means are significantly different from each other:
+dynamic regargeting vs. no retargeting  
+dynamic regargeting vs. generig retargeting
+generic retargeting vs. no retargeting
+
+Alternatively, you could have also chosen to use Tukey's HSD to conduct the post-hoc test:
+
+```r
+# tukey correction using the mult-comp package
+library(multcomp)
+tukeys <- glht(aov, linfct = mcp(retargeting = "Tukey"))
+summary(tukeys)
+```
+
+```
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
+## 
+## Linear Hypotheses:
+##                                                Estimate Std. Error t value
+## generic retargeting - no retargeting == 0        133.12      41.20   3.231
+## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
+## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
+##                                                Pr(>|t|)    
+## generic retargeting - no retargeting == 0        0.0036 ** 
+## dynamic retargeting - no retargeting == 0       <0.0001 ***
+## dynamic retargeting - generic retargeting == 0  <0.0001 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
+```
+Tukey's correction confirms the conclusion from the Bonferroni test. There seems to be difference in the means of generic retargeting vs. no retargeting, and dynamic retargeting vs. both generic retargeting and no retargeting. 
+
+We can estimate the difference in means with corresponding confidence intervals:
+
+```r
+confint(tukeys)
+```
+
+```
+## 
+## 	 Simultaneous Confidence Intervals
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
+## 
+## Quantile = 2.3452
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##                                                Estimate lwr      upr     
+## generic retargeting - no retargeting == 0      133.1202  36.5052 229.7352
+## dynamic retargeting - no retargeting == 0      443.4211 343.8853 542.9570
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0117 408.5901
+```
+
+```r
+par(mar = c(5, 19, 4, 2))  #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
+plot(tukeys)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" />
+
+It is clearly visible that none of the CIs cross the 0 bound (it's not even visible), which further indicates that all differences in means are statistically significantly different from 0.
+
+From a reporting standpoint we can say that revenue is higher when using dynamic retargeting vs. no retargeting and generic retargeting; generic retargeting is though also more effective than no retargeting. Managerially, this means that dynamic retargeting helps us to increase sales and should thus be the preferred choice. 
+
+**Bonus:** if you decided to check if the effectiveness of the retargeting depends on the gender, you could implement 2-way ANOVA. 
+
+You should also describe the data using descriptive statistics and plots:
+
+```r
+customer_data_c$gender <- factor(customer_data_c$gender,
+    levels = c(0, 1), labels = c("male", "female"))
+
+data_summary <- summarySE(customer_data_c, measurevar = "revenue",
+    groupvars = c("retargeting", "gender"))
+data_summary
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["retargeting"],"name":[1],"type":["fct"],"align":["left"]},{"label":["gender"],"name":[2],"type":["fct"],"align":["left"]},{"label":["N"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["revenue"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ci"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"no retargeting","2":"male","3":"368","4":"2111.731","5":"764.8537","6":"39.87075","7":"78.40380"},{"1":"no retargeting","2":"female","3":"369","4":"2220.401","5":"815.3044","6":"42.44305","7":"83.46134"},{"1":"generic retargeting","2":"male","3":"389","4":"2352.789","5":"746.2197","6":"37.83484","7":"74.38697"},{"1":"generic retargeting","2":"female","3":"388","4":"2245.593","5":"823.0465","6":"41.78385","7":"82.15177"},{"1":"dynamic retargeting","2":"male","3":"345","4":"2754.991","5":"828.6380","6":"44.61237","7":"87.74736"},{"1":"dynamic retargeting","2":"female","3":"345","4":"2464.130","5":"800.0901","6":"43.07540","7":"84.72432"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+
+```r
+# Grouped plot of means
+ggplot(data_summary, aes(x = retargeting, y = revenue,
+    fill = gender)) + geom_bar(position = position_dodge(0.9),
+    stat = "identity") + geom_errorbar(position = position_dodge(0.9),
+    width = 0.2, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + scale_fill_manual(values = c("snow2",
+    "lavenderblush3")) + theme_minimal() + labs(x = "",
+    y = "Average revenue", title = "Average revenue by type of retargeting and gender") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-62-1.png" width="672" style="display: block; margin: auto;" />
+
+We can see that average expenditures of male customers are slightly higher than those of females when the customers receive generic or dynamic ads (for dynamic retargeting, we can also see the highest average revenues).
+
+We should check if revenues are affected by **both** retargeting type and gender, while also assessing the interaction effect between the independent variables. Thus, the model would look as follows:
+
+```r
+two_way_aov <- aov(revenue ~ retargeting * gender,
+    data = customer_data_c)
+summary(two_way_aov)
+```
+
+```
+##                      Df     Sum Sq  Mean Sq F value               Pr(>F)    
+## retargeting           2   73393103 36696551  57.864 < 0.0000000000000002 ***
+## gender                1    4715691  4715691   7.436              0.00644 ** 
+## retargeting:gender    2   14285794  7142897  11.263            0.0000136 ***
+## Residuals          2198 1393938265   634185                                 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+The results of the test show that there are indeed **significant effects of retargeting, gender, and interaction between them on revenues, as the respective p-values are <.05**.
+
+If we conduct Tukey's comparisons, we can see which combinations result in higher revenues:
+
+```r
+tukey <- TukeyHSD(two_way_aov)
+print(tukey)
+```
+
+```
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = revenue ~ retargeting * gender, data = customer_data_c)
+## 
+## $retargeting
+##                                             diff       lwr      upr     p adj
+## generic retargeting-no retargeting      133.1202  37.08653 229.1539 0.0033452
+## dynamic retargeting-no retargeting      443.4211 344.48414 542.3581 0.0000000
+## dynamic retargeting-generic retargeting 310.3009 212.60306 407.9987 0.0000000
+## 
+## $gender
+##                  diff      lwr      upr     p adj
+## female-male -92.51169 -159.042 -25.9814 0.0064446
+## 
+## $`retargeting:gender`
+##                                                            diff        lwr
+## generic retargeting:male-no retargeting:male           241.0582   75.88444
+## dynamic retargeting:male-no retargeting:male           643.2603  473.04322
+## no retargeting:female-no retargeting:male              108.6701  -58.66557
+## generic retargeting:female-no retargeting:male         133.8618  -31.41542
+## dynamic retargeting:female-no retargeting:male         352.3995  182.18235
+## dynamic retargeting:male-generic retargeting:male      402.2021  234.22288
+## no retargeting:female-generic retargeting:male        -132.3881 -297.44685
+## generic retargeting:female-generic retargeting:male   -107.1964 -270.16795
+## dynamic retargeting:female-generic retargeting:male    111.3412  -56.63799
+## no retargeting:female-dynamic retargeting:male        -534.5902 -704.69568
+## generic retargeting:female-dynamic retargeting:male   -509.3985 -677.47946
+## dynamic retargeting:female-dynamic retargeting:male   -290.8609 -463.80162
+## generic retargeting:female-no retargeting:female        25.1917 -139.97055
+## dynamic retargeting:female-no retargeting:female       243.7294   73.62389
+## dynamic retargeting:female-generic retargeting:female  218.5377   50.45671
+##                                                              upr     p adj
+## generic retargeting:male-no retargeting:male           406.23201 0.0004677
+## dynamic retargeting:male-no retargeting:male           813.47743 0.0000000
+## no retargeting:female-no retargeting:male              276.00578 0.4322698
+## generic retargeting:female-no retargeting:male         299.13903 0.1902849
+## dynamic retargeting:female-no retargeting:male         522.61656 0.0000001
+## dynamic retargeting:male-generic retargeting:male      570.18132 0.0000000
+## no retargeting:female-generic retargeting:male          32.67061 0.1994249
+## generic retargeting:female-generic retargeting:male     55.77511 0.4172311
+## dynamic retargeting:female-generic retargeting:male    279.32046 0.4082007
+## no retargeting:female-dynamic retargeting:male        -364.48476 0.0000000
+## generic retargeting:female-dynamic retargeting:male   -341.31758 0.0000000
+## dynamic retargeting:female-dynamic retargeting:male   -117.92012 0.0000253
+## generic retargeting:female-no retargeting:female       190.35395 0.9980315
+## dynamic retargeting:female-no retargeting:female       413.83481 0.0006450
+## dynamic retargeting:female-generic retargeting:female  386.61859 0.0029269
+```
+We might be more interested in interactions between type of retargeting and gender. We can see that, for example, the following combinations work *significantly* better:  
+
+* generic retargeting works better than no retargeting across *male* customers, and so does dynamic retargeting; dynamic retargeting also works better than generic retargeting => for men, we can simply choose dynamic retargeting  
+* dynamic retargeting also works best with females;  
+* however, we can see that dynamic retargeting works worse for women compared to men (diff. -290.86, p-value <.05). We can make a conclusion that our algorithms of dynamic retargeting are more fit for male customers, thus, depending on our strategy and target audience, we might need to adjust the algorithms.  
+  
+
+
+**Question 6**
+
+For this question we want to examine whether the scores from the NPS measurement are significantly different for the experimental groups (i.e., *three* types of retargeting). Because we are dealing with data on an **ordinal scale**, we can not use ANOVA for this analysis. The non-parametric counterpart is the Kruskal-Wallis test, which tests for differences in medians between more than two groups. Hence, the null hypothesis is that **the medians are equal in each group**, and the alternative hypothesis is that there is a difference in medians. 
+
+$$H_0: \bar{\mu}_1 =  \bar{\mu}_2 = \bar{\mu}_3  \\ H_1: \bar{\mu}_1 \neq \bar{\mu}_2 \neq \bar{\mu}_3 $$
+
+Let's inspect the descriptive statistics first:
+
+
+```r
+# Descriptive statistics for NPS, split by group
+describeBy(customer_data_c$nps, customer_data_c$retargeting)
+```
+
+```
+## 
+##  Descriptive statistics by group 
+## group: no retargeting
+##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
+## X1    1 737 6.52 2.72      7    6.64 4.45   2  10     8 -0.17    -1.29 0.1
+## ------------------------------------------------------------ 
+## group: generic retargeting
+##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
+## X1    1 777 7.19 2.59      7    7.24 2.97   3  11     8 -0.12    -1.28 0.09
+## ------------------------------------------------------------ 
+## group: dynamic retargeting
+##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
+## X1    1 690 8.16 2.58      8     8.2 2.97   4  12     8 -0.15    -1.23 0.1
+```
+
+A good way to visualize ordinal data is through a boxplot.
+
+```r
+ggplot(data = customer_data_c, aes(x = retargeting,
+    y = nps)) + geom_boxplot(color = "lavenderblush4") +
+    geom_jitter(colour = "lavenderblush3", alpha = 0.1) +
+    theme_minimal() + labs(x = "", y = "Rank")
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-66-1.png" width="528" style="display: block; margin: auto;" />
+
+The descriptive statistics and boxplot seem to indicate that the median NPS without retargeting and with generic retargetng is the same; median NPS for dynamic retargeting is slightly higher. The reason might be, for example, that due to the use of dynamic retargeting, customers spend more money (as was shown in ANOVA), but it doesn't result in higher NPS, possibly because customers are not comfortable with the use of their personal data for advertising purposes.  
+
+The only assumption that we require for this test is that the *dependent variable is at least ordinal*, which is fulfilled for customer ranks. Hence we can move on to performing the test:
+
+
+```r
+kruskal.test(nps ~ retargeting, data = customer_data_c)
+```
+
+```
+## 
+## 	Kruskal-Wallis rank sum test
+## 
+## data:  nps by retargeting
+## Kruskal-Wallis chi-squared = 120.93, df = 2, p-value <
+## 0.00000000000000022
+```
+
+
+```r
+ggbetweenstats(
+  data = customer_data_c,
+  plot.type = "box",
+  x = retargeting, #3 groups
+  y = nps,
+  type = "nonparametric",
+  pairwise.comparisons = TRUE,
+  pairwise.annotation = "p.value",
+  p.adjust.method = "bonferroni",
+  messages = FALSE,
+  title = "Median NPS for different retargeting groups"
+)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-68-1.png" width="576" style="display: block; margin: auto;" />
+
+
+The **p-value is below 0.05 and thus we reject the null hypothesis of equal medians**. This means that the NPS of customers is different for the groups that saw different types of ads, implying that the type of retargeting has an effect on the NPS. Even though the medians of 'no retargeting' and 'generic retargeting' groups are the same, we can see the distribution of NPS for both groups; it is clear that after being exposed to generic retargeting ads instead of no retargeting at all, customers give our website higher scores, which should be considered while making a managerial decision regarding which type of promotion to use.
+
+We should not forget to test for differences between groups using a **post-hoc test**. Nemenyi test for pairwise multiple comparisons of the ranked data can be used:
+
+```r
+library(PMCMRplus)
+PMCMRplus::kwAllPairsNemenyiTest(x = customer_data_c$nps,
+    g = customer_data_c$retargeting, dist = "Tukey")
+```
+
+```
+##                     no retargeting    generic retargeting
+## generic retargeting 0.000017155029390 -                  
+## dynamic retargeting 0.000000000000029 0.000000000175138
+```
+
+It appears that the differences between median NPS for "no retargeting vs. generic retargeting", "generic retargeting vs. dynamic retargeting", and "no retargeting vs. dynamic retargeting" are significant.
+
+
+
+**Assignment 2d: Question 7**  
+  
+**Load data**
+
+
+```r
+customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_d) str(customer_data_d)
+```
+
+To find out if the new personalization feature has an effect on the conversion rate, we can use a test for proportions instead of a test for mean differences. To test for the equality of proportions (and therefore no difference between them) we can use a **chi-square ($\chi^2$) test**.
+
+Our null hypothesis in this case states that **the proportions of conversion are the same for groups with and without the personalization feature**. Our alternative hypothesis states that these proportions are unequal.
+
+$$H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2$$
+
+First, we will recode the relevant variables into factors and give them more descriptive level names:
+
+```r
+customer_data_d$conversion <- factor(customer_data_d$conversion,
+    levels = c(0, 1), labels = c("no", "yes"))
+customer_data_d$exp_group <- factor(customer_data_d$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
+```
+
+Don't forget to create a summary plot to get a feeling for the data.
+
+
+```r
+#conditional relative frequencies
+rel_freq_table <- as.data.frame(prop.table(table(customer_data_d$exp_group, customer_data_d$conversion), 1))
+names(rel_freq_table) <- c("group", "conversion", "freq") # changing names of the columns
+rel_freq_table
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["group"],"name":[1],"type":["fct"],"align":["left"]},{"label":["conversion"],"name":[2],"type":["fct"],"align":["left"]},{"label":["freq"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"control","2":"no","3":"0.95899399"},{"1":"treatment","2":"no","3":"0.94791463"},{"1":"control","2":"yes","3":"0.04100601"},{"1":"treatment","2":"yes","3":"0.05208537"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+```r
+library(colorspace)
+ggplot(rel_freq_table, aes(x = group, y = freq, fill = conversion)) + #plot data
+  geom_col(width = .7) + 
+  geom_text(aes(label = paste0(round(freq*100,0), "%")), position = position_stack(vjust = 0.5), size = 4) + #add percentages
+  ylab("Proportion of conversions") + xlab("group") + # specify axis labels
+  theme_minimal() + 
+  scale_fill_discrete_sequential(palette = "Reds 2", nmax = 4, order = 2:4)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-72-1.png" width="576" style="display: block; margin: auto;" />
+
+We see that our conversion seems to be slightly better for the group with the personalization feature, but let´s check whether these proportions are significantly different.
+
+
+```r
+n1 <- nrow(subset(customer_data_d, exp_group == "control"))  #number of observations for control group
+n2 <- nrow(subset(customer_data_d, exp_group == "treatment"))  #number of observations for treatment group
+n1_conv <- nrow(subset(customer_data_d, exp_group ==
+    "control" & conversion == "yes"))  #number of conversions for control group
+n2_conv <- nrow(subset(customer_data_d, exp_group ==
+    "treatment" & conversion == "yes"))  #number of conversions for treatment group
+
+prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95,
+    correct = FALSE)  #without Yates correction
+```
+
+```
+## 
+## 	2-sample test for equality of proportions without continuity correction
+## 
+## data:  c(n1_conv, n2_conv) out of c(n1, n2)
+## X-squared = 7.3461, df = 1, p-value = 0.006721
+## alternative hypothesis: two.sided
+## 95 percent confidence interval:
+##  -0.019121056 -0.003037661
+## sample estimates:
+##     prop 1     prop 2 
+## 0.04100601 0.05208537
+```
+
+
+
+```r
+table_1 <- table(customer_data_d$conversion, customer_data_d$exp_group)
+chisq.test(table_1, correct = FALSE)  #without Yates correction
+```
+
+```
+## 
+## 	Pearson's Chi-squared test
+## 
+## data:  table_1
+## X-squared = 7.3461, df = 1, p-value = 0.006721
+```
+
+
+```r
+test_stat <- chisq.test(table_1, correct = FALSE)$statistic
+n <- nrow(customer_data_d)
+phi1 <- sqrt(test_stat/n)
+phi1
+```
+
+```
+##  X-squared 
+## 0.02633293
+```
+
+It can be clearly seen from the test that **p-value is < 0.05**, so the result of the treatment on the conversion rate is **statistically significant**. We also calculated the effect size (*Cohen's d = Cramer's V = 0.026*): it is pretty small.
+
+
+Finally, we can use `ggbarstats()` for the test results visualization:
+
+```r
+library(ggstatsplot)
+library(ghibli)
+ggbarstats(data = customer_data_d, x = conversion,
+    y = exp_group, title = "Conversion by experiment group",
+    xlab = "Group", correct = TRUE, messages = FALSE,
+    bar.proptest = FALSE, bf.message = FALSE) + scale_fill_ghibli_d("PonyoLight") +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-76-1.png" width="576" style="display: block; margin: auto;" />
+
+The test (as well as the graph above) shows that **the conversion rate for the treatment group was higher than for the control group by 1 p.p.** This difference is though significant: **$\chi^2$ (1) = 7.35, p < .05 (95% CI = [0.003,0.02])**, but the effect size is rather tiny (Cohen's d = 0.026), so the personalization feature can be considered positive, but not too influential factor for conversion rate increase.
+
 

@@ -1289,13 +1289,11 @@ We can also create a pairplot to compare statistics across groups using the `ggP
 
 
 ```r
-ggPair(car_gender_mean, horizontal = TRUE, aes(color = gender)) +
-  ggtitle("Average response across genders") +
-  theme_bw() +
-  scale_color_discrete_qualitative(palette = "Dynamic") 
+#ggPair(car_gender_mean, horizontal = TRUE, aes(color = gender)) +
+#  ggtitle("Average response across genders") +
+#  theme_bw() +
+#  scale_color_discrete_qualitative(palette = "Dynamic") 
 ```
-
-<img src="15-Questionnaire_design_files/figure-html/unnamed-chunk-97-1.png" width="672" />
 
 #### Likert scales
 

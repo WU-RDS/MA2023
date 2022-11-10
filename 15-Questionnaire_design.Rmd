@@ -1147,10 +1147,10 @@ ggRadar(car_gender_mean, aes(color = gender) ) +
 We can also create a pairplot to compare statistics across groups using the `ggPair` function. Notice that despite the last two functions are provided by the `ggiraphExtra` package, they are producing `ggplot2` compatible plots. Thus, we can still use `ggplot2` layers for theme and coloring. 
 
 ```{r}
-ggPair(car_gender_mean, horizontal = TRUE, aes(color = gender)) +
-  ggtitle("Average response across genders") +
-  theme_bw() +
-  scale_color_discrete_qualitative(palette = "Dynamic") 
+#ggPair(car_gender_mean, horizontal = TRUE, aes(color = gender)) +
+#  ggtitle("Average response across genders") +
+#  theme_bw() +
+#  scale_color_discrete_qualitative(palette = "Dynamic") 
 ```
 
 #### Likert scales
