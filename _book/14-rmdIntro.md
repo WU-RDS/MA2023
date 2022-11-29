@@ -1830,15 +1830,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3452
+## Quantile = 2.345
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5052 229.7352
-## dynamic retargeting - no retargeting == 0      443.4211 343.8853 542.9570
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0117 408.5901
+## generic retargeting - no retargeting == 0      133.1202  36.5124 229.7280
+## dynamic retargeting - no retargeting == 0      443.4211 343.8927 542.9496
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0190 408.5828
 ```
 
 ```r
@@ -2201,5 +2201,1142 @@ ggbarstats(data = customer_data_d, x = conversion,
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-76-1.png" width="576" style="display: block; margin: auto;" />
 
 The test (as well as the graph above) shows that **the conversion rate for the treatment group was higher than for the control group by 1 p.p.** This difference is though significant: **$\chi^2$ (1) = 7.35, p < .05 (95% CI = [0.003,0.02])**, but the effect size is rather tiny (Cohen's d = 0.026), so the personalization feature can be considered positive, but not too influential factor for conversion rate increase.
+
+
+## Assignment 3: Solution
+
+**Assignment A: Multiple linear regression**
+
+
+```r
+library(tidyverse)
+library(psych)
+library(Hmisc)
+library(ggstatsplot)
+library(ggcorrplot)
+library(car)
+library(lmtest)
+library(lm.beta)
+options(scipen = 999)
+set.seed(123)
+
+sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat",
+    sep = "\t", header = TRUE)  #read in data
+sales_data$market_id <- 1:nrow(sales_data)
+# head(sales_data) str(sales_data)
+```
+
+**Question 1**
+
+In a first step, we specify the regression equation. In this case, sales is the **dependent variable** which is regressed on the different types of advertising expenditures that represent the **independent variables** for product *i*. Thus, the regression equation is:
+
+$$Sales_{i}=\beta_0 + \beta_1 * tv\_adspend_{i} + \beta_2 * online\_adspend_{i} + \beta_3 * radio\_adspend_{i} + \epsilon_i$$
+This equation will be used later to turn the output of the regression analysis (namely the coefficients: $\beta_0$ - intersect coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ that represent the unknown relationship between sales and advertising expenditures on TV, online channels and radio, respectively) to the "managerial" form and draw marketing conclusions.  
+
+To save the formula, simply assign it to an object:
+
+```r
+formula <- sales ~ tv_adspend + online_adspend + radio_adspend
+```
+
+You can use this formula in the regression formula.
+
+**Question 2**
+
+The descriptive statistics can be checked using the ```describe()``` function:
+  
+
+```r
+psych::describe(sales_data)
+```
+
+```
+##                vars   n   mean    sd median trimmed    mad min   max range skew
+## tv_adspend        1 236 148.65 89.77 141.85  147.45 117.27 1.1 299.6 298.5 0.12
+## online_adspend    2 236  25.61 14.33  24.35   24.70  14.53 1.6  74.9  73.3 0.61
+## radio_adspend     3 236  27.70 12.57  27.00   27.36  13.34 2.0  63.0  61.0 0.22
+## sales             4 236  14.83  5.40  14.15   14.72   5.93 1.4  29.0  27.6 0.16
+## market_id         5 236 118.50 68.27 118.50  118.50  87.47 1.0 236.0 235.0 0.00
+##                kurtosis   se
+## tv_adspend        -1.26 5.84
+## online_adspend     0.08 0.93
+## radio_adspend     -0.53 0.82
+## sales             -0.57 0.35
+## market_id         -1.22 4.44
+```
+
+Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
+  
+
+```r
+rcorr(as.matrix(sales_data[, c("sales", "tv_adspend",
+    "online_adspend", "radio_adspend")]))
+```
+
+```
+##                sales tv_adspend online_adspend radio_adspend
+## sales           1.00       0.78           0.54         -0.04
+## tv_adspend      0.78       1.00           0.05          0.03
+## online_adspend  0.54       0.05           1.00         -0.07
+## radio_adspend  -0.04       0.03          -0.07          1.00
+## 
+## n= 236 
+## 
+## 
+## P
+##                sales  tv_adspend online_adspend radio_adspend
+## sales                 0.0000     0.0000         0.5316       
+## tv_adspend     0.0000            0.4127         0.6735       
+## online_adspend 0.0000 0.4127                    0.2790       
+## radio_adspend  0.5316 0.6735     0.2790
+```
+
+Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.
+
+
+```r
+ggplot(sales_data, aes(x = tv_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-81-1.png" width="672" style="display: block; margin: auto;" />
+
+```r
+ggplot(sales_data, aes(x = online_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-81-2.png" width="672" style="display: block; margin: auto;" />
+
+```r
+ggplot(sales_data, aes(x = radio_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-81-3.png" width="672" style="display: block; margin: auto;" />
+
+The plots including the fitted lines from a simple linear model already suggest that there might be a positive linear relationship between sales and TV- and online-advertising. However, there does not appear to be a strong relationship between sales and radio advertising. 
+
+Further steps include estimate of a multiple linear regression model in order to determine the relative influence of each type of advertising on sales and test of the model's assumptions.
+
+
+**Question 3**
+
+The estimate the model, we will use the ```lm()``` function:
+  
+
+```r
+linear_model <- lm(formula, data = sales_data)  #estimate linear model
+# summary(linear_model)
+```
+
+**Before** we can inspect the results, we need to test if there might be potential problems with our model specification. 
+
+*Outliers*
+
+To check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3. 
+  
+
+```r
+sales_data$stud_resid <- rstudent(linear_model)
+plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3,
+    3.3))
+abline(h = c(-3, 3), col = "red", lty = 2)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-83-1.png" width="672" style="display: block; margin: auto;" />
+
+Since there are no residuals with absolute values larger than 3, we conclude that there are no severe outliers. 
+
+*Influential observations*
+
+To test for influential observations, we use Cook's Distance. You may use the following two plots to verify if any Cook's Distance values are larger than the cutoff of 1. 
+
+
+```r
+plot(linear_model, 4)
+plot(linear_model, 5)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-84-1.png" width="50%" style="display: block; margin: auto;" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-84-2.png" width="50%" style="display: block; margin: auto;" />
+
+Since all values are well below the cutoff, we conclude that influential observations are not a problem in our model. 
+
+*Non-linear relationships*
+
+Next, we test if a linear specification appears feasible. You could test this using the added variable plots:
+
+
+```r
+avPlots(linear_model, col.lines = palette()[2])
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-85-1.png" width="672" style="display: block; margin: auto;" />
+
+The plots suggest that the linear specification is appropriate. In addition, you could also use the residuals plot to see if the linear specification is appropriate. The red line is a smoothed curve through the residuals plot and if it deviates from the dashed grey horizontal line a lot, this would suggest that a linear specification is not appropriate. 
+
+
+```r
+plot(linear_model, 1)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-86-1.png" width="672" style="display: block; margin: auto;" />
+
+In this example, the red line is close to the dashed grey line, so the linear specification appears reasonable. 
+
+*Heteroscedasticity*
+
+Next, we test if the residual variance is approximately the same at all levels of the predicted outcome variables (i.e., homoscedasticity). To do this, we use the residuals plot again.
+
+
+```r
+plot(linear_model, 1)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-87-1.png" width="672" style="display: block; margin: auto;" />
+
+The spread of residuals at different levels of the predicted outcome does not appear to be very different. Thus, we can conclude that heteroscedasticity is unlikely to be a problem. We can also confirm this conclusion by using the Breusch-Pagan test, which shows an insignificant results, meaning that we cannot reject the Null Hypothesis of equal variances. 
+
+
+```r
+bptest(linear_model)
+```
+
+```
+## 
+## 	studentized Breusch-Pagan test
+## 
+## data:  linear_model
+## BP = 1.7583, df = 3, p-value = 0.6241
+```
+
+*Non-normally distributed errors*
+
+Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output:
+
+
+```r
+plot(linear_model, 2)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-89-1.png" width="672" style="display: block; margin: auto;" />
+
+The Q-Q plot does not suggest a severe deviation from a normal distribution. This could also be validated using the Shapiro test (we again can't reject the Null Hypothesis that suggests normal distribution):
+
+
+```r
+shapiro.test(resid(linear_model))
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  resid(linear_model)
+## W = 0.99412, p-value = 0.4875
+```
+
+*Correlation of errors*
+
+We actually wouldn't need to test this assumption here since there is not natural order in the data. 
+
+*Multicollinearity*
+
+To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., >0.8).
+
+
+```r
+rcorr(as.matrix(sales_data[, c("tv_adspend", "online_adspend",
+    "radio_adspend")]))
+```
+
+```
+##                tv_adspend online_adspend radio_adspend
+## tv_adspend           1.00           0.05          0.03
+## online_adspend       0.05           1.00         -0.07
+## radio_adspend        0.03          -0.07          1.00
+## 
+## n= 236 
+## 
+## 
+## P
+##                tv_adspend online_adspend radio_adspend
+## tv_adspend                0.4127         0.6735       
+## online_adspend 0.4127                    0.2790       
+## radio_adspend  0.6735     0.2790
+```
+
+The results show that the bivariate correlations are low to moderate. This can also be shown in plots:
+
+
+```r
+plot(sales_data[,c("tv_adspend","online_adspend","radio_adspend")])
+
+ggcorrmat(
+  data = sales_data[,c("tv_adspend", "online_adspend", "radio_adspend")],
+  matrix.type = "upper",
+  colors = c("skyblue4", "white", "palevioletred4")
+  #title = "Correlalogram of independent variables",
+)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-92-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-92-2.png" width="50%" />
+
+In the next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors.  
+
+
+```r
+vif(linear_model)
+```
+
+```
+##     tv_adspend online_adspend  radio_adspend 
+##       1.003873       1.008157       1.006028
+```
+
+Here, all VIF values are well below the cutoff, indicating that there are no problems with multicollinearity. 
+
+**Question 4**
+
+In a next step, we will investigate the results from the model using the ```summary()``` function. 
+  
+
+```r
+summary(linear_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = formula, data = sales_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -5.1113 -1.4161 -0.0656  1.3233  5.5198 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value             Pr(>|t|)    
+## (Intercept)     3.604140   0.460057   7.834    0.000000000000169 ***
+## tv_adspend      0.045480   0.001491  30.508 < 0.0000000000000002 ***
+## online_adspend  0.186859   0.009359  19.965 < 0.0000000000000002 ***
+## radio_adspend  -0.011469   0.010656  -1.076                0.283    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 2.048 on 232 degrees of freedom
+## Multiple R-squared:  0.8582,	Adjusted R-squared:  0.8564 
+## F-statistic: 468.1 on 3 and 232 DF,  p-value: < 0.00000000000000022
+```
+
+
+For each of the individual predictors, we test the following hypothesis: 
+
+$$H_0: \beta_k=0$$
+$$H_1: \beta_k\ne0$$
+
+where k denotes the number of the regression coefficient. In the present example, we reject the null hypothesis for tv_adspend and online_adspend, where we observe a significant effect (i.e., p < 0.05). However, we fail to reject the null for the "radio_adspend" variable (i.e., the effect is insignificant). 
+
+The interpretation of the coefficients is as follows: 
+
+* tv_adspend (&beta;<sub>1</sub>): when TV advertising expenditures increase by 1000 Euro, sales will increase by 45 units;
+* online_adspend (&beta;<sub>2</sub>): when online advertising expenditures increase by 1000 Euro, sales will increase by 187 units;
+* radio_adspend (&beta;<sub>3</sub>): when radio advertising expenditures increase by 1000 Euro, sales will increase by -11 units (i.e., decrease by 11 units).
+
+You should always provide a measure of uncertainty that is associated with the estimates. You could compute the confidence intervals around the coefficients using the ```confint()``` function.
+
+
+```r
+confint(linear_model)
+```
+
+```
+##                      2.5 %     97.5 %
+## (Intercept)     2.69771633 4.51056393
+## tv_adspend      0.04254244 0.04841668
+## online_adspend  0.16841843 0.20529924
+## radio_adspend  -0.03246402 0.00952540
+```
+
+The results show that, for example, with a 95% probability the effect of online advertising will be between 0.168 and 0.205. 
+
+Although the variables are measured on the same scale, you should still test the relative influence by inspecting the standardized coefficients that express the effects in terms of standard deviations.  
+
+
+```r
+lm.beta(linear_model)
+```
+
+```
+## 
+## Call:
+## lm(formula = formula, data = sales_data)
+## 
+## Standardized Coefficients::
+##    (Intercept)     tv_adspend online_adspend  radio_adspend 
+##             NA     0.75566632     0.49556807    -0.02668878
+```
+
+Here, we conclude that TV advertising has the largest ROI followed by online advertising and radio advertising (that actually has negative effect). 
+
+Another significance test is the F-test. It tests the null hypothesis:
+
+$$H_0: R^2=0$$
+This is equivalent to the following null hypothesis: 
+
+$$H_0: \beta_1=\beta_2=\beta_3=\beta_k=0$$
+
+The result of the test is provided in the output above (**F-statistic: 468.1 on 3 and 232 DF,  p-value: < 2.2e-16**). Since the p-value is smaller than 0.05, we reject the null hypothesis that all coefficients are zero. 
+
+Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately 86% of the variance can be explained by the model. This can be visualized as follows: 
+
+
+```r
+sales_data$yhat <- predict(linear_model)
+ggplot(sales_data, aes(yhat, sales)) + geom_point(size = 2,
+    shape = 1) + scale_x_continuous(name = "predicted values") +
+    scale_y_continuous(name = "observed values") +
+    geom_abline(intercept = 0, slope = 1) + theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-97-1.png" width="672" style="display: block; margin: auto;" />
+
+Of course, you could have also used the functions included in the ggstatsplot package to report the results from your regression model. 
+
+
+```r
+ggcoefstats(x = linear_model, k = 3, title = "Sales predicted by adspend, airplay, & starpower")
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-98-1.png" width="672" style="display: block; margin: auto;" />
+
+
+**Question 5**
+  
+Finally, we can predict the outcome for the given marketing mix using the following equation: 
+
+$$\hat{Sales} = \beta_0 + \beta_1*150 + \beta_2*26 + \beta_3*15 $$
+
+The coefficients can be extracted from the summary of the linear model and used for quick sales value prediction as follows:
+
+```r
+summary(linear_model)$coefficients[1, 1] + summary(linear_model)$coefficients[2,
+    1] * 150 + summary(linear_model)$coefficients[3,
+    1] * 26 + summary(linear_model)$coefficients[4,
+    1] * 15
+```
+
+```
+## [1] 15.11236
+```
+
+$$\hat{sales}= 3.6 + 0.045*150 + 0.187*26 + (-0.011)*15 = 15.11$$
+
+This means that given the planned marketing mix, we would expect to sell around 15,112 units. 
+
+Equivalently one can use the `predict` function 
+
+
+```r
+predict(linear_model, data.frame(tv_adspend = 150,
+    online_adspend = 26, radio_adspend = 15))
+```
+
+```
+##        1 
+## 15.11236
+```
+  
+  
+**Assignment B: Logistic regression**
+
+
+```r
+music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
+    sep = ";", header = TRUE, dec = ",")
+music_data$genre <- as.factor(music_data$genre)
+music_data$label <- as.factor(music_data$label)
+# str(music_data)
+```
+
+**Question 1**
+
+For this model, we need to consider the logistic function, so the final mathematical representation (with three main predictors of interest so far) would look as follows:
+
+$$f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \beta_2 * x_{2,i} +\beta_3 * x_{3,i})}}$$
+
+where $\beta_0$ is the intercept coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ represent the parameters of our model: weeks in charts, age of song, and label.
+
+We should create the model using `glm()` and have a look at the summary:
+
+
+```r
+mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age +
+    label, family = binomial(link = "logit"), data = music_data)
+summary(mult_logit_model)
+```
+
+```
+## 
+## Call:
+## glm(formula = top10 ~ weeks_in_charts + song_age + label, family = binomial(link = "logit"), 
+##     data = music_data)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -5.6045  -0.3220  -0.2694  -0.2028   3.8245  
+## 
+## Coefficients:
+##                         Estimate  Std. Error z value            Pr(>|z|)    
+## (Intercept)          -3.78534560  0.03989841  -94.88 <0.0000000000000002 ***
+## weeks_in_charts       0.01254730  0.00013573   92.45 <0.0000000000000002 ***
+## song_age             -0.00122201  0.00009152  -13.35 <0.0000000000000002 ***
+## labelSony Music       0.59344756  0.04967676   11.95 <0.0000000000000002 ***
+## labelUniversal Music  0.86912676  0.04284308   20.29 <0.0000000000000002 ***
+## labelWarner Music     0.52810825  0.05383487    9.81 <0.0000000000000002 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 43430  on 66795  degrees of freedom
+## Residual deviance: 27523  on 66790  degrees of freedom
+## AIC: 27535
+## 
+## Number of Fisher Scoring iterations: 6
+```
+
+
+```r
+confint(mult_logit_model)
+```
+
+```
+## Waiting for profiling to be done...
+```
+
+```
+##                             2.5 %       97.5 %
+## (Intercept)          -3.864138137 -3.707725224
+## weeks_in_charts       0.012282716  0.012814786
+## song_age             -0.001404812 -0.001046036
+## labelSony Music       0.496029832  0.690783386
+## labelUniversal Music  0.785399531  0.953358727
+## labelWarner Music     0.422364414  0.633423323
+```
+
+From the summary of the model we can see that weeks in charts, age of song, and label can be used to predict if a song will end up in top-10 or not. We can also assess the model fit:
+
+
+```r
+logisticPseudoR2s <- function(LogModel) {
+    dev <- LogModel$deviance
+    nullDev <- LogModel$null.deviance
+    modelN <- length(LogModel$fitted.values)
+    R.l <- 1 - dev/nullDev
+    R.cs <- 1 - exp(-(nullDev - dev)/modelN)
+    R.n <- R.cs/(1 - (exp(-(nullDev/modelN))))
+    cat("Pseudo R^2 for logistic regression\n")
+    cat("Hosmer and Lemeshow R^2  ", round(R.l, 3),
+        "\n")
+    cat("Cox and Snell R^2        ", round(R.cs, 3),
+        "\n")
+    cat("Nagelkerke R^2           ", round(R.n, 3),
+        "\n")
+}
+# Inspect Pseudo R2s
+logisticPseudoR2s(mult_logit_model)
+```
+
+```
+## Pseudo R^2 for logistic regression
+## Hosmer and Lemeshow R^2   0.366 
+## Cox and Snell R^2         0.212 
+## Nagelkerke R^2            0.443
+```
+
+To make conclusions about the effect that predictors have on success, we should convert the log-odds ratios to odds ratios using `exp()` function:
+
+```r
+exp(coef(mult_logit_model))
+```
+
+```
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.02270102           1.01262635           0.99877873 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.81021850           2.38482742           1.69572138
+```
+The results tell us, for example, that when a song is one week older, it is slightly less likely to get to the top-10 chart. If we are concerned about the labels to which the songs belong, we can see that in comparison to rather unknown (independent) labels, songs from Universal are 2.38 times more likely to appear in the top-10 chart.
+
+We should visualize the relationship between IVs and DV:
+
+
+```r
+ggplot(music_data, aes(weeks_in_charts, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
+```
+
+```
+## `geom_smooth()` using formula = 'y ~ x'
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-106-1.png" width="672" />
+
+```r
+ggplot(music_data, aes(song_age, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
+```
+
+```
+## `geom_smooth()` using formula = 'y ~ x'
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-106-2.png" width="672" />
+
+There are several ways of plotting the effect of factor variables. Let's do it as follows to gain a better understanding of predicted values in logistic regression:
+
+
+```r
+library(forcats)
+labels <- as.factor(c("Warner Music", "Sony Music",
+    "Independent", "Universal Music"))
+top10_predictions <- data.frame(pred = predict(glm(top10 ~
+    label, data = music_data), data.frame(label = labels),
+    type = "response"), label = labels)
+top10_counts <- table(music_data$top10, music_data$label)
+top10_share <- prop.table(top10_counts, margin = 2)
+data.frame(top10_share) |>
+    dplyr::filter(Var1 == 1) |>
+    left_join(top10_predictions, by = c(Var2 = "label")) |>
+    dplyr::rename(Share = Freq) |>
+    ggplot(aes(fct_reorder(Var2, Share), Share)) +
+    geom_bar(stat = "identity", fill = "lavenderblush3") +
+    geom_point(aes(x = Var2, y = pred), color = "red4") +
+    theme_minimal() + theme(axis.title.x = element_blank())
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-107-1.png" width="672" />
+
+For factor variables, it would be also fine to plot the proportion plots (e.g., using `ggbarstats()` or `prop.table()` functions) as far as when considered separately, factor levels' proportions represent the exact probability of getting the 1 probability of a DV.  
+
+
+To find out which other variables might have a significant effect on the chart performance, we can either load variables one-by-one manually or use a step-wise approach. For the latter, we basically need a model to start with (usually it's a "null" model, however, we already have a model that works for us, i.e., `mult_logit_model`) and the most loaded model that includes all the variables (we will only drop all character and date variables). Let's create it in the next step (please note that we already drop some variables that potentially might be influenced if a song appears in top-10: streams, sp_popularity, n_regions, etc.)
+
+
+```r
+music_data$explicit <- factor(music_data$explicit, 
+                                    levels = c(0,1), labels = c("not explicit", "explicit"))
+
+full_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
+                    danceability + energy + speechiness + instrumentalness + liveness + valence + tempo +
+                    song_length + explicit + n_playlists + genre,
+                  family = binomial(link = 'logit'), data = music_data)
+```
+
+Let's have a look at how the fullest model possible works:
+
+
+```r
+summary(full_model)
+```
+
+```
+## 
+## Call:
+## glm(formula = top10 ~ weeks_in_charts + song_age + label + danceability + 
+##     energy + speechiness + instrumentalness + liveness + valence + 
+##     tempo + song_length + explicit + n_playlists + genre, family = binomial(link = "logit"), 
+##     data = music_data)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -5.4936  -0.3174  -0.2192  -0.1425   4.5267  
+## 
+## Coefficients:
+##                          Estimate   Std. Error z value             Pr(>|z|)    
+## (Intercept)          -8.234476683  6.600555763  -1.248               0.2122    
+## weeks_in_charts       0.012805679  0.000146602  87.350 < 0.0000000000000002 ***
+## song_age             -0.001926650  0.000114801 -16.783 < 0.0000000000000002 ***
+## labelSony Music       0.309879886  0.053399277   5.803        0.00000000651 ***
+## labelUniversal Music  0.499093803  0.048106669  10.375 < 0.0000000000000002 ***
+## labelWarner Music     0.258651532  0.057686712   4.484        0.00000733501 ***
+## danceability          0.013853338  0.001511801   9.163 < 0.0000000000000002 ***
+## energy               -0.005334606  0.001202794  -4.435        0.00000919959 ***
+## speechiness          -0.003606707  0.001622321  -2.223               0.0262 *  
+## instrumentalness     -0.002757251  0.002982653  -0.924               0.3553    
+## liveness              0.005200933  0.001189734   4.372        0.00001233918 ***
+## valence               0.001499900  0.000934395   1.605               0.1084    
+## tempo                 0.002969109  0.000619852   4.790        0.00000166755 ***
+## song_length          -0.290130550  0.026500912 -10.948 < 0.0000000000000002 ***
+## explicitexplicit     -0.704911363  0.073710237  -9.563 < 0.0000000000000002 ***
+## n_playlists           0.000268906  0.000008005  33.593 < 0.0000000000000002 ***
+## genreCountry          6.047536675  6.599669764   0.916               0.3595    
+## genreElectro/Dance    4.619610060  6.598946035   0.700               0.4839    
+## genreGerman Folk      3.391558357  6.604926105   0.513               0.6076    
+## genreHipHop/Rap       4.562287429  6.598559475   0.691               0.4893    
+## genreother            5.425089472  6.598558812   0.822               0.4110    
+## genrePop              4.004199096  6.598387935   0.607               0.5440    
+## genreR&B              5.016578570  6.598943542   0.760               0.4471    
+## genreReggae           4.454352459  6.610053417   0.674               0.5004    
+## genreRock             4.145180994  6.598981122   0.628               0.5299    
+## genreSoundtrack       4.901752648  6.601845142   0.742               0.4578    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 43430  on 66795  degrees of freedom
+## Residual deviance: 24891  on 66770  degrees of freedom
+## AIC: 24943
+## 
+## Number of Fisher Scoring iterations: 9
+```
+
+We don't really need to go too much in details and apply step-by-step comparisons of the models using the suggested variables, so we can pick five significant factors from the summary above. For example, we can proceed with the model as follows:
+
+
+```r
+final_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
+                   danceability + liveness + tempo + song_length + n_playlists,
+                   family = binomial(link = 'logit'), data = music_data)
+
+summary(final_model)
+```
+
+```
+## 
+## Call:
+## glm(formula = top10 ~ weeks_in_charts + song_age + label + danceability + 
+##     liveness + tempo + song_length + n_playlists, family = binomial(link = "logit"), 
+##     data = music_data)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -5.4825  -0.3163  -0.2419  -0.1724   4.5433  
+## 
+## Coefficients:
+##                          Estimate   Std. Error z value             Pr(>|z|)    
+## (Intercept)          -4.490099261  0.172198935 -26.075 < 0.0000000000000002 ***
+## weeks_in_charts       0.012594243  0.000141167  89.215 < 0.0000000000000002 ***
+## song_age             -0.001977611  0.000117389 -16.847 < 0.0000000000000002 ***
+## labelSony Music       0.441955048  0.050888299   8.685 < 0.0000000000000002 ***
+## labelUniversal Music  0.624039605  0.044146953  14.136 < 0.0000000000000002 ***
+## labelWarner Music     0.376806825  0.055148947   6.833   0.0000000000083430 ***
+## danceability          0.017307850  0.001345825  12.860 < 0.0000000000000002 ***
+## liveness              0.008612684  0.001138928   7.562   0.0000000000000397 ***
+## tempo                 0.003637005  0.000610442   5.958   0.0000000025536638 ***
+## song_length          -0.315709255  0.025965257 -12.159 < 0.0000000000000002 ***
+## n_playlists           0.000260104  0.000007804  33.330 < 0.0000000000000002 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 43430  on 66795  degrees of freedom
+## Residual deviance: 25856  on 66785  degrees of freedom
+## AIC: 25878
+## 
+## Number of Fisher Scoring iterations: 7
+```
+
+
+
+```r
+logisticPseudoR2s(final_model)
+```
+
+```
+## Pseudo R^2 for logistic regression
+## Hosmer and Lemeshow R^2   0.405 
+## Cox and Snell R^2         0.231 
+## Nagelkerke R^2            0.484
+```
+
+```r
+exp(coef(final_model))
+```
+
+```
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.01121953           1.01267388           0.99802434 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.55574581           1.86645257           1.45762271 
+##         danceability             liveness                tempo 
+##           1.01745850           1.00864988           1.00364363 
+##          song_length          n_playlists 
+##           0.72927145           1.00026014
+```
+
+```r
+# confint(final_model)
+```
+
+The interpretation of odds ratios stays the same (and should be discussed in your solution).
+
+Alternatively, some used average partial effect as means of model interpretation:
+
+
+```r
+library(mfx)
+```
+
+```
+## Loading required package: sandwich
+```
+
+```
+## Loading required package: betareg
+```
+
+```r
+# Average partial effect
+logitmfx(final_model, data = music_data, atmean = FALSE)
+```
+
+```
+## Call:
+## logitmfx(formula = final_model, data = music_data, atmean = FALSE)
+## 
+## Marginal Effects:
+##                               dF/dx      Std. Err.        z
+## weeks_in_charts       0.00065127618  0.00001374186  47.3936
+## song_age             -0.00010226667  0.00000631172 -16.2027
+## labelSony Music       0.02493232144  0.00312422560   7.9803
+## labelUniversal Music  0.03427289513  0.00257631776  13.3031
+## labelWarner Music     0.02113194448  0.00334627810   6.3151
+## danceability          0.00089502724  0.00007104537  12.5980
+## liveness              0.00044538097  0.00005937804   7.5008
+## tempo                 0.00018807759  0.00003171436   5.9304
+## song_length          -0.01632602458  0.00136992030 -11.9175
+## n_playlists           0.00001345055  0.00000046827  28.7241
+##                                      P>|z|    
+## weeks_in_charts      < 0.00000000000000022 ***
+## song_age             < 0.00000000000000022 ***
+## labelSony Music        0.00000000000000146 ***
+## labelUniversal Music < 0.00000000000000022 ***
+## labelWarner Music      0.00000000027005798 ***
+## danceability         < 0.00000000000000022 ***
+## liveness               0.00000000000006344 ***
+## tempo                  0.00000000302271850 ***
+## song_length          < 0.00000000000000022 ***
+## n_playlists          < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## dF/dx is for discrete change for the following variables:
+## 
+## [1] "labelSony Music"      "labelUniversal Music" "labelWarner Music"
+```
+
+**Please note that these coefficients are interpreted as follows: if a song is one week older, the probability of this song appearing in top-10 chart decreases by 0.01 pp (percentage points).**
+**There was a typo on the website, thus the "pp" was lost.** 
+
+The plots for the remaining variables can be created analogously to the ones above.
+
+If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
+
+
+```r
+step(mult_logit_model, #our base model
+     scope = list(upper = full_model), 
+     direction = "both",
+     test = "Chisq",
+     data = music_data)
+```
+
+```
+## Start:  AIC=27535.11
+## top10 ~ weeks_in_charts + song_age + label
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + n_playlists       1    26335 26349  1187.9 < 0.00000000000000022 ***
+## + genre            10    26504 26536  1019.5 < 0.00000000000000022 ***
+## + danceability      1    27256 27270   267.1 < 0.00000000000000022 ***
+## + song_length       1    27335 27349   187.9 < 0.00000000000000022 ***
+## + explicit          1    27376 27390   146.8 < 0.00000000000000022 ***
+## + valence           1    27445 27459    77.7 < 0.00000000000000022 ***
+## + liveness          1    27480 27494    42.9      0.00000000005728 ***
+## + tempo             1    27504 27518    19.4      0.00001085601584 ***
+## + speechiness       1    27510 27524    12.9             0.0003209 ***
+## + instrumentalness  1    27516 27530     7.2             0.0071563 ** 
+## + energy            1    27519 27533     3.8             0.0523575 .  
+## <none>                   27523 27535                                  
+## - song_age          1    27781 27791   258.3 < 0.00000000000000022 ***
+## - label             3    27963 27969   439.7 < 0.00000000000000022 ***
+## - weeks_in_charts   1    43159 43169 15635.8 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=26349.16
+## top10 ~ weeks_in_charts + song_age + label + n_playlists
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + genre            10    25312 25346  1023.2 < 0.00000000000000022 ***
+## + song_length       1    26086 26102   248.7 < 0.00000000000000022 ***
+## + danceability      1    26112 26128   222.7 < 0.00000000000000022 ***
+## + explicit          1    26175 26191   160.3 < 0.00000000000000022 ***
+## + valence           1    26240 26256    95.2 < 0.00000000000000022 ***
+## + liveness          1    26293 26309    41.7       0.0000000001046 ***
+## + tempo             1    26314 26330    21.4       0.0000036320174 ***
+## + speechiness       1    26322 26338    13.0             0.0003193 ***
+## + instrumentalness  1    26329 26345     6.3             0.0118075 *  
+## <none>                   26335 26349                                  
+## + energy            1    26334 26350     1.1             0.2954805    
+## - label             3    26565 26573   230.1 < 0.00000000000000022 ***
+## - song_age          1    27044 27056   708.7 < 0.00000000000000022 ***
+## - n_playlists       1    27523 27535  1187.9 < 0.00000000000000022 ***
+## - weeks_in_charts   1    40541 40553 14206.0 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=25345.92
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + song_length       1    25133 25169   178.5 < 0.00000000000000022 ***
+## + danceability      1    25185 25221   127.3 < 0.00000000000000022 ***
+## + explicit          1    25206 25242   106.0 < 0.00000000000000022 ***
+## + valence           1    25278 25314    34.4        0.000000004499 ***
+## + tempo             1    25301 25337    11.4              0.000753 ***
+## + liveness          1    25302 25338     9.8              0.001713 ** 
+## <none>                   25312 25346                                  
+## + energy            1    25310 25346     1.7              0.195014    
+## + instrumentalness  1    25310 25346     1.6              0.202913    
+## + speechiness       1    25312 25348     0.0              0.884998    
+## - label             3    25474 25502   161.7 < 0.00000000000000022 ***
+## - song_age          1    25913 25945   600.6 < 0.00000000000000022 ***
+## - genre            10    26335 26349  1023.2 < 0.00000000000000022 ***
+## - n_playlists       1    26504 26536  1191.7 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39511 39543 14199.3 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=25169.45
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + explicit          1    25029 25067   104.2 < 0.00000000000000022 ***
+## + danceability      1    25050 25088    83.6 < 0.00000000000000022 ***
+## + valence           1    25119 25157    14.6             0.0001309 ***
+## + tempo             1    25121 25159    12.6             0.0003769 ***
+## + liveness          1    25125 25163     8.1             0.0045244 ** 
+## + instrumentalness  1    25131 25169     2.3             0.1276459    
+## + energy            1    25131 25169     2.2             0.1340637    
+## <none>                   25133 25169                                  
+## + speechiness       1    25132 25170     1.4             0.2289231    
+## - label             3    25273 25303   139.3 < 0.00000000000000022 ***
+## - song_length       1    25312 25346   178.5 < 0.00000000000000022 ***
+## - song_age          1    25647 25681   513.9 < 0.00000000000000022 ***
+## - genre            10    26086 26102   953.0 < 0.00000000000000022 ***
+## - n_playlists       1    26385 26419  1251.7 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39507 39541 14373.3 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=25067.21
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + danceability      1    24948 24988    81.3 < 0.00000000000000022 ***
+## + valence           1    25016 25056    13.6             0.0002280 ***
+## + tempo             1    25017 25057    11.8             0.0005785 ***
+## + liveness          1    25022 25062     7.4             0.0067056 ** 
+## + energy            1    25026 25066     3.6             0.0574725 .  
+## <none>                   25029 25067                                  
+## + speechiness       1    25028 25068     1.6             0.2008558    
+## + instrumentalness  1    25028 25068     1.3             0.2576454    
+## - label             3    25130 25162   100.3 < 0.00000000000000022 ***
+## - explicit          1    25133 25169   104.2 < 0.00000000000000022 ***
+## - song_length       1    25206 25242   176.7 < 0.00000000000000022 ***
+## - song_age          1    25542 25578   513.2 < 0.00000000000000022 ***
+## - genre            10    25933 25951   904.0 < 0.00000000000000022 ***
+## - n_playlists       1    26278 26314  1248.5 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39340 39376 14311.0 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24987.94
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + tempo             1    24928 24970    19.6           0.000009785 ***
+## + liveness          1    24934 24976    13.5             0.0002356 ***
+## + energy            1    24940 24982     8.3             0.0039206 ** 
+## + speechiness       1    24945 24987     2.5             0.1106956    
+## <none>                   24948 24988                                  
+## + valence           1    24947 24989     0.7             0.4151639    
+## + instrumentalness  1    24947 24989     0.6             0.4396889    
+## - danceability      1    25029 25067    81.3 < 0.00000000000000022 ***
+## - explicit          1    25050 25088   101.9 < 0.00000000000000022 ***
+## - label             3    25059 25093   111.5 < 0.00000000000000022 ***
+## - song_length       1    25081 25119   133.5 < 0.00000000000000022 ***
+## - song_age          1    25405 25443   456.7 < 0.00000000000000022 ***
+## - genre            10    25804 25824   856.0 < 0.00000000000000022 ***
+## - n_playlists       1    26155 26193  1206.9 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39182 39220 14233.6 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24970.39
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability + tempo
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + liveness          1    24915 24959    13.1             0.0002929 ***
+## + energy            1    24917 24961    11.1             0.0008776 ***
+## + speechiness       1    24925 24969     3.8             0.0510498 .  
+## <none>                   24928 24970                                  
+## + instrumentalness  1    24928 24972     0.5             0.4726447    
+## + valence           1    24928 24972     0.2             0.6876102    
+## - tempo             1    24948 24988    19.6           0.000009785 ***
+## - danceability      1    25017 25057    89.0 < 0.00000000000000022 ***
+## - explicit          1    25029 25069   100.8 < 0.00000000000000022 ***
+## - label             3    25042 25078   113.1 < 0.00000000000000022 ***
+## - song_length       1    25061 25101   133.0 < 0.00000000000000022 ***
+## - song_age          1    25379 25419   450.2 < 0.00000000000000022 ***
+## - genre            10    25771 25793   842.2 < 0.00000000000000022 ***
+## - n_playlists       1    26134 26174  1205.9 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39149 39189 14220.7 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24959.27
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability + tempo + liveness
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + energy            1    24899 24945    16.2            0.00005738 ***
+## + speechiness       1    24911 24957     4.2             0.0393970 *  
+## <none>                   24915 24959                                  
+## + instrumentalness  1    24915 24961     0.6             0.4557895    
+## + valence           1    24915 24961     0.0             0.9239797    
+## - liveness          1    24928 24970    13.1             0.0002929 ***
+## - tempo             1    24934 24976    19.1            0.00001211 ***
+## - danceability      1    25010 25052    95.2 < 0.00000000000000022 ***
+## - explicit          1    25015 25057    99.8 < 0.00000000000000022 ***
+## - label             3    25029 25067   114.2 < 0.00000000000000022 ***
+## - song_length       1    25045 25087   129.7 < 0.00000000000000022 ***
+## - song_age          1    25363 25405   447.3 < 0.00000000000000022 ***
+## - genre            10    25719 25743   803.4 < 0.00000000000000022 ***
+## - n_playlists       1    26117 26159  1201.8 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39140 39182 14224.6 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24945.09
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability + tempo + liveness + 
+##     energy
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + speechiness       1    24894 24942     4.7               0.02962 *  
+## + valence           1    24896 24944     2.6               0.10756    
+## <none>                   24899 24945                                  
+## + instrumentalness  1    24898 24946     0.8               0.36187    
+## - energy            1    24915 24959    16.2            0.00005738 ***
+## - liveness          1    24917 24961    18.2            0.00001954 ***
+## - tempo             1    24922 24966    22.5            0.00000212 ***
+## - explicit          1    25002 25046   102.5 < 0.00000000000000022 ***
+## - danceability      1    25003 25047   104.1 < 0.00000000000000022 ***
+## - label             3    25013 25053   113.8 < 0.00000000000000022 ***
+## - song_length       1    25028 25072   128.9 < 0.00000000000000022 ***
+## - song_age          1    25353 25397   454.3 < 0.00000000000000022 ***
+## - genre            10    25711 25737   811.9 < 0.00000000000000022 ***
+## - n_playlists       1    26103 26147  1204.0 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39113 39157 14214.1 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24942.35
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability + tempo + liveness + 
+##     energy + speechiness
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## + valence           1    24892 24942     2.7               0.10031    
+## <none>                   24894 24942                                  
+## + instrumentalness  1    24893 24943     1.0               0.31346    
+## - speechiness       1    24899 24945     4.7               0.02962 *  
+## - energy            1    24911 24957    16.7          0.0000443660 ***
+## - liveness          1    24913 24959    18.9          0.0000139497 ***
+## - tempo             1    24918 24964    24.0          0.0000009465 ***
+## - explicit          1    24997 25043   102.8 < 0.00000000000000022 ***
+## - danceability      1    25001 25047   106.3 < 0.00000000000000022 ***
+## - label             3    25006 25048   111.4 < 0.00000000000000022 ***
+## - song_length       1    25027 25073   132.4 < 0.00000000000000022 ***
+## - song_age          1    25353 25399   458.5 < 0.00000000000000022 ***
+## - genre            10    25707 25735   813.0 < 0.00000000000000022 ***
+## - n_playlists       1    26100 26146  1205.9 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39038 39084 14143.7 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Step:  AIC=24941.65
+## top10 ~ weeks_in_charts + song_age + label + n_playlists + genre + 
+##     song_length + explicit + danceability + tempo + liveness + 
+##     energy + speechiness + valence
+## 
+##                    Df Deviance   AIC     LRT              Pr(>Chi)    
+## <none>                   24892 24942                                  
+## - valence           1    24894 24942     2.7               0.10031    
+## + instrumentalness  1    24891 24943     0.9               0.34466    
+## - speechiness       1    24896 24944     4.8               0.02777 *  
+## - liveness          1    24910 24958    18.5           0.000016707 ***
+## - energy            1    24911 24959    19.4           0.000010799 ***
+## - tempo             1    24915 24963    23.0           0.000001661 ***
+## - danceability      1    24978 25026    86.0 < 0.00000000000000022 ***
+## - explicit          1    24995 25043   102.9 < 0.00000000000000022 ***
+## - label             3    25003 25047   111.1 < 0.00000000000000022 ***
+## - song_length       1    25018 25066   126.5 < 0.00000000000000022 ***
+## - song_age          1    25351 25399   459.3 < 0.00000000000000022 ***
+## - genre            10    25694 25724   802.2 < 0.00000000000000022 ***
+## - n_playlists       1    26100 26148  1208.5 < 0.00000000000000022 ***
+## - weeks_in_charts   1    39018 39066 14126.6 < 0.00000000000000022 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+```
+## 
+## Call:  glm(formula = top10 ~ weeks_in_charts + song_age + label + n_playlists + 
+##     genre + song_length + explicit + danceability + tempo + liveness + 
+##     energy + speechiness + valence, family = binomial(link = "logit"), 
+##     data = music_data)
+## 
+## Coefficients:
+##          (Intercept)       weeks_in_charts              song_age  
+##            -8.250268              0.012811             -0.001929  
+##      labelSony Music  labelUniversal Music     labelWarner Music  
+##             0.310207              0.500078              0.259754  
+##          n_playlists          genreCountry    genreElectro/Dance  
+##             0.000269              6.052952              4.617654  
+##     genreGerman Folk       genreHipHop/Rap            genreother  
+##             3.393965              4.565679              5.429574  
+##             genrePop              genreR&B           genreReggae  
+##             4.007876              5.019629              4.456428  
+##            genreRock       genreSoundtrack           song_length  
+##             4.142870              4.896580             -0.289024  
+##     explicitexplicit          danceability                 tempo  
+##            -0.707333              0.013872              0.002971  
+##             liveness                energy           speechiness  
+##             0.005182             -0.005303             -0.003541  
+##              valence  
+##             0.001534  
+## 
+## Degrees of Freedom: 66795 Total (i.e. Null);  66771 Residual
+## Null Deviance:	    43430 
+## Residual Deviance: 24890 	AIC: 24940
+```
 
 

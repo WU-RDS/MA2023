@@ -1232,3 +1232,431 @@ ggbarstats(data = customer_data_d, x = conversion, y = exp_group,
 The test (as well as the graph above) shows that **the conversion rate for the treatment group was higher than for the control group by 1 p.p.** This difference is though significant: **$\chi^2$ (1) = 7.35, p < .05 (95% CI = [0.003,0.02])**, but the effect size is rather tiny (Cohen's d = 0.026), so the personalization feature can be considered positive, but not too influential factor for conversion rate increase.
 
 
+## Assignment 3: Solution
+
+**Assignment A: Multiple linear regression**
+
+```{r message = FALSE, warning = FALSE}
+library(tidyverse)
+library(psych)
+library(Hmisc)
+library(ggstatsplot)
+library(ggcorrplot)
+library(car)
+library(lmtest)
+library(lm.beta)
+options(scipen = 999)
+set.seed(123)
+
+sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat", 
+                          sep = "\t", 
+                          header = TRUE) #read in data
+sales_data$market_id <- 1:nrow(sales_data)
+#head(sales_data)
+#str(sales_data)
+```
+
+**Question 1**
+
+In a first step, we specify the regression equation. In this case, sales is the **dependent variable** which is regressed on the different types of advertising expenditures that represent the **independent variables** for product *i*. Thus, the regression equation is:
+
+$$Sales_{i}=\beta_0 + \beta_1 * tv\_adspend_{i} + \beta_2 * online\_adspend_{i} + \beta_3 * radio\_adspend_{i} + \epsilon_i$$
+This equation will be used later to turn the output of the regression analysis (namely the coefficients: $\beta_0$ - intersect coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ that represent the unknown relationship between sales and advertising expenditures on TV, online channels and radio, respectively) to the "managerial" form and draw marketing conclusions.  
+
+To save the formula, simply assign it to an object:
+```{r message = FALSE, warning = FALSE}
+formula <- sales ~ tv_adspend + online_adspend + radio_adspend
+```
+
+You can use this formula in the regression formula.
+
+**Question 2**
+
+The descriptive statistics can be checked using the ```describe()``` function:
+  
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, paged.print = FALSE}
+psych::describe(sales_data)
+```
+
+Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
+  
+```{r eval = TRUE, echo = TRUE, warning = FALSE, message = FALSE}
+rcorr(as.matrix(sales_data[,c("sales","tv_adspend","online_adspend","radio_adspend")]))
+```
+
+Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+ggplot(sales_data, aes(x = tv_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = online_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = radio_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+```
+
+The plots including the fitted lines from a simple linear model already suggest that there might be a positive linear relationship between sales and TV- and online-advertising. However, there does not appear to be a strong relationship between sales and radio advertising. 
+
+Further steps include estimate of a multiple linear regression model in order to determine the relative influence of each type of advertising on sales and test of the model's assumptions.
+
+
+**Question 3**
+
+The estimate the model, we will use the ```lm()``` function:
+  
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+linear_model <- lm(formula, data = sales_data) #estimate linear model
+#summary(linear_model)
+```
+
+**Before** we can inspect the results, we need to test if there might be potential problems with our model specification. 
+
+*Outliers*
+
+To check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3. 
+  
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+sales_data$stud_resid <- rstudent(linear_model)
+plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3, 3.3))
+abline(h = c(-3, 3), col = "red", lty=2) 
+```
+
+Since there are no residuals with absolute values larger than 3, we conclude that there are no severe outliers. 
+
+*Influential observations*
+
+To test for influential observations, we use Cook's Distance. You may use the following two plots to verify if any Cook's Distance values are larger than the cutoff of 1. 
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.show="hold", out.width="50%"}
+plot(linear_model,4)
+plot(linear_model,5)
+```
+
+Since all values are well below the cutoff, we conclude that influential observations are not a problem in our model. 
+
+*Non-linear relationships*
+
+Next, we test if a linear specification appears feasible. You could test this using the added variable plots:
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+avPlots(linear_model, col.lines = palette()[2])
+```
+
+The plots suggest that the linear specification is appropriate. In addition, you could also use the residuals plot to see if the linear specification is appropriate. The red line is a smoothed curve through the residuals plot and if it deviates from the dashed grey horizontal line a lot, this would suggest that a linear specification is not appropriate. 
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+plot(linear_model, 1)
+```
+
+In this example, the red line is close to the dashed grey line, so the linear specification appears reasonable. 
+
+*Heteroscedasticity*
+
+Next, we test if the residual variance is approximately the same at all levels of the predicted outcome variables (i.e., homoscedasticity). To do this, we use the residuals plot again.
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+plot(linear_model, 1)
+```
+
+The spread of residuals at different levels of the predicted outcome does not appear to be very different. Thus, we can conclude that heteroscedasticity is unlikely to be a problem. We can also confirm this conclusion by using the Breusch-Pagan test, which shows an insignificant results, meaning that we cannot reject the Null Hypothesis of equal variances. 
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+bptest(linear_model)
+```
+
+*Non-normally distributed errors*
+
+Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output:
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+plot(linear_model,2)
+```
+
+The Q-Q plot does not suggest a severe deviation from a normal distribution. This could also be validated using the Shapiro test (we again can't reject the Null Hypothesis that suggests normal distribution):
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+shapiro.test(resid(linear_model))
+```
+
+*Correlation of errors*
+
+We actually wouldn't need to test this assumption here since there is not natural order in the data. 
+
+*Multicollinearity*
+
+To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., >0.8).
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+rcorr(as.matrix(sales_data[,c("tv_adspend","online_adspend","radio_adspend")]))
+```
+
+The results show that the bivariate correlations are low to moderate. This can also be shown in plots:
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.show="hold", out.width="50%"}
+plot(sales_data[,c("tv_adspend","online_adspend","radio_adspend")])
+
+ggcorrmat(
+  data = sales_data[,c("tv_adspend", "online_adspend", "radio_adspend")],
+  matrix.type = "upper",
+  colors = c("skyblue4", "white", "palevioletred4")
+  #title = "Correlalogram of independent variables",
+)
+```
+
+In the next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors.  
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+vif(linear_model)
+```
+
+Here, all VIF values are well below the cutoff, indicating that there are no problems with multicollinearity. 
+
+**Question 4**
+
+In a next step, we will investigate the results from the model using the ```summary()``` function. 
+  
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+summary(linear_model)
+```
+
+
+For each of the individual predictors, we test the following hypothesis: 
+
+$$H_0: \beta_k=0$$
+$$H_1: \beta_k\ne0$$
+
+where k denotes the number of the regression coefficient. In the present example, we reject the null hypothesis for tv_adspend and online_adspend, where we observe a significant effect (i.e., p < 0.05). However, we fail to reject the null for the "radio_adspend" variable (i.e., the effect is insignificant). 
+
+The interpretation of the coefficients is as follows: 
+
+* tv_adspend (&beta;<sub>1</sub>): when TV advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[2],3)*1000` units;
+* online_adspend (&beta;<sub>2</sub>): when online advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[3],3)*1000` units;
+* radio_adspend (&beta;<sub>3</sub>): when radio advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[4],3)*1000` units (i.e., decrease by `r round(summary(linear_model)$coefficients[4],3)*1000*(-1)` units).
+
+You should always provide a measure of uncertainty that is associated with the estimates. You could compute the confidence intervals around the coefficients using the ```confint()``` function.
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+confint(linear_model)
+```
+
+The results show that, for example, with a 95% probability the effect of online advertising will be between 0.168 and 0.205. 
+
+Although the variables are measured on the same scale, you should still test the relative influence by inspecting the standardized coefficients that express the effects in terms of standard deviations.  
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+lm.beta(linear_model)
+```
+
+Here, we conclude that TV advertising has the largest ROI followed by online advertising and radio advertising (that actually has negative effect). 
+
+Another significance test is the F-test. It tests the null hypothesis:
+
+$$H_0: R^2=0$$
+This is equivalent to the following null hypothesis: 
+
+$$H_0: \beta_1=\beta_2=\beta_3=\beta_k=0$$
+
+The result of the test is provided in the output above (**F-statistic: 468.1 on 3 and 232 DF,  p-value: < 2.2e-16**). Since the p-value is smaller than 0.05, we reject the null hypothesis that all coefficients are zero. 
+
+Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately 86% of the variance can be explained by the model. This can be visualized as follows: 
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+sales_data$yhat <- predict(linear_model)
+ggplot(sales_data, aes(yhat, sales)) +  
+  geom_point(size = 2, shape = 1) +
+  scale_x_continuous(name = "predicted values") +
+  scale_y_continuous(name = "observed values") +
+  geom_abline(intercept = 0, slope = 1) +
+  theme_minimal()
+```
+
+Of course, you could have also used the functions included in the ggstatsplot package to report the results from your regression model. 
+
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+ggcoefstats(x = linear_model, k = 3, title = "Sales predicted by adspend, airplay, & starpower")
+```
+
+
+**Question 5**
+  
+Finally, we can predict the outcome for the given marketing mix using the following equation: 
+
+$$\hat{Sales} = \beta_0 + \beta_1*150 + \beta_2*26 + \beta_3*15 $$
+
+The coefficients can be extracted from the summary of the linear model and used for quick sales value prediction as follows:
+```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+summary(linear_model)$coefficients[1,1] + 
+  summary(linear_model)$coefficients[2,1]*150 + 
+  summary(linear_model)$coefficients[3,1]*26 +
+  summary(linear_model)$coefficients[4,1]*15
+```
+
+$$\hat{sales}= 3.6 + 0.045*150 + 0.187*26 + (-0.011)*15 = 15.11$$
+
+This means that given the planned marketing mix, we would expect to sell around 15,112 units. 
+
+Equivalently one can use the `predict` function 
+
+```{r}
+predict(linear_model, data.frame(tv_adspend    = 150,
+                                online_adspend =  26,
+                                radio_adspend  =  15))
+```
+  
+  
+**Assignment B: Logistic regression**
+
+```{r warning=FALSE, message=FALSE}
+music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
+                        sep = ";", header = TRUE, dec = ",")
+music_data$genre <- as.factor(music_data$genre)
+music_data$label <- as.factor(music_data$label)
+#str(music_data)
+```
+
+**Question 1**
+
+For this model, we need to consider the logistic function, so the final mathematical representation (with three main predictors of interest so far) would look as follows:
+
+$$f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \beta_2 * x_{2,i} +\beta_3 * x_{3,i})}}$$
+
+where $\beta_0$ is the intercept coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ represent the parameters of our model: weeks in charts, age of song, and label.
+
+We should create the model using `glm()` and have a look at the summary:
+
+```{r message = FALSE, warning = FALSE}
+mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age + label, family = binomial (link = 'logit'), data = music_data)
+summary(mult_logit_model)
+```
+
+```{r}
+confint(mult_logit_model)
+```
+
+From the summary of the model we can see that weeks in charts, age of song, and label can be used to predict if a song will end up in top-10 or not. We can also assess the model fit:
+
+```{r}
+logisticPseudoR2s <- function(LogModel) {
+  dev <- LogModel$deviance 
+  nullDev <- LogModel$null.deviance 
+  modelN <- length(LogModel$fitted.values)
+  R.l <-  1 -  dev / nullDev
+  R.cs <- 1- exp(-(nullDev - dev) / modelN)
+  R.n <- R.cs / ( 1 - (exp(-(nullDev / modelN))))
+  cat("Pseudo R^2 for logistic regression\n")
+  cat("Hosmer and Lemeshow R^2  ", round(R.l, 3), "\n")
+  cat("Cox and Snell R^2        ", round(R.cs, 3), "\n")
+  cat("Nagelkerke R^2           ", round(R.n, 3),    "\n")
+}
+#Inspect Pseudo R2s
+logisticPseudoR2s(mult_logit_model)
+```
+
+To make conclusions about the effect that predictors have on success, we should convert the log-odds ratios to odds ratios using `exp()` function:
+```{r}
+exp(coef(mult_logit_model))
+```
+The results tell us, for example, that when a song is one week older, it is slightly less likely to get to the top-10 chart. If we are concerned about the labels to which the songs belong, we can see that in comparison to rather unknown (independent) labels, songs from Universal are 2.38 times more likely to appear in the top-10 chart.
+
+We should visualize the relationship between IVs and DV:
+
+```{r}
+ggplot(music_data, aes(weeks_in_charts, top10)) +  
+  geom_point(shape = 1) +
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"), 
+              se = FALSE, color = "lavenderblush3") + theme_minimal()
+
+ggplot(music_data, aes(song_age, top10)) +  
+  geom_point(shape = 1) +
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"), 
+              se = FALSE, color = "lavenderblush3") + theme_minimal()
+```
+
+There are several ways of plotting the effect of factor variables. Let's do it as follows to gain a better understanding of predicted values in logistic regression:
+
+```{r}
+library(forcats)
+labels <- as.factor(c("Warner Music", "Sony Music", "Independent", "Universal Music"))
+top10_predictions <- data.frame(pred = 
+                                  predict(glm(top10 ~ label, data = music_data), 
+                                          data.frame(label = labels), type = "response"), 
+                                label = labels)
+top10_counts <- table(music_data$top10, music_data$label)
+top10_share <- prop.table(top10_counts, margin = 2)
+data.frame(top10_share) |>
+  dplyr::filter(Var1 == 1) |> 
+  left_join(top10_predictions, by = c("Var2" = "label")) |>
+  dplyr::rename(Share = Freq) |>
+  ggplot(aes(fct_reorder(Var2, Share), Share)) +
+  geom_bar(stat = 'identity', fill = "lavenderblush3") +
+  geom_point(aes(x = Var2, y = pred), color = 'red4') +
+  theme_minimal() +
+  theme(axis.title.x = element_blank())
+```
+
+For factor variables, it would be also fine to plot the proportion plots (e.g., using `ggbarstats()` or `prop.table()` functions) as far as when considered separately, factor levels' proportions represent the exact probability of getting the 1 probability of a DV.  
+
+
+To find out which other variables might have a significant effect on the chart performance, we can either load variables one-by-one manually or use a step-wise approach. For the latter, we basically need a model to start with (usually it's a "null" model, however, we already have a model that works for us, i.e., `mult_logit_model`) and the most loaded model that includes all the variables (we will only drop all character and date variables). Let's create it in the next step (please note that we already drop some variables that potentially might be influenced if a song appears in top-10: streams, sp_popularity, n_regions, etc.)
+
+```{r}
+music_data$explicit <- factor(music_data$explicit, 
+                                    levels = c(0,1), labels = c("not explicit", "explicit"))
+
+full_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
+                    danceability + energy + speechiness + instrumentalness + liveness + valence + tempo +
+                    song_length + explicit + n_playlists + genre,
+                  family = binomial(link = 'logit'), data = music_data)
+```
+
+Let's have a look at how the fullest model possible works:
+
+```{r}
+summary(full_model)
+```
+
+We don't really need to go too much in details and apply step-by-step comparisons of the models using the suggested variables, so we can pick five significant factors from the summary above. For example, we can proceed with the model as follows:
+
+```{r}
+final_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
+                   danceability + liveness + tempo + song_length + n_playlists,
+                   family = binomial(link = 'logit'), data = music_data)
+
+summary(final_model)
+```
+
+
+```{r}
+logisticPseudoR2s(final_model)
+exp(coef(final_model))
+#confint(final_model)
+```
+
+The interpretation of odds ratios stays the same (and should be discussed in your solution).
+
+Alternatively, some used average partial effect as means of model interpretation:
+
+```{r}
+library(mfx)
+# Average partial effect
+logitmfx(final_model, data = music_data, atmean = FALSE)
+```
+
+**Please note that these coefficients are interpreted as follows: if a song is one week older, the probability of this song appearing in top-10 chart decreases by 0.01 pp (percentage points).**
+**There was a typo on the website, thus the "pp" was lost.** 
+
+The plots for the remaining variables can be created analogously to the ones above.
+
+If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
+
+```{r}
+step(mult_logit_model, #our base model
+     scope = list(upper = full_model), 
+     direction = "both",
+     test = "Chisq",
+     data = music_data)
+```
+
+

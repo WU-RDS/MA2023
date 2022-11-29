@@ -267,6 +267,7 @@ r-markdown
 introduction-to-r-markdown
 assignment-1-solution
 assignment-2-solution
+assignment-3-solution
 survey-design-analysis
 your-tasks
 topics-for-the-group-project
