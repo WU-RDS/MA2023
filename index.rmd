@@ -379,13 +379,13 @@ mytable_sub = data.frame(
     Date = c(
       "Nov. 23, 12:00PM - 04:00PM",
       "Nov. 30, 12:00PM - 04:00PM",
-      "Dec. 14, 12:00PM - 04:00PM",
+      "Dec. 14, 02:00PM - 06:00PM",
       "Jan. 6, 11:59PM"
     ),
     Room = c(
       "TC.-1.61",
       "TC.-1.61",
-      "TC.4.03",
+      "EA.6.032",
       "---"
     )
     )

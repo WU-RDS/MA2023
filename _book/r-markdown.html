@@ -1857,9 +1857,9 @@ generic retargeting vs. no retargeting</p>
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(&gt;|t|)    
-## generic retargeting - no retargeting == 0        0.0036 ** 
-## dynamic retargeting - no retargeting == 0       &lt;0.0001 ***
-## dynamic retargeting - generic retargeting == 0  &lt;0.0001 ***
+## generic retargeting - no retargeting == 0       0.00365 ** 
+## dynamic retargeting - no retargeting == 0       &lt; 0.001 ***
+## dynamic retargeting - generic retargeting == 0  &lt; 0.001 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -1880,9 +1880,9 @@ generic retargeting vs. no retargeting</p>
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5124 229.7280
-## dynamic retargeting - no retargeting == 0      443.4211 343.8927 542.9496
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0190 408.5828</code></pre>
+## generic retargeting - no retargeting == 0      133.1202  36.5133 229.7271
+## dynamic retargeting - no retargeting == 0      443.4211 343.8936 542.9486
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0199 408.5819</code></pre>
 <div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="r-markdown.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co">#the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)</span></span>
 <span id="cb858-2"><a href="r-markdown.html#cb858-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>

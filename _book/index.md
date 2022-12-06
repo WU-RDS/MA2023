@@ -388,8 +388,8 @@ Again, please make sure that you have exhausted all other resources to solve a p
   </tr>
   <tr>
    <td style="text-align:left;"> Data analysis coaching* </td>
-   <td style="text-align:left;"> Dec. 14, 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.4.03 </td>
+   <td style="text-align:left;"> Dec. 14, 02:00PM - 06:00PM </td>
+   <td style="text-align:left;"> EA.6.032 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
