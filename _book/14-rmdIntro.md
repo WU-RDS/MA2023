@@ -1806,7 +1806,7 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00365 ** 
+## generic retargeting - no retargeting == 0       0.00364 ** 
 ## dynamic retargeting - no retargeting == 0       < 0.001 ***
 ## dynamic retargeting - generic retargeting == 0  < 0.001 ***
 ## ---
@@ -1836,9 +1836,9 @@ confint(tukeys)
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5133 229.7271
-## dynamic retargeting - no retargeting == 0      443.4211 343.8936 542.9486
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0199 408.5819
+## generic retargeting - no retargeting == 0      133.1202  36.5141 229.7264
+## dynamic retargeting - no retargeting == 0      443.4211 343.8944 542.9478
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0207 408.5811
 ```
 
 ```r
@@ -2980,7 +2980,7 @@ exp(coef(final_model))
 ```
 
 The interpretation of odds ratios stays the same (and should be discussed in your solution).
-
+<br>
 Alternatively, some used average partial effect as means of model interpretation:
 
 
@@ -3041,6 +3041,7 @@ logitmfx(final_model, data = music_data, atmean = FALSE)
 
 The plots for the remaining variables can be created analogously to the ones above.
 
+<br>
 If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
 
 
@@ -3338,5 +3339,707 @@ step(mult_logit_model, #our base model
 ## Null Deviance:	    43430 
 ## Residual Deviance: 24890 	AIC: 24940
 ```
+<br>
+<br>
 
 
+## Assignment 4: Solution
+
+**Assignment A: Factor Analysis**
+
+**Load data**
+
+
+```r
+library(ggplot2)
+library(psych)
+library(dplyr)
+library(ggiraph)
+library(ggiraphExtra)
+library(NbClust)
+library(factoextra)
+library(GPArotation)
+music_data_pca <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/pca_data.csv",
+    sep = ",", header = TRUE, dec = ".")
+```
+
+Create the subset for PCA:
+
+```r
+pca_data <- music_data_pca |>
+    dplyr::select(c("log_n_playlists", "log_streams",
+        "log_youtube_views", "log_tiktok_counts", "log_ins_followers_artist",
+        "log_monthly_listeners_artist", "log_playlist_total_reach_artist",
+        "log_sp_fans_artist", "log_shazam_counts"))
+```
+<br>
+
+As a starting point, we examine the correlation matrix and the correlation plot to make sure that the correlations between variables are acceptable:
+
+```r
+pca_matrix <- cor(pca_data)
+# round(pca_matrix, 3)
+
+correlations <- as.data.frame(pca_matrix)
+corPlot(correlations, numbers = TRUE, upper = FALSE,
+    diag = FALSE, main = "Correlations between variables")
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-115-1.png" width="672" />
+
+Then we check the number of low (< 0.3) correlations:
+
+```r
+diag(correlations) <- NA
+apply(abs(correlations) < 0.3, 1, sum, na.rm = TRUE)
+```
+
+```
+##                 log_n_playlists                     log_streams 
+##                               2                               6 
+##               log_youtube_views               log_tiktok_counts 
+##                               1                               4 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                               4                               2 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                               3                               2 
+##               log_shazam_counts 
+##                               2
+```
+
+```r
+apply(abs(correlations), 1, mean, na.rm = TRUE)
+```
+
+```
+##                 log_n_playlists                     log_streams 
+##                       0.4650560                       0.2252103 
+##               log_youtube_views               log_tiktok_counts 
+##                       0.3516450                       0.3255983 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                       0.3959317                       0.5315268 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                       0.5097688                       0.4499746 
+##               log_shazam_counts 
+##                       0.4480021
+```
+
+We can see that there are some variables that are weakly correlated with others. However, as we remember, this is a subjective view, so, to strengthen our feeling of the data and variables that we have, we should conduct **Bartlett's test** (its Null hypothesis states that the overall correlation between variables is 0):
+
+
+```r
+cortest.bartlett(pca_matrix, n = nrow(pca_data))
+```
+
+```
+## $chisq
+## [1] 88510.86
+## 
+## $p.value
+## [1] 0
+## 
+## $df
+## [1] 36
+```
+
+Since the p-value of the test is < .05, we reject the Null hypotheses and assume that the off-diagonal elements in the population correlation matrix are not zero.
+
+We should also make sure that the correlations are not too high (> 0.8) and that there is no singularity (1). Again, we can check the number of such cases:
+
+```r
+apply(abs(correlations) > 0.8, 1, sum, na.rm = TRUE)
+```
+
+```
+##                 log_n_playlists                     log_streams 
+##                               0                               0 
+##               log_youtube_views               log_tiktok_counts 
+##                               0                               0 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                               0                               1 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                               1                               0 
+##               log_shazam_counts 
+##                               0
+```
+
+But also, we must compute **the determinant** to see whether the correlation matrix is singular (determinant = 0), or if all variables are completely unrelated (determinant = 1), or somewhere in between (remember that we're hoping for a value greater than 0.00001):
+
+```r
+det(pca_matrix)
+```
+
+```
+## [1] 0.001403982
+```
+
+```r
+det(pca_matrix) > 0.00001
+```
+
+```
+## [1] TRUE
+```
+
+The overall correlation between variables is not too strong.  
+  
+Lastly, we compute the **Kaiser-Meyer-Olkin** measure of sampling adequacy to confirm that the data is appropriate for the factor analysis:
+
+```r
+KMO(pca_data)
+```
+
+```
+## Kaiser-Meyer-Olkin factor adequacy
+## Call: KMO(r = pca_data)
+## Overall MSA =  0.8
+## MSA for each item = 
+##                 log_n_playlists                     log_streams 
+##                            0.80                            0.83 
+##               log_youtube_views               log_tiktok_counts 
+##                            0.84                            0.83 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                            0.88                            0.76 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                            0.75                            0.88 
+##               log_shazam_counts 
+##                            0.75
+```
+
+As overall MSA is 0.8 (*meritorious* value), we can proceed with PCA using the data.
+
+Next, we should extract the correct number of factors. First, we inspect their eigenvalues and make decisions about which factors to extract:
+
+```r
+pc1 <- principal(pca_data, nfactors = 9, rotate = "none")  #the initial number of variables
+pc1
+```
+
+```
+## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 9, rotate = "none")
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                  PC1   PC2   PC3   PC4   PC5   PC6   PC7   PC8
+## log_n_playlists                 0.78  0.13 -0.50  0.14  0.06 -0.02  0.16  0.27
+## log_streams                     0.36  0.52  0.49  0.56  0.22  0.03 -0.02  0.01
+## log_youtube_views               0.56  0.47  0.22 -0.52  0.31 -0.22 -0.04  0.03
+## log_tiktok_counts               0.51  0.60  0.10 -0.08 -0.59  0.02 -0.10  0.03
+## log_ins_followers_artist        0.68 -0.34  0.47 -0.13 -0.11  0.09  0.39 -0.01
+## log_monthly_listeners_artist    0.89 -0.34  0.00  0.12 -0.05 -0.18 -0.10 -0.09
+## log_playlist_total_reach_artist 0.87 -0.35 -0.09  0.17 -0.06 -0.24 -0.07 -0.07
+## log_sp_fans_artist              0.78 -0.38  0.16 -0.14  0.10  0.33 -0.28  0.09
+## log_shazam_counts               0.73  0.37 -0.44 -0.03  0.12  0.22  0.09 -0.24
+##                                   PC9 h2                   u2 com
+## log_n_playlists                 -0.01  1  0.00000000000000022 2.3
+## log_streams                      0.00  1  0.00000000000000067 4.1
+## log_youtube_views                0.00  1  0.00000000000000011 4.3
+## log_tiktok_counts                0.00  1 -0.00000000000000067 3.1
+## log_ins_followers_artist         0.00  1  0.00000000000000000 3.3
+## log_monthly_listeners_artist    -0.14  1  0.00000000000000033 1.5
+## log_playlist_total_reach_artist  0.14  1 -0.00000000000000022 1.7
+## log_sp_fans_artist               0.02  1  0.00000000000000044 2.5
+## log_shazam_counts                0.00  1  0.00000000000000078 2.9
+## 
+##                        PC1  PC2  PC3  PC4  PC5  PC6  PC7  PC8  PC9
+## SS loadings           4.47 1.50 1.00 0.69 0.54 0.31 0.29 0.16 0.04
+## Proportion Var        0.50 0.17 0.11 0.08 0.06 0.03 0.03 0.02 0.00
+## Cumulative Var        0.50 0.66 0.77 0.85 0.91 0.95 0.98 1.00 1.00
+## Proportion Explained  0.50 0.17 0.11 0.08 0.06 0.03 0.03 0.02 0.00
+## Cumulative Proportion 0.50 0.66 0.77 0.85 0.91 0.95 0.98 1.00 1.00
+## 
+## Mean item complexity =  2.8
+## Test of the hypothesis that 9 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0 
+##  with the empirical chi square  0  with prob <  NA 
+## 
+## Fit based upon off diagonal values = 1
+```
+
+```r
+plot(pc1$values, type = "b") |>
+    abline(h = 1, lty = 2)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-121-1.png" width="672" />
+
+From the sums of squared loadings and the scree plot we see, that we should extract either 2 or 3 factors (as the SS loading of the third component is exactly 1). Here, you could proceed with either of these numbers or even try both to make a well weighted decision. However, if you proceeded with only two factors, you would see later that the obtained model does not satisfy formal criteria. Thus, here you should have come up with three factors.
+
+
+```r
+pc2 <- principal(pca_data, nfactors = 3, rotate = "none")
+pc2
+```
+
+```
+## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 3, rotate = "none")
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                  PC1   PC2   PC3   h2    u2 com
+## log_n_playlists                 0.78  0.13 -0.50 0.88 0.123 1.8
+## log_streams                     0.36  0.52  0.49 0.63 0.366 2.8
+## log_youtube_views               0.56  0.47  0.22 0.58 0.417 2.3
+## log_tiktok_counts               0.51  0.60  0.10 0.64 0.362 2.0
+## log_ins_followers_artist        0.68 -0.34  0.47 0.81 0.190 2.3
+## log_monthly_listeners_artist    0.89 -0.34  0.00 0.91 0.089 1.3
+## log_playlist_total_reach_artist 0.87 -0.35 -0.09 0.88 0.117 1.3
+## log_sp_fans_artist              0.78 -0.38  0.16 0.77 0.231 1.5
+## log_shazam_counts               0.73  0.37 -0.44 0.87 0.131 2.2
+## 
+##                        PC1  PC2  PC3
+## SS loadings           4.47 1.50 1.00
+## Proportion Var        0.50 0.17 0.11
+## Cumulative Var        0.50 0.66 0.77
+## Proportion Explained  0.64 0.22 0.14
+## Cumulative Proportion 0.64 0.86 1.00
+## 
+## Mean item complexity =  1.9
+## Test of the hypothesis that 3 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0.07 
+##  with the empirical chi square  5272.11  with prob <  0 
+## 
+## Fit based upon off diagonal values = 0.97
+```
+
+From the output above we can see that the communalities of the items are high enough (> 0.3), thus, at this step, we retain all variables. We also see that the **model fit is good: 97%**.
+
+Then we assess the residuals of value > 0.05 (their share should be < 50%, i.e., if fewer residuals than 50% have absolute values greater than 0.05 the model is a good fit):
+
+
+```r
+residuals <- factor.residuals(pca_matrix, pc2$loadings)
+# round(residuals,3)
+
+reproduced_matrix <- factor.model(pc2$loadings)
+residuals <- as.matrix(residuals[upper.tri((residuals))])
+large_res <- abs(residuals) > 0.05
+sum(large_res)
+```
+
+```
+## [1] 17
+```
+
+```r
+sum(large_res)/nrow(residuals)
+```
+
+```
+## [1] 0.4722222
+```
+
+With 47% of large residuals, our model is fine. Mean residual (see model output above) is also acceptable.  
+
+Finally, we should check if the residuals are normally distributed. Shapiro-Wilk test and the plots confirm this to us.
+
+
+```r
+hist(residuals)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-124-1.png" width="672" />
+
+```r
+qqnorm(residuals)
+qqline(residuals)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-124-2.png" width="672" />
+
+```r
+shapiro.test(residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  residuals
+## W = 0.95781, p-value = 0.1838
+```
+
+Now, we can start describing the factors. We first examine the items' loadings to principal components. Here you could proceed with either orthogonal or oblique factor rotation, effectively, the result would be the same, however, as factors might be intercorrelated, we might proceed with oblique rotation:
+
+
+```r
+pc3 <- principal(pca_data, nfactors = 3, rotate = "oblimin",
+    scores = TRUE)
+# head(pc3$scores) pc3
+print.psych(pc3, cut = 0.3, sort = TRUE)
+```
+
+```
+## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 3, rotate = "oblimin", scores = TRUE)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                 item   TC1   TC3   TC2   h2    u2 com
+## log_ins_followers_artist           5  0.92             0.81 0.190 1.3
+## log_sp_fans_artist                 8  0.86             0.77 0.231 1.0
+## log_monthly_listeners_artist       6  0.85             0.91 0.089 1.2
+## log_playlist_total_reach_artist    7  0.80  0.32       0.88 0.117 1.4
+## log_shazam_counts                  9        0.86       0.87 0.131 1.1
+## log_n_playlists                    1        0.84       0.88 0.123 1.1
+## log_streams                        2              0.80 0.63 0.366 1.0
+## log_tiktok_counts                  4        0.35  0.67 0.64 0.362 1.5
+## log_youtube_views                  3              0.65 0.58 0.417 1.3
+## 
+##                        TC1  TC3  TC2
+## SS loadings           3.17 2.11 1.70
+## Proportion Var        0.35 0.23 0.19
+## Cumulative Var        0.35 0.59 0.77
+## Proportion Explained  0.45 0.30 0.24
+## Cumulative Proportion 0.45 0.76 1.00
+## 
+##  With component correlations of 
+##      TC1  TC3  TC2
+## TC1 1.00 0.38 0.22
+## TC3 0.38 1.00 0.22
+## TC2 0.22 0.22 1.00
+## 
+## Mean item complexity =  1.2
+## Test of the hypothesis that 3 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0.07 
+##  with the empirical chi square  5272.11  with prob <  0 
+## 
+## Fit based upon off diagonal values = 0.97
+```
+
+First, we see, that there might be correlation between components 1 and 3; second, we can get the list of items that comprise the components. We can finally create the factors based on the loadings:
+
+
+```r
+factor_1 <- pca_data[, c(5, 6, 7, 8)]
+factor_2 <- pca_data[, c(1, 9)]
+factor_3 <- pca_data[, c(2, 4, 3)]
+```
+
+Before we interpret the factors, we should do the **reliability check**:
+
+```r
+psych::alpha(factor_1)
+```
+
+```
+## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_1)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean  sd median_r
+##       0.89      0.91    0.92      0.72  10 0.0015   15 1.8     0.68
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.89  0.89   0.9
+## Duhachek  0.89  0.89   0.9
+## 
+##  Reliability if an item is dropped:
+##                                 raw_alpha std.alpha G6(smc) average_r  S/N
+## log_ins_followers_artist             0.90      0.92    0.92      0.80 12.2
+## log_monthly_listeners_artist         0.84      0.85    0.79      0.65  5.7
+## log_playlist_total_reach_artist      0.85      0.87    0.82      0.69  6.7
+## log_sp_fans_artist                   0.86      0.89    0.90      0.74  8.5
+##                                 alpha se  var.r med.r
+## log_ins_followers_artist          0.0015 0.0178  0.76
+## log_monthly_listeners_artist      0.0023 0.0022  0.66
+## log_playlist_total_reach_artist   0.0021 0.0032  0.66
+## log_sp_fans_artist                0.0022 0.0350  0.66
+## 
+##  Item statistics 
+##                                     n raw.r std.r r.cor r.drop mean  sd
+## log_ins_followers_artist        13480  0.84  0.82  0.71   0.69   14 2.3
+## log_monthly_listeners_artist    13480  0.93  0.95  0.97   0.89   15 1.5
+## log_playlist_total_reach_artist 13480  0.89  0.91  0.93   0.81   17 1.8
+## log_sp_fans_artist              13480  0.89  0.88  0.80   0.77   13 2.3
+```
+
+```r
+psych::alpha(factor_2)
+```
+
+```
+## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_2)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean  sd median_r
+##       0.88      0.88    0.79      0.79 7.4 0.0021  9.1 1.7     0.79
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.87  0.88  0.88
+## Duhachek  0.87  0.88  0.88
+## 
+##  Reliability if an item is dropped:
+##                   raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r
+## log_n_playlists        0.72      0.79    0.62      0.79 3.7       NA     0
+## log_shazam_counts      0.86      0.79    0.62      0.79 3.7       NA     0
+##                   med.r
+## log_n_playlists    0.79
+## log_shazam_counts  0.79
+## 
+##  Item statistics 
+##                       n raw.r std.r r.cor r.drop mean  sd
+## log_n_playlists   13480  0.94  0.95  0.84   0.79  6.1 1.7
+## log_shazam_counts 13480  0.95  0.95  0.84   0.79 12.1 1.9
+```
+
+```r
+psych::alpha(factor_3)
+```
+
+```
+## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_3)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean sd median_r
+##       0.64      0.65    0.56      0.38 1.9 0.0052   13  2     0.37
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.63  0.64  0.65
+## Duhachek  0.63  0.64  0.65
+## 
+##  Reliability if an item is dropped:
+##                   raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r
+## log_streams            0.61      0.62    0.45      0.45 1.65   0.0065    NA
+## log_tiktok_counts      0.48      0.49    0.32      0.32 0.95   0.0088    NA
+## log_youtube_views      0.54      0.54    0.37      0.37 1.18   0.0079    NA
+##                   med.r
+## log_streams        0.45
+## log_tiktok_counts  0.32
+## log_youtube_views  0.37
+## 
+##  Item statistics 
+##                       n raw.r std.r r.cor r.drop mean  sd
+## log_streams       13480  0.74  0.74  0.50   0.41 14.3 2.7
+## log_tiktok_counts 13480  0.82  0.79  0.63   0.50  7.6 3.0
+## log_youtube_views 13480  0.73  0.77  0.59   0.47 16.7 2.2
+```
+
+For factors 1 and 2, we can confirm sufficient reliability, however, the Cronbach's Alpha for factor 3 is below the acceptable threshold, thus, we retain two factors. The first one can be described as **"artist's funbase"** (or artist's overall popularity, artist's listeners, artist's followers, and other synonyms), while the second represents somewhat close to **hit songs** (let's say, they are present in multiple playlists, and also they are played in malls/cafes/etc., and people Shazam them). 
+
+For the future analysis, we can proceed with five factors: artist_funbase, artist_hits, and the three items that didn't comprise a factor with sufficient reliability: streams, tiktok_counts, youtube_views.
+
+<br>
+**Assignment B: Cluster Analysis**
+
+**Load data**
+
+```r
+music_data_cluster <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
+    sep = ";", header = TRUE, dec = ",")
+head(music_data_cluster)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"0","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"0"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"0","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"0"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"0","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"0"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"0","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+```r
+famous_artists <- c("Ed Sheeran", "Drake", "Post Malone",
+    "Ariana Grande", "Billie Eilish", "Dua Lipa", "Travis Scott",
+    "Taylor Swift", "Imagine Dragons", "Selena Gomez",
+    "Ozuna", "Justin Bieber", "Coldplay", "Eminem")
+famous_tracks <- music_data_cluster %>%
+    filter(artistName %in% famous_artists)
+famous_tracks_scale <- famous_tracks %>%
+    mutate_at(vars(danceability:song_age), scale)
+famous_tracks_scale <- famous_tracks_scale %>%
+    mutate_at(vars(danceability:song_age), as.vector)
+set.seed(123)
+```
+
+First of all, regarding duplicates, you could either drop or keep them. In fact, the "repeating" songs are not always identical but without going into too many details, we might assume that the songs if our data set are different. Though, if you dropped duplicates, you're also right, and we simply have two groups of managers. Ideally, the duplicates would be dropped.
+
+First, we identify the number of clusters:
+ 
+
+```r
+opt_K <- NbClust(famous_tracks_scale %>%
+    dplyr::select(danceability:song_age), method = "kmeans",
+    max.nc = 10)
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-130-1.png" width="672" />
+
+```
+## *** : The Hubert index is a graphical method of determining the number of clusters.
+##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
+##                 significant increase of the value of the measure i.e the significant peak in Hubert
+##                 index second differences plot. 
+## 
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-130-2.png" width="672" />
+
+```
+## *** : The D index is a graphical method of determining the number of clusters. 
+##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
+##                 second differences plot) that corresponds to a significant increase of the value of
+##                 the measure. 
+##  
+## ******************************************************************* 
+## * Among all indices:                                                
+## * 5 proposed 2 as the best number of clusters 
+## * 2 proposed 3 as the best number of clusters 
+## * 2 proposed 4 as the best number of clusters 
+## * 7 proposed 5 as the best number of clusters 
+## * 2 proposed 7 as the best number of clusters 
+## * 1 proposed 8 as the best number of clusters 
+## * 2 proposed 9 as the best number of clusters 
+## * 2 proposed 10 as the best number of clusters 
+## 
+##                    ***** Conclusion *****                            
+##  
+## * According to the majority rule, the best number of clusters is  5 
+##  
+##  
+## *******************************************************************
+```
+
+```r
+table(opt_K$Best.nc["Number_clusters", ])
+```
+
+```
+## 
+##  0  1  2  3  4  5  7  8  9 10 
+##  2  1  5  2  2  7  2  1  2  2
+```
+
+The "duplicates" people got 5 clusters, and the "non-duplicates" — 4.
+
+To conduct K-means clustering, we simply run the `kmeans()` function with the required set of variables and the proposed number of clusters:
+
+
+```r
+kmeans_tracks <- kmeans(famous_tracks_scale %>%
+    dplyr::select(danceability:song_age), 5)
+```
+
+After that, we're free to visualize the clusters and describe them:
+
+```r
+kmeans_tracks$centers
+```
+
+```
+##   danceability     energy speechiness instrumentalness    liveness     valence
+## 1    0.1496741  0.5012567  1.10699352       -0.1949760  2.40793367  0.09053111
+## 2   -0.7994849  0.3742046 -0.01225973       -0.1336373 -0.06261713 -0.46238691
+## 3   -1.1326298 -0.6994597 -0.53010030        5.4950472 -0.04035494 -0.87837313
+## 4   -0.4024191 -0.6838371 -0.40767118       -0.1575615 -0.30620916 -0.63292119
+## 5    0.5882739  0.4004501  0.13780549       -0.1658458 -0.24110857  0.68203772
+##         tempo song_length   song_age
+## 1 -0.10512203  0.42835544 -0.1251250
+## 2  0.83776889  0.89442720  1.7118870
+## 3 -0.21781391  0.24945442 -0.1694322
+## 4 -0.29824154 -0.04294918 -0.1726793
+## 5  0.05689749 -0.31210832 -0.2788934
+```
+
+```r
+centers <- data.frame(kmeans_tracks$centers)
+centers$cluster <- 1:5
+ggRadar(centers, aes(color = cluster), rescale = FALSE) +
+    ggtitle("Centers") + theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-132-1.png" width="672" />
+
+Here we already see some distinguishable features of a couple of clusters. They are better seen in spikes of the radar plot and negative-to-positive differences in centres table.
+
+
+```r
+famous_tracks$cluster <- as.factor(kmeans_tracks$cluster)
+ggplot(famous_tracks, aes(y = cluster, fill = artistName)) +
+    geom_bar() + theme_minimal()
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-133-1.png" width="672" />
+
+```r
+table(famous_tracks$artistName, famous_tracks$cluster)
+```
+
+```
+##                  
+##                    1  2  3  4  5
+##   Ariana Grande    1  5  0 30 27
+##   Billie Eilish    3  0  4 25  7
+##   Coldplay         8 29 17  9  3
+##   Drake           20 11  0 32 43
+##   Dua Lipa         0  0  0  8 28
+##   Ed Sheeran       3  6  0 28 15
+##   Eminem          23 11  0  1 21
+##   Imagine Dragons  3  8  0 24 29
+##   Justin Bieber    2  1  0 13 18
+##   Ozuna            1  0  0  4 38
+##   Post Malone      1  2  1 18 22
+##   Selena Gomez     0  0  0  6 22
+##   Taylor Swift     3 12  0 60 42
+##   Travis Scott     1  2  0  8 10
+```
+
+Using the plots and tables above, we can describe the clusters:  
+
+* **Cluster 1** - it's the **Rap** cluster (Drake and Eminem with high energy and *extremely* high speechiness). Travis Scott is excluded from Rap, based on our analysis;
+* **Cluster 2** - we have pretty lengthy songs with high tempo and danceability here, however, the valence is not too high;
+* **Cluster 3** - It's just **Coldplay** that somehow formed a cluster of songs for emotionally turbulent people, including myself. Here we can actually see the drawbacks of proceeding with duplicates (and, as result, with 5 clusters). It makes no sense to have this cluster in results as (1) it is too small, and (2) it only has one artist;
+* **Cluster 4** - here we have very low energy, liveness, valence, and tempo, so if I was a song, I would end up here, among other **somewhat melancholic** songs;
+* **Cluster 5** - cluster with high danceability and valence, so we have **Pop party tracks** (Selena Gomez, Dua Lipa, Ozuna, partly Taylor Swift and Ariana Grande).
+
+
+Last, we can plot the PCA visualization to examine the clusters:
+
+
+```r
+fviz_cluster(kmeans_tracks, data = famous_tracks_scale %>%
+    dplyr::select(danceability:song_age), palette = hcl.colors(5,
+    palette = "Dynamic"), geom = "point", ellipse.type = "convex",
+    ggtheme = theme_minimal())
+```
+
+<img src="14-rmdIntro_files/figure-html/unnamed-chunk-134-1.png" width="672" />
+
+We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that's Coldplay again, for sure). 
+
+
+Additionally (but not necessary), we could make some recommendations (let's say, for a home party or one of WUMA events):
+
+```r
+famous_tracks %>%
+    filter(trackName == "New Rules") %>%
+    distinct(cluster, .keep_all = TRUE) %>%
+    dplyr::select(cluster)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["cluster"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
+```r
+recommendations <- famous_tracks %>%
+    filter(cluster == 5) %>%
+    filter(!artistName == "Justin Bieber") %>%
+    dplyr::select(artistName, trackName)
+head(recommendations, 19)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Dua Lipa","2":"Break My Heart"},{"1":"Eminem","2":"Framed"},{"1":"Ed Sheeran","2":"Galway Girl"},{"1":"Eminem","2":"She Loves Me"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Taylor Swift","2":"Red"},{"1":"Taylor Swift","2":"Gorgeous"},{"1":"Ozuna","2":"Hasta Que Salga el Sol"},{"1":"Travis Scott","2":"beibs in the trap"},{"1":"Eminem","2":"Normal"},{"1":"Eminem","2":"Killer"},{"1":"Drake","2":"5 Am in Toronto"},{"1":"Dua Lipa","2":"Thinking 'Bout You"},{"1":"Drake","2":"Nice For What"},{"1":"Drake","2":"November 18th"},{"1":"Eminem","2":"Castle"},{"1":"Post Malone","2":"Sugar Wraith"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Ariana Grande","2":"obvious"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+*"You know dark days, you know hard times, Doin' overtime for the last month"*; congrats on getting through all assignments! 
+<span style="color: orange;">Enjoy your exam prep :)</span>  

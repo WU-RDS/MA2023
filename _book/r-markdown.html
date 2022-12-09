@@ -352,6 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="r-markdown.html"><a href="r-markdown.html#assignment-1-solution"><i class="fa fa-check"></i><b>10.2</b> Assignment 1: Solution</a></li>
 <li class="chapter" data-level="10.3" data-path="r-markdown.html"><a href="r-markdown.html#assignment-2-solution"><i class="fa fa-check"></i><b>10.3</b> Assignment 2: Solution</a></li>
 <li class="chapter" data-level="10.4" data-path="r-markdown.html"><a href="r-markdown.html#assignment-3-solution"><i class="fa fa-check"></i><b>10.4</b> Assignment 3: Solution</a></li>
+<li class="chapter" data-level="10.5" data-path="r-markdown.html"><a href="r-markdown.html#assignment-4-solution"><i class="fa fa-check"></i><b>10.5</b> Assignment 4: Solution</a></li>
 </ul></li>
 <li class="part"><span><b>IV Group project</b></span></li>
 <li class="chapter" data-level="11" data-path="survey-design-analysis.html"><a href="survey-design-analysis.html"><i class="fa fa-check"></i><b>11</b> Survey design &amp; analysis</a>
@@ -1857,7 +1858,7 @@ generic retargeting vs. no retargeting</p>
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(&gt;|t|)    
-## generic retargeting - no retargeting == 0       0.00365 ** 
+## generic retargeting - no retargeting == 0       0.00364 ** 
 ## dynamic retargeting - no retargeting == 0       &lt; 0.001 ***
 ## dynamic retargeting - generic retargeting == 0  &lt; 0.001 ***
 ## ---
@@ -1880,9 +1881,9 @@ generic retargeting vs. no retargeting</p>
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5133 229.7271
-## dynamic retargeting - no retargeting == 0      443.4211 343.8936 542.9486
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0199 408.5819</code></pre>
+## generic retargeting - no retargeting == 0      133.1202  36.5141 229.7264
+## dynamic retargeting - no retargeting == 0      443.4211 343.8944 542.9478
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0207 408.5811</code></pre>
 <div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="r-markdown.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co">#the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)</span></span>
 <span id="cb858-2"><a href="r-markdown.html#cb858-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -2579,8 +2580,9 @@ This is equivalent to the following null hypothesis:</p>
 ##          song_length          n_playlists 
 ##           0.72927145           1.00026014</code></pre>
 <div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="r-markdown.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confint(final_model)</span></span></code></pre></div>
-<p>The interpretation of odds ratios stays the same (and should be discussed in your solution).</p>
-<p>Alternatively, some used average partial effect as means of model interpretation:</p>
+<p>The interpretation of odds ratios stays the same (and should be discussed in your solution).
+<br>
+Alternatively, some used average partial effect as means of model interpretation:</p>
 <div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="r-markdown.html#cb946-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mfx)</span></code></pre></div>
 <pre><code>## Loading required package: sandwich</code></pre>
 <pre><code>## Loading required package: betareg</code></pre>
@@ -2621,7 +2623,8 @@ This is equivalent to the following null hypothesis:</p>
 <p><strong>Please note that these coefficients are interpreted as follows: if a song is one week older, the probability of this song appearing in top-10 chart decreases by 0.01 pp (percentage points).</strong>
 <strong>There was a typo on the website, thus the “pp” was lost.</strong></p>
 <p>The plots for the remaining variables can be created analogously to the ones above.</p>
-<p>If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the “base” model, adds variables from the fullest model one-by-one to it, and shows the new models’ performance:</p>
+<p><br>
+If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the “base” model, adds variables from the fullest model one-by-one to it, and shows the new models’ performance:</p>
 <div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="r-markdown.html#cb951-1" aria-hidden="true" tabindex="-1"></a><span class="fu">step</span>(mult_logit_model, <span class="co">#our base model</span></span>
 <span id="cb951-2"><a href="r-markdown.html#cb951-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">scope =</span> <span class="fu">list</span>(<span class="at">upper =</span> full_model), </span>
 <span id="cb951-3"><a href="r-markdown.html#cb951-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">direction =</span> <span class="st">&quot;both&quot;</span>,</span>
@@ -2908,6 +2911,480 @@ This is equivalent to the following null hypothesis:</p>
 ## Degrees of Freedom: 66795 Total (i.e. Null);  66771 Residual
 ## Null Deviance:       43430 
 ## Residual Deviance: 24890     AIC: 24940</code></pre>
+<p><br>
+<br></p>
+</div>
+<div id="assignment-4-solution" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Assignment 4: Solution<a href="r-markdown.html#assignment-4-solution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Assignment A: Factor Analysis</strong></p>
+<p><strong>Load data</strong></p>
+<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb954-1"><a href="r-markdown.html#cb954-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb954-2"><a href="r-markdown.html#cb954-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb954-3"><a href="r-markdown.html#cb954-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb954-4"><a href="r-markdown.html#cb954-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraph)</span>
+<span id="cb954-5"><a href="r-markdown.html#cb954-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggiraphExtra)</span>
+<span id="cb954-6"><a href="r-markdown.html#cb954-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span>
+<span id="cb954-7"><a href="r-markdown.html#cb954-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb954-8"><a href="r-markdown.html#cb954-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span>
+<span id="cb954-9"><a href="r-markdown.html#cb954-9" aria-hidden="true" tabindex="-1"></a>music_data_pca <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/pca_data.csv&quot;</span>,</span>
+<span id="cb954-10"><a href="r-markdown.html#cb954-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">dec =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<p>Create the subset for PCA:</p>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="r-markdown.html#cb955-1" aria-hidden="true" tabindex="-1"></a>pca_data <span class="ot">&lt;-</span> music_data_pca <span class="sc">|&gt;</span></span>
+<span id="cb955-2"><a href="r-markdown.html#cb955-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">&quot;log_n_playlists&quot;</span>, <span class="st">&quot;log_streams&quot;</span>,</span>
+<span id="cb955-3"><a href="r-markdown.html#cb955-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;log_youtube_views&quot;</span>, <span class="st">&quot;log_tiktok_counts&quot;</span>, <span class="st">&quot;log_ins_followers_artist&quot;</span>,</span>
+<span id="cb955-4"><a href="r-markdown.html#cb955-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;log_monthly_listeners_artist&quot;</span>, <span class="st">&quot;log_playlist_total_reach_artist&quot;</span>,</span>
+<span id="cb955-5"><a href="r-markdown.html#cb955-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;log_sp_fans_artist&quot;</span>, <span class="st">&quot;log_shazam_counts&quot;</span>))</span></code></pre></div>
+<p><br></p>
+<p>As a starting point, we examine the correlation matrix and the correlation plot to make sure that the correlations between variables are acceptable:</p>
+<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="r-markdown.html#cb956-1" aria-hidden="true" tabindex="-1"></a>pca_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(pca_data)</span>
+<span id="cb956-2"><a href="r-markdown.html#cb956-2" aria-hidden="true" tabindex="-1"></a><span class="co"># round(pca_matrix, 3)</span></span>
+<span id="cb956-3"><a href="r-markdown.html#cb956-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb956-4"><a href="r-markdown.html#cb956-4" aria-hidden="true" tabindex="-1"></a>correlations <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(pca_matrix)</span>
+<span id="cb956-5"><a href="r-markdown.html#cb956-5" aria-hidden="true" tabindex="-1"></a><span class="fu">corPlot</span>(correlations, <span class="at">numbers =</span> <span class="cn">TRUE</span>, <span class="at">upper =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb956-6"><a href="r-markdown.html#cb956-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">diag =</span> <span class="cn">FALSE</span>, <span class="at">main =</span> <span class="st">&quot;Correlations between variables&quot;</span>)</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p>Then we check the number of low (&lt; 0.3) correlations:</p>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="r-markdown.html#cb957-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(correlations) <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb957-2"><a href="r-markdown.html#cb957-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">abs</span>(correlations) <span class="sc">&lt;</span> <span class="fl">0.3</span>, <span class="dv">1</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##                 log_n_playlists                     log_streams 
+##                               2                               6 
+##               log_youtube_views               log_tiktok_counts 
+##                               1                               4 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                               4                               2 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                               3                               2 
+##               log_shazam_counts 
+##                               2</code></pre>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="r-markdown.html#cb959-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">abs</span>(correlations), <span class="dv">1</span>, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##                 log_n_playlists                     log_streams 
+##                       0.4650560                       0.2252103 
+##               log_youtube_views               log_tiktok_counts 
+##                       0.3516450                       0.3255983 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                       0.3959317                       0.5315268 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                       0.5097688                       0.4499746 
+##               log_shazam_counts 
+##                       0.4480021</code></pre>
+<p>We can see that there are some variables that are weakly correlated with others. However, as we remember, this is a subjective view, so, to strengthen our feeling of the data and variables that we have, we should conduct <strong>Bartlett’s test</strong> (its Null hypothesis states that the overall correlation between variables is 0):</p>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="r-markdown.html#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(pca_matrix, <span class="at">n =</span> <span class="fu">nrow</span>(pca_data))</span></code></pre></div>
+<pre><code>## $chisq
+## [1] 88510.86
+## 
+## $p.value
+## [1] 0
+## 
+## $df
+## [1] 36</code></pre>
+<p>Since the p-value of the test is &lt; .05, we reject the Null hypotheses and assume that the off-diagonal elements in the population correlation matrix are not zero.</p>
+<p>We should also make sure that the correlations are not too high (&gt; 0.8) and that there is no singularity (1). Again, we can check the number of such cases:</p>
+<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="r-markdown.html#cb963-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">abs</span>(correlations) <span class="sc">&gt;</span> <span class="fl">0.8</span>, <span class="dv">1</span>, sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##                 log_n_playlists                     log_streams 
+##                               0                               0 
+##               log_youtube_views               log_tiktok_counts 
+##                               0                               0 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                               0                               1 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                               1                               0 
+##               log_shazam_counts 
+##                               0</code></pre>
+<p>But also, we must compute <strong>the determinant</strong> to see whether the correlation matrix is singular (determinant = 0), or if all variables are completely unrelated (determinant = 1), or somewhere in between (remember that we’re hoping for a value greater than 0.00001):</p>
+<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="r-markdown.html#cb965-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(pca_matrix)</span></code></pre></div>
+<pre><code>## [1] 0.001403982</code></pre>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="r-markdown.html#cb967-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(pca_matrix) <span class="sc">&gt;</span> <span class="fl">0.00001</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>The overall correlation between variables is not too strong.</p>
+<p>Lastly, we compute the <strong>Kaiser-Meyer-Olkin</strong> measure of sampling adequacy to confirm that the data is appropriate for the factor analysis:</p>
+<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb969-1"><a href="r-markdown.html#cb969-1" aria-hidden="true" tabindex="-1"></a><span class="fu">KMO</span>(pca_data)</span></code></pre></div>
+<pre><code>## Kaiser-Meyer-Olkin factor adequacy
+## Call: KMO(r = pca_data)
+## Overall MSA =  0.8
+## MSA for each item = 
+##                 log_n_playlists                     log_streams 
+##                            0.80                            0.83 
+##               log_youtube_views               log_tiktok_counts 
+##                            0.84                            0.83 
+##        log_ins_followers_artist    log_monthly_listeners_artist 
+##                            0.88                            0.76 
+## log_playlist_total_reach_artist              log_sp_fans_artist 
+##                            0.75                            0.88 
+##               log_shazam_counts 
+##                            0.75</code></pre>
+<p>As overall MSA is 0.8 (<em>meritorious</em> value), we can proceed with PCA using the data.</p>
+<p>Next, we should extract the correct number of factors. First, we inspect their eigenvalues and make decisions about which factors to extract:</p>
+<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="r-markdown.html#cb971-1" aria-hidden="true" tabindex="-1"></a>pc1 <span class="ot">&lt;-</span> <span class="fu">principal</span>(pca_data, <span class="at">nfactors =</span> <span class="dv">9</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)  <span class="co">#the initial number of variables</span></span>
+<span id="cb971-2"><a href="r-markdown.html#cb971-2" aria-hidden="true" tabindex="-1"></a>pc1</span></code></pre></div>
+<pre><code>## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 9, rotate = &quot;none&quot;)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                  PC1   PC2   PC3   PC4   PC5   PC6   PC7   PC8
+## log_n_playlists                 0.78  0.13 -0.50  0.14  0.06 -0.02  0.16  0.27
+## log_streams                     0.36  0.52  0.49  0.56  0.22  0.03 -0.02  0.01
+## log_youtube_views               0.56  0.47  0.22 -0.52  0.31 -0.22 -0.04  0.03
+## log_tiktok_counts               0.51  0.60  0.10 -0.08 -0.59  0.02 -0.10  0.03
+## log_ins_followers_artist        0.68 -0.34  0.47 -0.13 -0.11  0.09  0.39 -0.01
+## log_monthly_listeners_artist    0.89 -0.34  0.00  0.12 -0.05 -0.18 -0.10 -0.09
+## log_playlist_total_reach_artist 0.87 -0.35 -0.09  0.17 -0.06 -0.24 -0.07 -0.07
+## log_sp_fans_artist              0.78 -0.38  0.16 -0.14  0.10  0.33 -0.28  0.09
+## log_shazam_counts               0.73  0.37 -0.44 -0.03  0.12  0.22  0.09 -0.24
+##                                   PC9 h2                   u2 com
+## log_n_playlists                 -0.01  1  0.00000000000000022 2.3
+## log_streams                      0.00  1  0.00000000000000067 4.1
+## log_youtube_views                0.00  1  0.00000000000000011 4.3
+## log_tiktok_counts                0.00  1 -0.00000000000000067 3.1
+## log_ins_followers_artist         0.00  1  0.00000000000000000 3.3
+## log_monthly_listeners_artist    -0.14  1  0.00000000000000033 1.5
+## log_playlist_total_reach_artist  0.14  1 -0.00000000000000022 1.7
+## log_sp_fans_artist               0.02  1  0.00000000000000044 2.5
+## log_shazam_counts                0.00  1  0.00000000000000078 2.9
+## 
+##                        PC1  PC2  PC3  PC4  PC5  PC6  PC7  PC8  PC9
+## SS loadings           4.47 1.50 1.00 0.69 0.54 0.31 0.29 0.16 0.04
+## Proportion Var        0.50 0.17 0.11 0.08 0.06 0.03 0.03 0.02 0.00
+## Cumulative Var        0.50 0.66 0.77 0.85 0.91 0.95 0.98 1.00 1.00
+## Proportion Explained  0.50 0.17 0.11 0.08 0.06 0.03 0.03 0.02 0.00
+## Cumulative Proportion 0.50 0.66 0.77 0.85 0.91 0.95 0.98 1.00 1.00
+## 
+## Mean item complexity =  2.8
+## Test of the hypothesis that 9 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0 
+##  with the empirical chi square  0  with prob &lt;  NA 
+## 
+## Fit based upon off diagonal values = 1</code></pre>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="r-markdown.html#cb973-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pc1<span class="sc">$</span>values, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb973-2"><a href="r-markdown.html#cb973-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
+<p>From the sums of squared loadings and the scree plot we see, that we should extract either 2 or 3 factors (as the SS loading of the third component is exactly 1). Here, you could proceed with either of these numbers or even try both to make a well weighted decision. However, if you proceeded with only two factors, you would see later that the obtained model does not satisfy formal criteria. Thus, here you should have come up with three factors.</p>
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb974-1"><a href="r-markdown.html#cb974-1" aria-hidden="true" tabindex="-1"></a>pc2 <span class="ot">&lt;-</span> <span class="fu">principal</span>(pca_data, <span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb974-2"><a href="r-markdown.html#cb974-2" aria-hidden="true" tabindex="-1"></a>pc2</span></code></pre></div>
+<pre><code>## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 3, rotate = &quot;none&quot;)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                  PC1   PC2   PC3   h2    u2 com
+## log_n_playlists                 0.78  0.13 -0.50 0.88 0.123 1.8
+## log_streams                     0.36  0.52  0.49 0.63 0.366 2.8
+## log_youtube_views               0.56  0.47  0.22 0.58 0.417 2.3
+## log_tiktok_counts               0.51  0.60  0.10 0.64 0.362 2.0
+## log_ins_followers_artist        0.68 -0.34  0.47 0.81 0.190 2.3
+## log_monthly_listeners_artist    0.89 -0.34  0.00 0.91 0.089 1.3
+## log_playlist_total_reach_artist 0.87 -0.35 -0.09 0.88 0.117 1.3
+## log_sp_fans_artist              0.78 -0.38  0.16 0.77 0.231 1.5
+## log_shazam_counts               0.73  0.37 -0.44 0.87 0.131 2.2
+## 
+##                        PC1  PC2  PC3
+## SS loadings           4.47 1.50 1.00
+## Proportion Var        0.50 0.17 0.11
+## Cumulative Var        0.50 0.66 0.77
+## Proportion Explained  0.64 0.22 0.14
+## Cumulative Proportion 0.64 0.86 1.00
+## 
+## Mean item complexity =  1.9
+## Test of the hypothesis that 3 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0.07 
+##  with the empirical chi square  5272.11  with prob &lt;  0 
+## 
+## Fit based upon off diagonal values = 0.97</code></pre>
+<p>From the output above we can see that the communalities of the items are high enough (&gt; 0.3), thus, at this step, we retain all variables. We also see that the <strong>model fit is good: 97%</strong>.</p>
+<p>Then we assess the residuals of value &gt; 0.05 (their share should be &lt; 50%, i.e., if fewer residuals than 50% have absolute values greater than 0.05 the model is a good fit):</p>
+<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="r-markdown.html#cb976-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">factor.residuals</span>(pca_matrix, pc2<span class="sc">$</span>loadings)</span>
+<span id="cb976-2"><a href="r-markdown.html#cb976-2" aria-hidden="true" tabindex="-1"></a><span class="co"># round(residuals,3)</span></span>
+<span id="cb976-3"><a href="r-markdown.html#cb976-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb976-4"><a href="r-markdown.html#cb976-4" aria-hidden="true" tabindex="-1"></a>reproduced_matrix <span class="ot">&lt;-</span> <span class="fu">factor.model</span>(pc2<span class="sc">$</span>loadings)</span>
+<span id="cb976-5"><a href="r-markdown.html#cb976-5" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(residuals[<span class="fu">upper.tri</span>((residuals))])</span>
+<span id="cb976-6"><a href="r-markdown.html#cb976-6" aria-hidden="true" tabindex="-1"></a>large_res <span class="ot">&lt;-</span> <span class="fu">abs</span>(residuals) <span class="sc">&gt;</span> <span class="fl">0.05</span></span>
+<span id="cb976-7"><a href="r-markdown.html#cb976-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(large_res)</span></code></pre></div>
+<pre><code>## [1] 17</code></pre>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="r-markdown.html#cb978-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(large_res)<span class="sc">/</span><span class="fu">nrow</span>(residuals)</span></code></pre></div>
+<pre><code>## [1] 0.4722222</code></pre>
+<p>With 47% of large residuals, our model is fine. Mean residual (see model output above) is also acceptable.</p>
+<p>Finally, we should check if the residuals are normally distributed. Shapiro-Wilk test and the plots confirm this to us.</p>
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="r-markdown.html#cb980-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals)</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<div class="sourceCode" id="cb981"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb981-1"><a href="r-markdown.html#cb981-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(residuals)</span>
+<span id="cb981-2"><a href="r-markdown.html#cb981-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(residuals)</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-124-2.png" width="672" /></p>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="r-markdown.html#cb982-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(residuals)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals
+## W = 0.95781, p-value = 0.1838</code></pre>
+<p>Now, we can start describing the factors. We first examine the items’ loadings to principal components. Here you could proceed with either orthogonal or oblique factor rotation, effectively, the result would be the same, however, as factors might be intercorrelated, we might proceed with oblique rotation:</p>
+<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="r-markdown.html#cb984-1" aria-hidden="true" tabindex="-1"></a>pc3 <span class="ot">&lt;-</span> <span class="fu">principal</span>(pca_data, <span class="at">nfactors =</span> <span class="dv">3</span>, <span class="at">rotate =</span> <span class="st">&quot;oblimin&quot;</span>,</span>
+<span id="cb984-2"><a href="r-markdown.html#cb984-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">scores =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb984-3"><a href="r-markdown.html#cb984-3" aria-hidden="true" tabindex="-1"></a><span class="co"># head(pc3$scores) pc3</span></span>
+<span id="cb984-4"><a href="r-markdown.html#cb984-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print.psych</span>(pc3, <span class="at">cut =</span> <span class="fl">0.3</span>, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Principal Components Analysis
+## Call: principal(r = pca_data, nfactors = 3, rotate = &quot;oblimin&quot;, scores = TRUE)
+## Standardized loadings (pattern matrix) based upon correlation matrix
+##                                 item   TC1   TC3   TC2   h2    u2 com
+## log_ins_followers_artist           5  0.92             0.81 0.190 1.3
+## log_sp_fans_artist                 8  0.86             0.77 0.231 1.0
+## log_monthly_listeners_artist       6  0.85             0.91 0.089 1.2
+## log_playlist_total_reach_artist    7  0.80  0.32       0.88 0.117 1.4
+## log_shazam_counts                  9        0.86       0.87 0.131 1.1
+## log_n_playlists                    1        0.84       0.88 0.123 1.1
+## log_streams                        2              0.80 0.63 0.366 1.0
+## log_tiktok_counts                  4        0.35  0.67 0.64 0.362 1.5
+## log_youtube_views                  3              0.65 0.58 0.417 1.3
+## 
+##                        TC1  TC3  TC2
+## SS loadings           3.17 2.11 1.70
+## Proportion Var        0.35 0.23 0.19
+## Cumulative Var        0.35 0.59 0.77
+## Proportion Explained  0.45 0.30 0.24
+## Cumulative Proportion 0.45 0.76 1.00
+## 
+##  With component correlations of 
+##      TC1  TC3  TC2
+## TC1 1.00 0.38 0.22
+## TC3 0.38 1.00 0.22
+## TC2 0.22 0.22 1.00
+## 
+## Mean item complexity =  1.2
+## Test of the hypothesis that 3 components are sufficient.
+## 
+## The root mean square of the residuals (RMSR) is  0.07 
+##  with the empirical chi square  5272.11  with prob &lt;  0 
+## 
+## Fit based upon off diagonal values = 0.97</code></pre>
+<p>First, we see, that there might be correlation between components 1 and 3; second, we can get the list of items that comprise the components. We can finally create the factors based on the loadings:</p>
+<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="r-markdown.html#cb986-1" aria-hidden="true" tabindex="-1"></a>factor_1 <span class="ot">&lt;-</span> pca_data[, <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)]</span>
+<span id="cb986-2"><a href="r-markdown.html#cb986-2" aria-hidden="true" tabindex="-1"></a>factor_2 <span class="ot">&lt;-</span> pca_data[, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">9</span>)]</span>
+<span id="cb986-3"><a href="r-markdown.html#cb986-3" aria-hidden="true" tabindex="-1"></a>factor_3 <span class="ot">&lt;-</span> pca_data[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<p>Before we interpret the factors, we should do the <strong>reliability check</strong>:</p>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="r-markdown.html#cb987-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(factor_1)</span></code></pre></div>
+<pre><code>## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_1)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean  sd median_r
+##       0.89      0.91    0.92      0.72  10 0.0015   15 1.8     0.68
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.89  0.89   0.9
+## Duhachek  0.89  0.89   0.9
+## 
+##  Reliability if an item is dropped:
+##                                 raw_alpha std.alpha G6(smc) average_r  S/N
+## log_ins_followers_artist             0.90      0.92    0.92      0.80 12.2
+## log_monthly_listeners_artist         0.84      0.85    0.79      0.65  5.7
+## log_playlist_total_reach_artist      0.85      0.87    0.82      0.69  6.7
+## log_sp_fans_artist                   0.86      0.89    0.90      0.74  8.5
+##                                 alpha se  var.r med.r
+## log_ins_followers_artist          0.0015 0.0178  0.76
+## log_monthly_listeners_artist      0.0023 0.0022  0.66
+## log_playlist_total_reach_artist   0.0021 0.0032  0.66
+## log_sp_fans_artist                0.0022 0.0350  0.66
+## 
+##  Item statistics 
+##                                     n raw.r std.r r.cor r.drop mean  sd
+## log_ins_followers_artist        13480  0.84  0.82  0.71   0.69   14 2.3
+## log_monthly_listeners_artist    13480  0.93  0.95  0.97   0.89   15 1.5
+## log_playlist_total_reach_artist 13480  0.89  0.91  0.93   0.81   17 1.8
+## log_sp_fans_artist              13480  0.89  0.88  0.80   0.77   13 2.3</code></pre>
+<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="r-markdown.html#cb989-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(factor_2)</span></code></pre></div>
+<pre><code>## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_2)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean  sd median_r
+##       0.88      0.88    0.79      0.79 7.4 0.0021  9.1 1.7     0.79
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.87  0.88  0.88
+## Duhachek  0.87  0.88  0.88
+## 
+##  Reliability if an item is dropped:
+##                   raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r
+## log_n_playlists        0.72      0.79    0.62      0.79 3.7       NA     0
+## log_shazam_counts      0.86      0.79    0.62      0.79 3.7       NA     0
+##                   med.r
+## log_n_playlists    0.79
+## log_shazam_counts  0.79
+## 
+##  Item statistics 
+##                       n raw.r std.r r.cor r.drop mean  sd
+## log_n_playlists   13480  0.94  0.95  0.84   0.79  6.1 1.7
+## log_shazam_counts 13480  0.95  0.95  0.84   0.79 12.1 1.9</code></pre>
+<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="r-markdown.html#cb991-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(factor_3)</span></code></pre></div>
+<pre><code>## 
+## Reliability analysis   
+## Call: psych::alpha(x = factor_3)
+## 
+##   raw_alpha std.alpha G6(smc) average_r S/N    ase mean sd median_r
+##       0.64      0.65    0.56      0.38 1.9 0.0052   13  2     0.37
+## 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.63  0.64  0.65
+## Duhachek  0.63  0.64  0.65
+## 
+##  Reliability if an item is dropped:
+##                   raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r
+## log_streams            0.61      0.62    0.45      0.45 1.65   0.0065    NA
+## log_tiktok_counts      0.48      0.49    0.32      0.32 0.95   0.0088    NA
+## log_youtube_views      0.54      0.54    0.37      0.37 1.18   0.0079    NA
+##                   med.r
+## log_streams        0.45
+## log_tiktok_counts  0.32
+## log_youtube_views  0.37
+## 
+##  Item statistics 
+##                       n raw.r std.r r.cor r.drop mean  sd
+## log_streams       13480  0.74  0.74  0.50   0.41 14.3 2.7
+## log_tiktok_counts 13480  0.82  0.79  0.63   0.50  7.6 3.0
+## log_youtube_views 13480  0.73  0.77  0.59   0.47 16.7 2.2</code></pre>
+<p>For factors 1 and 2, we can confirm sufficient reliability, however, the Cronbach’s Alpha for factor 3 is below the acceptable threshold, thus, we retain two factors. The first one can be described as <strong>“artist’s funbase”</strong> (or artist’s overall popularity, artist’s listeners, artist’s followers, and other synonyms), while the second represents somewhat close to <strong>hit songs</strong> (let’s say, they are present in multiple playlists, and also they are played in malls/cafes/etc., and people Shazam them).</p>
+<p>For the future analysis, we can proceed with five factors: artist_funbase, artist_hits, and the three items that didn’t comprise a factor with sufficient reliability: streams, tiktok_counts, youtube_views.</p>
+<p><br>
+<strong>Assignment B: Cluster Analysis</strong></p>
+<p><strong>Load data</strong></p>
+<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="r-markdown.html#cb993-1" aria-hidden="true" tabindex="-1"></a>music_data_cluster <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv&quot;</span>,</span>
+<span id="cb993-2"><a href="r-markdown.html#cb993-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb993-3"><a href="r-markdown.html#cb993-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(music_data_cluster)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"0","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"0"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"0","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"0"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"0","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"0"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"0","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="r-markdown.html#cb994-1" aria-hidden="true" tabindex="-1"></a>famous_artists <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ed Sheeran&quot;</span>, <span class="st">&quot;Drake&quot;</span>, <span class="st">&quot;Post Malone&quot;</span>,</span>
+<span id="cb994-2"><a href="r-markdown.html#cb994-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Ariana Grande&quot;</span>, <span class="st">&quot;Billie Eilish&quot;</span>, <span class="st">&quot;Dua Lipa&quot;</span>, <span class="st">&quot;Travis Scott&quot;</span>,</span>
+<span id="cb994-3"><a href="r-markdown.html#cb994-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Taylor Swift&quot;</span>, <span class="st">&quot;Imagine Dragons&quot;</span>, <span class="st">&quot;Selena Gomez&quot;</span>,</span>
+<span id="cb994-4"><a href="r-markdown.html#cb994-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Ozuna&quot;</span>, <span class="st">&quot;Justin Bieber&quot;</span>, <span class="st">&quot;Coldplay&quot;</span>, <span class="st">&quot;Eminem&quot;</span>)</span>
+<span id="cb994-5"><a href="r-markdown.html#cb994-5" aria-hidden="true" tabindex="-1"></a>famous_tracks <span class="ot">&lt;-</span> music_data_cluster <span class="sc">%&gt;%</span></span>
+<span id="cb994-6"><a href="r-markdown.html#cb994-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(artistName <span class="sc">%in%</span> famous_artists)</span>
+<span id="cb994-7"><a href="r-markdown.html#cb994-7" aria-hidden="true" tabindex="-1"></a>famous_tracks_scale <span class="ot">&lt;-</span> famous_tracks <span class="sc">%&gt;%</span></span>
+<span id="cb994-8"><a href="r-markdown.html#cb994-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(danceability<span class="sc">:</span>song_age), scale)</span>
+<span id="cb994-9"><a href="r-markdown.html#cb994-9" aria-hidden="true" tabindex="-1"></a>famous_tracks_scale <span class="ot">&lt;-</span> famous_tracks_scale <span class="sc">%&gt;%</span></span>
+<span id="cb994-10"><a href="r-markdown.html#cb994-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate_at</span>(<span class="fu">vars</span>(danceability<span class="sc">:</span>song_age), as.vector)</span>
+<span id="cb994-11"><a href="r-markdown.html#cb994-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div>
+<p>First of all, regarding duplicates, you could either drop or keep them. In fact, the “repeating” songs are not always identical but without going into too many details, we might assume that the songs if our data set are different. Though, if you dropped duplicates, you’re also right, and we simply have two groups of managers. Ideally, the duplicates would be dropped.</p>
+<p>First, we identify the number of clusters:</p>
+<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="r-markdown.html#cb995-1" aria-hidden="true" tabindex="-1"></a>opt_K <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(famous_tracks_scale <span class="sc">%&gt;%</span></span>
+<span id="cb995-2"><a href="r-markdown.html#cb995-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(danceability<span class="sc">:</span>song_age), <span class="at">method =</span> <span class="st">&quot;kmeans&quot;</span>,</span>
+<span id="cb995-3"><a href="r-markdown.html#cb995-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">max.nc =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
+##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
+##                 significant increase of the value of the measure i.e the significant peak in Hubert
+##                 index second differences plot. 
+## </code></pre>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-130-2.png" width="672" /></p>
+<pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
+##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
+##                 second differences plot) that corresponds to a significant increase of the value of
+##                 the measure. 
+##  
+## ******************************************************************* 
+## * Among all indices:                                                
+## * 5 proposed 2 as the best number of clusters 
+## * 2 proposed 3 as the best number of clusters 
+## * 2 proposed 4 as the best number of clusters 
+## * 7 proposed 5 as the best number of clusters 
+## * 2 proposed 7 as the best number of clusters 
+## * 1 proposed 8 as the best number of clusters 
+## * 2 proposed 9 as the best number of clusters 
+## * 2 proposed 10 as the best number of clusters 
+## 
+##                    ***** Conclusion *****                            
+##  
+## * According to the majority rule, the best number of clusters is  5 
+##  
+##  
+## *******************************************************************</code></pre>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="r-markdown.html#cb998-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(opt_K<span class="sc">$</span>Best.nc[<span class="st">&quot;Number_clusters&quot;</span>, ])</span></code></pre></div>
+<pre><code>## 
+##  0  1  2  3  4  5  7  8  9 10 
+##  2  1  5  2  2  7  2  1  2  2</code></pre>
+<p>The “duplicates” people got 5 clusters, and the “non-duplicates” — 4.</p>
+<p>To conduct K-means clustering, we simply run the <code>kmeans()</code> function with the required set of variables and the proposed number of clusters:</p>
+<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="r-markdown.html#cb1000-1" aria-hidden="true" tabindex="-1"></a>kmeans_tracks <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(famous_tracks_scale <span class="sc">%&gt;%</span></span>
+<span id="cb1000-2"><a href="r-markdown.html#cb1000-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(danceability<span class="sc">:</span>song_age), <span class="dv">5</span>)</span></code></pre></div>
+<p>After that, we’re free to visualize the clusters and describe them:</p>
+<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="r-markdown.html#cb1001-1" aria-hidden="true" tabindex="-1"></a>kmeans_tracks<span class="sc">$</span>centers</span></code></pre></div>
+<pre><code>##   danceability     energy speechiness instrumentalness    liveness     valence
+## 1    0.1496741  0.5012567  1.10699352       -0.1949760  2.40793367  0.09053111
+## 2   -0.7994849  0.3742046 -0.01225973       -0.1336373 -0.06261713 -0.46238691
+## 3   -1.1326298 -0.6994597 -0.53010030        5.4950472 -0.04035494 -0.87837313
+## 4   -0.4024191 -0.6838371 -0.40767118       -0.1575615 -0.30620916 -0.63292119
+## 5    0.5882739  0.4004501  0.13780549       -0.1658458 -0.24110857  0.68203772
+##         tempo song_length   song_age
+## 1 -0.10512203  0.42835544 -0.1251250
+## 2  0.83776889  0.89442720  1.7118870
+## 3 -0.21781391  0.24945442 -0.1694322
+## 4 -0.29824154 -0.04294918 -0.1726793
+## 5  0.05689749 -0.31210832 -0.2788934</code></pre>
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="r-markdown.html#cb1003-1" aria-hidden="true" tabindex="-1"></a>centers <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(kmeans_tracks<span class="sc">$</span>centers)</span>
+<span id="cb1003-2"><a href="r-markdown.html#cb1003-2" aria-hidden="true" tabindex="-1"></a>centers<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1003-3"><a href="r-markdown.html#cb1003-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggRadar</span>(centers, <span class="fu">aes</span>(<span class="at">color =</span> cluster), <span class="at">rescale =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1003-4"><a href="r-markdown.html#cb1003-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">&quot;Centers&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p>Here we already see some distinguishable features of a couple of clusters. They are better seen in spikes of the radar plot and negative-to-positive differences in centres table.</p>
+<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="r-markdown.html#cb1004-1" aria-hidden="true" tabindex="-1"></a>famous_tracks<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(kmeans_tracks<span class="sc">$</span>cluster)</span>
+<span id="cb1004-2"><a href="r-markdown.html#cb1004-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(famous_tracks, <span class="fu">aes</span>(<span class="at">y =</span> cluster, <span class="at">fill =</span> artistName)) <span class="sc">+</span></span>
+<span id="cb1004-3"><a href="r-markdown.html#cb1004-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1005-1"><a href="r-markdown.html#cb1005-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(famous_tracks<span class="sc">$</span>artistName, famous_tracks<span class="sc">$</span>cluster)</span></code></pre></div>
+<pre><code>##                  
+##                    1  2  3  4  5
+##   Ariana Grande    1  5  0 30 27
+##   Billie Eilish    3  0  4 25  7
+##   Coldplay         8 29 17  9  3
+##   Drake           20 11  0 32 43
+##   Dua Lipa         0  0  0  8 28
+##   Ed Sheeran       3  6  0 28 15
+##   Eminem          23 11  0  1 21
+##   Imagine Dragons  3  8  0 24 29
+##   Justin Bieber    2  1  0 13 18
+##   Ozuna            1  0  0  4 38
+##   Post Malone      1  2  1 18 22
+##   Selena Gomez     0  0  0  6 22
+##   Taylor Swift     3 12  0 60 42
+##   Travis Scott     1  2  0  8 10</code></pre>
+<p>Using the plots and tables above, we can describe the clusters:</p>
+<ul>
+<li><strong>Cluster 1</strong> - it’s the <strong>Rap</strong> cluster (Drake and Eminem with high energy and <em>extremely</em> high speechiness). Travis Scott is excluded from Rap, based on our analysis;</li>
+<li><strong>Cluster 2</strong> - we have pretty lengthy songs with high tempo and danceability here, however, the valence is not too high;</li>
+<li><strong>Cluster 3</strong> - It’s just <strong>Coldplay</strong> that somehow formed a cluster of songs for emotionally turbulent people, including myself. Here we can actually see the drawbacks of proceeding with duplicates (and, as result, with 5 clusters). It makes no sense to have this cluster in results as (1) it is too small, and (2) it only has one artist;</li>
+<li><strong>Cluster 4</strong> - here we have very low energy, liveness, valence, and tempo, so if I was a song, I would end up here, among other <strong>somewhat melancholic</strong> songs;</li>
+<li><strong>Cluster 5</strong> - cluster with high danceability and valence, so we have <strong>Pop party tracks</strong> (Selena Gomez, Dua Lipa, Ozuna, partly Taylor Swift and Ariana Grande).</li>
+</ul>
+<p>Last, we can plot the PCA visualization to examine the clusters:</p>
+<div class="sourceCode" id="cb1007"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1007-1"><a href="r-markdown.html#cb1007-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_cluster</span>(kmeans_tracks, <span class="at">data =</span> famous_tracks_scale <span class="sc">%&gt;%</span></span>
+<span id="cb1007-2"><a href="r-markdown.html#cb1007-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(danceability<span class="sc">:</span>song_age), <span class="at">palette =</span> <span class="fu">hcl.colors</span>(<span class="dv">5</span>,</span>
+<span id="cb1007-3"><a href="r-markdown.html#cb1007-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;Dynamic&quot;</span>), <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">ellipse.type =</span> <span class="st">&quot;convex&quot;</span>,</span>
+<span id="cb1007-4"><a href="r-markdown.html#cb1007-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ggtheme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
+<p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p>We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that’s Coldplay again, for sure).</p>
+<p>Additionally (but not necessary), we could make some recommendations (let’s say, for a home party or one of WUMA events):</p>
+<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="r-markdown.html#cb1008-1" aria-hidden="true" tabindex="-1"></a>famous_tracks <span class="sc">%&gt;%</span></span>
+<span id="cb1008-2"><a href="r-markdown.html#cb1008-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(trackName <span class="sc">==</span> <span class="st">&quot;New Rules&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1008-3"><a href="r-markdown.html#cb1008-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(cluster, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1008-4"><a href="r-markdown.html#cb1008-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(cluster)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["cluster"],"name":[1],"type":["fct"],"align":["left"]}],"data":[{"1":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1009-1"><a href="r-markdown.html#cb1009-1" aria-hidden="true" tabindex="-1"></a>recommendations <span class="ot">&lt;-</span> famous_tracks <span class="sc">%&gt;%</span></span>
+<span id="cb1009-2"><a href="r-markdown.html#cb1009-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(cluster <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1009-3"><a href="r-markdown.html#cb1009-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>artistName <span class="sc">==</span> <span class="st">&quot;Justin Bieber&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1009-4"><a href="r-markdown.html#cb1009-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(artistName, trackName)</span>
+<span id="cb1009-5"><a href="r-markdown.html#cb1009-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(recommendations, <span class="dv">19</span>)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Dua Lipa","2":"Break My Heart"},{"1":"Eminem","2":"Framed"},{"1":"Ed Sheeran","2":"Galway Girl"},{"1":"Eminem","2":"She Loves Me"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Taylor Swift","2":"Red"},{"1":"Taylor Swift","2":"Gorgeous"},{"1":"Ozuna","2":"Hasta Que Salga el Sol"},{"1":"Travis Scott","2":"beibs in the trap"},{"1":"Eminem","2":"Normal"},{"1":"Eminem","2":"Killer"},{"1":"Drake","2":"5 Am in Toronto"},{"1":"Dua Lipa","2":"Thinking 'Bout You"},{"1":"Drake","2":"Nice For What"},{"1":"Drake","2":"November 18th"},{"1":"Eminem","2":"Castle"},{"1":"Post Malone","2":"Sugar Wraith"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Ariana Grande","2":"obvious"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p><em>“You know dark days, you know hard times, Doin’ overtime for the last month”</em>; congrats on getting through all assignments!
+<span style="color: orange;">Enjoy your exam prep :)</span></p>
 
 <p><link rel="stylesheet" type="text/css" media="all" href="style.css" /></p>
 </div>

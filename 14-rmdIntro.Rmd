@@ -1635,7 +1635,7 @@ exp(coef(final_model))
 ```
 
 The interpretation of odds ratios stays the same (and should be discussed in your solution).
-
+<br>
 Alternatively, some used average partial effect as means of model interpretation:
 
 ```{r}
@@ -1649,6 +1649,7 @@ logitmfx(final_model, data = music_data, atmean = FALSE)
 
 The plots for the remaining variables can be created analogously to the ones above.
 
+<br>
 If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
 
 ```{r}
@@ -1658,5 +1659,235 @@ step(mult_logit_model, #our base model
      test = "Chisq",
      data = music_data)
 ```
+<br>
+<br>
 
 
+## Assignment 4: Solution
+
+**Assignment A: Factor Analysis**
+
+**Load data**
+
+```{r warning=FALSE, message=FALSE}
+library(ggplot2)
+library(psych)
+library(dplyr)
+library(ggiraph)
+library(ggiraphExtra)
+library(NbClust)
+library(factoextra)
+library(GPArotation)
+music_data_pca <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/pca_data.csv",
+                        sep = ",", header = TRUE, dec = ".")
+```
+
+Create the subset for PCA:
+```{r question_1_1}
+pca_data <- music_data_pca |> dplyr::select(c('log_n_playlists', 'log_streams','log_youtube_views', 'log_tiktok_counts', 'log_ins_followers_artist', 'log_monthly_listeners_artist', 'log_playlist_total_reach_artist', 'log_sp_fans_artist', 'log_shazam_counts'))
+```
+<br>
+
+As a starting point, we examine the correlation matrix and the correlation plot to make sure that the correlations between variables are acceptable:
+```{r}
+pca_matrix <- cor(pca_data) 
+#round(pca_matrix, 3)
+
+correlations <- as.data.frame(pca_matrix) 
+corPlot(correlations, numbers = TRUE, upper = FALSE, diag = FALSE, main = "Correlations between variables")
+```
+
+Then we check the number of low (< 0.3) correlations:
+```{r}
+diag(correlations) <- NA
+apply(abs(correlations) < 0.3, 1, sum, na.rm = TRUE) 
+apply(abs(correlations), 1, mean, na.rm = TRUE) 
+```
+
+We can see that there are some variables that are weakly correlated with others. However, as we remember, this is a subjective view, so, to strengthen our feeling of the data and variables that we have, we should conduct **Bartlett's test** (its Null hypothesis states that the overall correlation between variables is 0):
+
+```{r}
+cortest.bartlett(pca_matrix, n = nrow(pca_data))
+```
+
+Since the p-value of the test is < .05, we reject the Null hypotheses and assume that the off-diagonal elements in the population correlation matrix are not zero.
+
+We should also make sure that the correlations are not too high (> 0.8) and that there is no singularity (1). Again, we can check the number of such cases:
+```{r}
+apply(abs(correlations) > 0.8, 1, sum, na.rm = TRUE)
+```
+
+But also, we must compute **the determinant** to see whether the correlation matrix is singular (determinant = 0), or if all variables are completely unrelated (determinant = 1), or somewhere in between (remember that we're hoping for a value greater than 0.00001):
+```{r}
+det(pca_matrix)
+det(pca_matrix) > 0.00001
+```
+
+The overall correlation between variables is not too strong.  
+  
+Lastly, we compute the **Kaiser-Meyer-Olkin** measure of sampling adequacy to confirm that the data is appropriate for the factor analysis:
+```{r}
+KMO(pca_data)
+```
+
+As overall MSA is 0.8 (*meritorious* value), we can proceed with PCA using the data.
+
+Next, we should extract the correct number of factors. First, we inspect their eigenvalues and make decisions about which factors to extract:
+```{r}
+pc1 <- principal(pca_data, nfactors = 9, rotate = "none") #the initial number of variables
+pc1
+plot(pc1$values, type="b") |> abline(h = 1, lty = 2)
+```
+
+From the sums of squared loadings and the scree plot we see, that we should extract either 2 or 3 factors (as the SS loading of the third component is exactly 1). Here, you could proceed with either of these numbers or even try both to make a well weighted decision. However, if you proceeded with only two factors, you would see later that the obtained model does not satisfy formal criteria. Thus, here you should have come up with three factors.
+
+```{r}
+pc2 <- principal(pca_data, nfactors = 3, rotate = "none")
+pc2
+```
+
+From the output above we can see that the communalities of the items are high enough (> 0.3), thus, at this step, we retain all variables. We also see that the **model fit is good: 97%**.
+
+Then we assess the residuals of value > 0.05 (their share should be < 50%, i.e., if fewer residuals than 50% have absolute values greater than 0.05 the model is a good fit):
+
+```{r}
+residuals <- factor.residuals(pca_matrix, pc2$loadings)
+#round(residuals,3)
+
+reproduced_matrix <- factor.model(pc2$loadings)
+residuals <- as.matrix(residuals[upper.tri((residuals))])
+large_res <- abs(residuals) > 0.05
+sum(large_res)
+sum(large_res)/nrow(residuals)
+```
+
+With 47% of large residuals, our model is fine. Mean residual (see model output above) is also acceptable.  
+
+Finally, we should check if the residuals are normally distributed. Shapiro-Wilk test and the plots confirm this to us.
+
+```{r}
+hist(residuals) 
+qqnorm(residuals) 
+qqline(residuals)
+shapiro.test(residuals)
+```
+
+Now, we can start describing the factors. We first examine the items' loadings to principal components. Here you could proceed with either orthogonal or oblique factor rotation, effectively, the result would be the same, however, as factors might be intercorrelated, we might proceed with oblique rotation:
+
+```{r}
+pc3 <- principal(pca_data, nfactors = 3, rotate = "oblimin", scores = TRUE)
+#head(pc3$scores)
+#pc3
+print.psych(pc3, cut = 0.3, sort = TRUE)
+```
+
+First, we see, that there might be correlation between components 1 and 3; second, we can get the list of items that comprise the components. We can finally create the factors based on the loadings:
+
+```{r warning=FALSE, message=FALSE}
+factor_1 <- pca_data[,c(5,6,7,8)]
+factor_2 <- pca_data[,c(1,9)]
+factor_3 <- pca_data[,c(2,4,3)]
+```
+
+Before we interpret the factors, we should do the **reliability check**:
+```{r warning=FALSE, message=FALSE}
+psych::alpha(factor_1)
+psych::alpha(factor_2)
+psych::alpha(factor_3)
+```
+
+For factors 1 and 2, we can confirm sufficient reliability, however, the Cronbach's Alpha for factor 3 is below the acceptable threshold, thus, we retain two factors. The first one can be described as **"artist's funbase"** (or artist's overall popularity, artist's listeners, artist's followers, and other synonyms), while the second represents somewhat close to **hit songs** (let's say, they are present in multiple playlists, and also they are played in malls/cafes/etc., and people Shazam them). 
+
+For the future analysis, we can proceed with five factors: artist_funbase, artist_hits, and the three items that didn't comprise a factor with sufficient reliability: streams, tiktok_counts, youtube_views.
+
+<br>
+**Assignment B: Cluster Analysis**
+
+**Load data**
+```{r warning=FALSE, message=FALSE}
+music_data_cluster <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
+                        sep = ";", header = TRUE, dec = ",")
+head(music_data_cluster)
+```
+
+```{r}
+famous_artists <- c("Ed Sheeran", "Drake", "Post Malone", "Ariana Grande", "Billie Eilish",  
+"Dua Lipa", "Travis Scott", "Taylor Swift","Imagine Dragons","Selena Gomez","Ozuna",
+"Justin Bieber","Coldplay","Eminem")
+famous_tracks <- music_data_cluster %>% filter(artistName %in% famous_artists)
+famous_tracks_scale <- famous_tracks %>% mutate_at(vars(danceability:song_age), scale)
+famous_tracks_scale <- famous_tracks_scale %>% mutate_at(vars(danceability:song_age),as.vector)
+set.seed(123)
+```
+
+First of all, regarding duplicates, you could either drop or keep them. In fact, the "repeating" songs are not always identical but without going into too many details, we might assume that the songs if our data set are different. Though, if you dropped duplicates, you're also right, and we simply have two groups of managers. Ideally, the duplicates would be dropped.
+
+First, we identify the number of clusters:
+ 
+```{r}
+opt_K <- NbClust(famous_tracks_scale %>% dplyr::select(danceability:song_age), method = "kmeans", max.nc = 10)
+table(opt_K$Best.nc["Number_clusters",])
+```
+
+The "duplicates" people got 5 clusters, and the "non-duplicates" — 4.
+
+To conduct K-means clustering, we simply run the `kmeans()` function with the required set of variables and the proposed number of clusters:
+
+```{r}
+kmeans_tracks <- kmeans(famous_tracks_scale %>% dplyr::select(danceability:song_age), 5)
+```
+
+After that, we're free to visualize the clusters and describe them:
+```{r}
+kmeans_tracks$centers
+centers <- data.frame(kmeans_tracks$centers)
+centers$cluster <- 1:5
+ggRadar(centers, aes(color = cluster), rescale = FALSE) + 
+  ggtitle("Centers") +
+  theme_minimal()
+```
+
+Here we already see some distinguishable features of a couple of clusters. They are better seen in spikes of the radar plot and negative-to-positive differences in centres table.
+
+```{r}
+famous_tracks$cluster <- as.factor(kmeans_tracks$cluster)
+ggplot(famous_tracks, aes(y = cluster, fill = artistName)) +
+  geom_bar() +
+  theme_minimal()
+table(famous_tracks$artistName, famous_tracks$cluster)
+```
+
+Using the plots and tables above, we can describe the clusters:  
+
+* **Cluster 1** - it's the **Rap** cluster (Drake and Eminem with high energy and *extremely* high speechiness). Travis Scott is excluded from Rap, based on our analysis;
+* **Cluster 2** - we have pretty lengthy songs with high tempo and danceability here, however, the valence is not too high;
+* **Cluster 3** - It's just **Coldplay** that somehow formed a cluster of songs for emotionally turbulent people, including myself. Here we can actually see the drawbacks of proceeding with duplicates (and, as result, with 5 clusters). It makes no sense to have this cluster in results as (1) it is too small, and (2) it only has one artist;
+* **Cluster 4** - here we have very low energy, liveness, valence, and tempo, so if I was a song, I would end up here, among other **somewhat melancholic** songs;
+* **Cluster 5** - cluster with high danceability and valence, so we have **Pop party tracks** (Selena Gomez, Dua Lipa, Ozuna, partly Taylor Swift and Ariana Grande).
+
+
+Last, we can plot the PCA visualization to examine the clusters:
+
+```{r}
+fviz_cluster(kmeans_tracks, data = famous_tracks_scale %>% dplyr::select(danceability:song_age),
+             palette = hcl.colors(5, palette = "Dynamic"), 
+             geom = "point",
+             ellipse.type = "convex", 
+             ggtheme = theme_minimal())
+```
+
+We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that's Coldplay again, for sure). 
+
+
+Additionally (but not necessary), we could make some recommendations (let's say, for a home party or one of WUMA events):
+```{r}
+famous_tracks %>% filter(trackName == "New Rules") %>% distinct(cluster, .keep_all= TRUE) %>% dplyr::select(cluster) 
+```
+
+```{r}
+recommendations <- famous_tracks %>% filter(cluster == 5) %>% filter(!artistName == "Justin Bieber") %>% dplyr::select(artistName, trackName) 
+head(recommendations, 19)
+```
+
+*"You know dark days, you know hard times, Doin' overtime for the last month"*; congrats on getting through all assignments! 
+<span style="color: orange;">Enjoy your exam prep :)</span>  
