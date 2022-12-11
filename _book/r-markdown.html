@@ -1858,7 +1858,7 @@ generic retargeting vs. no retargeting</p>
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(&gt;|t|)    
-## generic retargeting - no retargeting == 0       0.00364 ** 
+## generic retargeting - no retargeting == 0       0.00363 ** 
 ## dynamic retargeting - no retargeting == 0       &lt; 0.001 ***
 ## dynamic retargeting - generic retargeting == 0  &lt; 0.001 ***
 ## ---
@@ -1875,15 +1875,15 @@ generic retargeting vs. no retargeting</p>
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.345
+## Quantile = 2.3457
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5141 229.7264
-## dynamic retargeting - no retargeting == 0      443.4211 343.8944 542.9478
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0207 408.5811</code></pre>
+## generic retargeting - no retargeting == 0      133.1202  36.4844 229.7560
+## dynamic retargeting - no retargeting == 0      443.4211 343.8639 542.9784
+## dynamic retargeting - generic retargeting == 0 310.3009 211.9905 408.6112</code></pre>
 <div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="r-markdown.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co">#the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)</span></span>
 <span id="cb858-2"><a href="r-markdown.html#cb858-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -3353,7 +3353,7 @@ If we still want to choose a parsimonious model using step-wise comparisons, we 
 <li><strong>Cluster 1</strong> - it’s the <strong>Rap</strong> cluster (Drake and Eminem with high energy and <em>extremely</em> high speechiness). Travis Scott is excluded from Rap, based on our analysis;</li>
 <li><strong>Cluster 2</strong> - we have pretty lengthy songs with high tempo and danceability here, however, the valence is not too high;</li>
 <li><strong>Cluster 3</strong> - It’s just <strong>Coldplay</strong> that somehow formed a cluster of songs for emotionally turbulent people, including myself. Here we can actually see the drawbacks of proceeding with duplicates (and, as result, with 5 clusters). It makes no sense to have this cluster in results as (1) it is too small, and (2) it only has one artist;</li>
-<li><strong>Cluster 4</strong> - here we have very low energy, liveness, valence, and tempo, so if I was a song, I would end up here, among other <strong>somewhat melancholic</strong> songs;</li>
+<li><strong>Cluster 4</strong> - here we have very low energy, liveness, valence, and tempo, so these are probably <strong>somewhat melancholic</strong> songs (however, they come from some conventionally “party” artists like Ariana Grande, so here we can say something about variety of songs of these artists);</li>
 <li><strong>Cluster 5</strong> - cluster with high danceability and valence, so we have <strong>Pop party tracks</strong> (Selena Gomez, Dua Lipa, Ozuna, partly Taylor Swift and Ariana Grande).</li>
 </ul>
 <p>Last, we can plot the PCA visualization to examine the clusters:</p>
@@ -3362,8 +3362,8 @@ If we still want to choose a parsimonious model using step-wise comparisons, we 
 <span id="cb1007-3"><a href="r-markdown.html#cb1007-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">palette =</span> <span class="st">&quot;Dynamic&quot;</span>), <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">ellipse.type =</span> <span class="st">&quot;convex&quot;</span>,</span>
 <span id="cb1007-4"><a href="r-markdown.html#cb1007-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ggtheme =</span> <span class="fu">theme_minimal</span>())</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
-<p>We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that’s Coldplay again, for sure).</p>
-<p>Additionally (but not necessary), we could make some recommendations (let’s say, for a home party or one of WUMA events):</p>
+<p>We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that’s probably because of Coldplay again).</p>
+<p>Additionally (but not necessarily), we could make some recommendations (let’s say, for a home party or one of WUMA events):</p>
 <div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="r-markdown.html#cb1008-1" aria-hidden="true" tabindex="-1"></a>famous_tracks <span class="sc">%&gt;%</span></span>
 <span id="cb1008-2"><a href="r-markdown.html#cb1008-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(trackName <span class="sc">==</span> <span class="st">&quot;New Rules&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb1008-3"><a href="r-markdown.html#cb1008-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(cluster, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
@@ -3383,8 +3383,6 @@ If we still want to choose a parsimonious model using step-wise comparisons, we 
 {"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"Dua Lipa","2":"Break My Heart"},{"1":"Eminem","2":"Framed"},{"1":"Ed Sheeran","2":"Galway Girl"},{"1":"Eminem","2":"She Loves Me"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Taylor Swift","2":"Red"},{"1":"Taylor Swift","2":"Gorgeous"},{"1":"Ozuna","2":"Hasta Que Salga el Sol"},{"1":"Travis Scott","2":"beibs in the trap"},{"1":"Eminem","2":"Normal"},{"1":"Eminem","2":"Killer"},{"1":"Drake","2":"5 Am in Toronto"},{"1":"Dua Lipa","2":"Thinking 'Bout You"},{"1":"Drake","2":"Nice For What"},{"1":"Drake","2":"November 18th"},{"1":"Eminem","2":"Castle"},{"1":"Post Malone","2":"Sugar Wraith"},{"1":"Imagine Dragons","2":"Believer"},{"1":"Ariana Grande","2":"obvious"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p><em>“You know dark days, you know hard times, Doin’ overtime for the last month”</em>; congrats on getting through all assignments!
-<span style="color: orange;">Enjoy your exam prep :)</span></p>
 
 <p><link rel="stylesheet" type="text/css" media="all" href="style.css" /></p>
 </div>

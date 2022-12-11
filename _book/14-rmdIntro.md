@@ -1806,7 +1806,7 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00364 ** 
+## generic retargeting - no retargeting == 0       0.00363 ** 
 ## dynamic retargeting - no retargeting == 0       < 0.001 ***
 ## dynamic retargeting - generic retargeting == 0  < 0.001 ***
 ## ---
@@ -1830,15 +1830,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.345
+## Quantile = 2.3457
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5141 229.7264
-## dynamic retargeting - no retargeting == 0      443.4211 343.8944 542.9478
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0207 408.5811
+## generic retargeting - no retargeting == 0      133.1202  36.4844 229.7560
+## dynamic retargeting - no retargeting == 0      443.4211 343.8639 542.9784
+## dynamic retargeting - generic retargeting == 0 310.3009 211.9905 408.6112
 ```
 
 ```r
@@ -3992,7 +3992,7 @@ Using the plots and tables above, we can describe the clusters:
 * **Cluster 1** - it's the **Rap** cluster (Drake and Eminem with high energy and *extremely* high speechiness). Travis Scott is excluded from Rap, based on our analysis;
 * **Cluster 2** - we have pretty lengthy songs with high tempo and danceability here, however, the valence is not too high;
 * **Cluster 3** - It's just **Coldplay** that somehow formed a cluster of songs for emotionally turbulent people, including myself. Here we can actually see the drawbacks of proceeding with duplicates (and, as result, with 5 clusters). It makes no sense to have this cluster in results as (1) it is too small, and (2) it only has one artist;
-* **Cluster 4** - here we have very low energy, liveness, valence, and tempo, so if I was a song, I would end up here, among other **somewhat melancholic** songs;
+* **Cluster 4** - here we have very low energy, liveness, valence, and tempo, so these are probably **somewhat melancholic** songs (however, they come from some conventionally "party" artists like Ariana Grande, so here we can say something about variety of songs of these artists);
 * **Cluster 5** - cluster with high danceability and valence, so we have **Pop party tracks** (Selena Gomez, Dua Lipa, Ozuna, partly Taylor Swift and Ariana Grande).
 
 
@@ -4008,10 +4008,10 @@ fviz_cluster(kmeans_tracks, data = famous_tracks_scale %>%
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-134-1.png" width="672" />
 
-We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that's Coldplay again, for sure). 
+We see that clusters 1 and 2 overlap quite a lot, and so do clusters 3 and 4 (that's probably because of Coldplay again). 
 
 
-Additionally (but not necessary), we could make some recommendations (let's say, for a home party or one of WUMA events):
+Additionally (but not necessarily), we could make some recommendations (let's say, for a home party or one of WUMA events):
 
 ```r
 famous_tracks %>%
@@ -4041,5 +4041,3 @@ head(recommendations, 19)
   </script>
 </div>
 
-*"You know dark days, you know hard times, Doin' overtime for the last month"*; congrats on getting through all assignments! 
-<span style="color: orange;">Enjoy your exam prep :)</span>  
