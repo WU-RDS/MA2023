@@ -708,7 +708,7 @@ t=\frac{r*\sqrt{N-2}}{\sqrt{1-r^2}}
 <div id="simple-linear-regression" class="section level3 hasAnchor" number="7.2.1">
 <h3><span class="header-section-number">7.2.1</span> Simple linear regression<a href="regression.html#simple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In simple linear regression, we assess the relationship between one dependent (regressand) and one independent (regressor) variable. The goal is to fit a line through a scatterplot of observations in order to find the line that best describes the data (scatterplot).</p>
-<p>Suppose you are a marketing research analyst at a music label and your task is to suggest, on the basis of historical data, a marketing plan for the next year that will maximize product sales. The data set that is available to you includes information on the sales of music downloads (thousands of units), advertising expenditures (in Euros), the number of radio plays an artist received per week (airplay), the number of previous releases of an artist (starpower), repertoire origin (country; 0 = local, 1 = international), and genre (1 = rock, 2 = pop, 3 = electronic). Let’s load and inspect the data first:</p>
+<p>Suppose you are a marketing research analyst at a music label and your task is to suggest, on the basis of historical data, a marketing plan for the next year that will maximize product sales. The data set that is available to you includes information on the sales of music downloads (units), advertising expenditures (in thousands of Euros), the number of radio plays an artist received per week (airplay), the number of previous releases of an artist (starpower), repertoire origin (country; 0 = local, 1 = international), and genre (1 = rock, 2 = pop, 3 = electronic). Let’s load and inspect the data first:</p>
 <div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="regression.html#cb482-1" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_sales_regression.dat&quot;</span>,</span>
 <span id="cb482-2"><a href="regression.html#cb482-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
 <span id="cb482-3"><a href="regression.html#cb482-3" aria-hidden="true" tabindex="-1"></a>regression<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(regression<span class="sc">$</span>country, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>),</span>
@@ -782,8 +782,8 @@ Figure 1.14: Ordinary least squares (OLS)
 \sum_{i=1}^{N} e_i^2= \sum_{i=1}^{N} [Y_i-(\beta_0+\beta_1X_i)]^2\rightarrow min!
 \tag{7.8}
 \end{equation}\]</span></p>
-<p>e<sub>i</sub>: Residuals (i = 1,2,…,N)<br>
-Y<sub>i</sub>: Values of the dependent variable (i = 1,2,…,N) <br>
+<p>e<sub>i</sub>: Residuals (i = 1, 2, …, N)<br>
+Y<sub>i</sub>: Values of the dependent variable (i = 1, 2, …, N) <br>
 β<sub>0</sub>: Intercept<br>
 β<sub>1</sub>: Regression coefficient / slope parameters<br>
 X<sub>ni</sub>: Values of the nth independent variables and the i<em>th</em> observation<br>
@@ -815,7 +815,7 @@ N: Number of observations<br></p>
 <span id="cb491-2"><a href="regression.html#cb491-2" aria-hidden="true" tabindex="-1"></a>beta_0</span></code></pre></div>
 <pre><code>## [1] 134.13994</code></pre>
 <p>The interpretation of β<sub>0</sub> is as follows:</p>
-<p>If we spend no money on advertising, we would expect to sell 134.14 units.</p>
+<p>If we spend no money on advertising, we would expect to sell 134.14 (134) units.</p>
 <p>You may also verify this based on a scatterplot of the data. The following plot shows the scatterplot including the regression line, which is estimated using OLS.</p>
 <div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="regression.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(regression, <span class="at">mapping =</span> <span class="fu">aes</span>(adspend, sales)) <span class="sc">+</span></span>
 <span id="cb493-2"><a href="regression.html#cb493-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>,</span>

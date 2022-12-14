@@ -359,7 +359,7 @@ Role of theory | Theory neither required nor testable  | Theory required and tes
 
 In simple linear regression, we assess the relationship between one dependent (regressand) and one independent (regressor) variable. The goal is to fit a line through a scatterplot of observations in order to find the line that best describes the data (scatterplot).
 
-Suppose you are a marketing research analyst at a music label and your task is to suggest, on the basis of historical data, a marketing plan for the next year that will maximize product sales. The data set that is available to you includes information on the sales of music downloads (thousands of units), advertising expenditures (in Euros), the number of radio plays an artist received per week (airplay), the number of previous releases of an artist (starpower), repertoire origin (country; 0 = local, 1 = international), and genre (1 = rock, 2 = pop, 3 = electronic). Let's load and inspect the data first: 
+Suppose you are a marketing research analyst at a music label and your task is to suggest, on the basis of historical data, a marketing plan for the next year that will maximize product sales. The data set that is available to you includes information on the sales of music downloads (units), advertising expenditures (in thousands of Euros), the number of radio plays an artist received per week (airplay), the number of previous releases of an artist (starpower), repertoire origin (country; 0 = local, 1 = international), and genre (1 = rock, 2 = pop, 3 = electronic). Let's load and inspect the data first: 
 
 
 ```r
@@ -459,8 +459,8 @@ This difference is then minimized by minimizing the sum of the squared residuals
 (\#eq:rss)
 \end{equation} 
 
-e<sub>i</sub>: Residuals (i = 1,2,...,N)<br>
-Y<sub>i</sub>: Values of the dependent variable (i = 1,2,...,N) <br>
+e<sub>i</sub>: Residuals (i = 1, 2, ..., N)<br>
+Y<sub>i</sub>: Values of the dependent variable (i = 1, 2, ..., N) <br>
 &beta;<sub>0</sub>: Intercept<br>
 &beta;<sub>1</sub>: Regression coefficient / slope parameters<br>
 X<sub>ni</sub>: Values of the nth independent variables and the i*th* observation<br>
@@ -528,7 +528,7 @@ beta_0
 
 The interpretation of &beta;<sub>0</sub> is as follows: 
 
-If we spend no money on advertising, we would expect to sell 134.14 units.
+If we spend no money on advertising, we would expect to sell 134.14 (134) units.
 
 You may also verify this based on a scatterplot of the data. The following plot shows the scatterplot including the regression line, which is estimated using OLS.  
 
