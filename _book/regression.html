@@ -993,17 +993,17 @@ F=\frac{\frac{SS_M}{k}}{\frac{SS_R}{(n-k-1)}}=\frac{MS_M}{MS_R}
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: sales
-##            Df Sum Sq Mean Sq F value              Pr(&gt;F)    
-## adspend     1 433688  433688    99.6 &lt;0.0000000000000002 ***
-## Residuals 198 862264    4355                                
+##            Df Sum Sq Mean Sq F value                Pr(&gt;F)    
+## adspend     1 433688  433688  99.587 &lt; 0.00000000000000022 ***
+## Residuals 198 862264    4355                                  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="regression.html#cb504-1" aria-hidden="true" tabindex="-1"></a>f_calc <span class="ot">&lt;-</span> <span class="fu">anova</span>(simple_regression)<span class="sc">$</span><span class="st">&quot;Mean Sq&quot;</span>[<span class="dv">1</span>]<span class="sc">/</span><span class="fu">anova</span>(simple_regression)<span class="sc">$</span><span class="st">&quot;Mean Sq&quot;</span>[<span class="dv">2</span>]  <span class="co">#compute F</span></span>
 <span id="cb504-2"><a href="regression.html#cb504-2" aria-hidden="true" tabindex="-1"></a>f_calc</span></code></pre></div>
-<pre><code>## [1] 100</code></pre>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="regression.html#cb506-1" aria-hidden="true" tabindex="-1"></a>f_crit <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.95</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">100</span>)  <span class="co">#critical value</span></span>
+<pre><code>## [1] 99.58687</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="regression.html#cb506-1" aria-hidden="true" tabindex="-1"></a>f_crit <span class="ot">&lt;-</span> <span class="fu">qf</span>(<span class="fl">0.95</span>, <span class="at">df1 =</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="dv">198</span>)  <span class="co">#critical value</span></span>
 <span id="cb506-2"><a href="regression.html#cb506-2" aria-hidden="true" tabindex="-1"></a>f_crit</span></code></pre></div>
-<pre><code>## [1] 3.9</code></pre>
+<pre><code>## [1] 3.888853</code></pre>
 <div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="regression.html#cb508-1" aria-hidden="true" tabindex="-1"></a>f_calc <span class="sc">&gt;</span> f_crit  <span class="co">#test if calculated test statistic is larger than critical value</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
@@ -2394,7 +2394,7 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 ## danceability_100 0.0157310 0.0029761 5.2857 0.0000001252 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>This now gives the average partial effects in percentage points. An additional point on the danceability scale (from <span class="math inline">\(1\)</span> to <span class="math inline">\(100\)</span>), on average, makes it <span class="math inline">\(1.57%\)</span> more likely for a song to become at top-10 hit.</p>
+<p>This now gives the average partial effects in percentage points. An additional point on the danceability scale (from <span class="math inline">\(1\)</span> to <span class="math inline">\(100\)</span>), on average, makes it <span class="math inline">\(1.57\%\)</span> (percentage points) more likely for a song to become at top-10 hit.</p>
 <p>To get the effect of an additional point at a specific value, we can calculate the odds ratio by predicting the probability at a value and at the value <span class="math inline">\(+1\)</span>. For example if we are interested in how much more likely a song with 51 compared to 50 danceability is to become a hit we can simply calculate the following</p>
 <div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="regression.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Probability of a top 10 hit with a danceability of 50</span></span>
 <span id="cb636-2"><a href="regression.html#cb636-2" aria-hidden="true" tabindex="-1"></a>prob_50 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>(<span class="sc">-</span><span class="fu">summary</span>(logit_model)<span class="sc">$</span>coefficients[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">-</span><span class="fu">summary</span>(logit_model)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">*</span><span class="dv">50</span> ))</span>

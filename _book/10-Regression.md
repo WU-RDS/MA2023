@@ -779,9 +779,9 @@ anova(simple_regression)  #anova results
 ## Analysis of Variance Table
 ## 
 ## Response: sales
-##            Df Sum Sq Mean Sq F value              Pr(>F)    
-## adspend     1 433688  433688    99.6 <0.0000000000000002 ***
-## Residuals 198 862264    4355                                
+##            Df Sum Sq Mean Sq F value                Pr(>F)    
+## adspend     1 433688  433688  99.587 < 0.00000000000000022 ***
+## Residuals 198 862264    4355                                  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -792,16 +792,16 @@ f_calc
 ```
 
 ```
-## [1] 100
+## [1] 99.58687
 ```
 
 ```r
-f_crit <- qf(0.95, df1 = 1, df2 = 100)  #critical value
+f_crit <- qf(0.95, df1 = 1, df2 = 198)  #critical value
 f_crit
 ```
 
 ```
-## [1] 3.9
+## [1] 3.888853
 ```
 
 ```r

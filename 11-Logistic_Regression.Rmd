@@ -167,7 +167,7 @@ library(mfx)
 logitmfx(logit_model, data = chart_data, atmean = FALSE)
 ```
 
-This now gives the average partial effects in percentage points. An additional point on the danceability scale (from $1$ to $100$), on average, makes it $1.57%$ more likely for a song to become at top-10 hit.
+This now gives the average partial effects in percentage points. An additional point on the danceability scale (from $1$ to $100$), on average, makes it $1.57\%$ (percentage points) more likely for a song to become at top-10 hit.
 
 To get the effect of an additional point at a specific value, we can calculate the odds ratio by predicting the probability at a value and at the value $+1$. For example if we are interested in how much more likely a song with 51 compared to 50 danceability is to become a hit we can simply calculate the following
 

@@ -699,7 +699,7 @@ The result of the F-test is provided in the regression output. However, you migh
 anova(simple_regression) #anova results
 f_calc <- anova(simple_regression)$'Mean Sq'[1]/anova(simple_regression)$'Mean Sq'[2] #compute F
 f_calc
-f_crit <- qf(.95, df1 = 1, df2 = 100) #critical value
+f_crit <- qf(.95, df1 = 1, df2 = 198) #critical value
 f_crit
 f_calc > f_crit #test if calculated test statistic is larger than critical value
 ```
