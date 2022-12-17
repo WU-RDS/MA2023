@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 R Markdown | Marketing Analytics 2022</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 R Markdown | Marketing Analytics 2022" />
   <meta property="og:type" content="book" />
@@ -1858,9 +1858,9 @@ generic retargeting vs. no retargeting</p>
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(&gt;|t|)    
-## generic retargeting - no retargeting == 0       0.00364 ** 
-## dynamic retargeting - no retargeting == 0       &lt; 0.001 ***
-## dynamic retargeting - generic retargeting == 0  &lt; 0.001 ***
+## generic retargeting - no retargeting == 0       0.00358 ** 
+## dynamic retargeting - no retargeting == 0      &lt; 0.0001 ***
+## dynamic retargeting - generic retargeting == 0 &lt; 0.0001 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -1875,15 +1875,15 @@ generic retargeting vs. no retargeting</p>
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.345
+## Quantile = 2.3451
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5101 229.7303
-## dynamic retargeting - no retargeting == 0      443.4211 343.8903 542.9519
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0167 408.5851</code></pre>
+## generic retargeting - no retargeting == 0      133.1202  36.5094 229.7310
+## dynamic retargeting - no retargeting == 0      443.4211 343.8896 542.9527
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0159 408.5859</code></pre>
 <div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb858-1"><a href="r-markdown.html#cb858-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co">#the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)</span></span>
 <span id="cb858-2"><a href="r-markdown.html#cb858-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-60-1.png" width="672" style="display: block; margin: auto;" /></p>

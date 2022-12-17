@@ -766,7 +766,7 @@ F=\frac{\frac{SS_M}{k}}{\frac{SS_R}{(n-k-1)}}=\frac{MS_M}{MS_R}
 (\#eq:regSSR)
 \end{equation} 
 
-which has a F distribution with k number of predictors and n degrees of freedom. In other words, you divide the systematic ("explained") variation due to the predictor variables by the unsystematic ("unexplained") variation. 
+which has a F distribution with k (number of predictors) and (n — k — 1) degrees of freedom. In other words, you divide the systematic ("explained") variation due to the predictor variables by the unsystematic ("unexplained") variation. 
 
 The result of the F-test is provided in the regression output. However, you might manually compute the F-test using the ANOVA results from the model:  
 

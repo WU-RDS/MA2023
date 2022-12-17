@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Regression | Marketing Analytics 2022</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Regression | Marketing Analytics 2022" />
   <meta property="og:type" content="book" />
@@ -987,7 +987,7 @@ This means that, similar to the ANOVA, we test whether any of the included indep
 F=\frac{\frac{SS_M}{k}}{\frac{SS_R}{(n-k-1)}}=\frac{MS_M}{MS_R}
 \tag{7.16}
 \end{equation}\]</span></p>
-<p>which has a F distribution with k number of predictors and n degrees of freedom. In other words, you divide the systematic (“explained”) variation due to the predictor variables by the unsystematic (“unexplained”) variation.</p>
+<p>which has a F distribution with k (number of predictors) and (n — k — 1) degrees of freedom. In other words, you divide the systematic (“explained”) variation due to the predictor variables by the unsystematic (“unexplained”) variation.</p>
 <p>The result of the F-test is provided in the regression output. However, you might manually compute the F-test using the ANOVA results from the model:</p>
 <div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="regression.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(simple_regression)  <span class="co">#anova results</span></span></code></pre></div>
 <pre><code>## Analysis of Variance Table

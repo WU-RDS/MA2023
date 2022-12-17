@@ -967,7 +967,7 @@ ggplot(hours_a_b_paired_long, aes(hours)) + geom_histogram(col = "black",
 
 **5. Conduct significance test**
 
-To conduct the independent means t-test, we can use the ```t.test()``` function with the argument ```paired = TRUE```:
+To conduct the dependent means t-test, we can use the ```t.test()``` function with the argument ```paired = TRUE```:
 
 
 ```r

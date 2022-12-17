@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6 Hypothesis testing | Marketing Analytics 2022</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6 Hypothesis testing | Marketing Analytics 2022" />
   <meta property="og:type" content="book" />
@@ -1028,7 +1028,7 @@ H_0: \mu_D \ne 0
 <span id="cb277-4"><a href="hypothesis-testing.html#cb277-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>group) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-40-2.png" width="672" /></p>
 <p><strong>5. Conduct significance test</strong></p>
-<p>To conduct the independent means t-test, we can use the <code>t.test()</code> function with the argument <code>paired = TRUE</code>:</p>
+<p>To conduct the dependent means t-test, we can use the <code>t.test()</code> function with the argument <code>paired = TRUE</code>:</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="hypothesis-testing.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(hours_a_b_paired<span class="sc">$</span>hours_a, hours_a_b_paired<span class="sc">$</span>hours_b,</span>
 <span id="cb278-2"><a href="hypothesis-testing.html#cb278-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>,</span>
 <span id="cb278-3"><a href="hypothesis-testing.html#cb278-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
