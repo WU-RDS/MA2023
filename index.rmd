@@ -85,14 +85,14 @@ library(dplyr)
 library(kableExtra)
 mytable = data.frame(
     Date = c("Oct. 3", 
-             "Oct. 10", 
-             "Oct. 17",
-             "Oct. 24",
-             "Oct. 31",
-             "Nov. 7",
-             "Nov. 14"
+             "Oct. 9", 
+             "Oct. 16",
+             "Oct. 23",
+             "Oct. 30",
+             "Nov. 6",
+             "Nov. 13"
              ),
-    Day = c("Monday", 
+    Day = c("Tuesday", 
              "Monday", 
              "Monday",
              "Monday",
@@ -100,7 +100,7 @@ mytable = data.frame(
              "Monday",
              "Monday"
              ),
-    Time = c("01:00PM - 05:00PM",
+    Time = c("09:00AM - 01:00PM",
              "01:00PM - 05:00PM", 
              "01:00PM - 05:00PM", 
              "01:00PM - 04:00PM",
@@ -111,8 +111,8 @@ mytable = data.frame(
     Room = c("TC.-1.61", 
              "TC.-1.61", 
              "TC.-1.61",
-             "TC.5.03",
-             "EA.6.026",
+             "TC.-1.61",
+             "TC.-1.61",
              "TC.-1.61",
              "TC.-1.61"
              ),
@@ -148,13 +148,13 @@ mytable %>% kable(escape = F, format = "html", col.names = gsub("[_]", " ", name
 library(dplyr)
 library(kableExtra)
 mytable = data.frame(
-    Date = c("Oct. 5", 
-             "Oct. 12", 
-             "Oct. 19",
-             "Oct. 28",
-             "Nov. 2",
-             "Nov. 9",
-             "Nov. 16"
+    Date = c("Oct. 4", 
+             "Oct. 11", 
+             "Oct. 18",
+             "Oct. 20",
+             "Oct. 25",
+             "Nov. 8",
+             "Nov. 15"
              ),
     Day = c("Wednesday", 
             "Wednesday", 
@@ -167,7 +167,7 @@ mytable = data.frame(
     Time = c("01:00PM - 05:00PM",
              "12:00PM - 04:00PM", 
              "12:00PM - 04:00PM", 
-             "01:00PM - 05:00PM",
+             "12:00PM - 04:00PM",
              "12:00PM - 04:00PM",
              "12:00PM - 04:00PM",
              "12:00PM - 04:00PM"
@@ -175,10 +175,10 @@ mytable = data.frame(
     Room = c("TC.-1.61", 
              "TC.-1.61", 
              "TC.-1.61",
-             "TC.5.03",
-             "EA.6.026",
              "TC.-1.61",
-             "TC.-1.61"
+             "D3.0.225",
+             "D3.0.225",
+             "D3.0.225"
              ),
     Topics = c("Introduction to the course <br>Basic concepts", 
                "Introduction to R & R Markdown", 
@@ -338,15 +338,15 @@ mytable_sub = data.frame(
              "(Pre-recorded) presentation submission"
              ),
     Date = c(
-      "Nov. 21, 01:00PM - 05:00PM",
-      "Nov. 28, 12:30PM - 04:30PM",
-      "Dec. 12, 01:00PM - 05:00PM",
-      "Jan. 6, 11:59PM"
+      "Nov. 20, 01:00PM - 05:00PM",
+      "Nov. 27, 12:30PM - 04:30PM",
+      "Dec. 11, 02:00PM - 06:00PM",
+      "Jan. 5, 11:59PM"
     ),
     Room = c(
       "TC.-1.61",
       "TC.-1.61",
-      "D4.0.022",
+      "TC.-1.61",
       "---"
     )
     )
@@ -377,15 +377,15 @@ mytable_sub = data.frame(
              "(Pre-recorded) presentation submission"
              ),
     Date = c(
-      "Nov. 23, 12:00PM - 04:00PM",
-      "Nov. 30, 12:00PM - 04:00PM",
-      "Dec. 14, 02:00PM - 06:00PM",
-      "Jan. 6, 11:59PM"
+      "Nov. 22, 12:00PM - 04:00PM",
+      "Nov. 29, 12:00PM - 04:00PM",
+      "Dec. 13, 10:30AM - 02:30PM",
+      "Jan. 5, 11:59PM"
     ),
     Room = c(
       "TC.-1.61",
       "TC.-1.61",
-      "EA.6.032",
+      "TC.-1.61",
       "---"
     )
     )
@@ -414,7 +414,7 @@ Grading is based on the following components:
 
 These grading components will be weighted with the respective weights to arrive at the final grade percentage.
 
-The **final exam** will take place online at 10:00AM on December 22, 2022. The exam covers questions about the concepts and methods (no coding) and we will provide example exams from the previous years to give you an idea about what type of questions you can expect.   
+The **final exam** will take place online at 10:00AM on December 22, 2023. The exam covers questions about the concepts and methods (no coding) and we will provide example exams from the previous years to give you an idea about what type of questions you can expect.   
 
 To ensure an equal contribution of group members for the group assignment, a **peer assessment** will be conducted among group members, which enters into the computation of the individual grades for the project. This means that the members of a group are required to assess other students regarding their relative contribution. 
 

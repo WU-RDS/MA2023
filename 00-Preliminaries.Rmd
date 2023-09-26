@@ -108,7 +108,7 @@ knitr::include_graphics("./images/quantitative_qualitative.JPG")
 
 One of the most important aspects you need to reflect on when choosing an appropriate research design is the nature of the research objective. That is, whether the objective you would like to achieve with your quantitative research can be classified as *descriptive*, *predictive*, or *causal inference*. The following table shows examples of research questions that fall in each of these categories.
 
-```{r eval = TRUE, echo = FALSE, warning=FALSE, message = FALSE, fig.cap="Test"}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(kableExtra)
 mytable_sub_1 = data.frame(
