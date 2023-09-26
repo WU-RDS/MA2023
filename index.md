@@ -1,7 +1,7 @@
 ---
 knit: "bookdown::render_book"
 new_session: TRUE
-title: "Marketing Analytics 2022"
+title: "Marketing Analytics 2023"
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
@@ -76,14 +76,14 @@ The contents on this website are divided into weekly readings. To be able to fol
 <tbody>
   <tr>
    <td style="text-align:left;"> Oct. 3 </td>
-   <td style="text-align:left;"> Monday </td>
-   <td style="text-align:left;"> 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> Tuesday </td>
+   <td style="text-align:left;"> 09:00AM - 01:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
    <td style="text-align:left;"> Introduction to the course <br>Basic concepts </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 10 </td>
+   <td style="text-align:left;"> Oct. 9 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -91,7 +91,7 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 2, 3, 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 17 </td>
+   <td style="text-align:left;"> Oct. 16 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -99,23 +99,23 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 5, 6.1, 6.2, 6.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 24 </td>
+   <td style="text-align:left;"> Oct. 23 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.5.03 </td>
+   <td style="text-align:left;"> TC.-1.61 </td>
    <td style="text-align:left;"> Hypothesis testing II </td>
    <td style="text-align:left;"> 6.4, 6.5, 6.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 31 </td>
+   <td style="text-align:left;"> Oct. 30 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> EA.6.026 </td>
+   <td style="text-align:left;"> TC.-1.61 </td>
    <td style="text-align:left;"> Regression I </td>
    <td style="text-align:left;"> 7.1, 7.2, 7.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 7 </td>
+   <td style="text-align:left;"> Nov. 6 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -123,7 +123,7 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 7.4, 7.5, 7.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 14 </td>
+   <td style="text-align:left;"> Nov. 13 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -150,7 +150,7 @@ The contents on this website are divided into weekly readings. To be able to fol
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Oct. 5 </td>
+   <td style="text-align:left;"> Oct. 4 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -158,7 +158,7 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 12 </td>
+   <td style="text-align:left;"> Oct. 11 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:00PM - 04:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -166,7 +166,7 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 2, 3, 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 19 </td>
+   <td style="text-align:left;"> Oct. 18 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:00PM - 04:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
@@ -174,34 +174,34 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> 5, 6.1, 6.2, 6.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 28 </td>
+   <td style="text-align:left;"> Oct. 20 </td>
    <td style="text-align:left;"> Friday </td>
-   <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.5.03 </td>
+   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
+   <td style="text-align:left;"> TC.-1.61 </td>
    <td style="text-align:left;"> Hypothesis testing II </td>
    <td style="text-align:left;"> 6.4, 6.5, 6.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 2 </td>
+   <td style="text-align:left;"> Oct. 25 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> EA.6.026 </td>
+   <td style="text-align:left;"> D3.0.225 </td>
    <td style="text-align:left;"> Regression I </td>
    <td style="text-align:left;"> 7.1, 7.2, 7.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 9 </td>
+   <td style="text-align:left;"> Nov. 8 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D3.0.225 </td>
    <td style="text-align:left;"> Regression II </td>
    <td style="text-align:left;"> 7.4, 7.5, 7.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 16 </td>
+   <td style="text-align:left;"> Nov. 15 </td>
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D3.0.225 </td>
    <td style="text-align:left;"> Factor analysis <br>Cluster analysis </td>
    <td style="text-align:left;"> 8, 9 </td>
   </tr>
@@ -220,7 +220,7 @@ We understand that the self-study format might pose challenges to the learning p
 
 There will be 4 individual assignments complemented with optional coaching sessions. Note that the assignments need to be submitted in the [R Markdown format](https://rmarkdown.rstudio.com/) (see chapter 10) via Learn\@wu. There will be a coaching session dedicated to the R Markdown reporting format in the second session, when the first homework is assigned. 
 
-Your main point of contact for the individual assignments will be Daria Yudaeva ([daria.yudaeva@wu.ac.at](mailto:daria.yudaeva@wu.ac.at)). You may contact Daria to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
+Your main point of contact for the individual assignments will be Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)). You may contact Julia to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
 
 <br>
 **Assignment schedule - Group A**
@@ -261,7 +261,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.<br>           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -303,7 +303,7 @@ Your main point of contact for the individual assignments will be Daria Yudaeva 
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.<br>           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.<br>           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -340,22 +340,22 @@ Again, please make sure that you have exhausted all other resources to solve a p
 <tbody>
   <tr>
    <td style="text-align:left;"> Intro to Questionnaire design </td>
-   <td style="text-align:left;"> Nov. 21, 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> Nov. 20, 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
-   <td style="text-align:left;"> Nov. 28, 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> Nov. 27, 12:30PM - 04:30PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Data analysis coaching* </td>
-   <td style="text-align:left;"> Dec. 12, 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> D4.0.022 </td>
+   <td style="text-align:left;"> Dec. 11, 02:00PM - 06:00PM </td>
+   <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
-   <td style="text-align:left;"> Jan. 6, 11:59PM </td>
+   <td style="text-align:left;"> Jan. 5, 11:59PM </td>
    <td style="text-align:left;"> --- </td>
   </tr>
 </tbody>
@@ -378,22 +378,22 @@ Again, please make sure that you have exhausted all other resources to solve a p
 <tbody>
   <tr>
    <td style="text-align:left;"> Intro to Questionnaire design </td>
-   <td style="text-align:left;"> Nov. 23, 12:00PM - 04:00PM </td>
+   <td style="text-align:left;"> Nov. 22, 12:00PM - 04:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
-   <td style="text-align:left;"> Nov. 30, 12:00PM - 04:00PM </td>
+   <td style="text-align:left;"> Nov. 29, 12:00PM - 04:00PM </td>
    <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Data analysis coaching* </td>
-   <td style="text-align:left;"> Dec. 14, 02:00PM - 06:00PM </td>
-   <td style="text-align:left;"> EA.6.032 </td>
+   <td style="text-align:left;"> Dec. 13, 10:30AM - 02:30PM </td>
+   <td style="text-align:left;"> TC.-1.61 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
-   <td style="text-align:left;"> Jan. 6, 11:59PM </td>
+   <td style="text-align:left;"> Jan. 5, 11:59PM </td>
    <td style="text-align:left;"> --- </td>
   </tr>
 </tbody>
@@ -414,7 +414,7 @@ Grading is based on the following components:
 
 These grading components will be weighted with the respective weights to arrive at the final grade percentage.
 
-The **final exam** will take place online at 10:00AM on December 22, 2022. The exam covers questions about the concepts and methods (no coding) and we will provide example exams from the previous years to give you an idea about what type of questions you can expect.   
+The **final exam** will take place online at 10:00AM on December 22, 2023. The exam covers questions about the concepts and methods (no coding) and we will provide example exams from the previous years to give you an idea about what type of questions you can expect.   
 
 To ensure an equal contribution of group members for the group assignment, a **peer assessment** will be conducted among group members, which enters into the computation of the individual grades for the project. This means that the members of a group are required to assess other students regarding their relative contribution. 
 
@@ -509,7 +509,7 @@ Please also make use of the abundance of web resources. For students who would l
 
 ### Contact {-}
 
-We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Daria Yudaeva ([daria.yudaeva@wu.ac.at](mailto:daria.yudaeva@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Daria will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
+We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Julia will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
 
 ### Acknowledgements {-}
 

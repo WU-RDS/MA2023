@@ -43,7 +43,7 @@ head(chart_data)
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rank"],"name":[4],"type":["int"],"align":["right"]},{"label":["streams"],"name":[5],"type":["int"],"align":["right"]},{"label":["frequency"],"name":[6],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["key"],"name":[9],"type":["int"],"align":["right"]},{"label":["loudness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["acousticness"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["duration_ms"],"name":[17],"type":["int"],"align":["right"]},{"label":["time_signature"],"name":[18],"type":["int"],"align":["right"]},{"label":["isrc"],"name":[19],"type":["chr"],"align":["left"]},{"label":["spotifyArtistID"],"name":[20],"type":["chr"],"align":["left"]},{"label":["releaseDate"],"name":[21],"type":["chr"],"align":["left"]},{"label":["daysSinceRelease"],"name":[22],"type":["int"],"align":["right"]},{"label":["spotifyFollowers"],"name":[23],"type":["int"],"align":["right"]},{"label":["mbid"],"name":[24],"type":["chr"],"align":["left"]},{"label":["artistCountry"],"name":[25],"type":["chr"],"align":["left"]},{"label":["indicator"],"name":[26],"type":["int"],"align":["right"]},{"label":["top10"],"name":[27],"type":["dbl"],"align":["right"]}],"data":[{"1":"dj mustard","2":"01gNiOqg8u7vT90uVgOVmz","3":"Whole Lotta Lovin'","4":"120","5":"917710","6":"3","7":"0.438","8":"0.399","9":"4","10":"-8.752","11":"0.0623","12":"0.1540","13":"0.00000845","14":"0.0646","15":"0.382","16":"160.159","17":"299160","18":"5","19":"QMJMT1500808","20":"0YinUQ50QDB7ZxSCLyQ40k","21":"08.01.2016","22":"450","23":"139718","24":"0612bcce-e351-40be-b3d7-2bb5e1c23479","25":"US","26":"1","27":"0"},{"1":"bing crosby","2":"01h424WG38dgY34vkI3Yd0","3":"White Christmas","4":"70","5":"1865526","6":"9","7":"0.225","8":"0.248","9":"9","10":"-15.871","11":"0.0337","12":"0.9120","13":"0.00014300","14":"0.4040","15":"0.185","16":"96.013","17":"183613","18":"4","19":"USMC14750470","20":"6ZjFtWeHP9XN7FeKSUe80S","21":"27.08.2007","22":"1000","23":"123135","24":"2437980f-513a-44fc-80f1-b90d9d7fcf8f","25":"US","26":"1","27":"0"},{"1":"post malone","2":"02opp1cycqiFNDpLd2o1J3","3":"Big Lie","4":"129","5":"1480436","6":"1","7":"0.325","8":"0.689","9":"6","10":"-4.951","11":"0.2430","12":"0.1970","13":"0.00000000","14":"0.0722","15":"0.225","16":"77.917","17":"207680","18":"4","19":"USUM71614468","20":"246dkjvS1zLTtiykXe5h60","21":"09.12.2016","22":"114","23":"629600","24":"b1e26560-60e5-4236-bbdb-9aa5a8d5ee19","25":"0","26":"1","27":"0"},{"1":"chris brown","2":"02yRHV9Cgk8CUS2fx9lKVC","3":"Anyway","4":"130","5":"894216","6":"1","7":"0.469","8":"0.664","9":"7","10":"-7.160","11":"0.1210","12":"0.0566","13":"0.00000158","14":"0.4820","15":"0.267","16":"124.746","17":"211413","18":"4","19":"USRC11502943","20":"7bXgB6jMjp9ATFy66eO08Z","21":"11.12.2015","22":"478","23":"4077185","24":"c234fa42-e6a6-443e-937e-2f4b073538a3","25":"US","26":"1","27":"0"},{"1":"5 seconds of summer","2":"0375PEO6HIwCHx5Y2sowQm","3":"Waste The Night","4":"182","5":"642784","6":"1","7":"0.286","8":"0.907","9":"8","10":"-4.741","11":"0.1130","12":"0.0144","13":"0.00000000","14":"0.2680","15":"0.271","16":"75.640","17":"266640","18":"4","19":"GBUM71505159","20":"5Rl15oVamLq7FbSb0NNBNy","21":"23.10.2015","22":"527","23":"2221348","24":"830e5c4e-6b7d-431d-86ab-00c751281dc5","25":"AU","26":"1","27":"0"},{"1":"rihanna","2":"046irIGshCqu24AjmEWZtr","3":"Same Ol’ Mistakes","4":"163","5":"809256","6":"2","7":"0.447","8":"0.795","9":"8","10":"-5.435","11":"0.0443","12":"0.2110","13":"0.00169000","14":"0.0725","15":"0.504","16":"151.277","17":"397093","18":"4","19":"QM5FT1600108","20":"5pKCCKE2ajJHZ9KAiaK11H","21":"29.01.2016","22":"429","23":"9687258","24":"73e5e69d-3554-40d8-8516-00cb38737a1c","25":"0","26":"1","27":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["rank"],"name":[4],"type":["int"],"align":["right"]},{"label":["streams"],"name":[5],"type":["int"],"align":["right"]},{"label":["frequency"],"name":[6],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["key"],"name":[9],"type":["int"],"align":["right"]},{"label":["loudness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["acousticness"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["duration_ms"],"name":[17],"type":["int"],"align":["right"]},{"label":["time_signature"],"name":[18],"type":["int"],"align":["right"]},{"label":["isrc"],"name":[19],"type":["chr"],"align":["left"]},{"label":["spotifyArtistID"],"name":[20],"type":["chr"],"align":["left"]},{"label":["releaseDate"],"name":[21],"type":["chr"],"align":["left"]},{"label":["daysSinceRelease"],"name":[22],"type":["int"],"align":["right"]},{"label":["spotifyFollowers"],"name":[23],"type":["int"],"align":["right"]},{"label":["mbid"],"name":[24],"type":["chr"],"align":["left"]},{"label":["artistCountry"],"name":[25],"type":["chr"],"align":["left"]},{"label":["indicator"],"name":[26],"type":["int"],"align":["right"]},{"label":["top10"],"name":[27],"type":["dbl"],"align":["right"]}],"data":[{"1":"dj mustard","2":"01gNiOqg8u7vT90uVgOVmz","3":"Whole Lotta Lovin'","4":"120","5":"917710","6":"3","7":"0.438","8":"0.399","9":"4","10":"-8.752","11":"0.0623","12":"0.1540","13":"0.00000845","14":"0.0646","15":"0.382","16":"160.159","17":"299160","18":"5","19":"QMJMT1500808","20":"0YinUQ50QDB7ZxSCLyQ40k","21":"08.01.2016","22":"450","23":"139718","24":"0612bcce-e351-40be-b3d7-2bb5e1c23479","25":"US","26":"1","27":"0"},{"1":"bing crosby","2":"01h424WG38dgY34vkI3Yd0","3":"White Christmas","4":"70","5":"1865526","6":"9","7":"0.225","8":"0.248","9":"9","10":"-15.871","11":"0.0337","12":"0.9120","13":"0.00014300","14":"0.4040","15":"0.185","16":"96.013","17":"183613","18":"4","19":"USMC14750470","20":"6ZjFtWeHP9XN7FeKSUe80S","21":"27.08.2007","22":"1000","23":"123135","24":"2437980f-513a-44fc-80f1-b90d9d7fcf8f","25":"US","26":"1","27":"0"},{"1":"post malone","2":"02opp1cycqiFNDpLd2o1J3","3":"Big Lie","4":"129","5":"1480436","6":"1","7":"0.325","8":"0.689","9":"6","10":"-4.951","11":"0.2430","12":"0.1970","13":"0.00000000","14":"0.0722","15":"0.225","16":"77.917","17":"207680","18":"4","19":"USUM71614468","20":"246dkjvS1zLTtiykXe5h60","21":"09.12.2016","22":"114","23":"629600","24":"b1e26560-60e5-4236-bbdb-9aa5a8d5ee19","25":"0","26":"1","27":"0"},{"1":"chris brown","2":"02yRHV9Cgk8CUS2fx9lKVC","3":"Anyway","4":"130","5":"894216","6":"1","7":"0.469","8":"0.664","9":"7","10":"-7.160","11":"0.1210","12":"0.0566","13":"0.00000158","14":"0.4820","15":"0.267","16":"124.746","17":"211413","18":"4","19":"USRC11502943","20":"7bXgB6jMjp9ATFy66eO08Z","21":"11.12.2015","22":"478","23":"4077185","24":"c234fa42-e6a6-443e-937e-2f4b073538a3","25":"US","26":"1","27":"0"},{"1":"5 seconds of summer","2":"0375PEO6HIwCHx5Y2sowQm","3":"Waste The Night","4":"182","5":"642784","6":"1","7":"0.286","8":"0.907","9":"8","10":"-4.741","11":"0.1130","12":"0.0144","13":"0.00000000","14":"0.2680","15":"0.271","16":"75.640","17":"266640","18":"4","19":"GBUM71505159","20":"5Rl15oVamLq7FbSb0NNBNy","21":"23.10.2015","22":"527","23":"2221348","24":"830e5c4e-6b7d-431d-86ab-00c751281dc5","25":"AU","26":"1","27":"0"},{"1":"rihanna","2":"046irIGshCqu24AjmEWZtr","3":"Same Olâ\\200\\231 Mistakes","4":"163","5":"809256","6":"2","7":"0.447","8":"0.795","9":"8","10":"-5.435","11":"0.0443","12":"0.2110","13":"0.00169000","14":"0.0725","15":"0.504","16":"151.277","17":"397093","18":"4","19":"QM5FT1600108","20":"5pKCCKE2ajJHZ9KAiaK11H","21":"29.01.2016","22":"429","23":"9687258","24":"73e5e69d-3554-40d8-8516-00cb38737a1c","25":"0","26":"1","27":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -548,28 +548,29 @@ summary(logistf(Y~X))
 ```
 
 
+
 ## Learning check {-}
 
 **(LC7.1) What is a correlation coefficient?**
 
 - [ ] It describes the difference in means of two variables
 - [ ] It describes the causal relation between two variables
-- [x] It is the standardized covariance
-- [x] It describes the degree to which the variation in one variable is related to the variation in another variable
+- [ ] It is the standardized covariance
+- [ ] It describes the degree to which the variation in one variable is related to the variation in another variable
 - [ ] None of the above 
 
 **(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?**
 
 - [ ] The line associated with the steepest slope parameter
-- [x] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
-- [x] The line that minimizes the sum of the squared residuals
+- [ ] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
+- [ ] The line that minimizes the sum of the squared residuals
 - [ ] The line that maximizes the sum of the squared residuals
 - [ ] None of the above 
 
 **(LC7.3) What is the interpretation of the regression coefficient ($\beta_1$=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., $log(sales)=13.4+0.05∗log(advertising)$)?**
 
 - [ ] An increase in advertising by 1€ leads to an increase in sales by 0.5 units
-- [x] A 1% increase in advertising leads to a 0.05% increase in sales
+- [ ] A 1% increase in advertising leads to a 0.05% increase in sales
 - [ ] A 1% increase in advertising leads to a 5% decrease in sales
 - [ ] An increase in advertising by 1€ leads to an increase in sales by 0.005 units
 - [ ] None of the above
@@ -578,29 +579,29 @@ summary(logistf(Y~X))
 
 - [ ] It is always larger than the regular $R^{2}$
 - [ ] It increases with every additional variable
-- [x] It increases only with additional variables that add more explanatory power than pure chance
-- [x] It contains a “penalty” for including unnecessary variables
+- [ ] It increases only with additional variables that add more explanatory power than pure chance
+- [ ] It contains a “penalty” for including unnecessary variables
 - [ ] None of the above 
 
 **(LC7.5) What does the term overfitting refer to?**
 
 - [ ] A regression model that has too many predictor variables
 - [ ] A regression model that fits to a specific data set so poorly, that it will not generalize to other samples
-- [x] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
+- [ ] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
 - [ ] A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well
 - [ ] None of the above 
 
 **(LC7.6) What are assumptions of the linear regression model?**
 
 - [ ] Endogeneity
-- [x] Independent errors
+- [ ] Independent errors
 - [ ] Heteroscedasticity
 - [ ] Linear dependence of regressors
 - [ ] None of the above 
 
 **(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?**
 
-- [x] The variance of the error term is not constant
+- [ ] The variance of the error term is not constant
 - [ ] A strong linear relationship between the independent variables
 - [ ] The variance of the error term is constant
 - [ ] A correlation between the error term and the independent variables
@@ -609,8 +610,8 @@ summary(logistf(Y~X))
 **(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?**
 
 - [ ] Constant marginal returns
-- [x] Decreasing marginal returns
-- [x] Constant elasticity
+- [ ] Decreasing marginal returns
+- [ ] Constant elasticity
 - [ ] Increasing marginal returns
 - [ ] None of the above 
 
@@ -618,16 +619,17 @@ summary(logistf(Y~X))
 
 - [ ] When the dependent variable is continuous
 - [ ] When the independent and dependent variables are binary
-- [x] When the dependent variable is binary
+- [ ] When the dependent variable is binary
 - [ ] None of the above 
 
 **(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?**
 
-- [x] `lm(y~x, data=data)`
+- [ ] `lm(y~x, data=data)`
 - [ ] `lm(x~y + error, data=data)`
 - [ ] `lm(x~y, data=data)`
 - [ ] `lm(y~x + error, data=data)`
 - [ ] None of the above 
+
 
 
 ## References {-}
