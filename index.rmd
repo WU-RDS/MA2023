@@ -216,7 +216,7 @@ We understand that the self-study format might pose challenges to the learning p
 
 There will be 4 individual assignments complemented with optional coaching sessions. Note that the assignments need to be submitted in the [R Markdown format](https://rmarkdown.rstudio.com/) (see chapter 10) via Learn\@wu. There will be a coaching session dedicated to the R Markdown reporting format in the second session, when the first homework is assigned. 
 
-Your main point of contact for the individual assignments will be Daria Yudaeva ([daria.yudaeva@wu.ac.at](mailto:daria.yudaeva@wu.ac.at)). You may contact Daria to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
+Your main point of contact for the individual assignments will be Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)). You may contact Julia to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
 
 <br>
 **Assignment schedule - Group A**
@@ -253,8 +253,8 @@ mytable_sub_1 = data.frame(
 mytable_sub_1 %>% kable(escape = F,  col.names = gsub("[_]", " ", names(mytable_sub_1))) %>%
   kable_paper(c("hover"), full_width = F) %>%
   footnote(general = "Dates and times are indicated for group A. 
-           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.
-           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).",
+           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.
+           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).",
            general_title = "Note: ", 
            footnote_as_chunk = T, title_format = c("italic")
            ) 
@@ -296,8 +296,8 @@ mytable_sub_1 = data.frame(
 mytable_sub_1 %>% kable(escape = F,  col.names = gsub("[_]", " ", names(mytable_sub_1))) %>%
   kable_paper(c("hover"), full_width = F) %>%
   footnote(general = "Dates and times are indicated for group B. 
-           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Daria.
-           If you need to schedule a meeting, please contact Daria at least one day in advance (daria.yudaeva@wu.ac.at).",
+           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.
+           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).",
            general_title = "Note: ", 
            footnote_as_chunk = T, title_format = c("italic")
            ) 
@@ -509,7 +509,7 @@ Please also make use of the abundance of web resources. For students who would l
 
 ### Contact {-}
 
-We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Daria Yudaeva ([daria.yudaeva@wu.ac.at](mailto:daria.yudaeva@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Daria will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
+We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Julia will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
 
 ### Acknowledgements {-}
 
