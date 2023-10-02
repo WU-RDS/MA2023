@@ -213,14 +213,14 @@ The contents on this website are divided into weekly readings. To be able to fol
 <br>
 
 ::: {.infobox_red .caution data-latex="{caution}"}
-We understand that the self-study format might pose challenges to the learning process because we cannot troubleshoot in person outside of the classroom sessions. Remember that it is very unlikely that you are the only student encountering a particular problem. So please make use of the forum on Learn\@WU (see below) to interact with your peers or ask us questions so that everyone else will benefit from the answer (there are no stupid questions!). In case you cannot get answers to address a specific problem, we will be available during the in-person classroom sessions for coaching.
+We understand that the self-study format might pose challenges to the learning process because we cannot troubleshoot in person outside of the classroom sessions. Remember that it is very unlikely that you are the only student encountering a particular problem. So please make use of the forum on CANVAS WU (see below) to interact with your peers or ask us questions so that everyone else will benefit from the answer (there are no stupid questions!). In case you cannot get answers to address a specific problem, we will be available during the in-person classroom sessions for coaching.
 :::
 
 #### Individual assignments {-}
 
-There will be 4 individual assignments complemented with optional coaching sessions. Note that the assignments need to be submitted in the [R Markdown format](https://rmarkdown.rstudio.com/) (see chapter 10) via Learn\@wu. There will be a coaching session dedicated to the R Markdown reporting format in the second session, when the first homework is assigned. 
+There will be 4 individual assignments complemented with optional coaching sessions. Note that the assignments need to be submitted in the [R Markdown format](https://rmarkdown.rstudio.com/) (see chapter 10) via CANVAS WU. There will be a coaching session dedicated to the R Markdown reporting format in the second session, when the first homework is assigned. 
 
-Your main point of contact for the individual assignments will be Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)). You may contact Julia to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
+Your main point of contact for the individual assignments will be Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)). You may contact Julia to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on CANVAS WU, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on CANVAS WU.
 
 <br>
 **Assignment schedule - Group A**
@@ -238,26 +238,26 @@ Your main point of contact for the individual assignments will be Julia Wetschni
   <tr>
    <td style="text-align:left;"> Assignment 1: R Basics </td>
    <td style="text-align:left;"> Oct. 10 </td>
-   <td style="text-align:left;"> Oct. 14, 09:00AM-01:00PM (online)* </td>
-   <td style="text-align:left;"> Oct. 16, 11:59PM </td>
+   <td style="text-align:left;"> Oct. 11, 04:00PM-06:00PM (online)* </td>
+   <td style="text-align:left;"> Oct. 15, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 2: Hypothesis testing </td>
    <td style="text-align:left;"> Oct. 17 </td>
-   <td style="text-align:left;"> Oct. 28, 09:00AM-01:00PM (online)* </td>
-   <td style="text-align:left;"> Oct. 30, 11:59PM </td>
+   <td style="text-align:left;"> Oct. 25, 04:00PM-06:00PM (online)* </td>
+   <td style="text-align:left;"> Oct. 29, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 3: Regression </td>
    <td style="text-align:left;"> Oct. 31 </td>
-   <td style="text-align:left;"> Nov. 11, 09:00AM-01:00PM (online)* </td>
-   <td style="text-align:left;"> Nov. 13, 11:59PM </td>
+   <td style="text-align:left;"> Nov. 8, 04:00PM-06:00PM (online)* </td>
+   <td style="text-align:left;"> Nov. 12, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 4: Factor and cluster analysis </td>
    <td style="text-align:left;"> Nov. 14 </td>
-   <td style="text-align:left;"> Nov. 25, 09:00AM-01:00PM (online)* </td>
-   <td style="text-align:left;"> Nov. 27, 11:59PM </td>
+   <td style="text-align:left;"> Nov. 22, 04:00PM-06:00PM (online)* </td>
+   <td style="text-align:left;"> Nov. 26, 11:59PM </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -280,26 +280,26 @@ Your main point of contact for the individual assignments will be Julia Wetschni
   <tr>
    <td style="text-align:left;"> Assignment 1: R Basics </td>
    <td style="text-align:left;"> Oct. 12 </td>
-   <td style="text-align:left;"> Oct. 14, 02:00PM-06:00PM (online)* </td>
-   <td style="text-align:left;"> Oct. 18, 11:59PM </td>
+   <td style="text-align:left;"> Oct. 16, 09:00PM-11:00AM (online)* </td>
+   <td style="text-align:left;"> Oct. 17, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 2: Hypothesis testing </td>
    <td style="text-align:left;"> Oct. 19 </td>
-   <td style="text-align:left;"> Oct. 31, 12:00PM-04:00PM (online)* </td>
-   <td style="text-align:left;"> Nov. 01, 11:59PM </td>
+   <td style="text-align:left;"> Oct. 23, 09:00AM-11:00AM (online)* </td>
+   <td style="text-align:left;"> Oct. 31, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 3: Regression </td>
    <td style="text-align:left;"> Nov. 2 </td>
-   <td style="text-align:left;"> Nov. 11, 02:00PM-06:00PM (online)* </td>
-   <td style="text-align:left;"> Nov. 15, 11:59PM </td>
+   <td style="text-align:left;"> Nov. 9, 02:00PM-04:00PM (online)* </td>
+   <td style="text-align:left;"> Nov. 14, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 4: Factor and cluster analysis </td>
    <td style="text-align:left;"> Nov. 16 </td>
-   <td style="text-align:left;"> Nov. 25, 02:00PM-06:00PM (online)* </td>
-   <td style="text-align:left;"> Nov. 29, 11:59PM </td>
+   <td style="text-align:left;"> Nov. 23, 02:00PM-04:00PM (online)* </td>
+   <td style="text-align:left;"> Nov. 28, 11:59PM </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -324,7 +324,7 @@ Your main point of contact for the group project will be Daniel Winkler ([daniel
 * Thursdays 09:00AM - 05:00PM
 * Fridays 01:00PM - 05:00PM
 
-Again, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on Learn\@wu, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on Learn\@wu.
+Again, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on CANVAS WU, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on CANVAS WU.
 
 <br>
 **Group project schedule - Group A**
