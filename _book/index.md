@@ -237,25 +237,25 @@ Your main point of contact for the individual assignments will be Julia Wetschni
 <tbody>
   <tr>
    <td style="text-align:left;"> Assignment 1: R Basics </td>
-   <td style="text-align:left;"> Oct. 10 </td>
+   <td style="text-align:left;"> Oct. 9 </td>
    <td style="text-align:left;"> Oct. 11, 04:00PM-06:00PM (online)* </td>
    <td style="text-align:left;"> Oct. 15, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 2: Hypothesis testing </td>
-   <td style="text-align:left;"> Oct. 17 </td>
+   <td style="text-align:left;"> Oct. 16 </td>
    <td style="text-align:left;"> Oct. 25, 04:00PM-06:00PM (online)* </td>
    <td style="text-align:left;"> Oct. 29, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 3: Regression </td>
-   <td style="text-align:left;"> Oct. 31 </td>
+   <td style="text-align:left;"> Oct. 30 </td>
    <td style="text-align:left;"> Nov. 8, 04:00PM-06:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 12, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 4: Factor and cluster analysis </td>
-   <td style="text-align:left;"> Nov. 14 </td>
+   <td style="text-align:left;"> Nov. 13 </td>
    <td style="text-align:left;"> Nov. 22, 04:00PM-06:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 26, 11:59PM </td>
   </tr>
@@ -279,25 +279,25 @@ Your main point of contact for the individual assignments will be Julia Wetschni
 <tbody>
   <tr>
    <td style="text-align:left;"> Assignment 1: R Basics </td>
-   <td style="text-align:left;"> Oct. 12 </td>
+   <td style="text-align:left;"> Oct. 11 </td>
    <td style="text-align:left;"> Oct. 16, 09:00PM-11:00AM (online)* </td>
    <td style="text-align:left;"> Oct. 17, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 2: Hypothesis testing </td>
-   <td style="text-align:left;"> Oct. 19 </td>
+   <td style="text-align:left;"> Oct. 18 </td>
    <td style="text-align:left;"> Oct. 23, 09:00AM-11:00AM (online)* </td>
    <td style="text-align:left;"> Oct. 31, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 3: Regression </td>
-   <td style="text-align:left;"> Nov. 2 </td>
+   <td style="text-align:left;"> Oct. 25 </td>
    <td style="text-align:left;"> Nov. 9, 02:00PM-04:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 14, 11:59PM </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Assignment 4: Factor and cluster analysis </td>
-   <td style="text-align:left;"> Nov. 16 </td>
+   <td style="text-align:left;"> Nov. 15 </td>
    <td style="text-align:left;"> Nov. 23, 02:00PM-04:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 28, 11:59PM </td>
   </tr>

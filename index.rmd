@@ -231,10 +231,10 @@ mytable_sub_1 = data.frame(
              "Assignment 4: Factor and cluster analysis"
              ),
     Assigned = c(
-      "Oct. 10",
-      "Oct. 17",
-      "Oct. 31",
-      "Nov. 14"
+      "Oct. 9",
+      "Oct. 16",
+      "Oct. 30",
+      "Nov. 13"
     ),
     Coaching = c("Oct. 11, 04:00PM-06:00PM (online)*", 
                  "Oct. 25, 04:00PM-06:00PM (online)*",
@@ -274,10 +274,10 @@ mytable_sub_1 = data.frame(
              "Assignment 4: Factor and cluster analysis"
              ),
     Assigned = c(
-      "Oct. 12",
-      "Oct. 19",
-      "Nov. 2",
-      "Nov. 16"
+      "Oct. 11",
+      "Oct. 18",
+      "Oct. 25",
+      "Nov. 15"
     ),
     Coaching = c("Oct. 16, 09:00PM-11:00AM (online)*", 
                  "Oct. 23, 09:00AM-11:00AM (online)*",
