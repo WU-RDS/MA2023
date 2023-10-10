@@ -584,23 +584,23 @@ After discussing all the steps in the research process up to the data collection
 
 **(LC1.1) Indicate the level of measurement of the following variables:**
 
-* Occupation of survey participants
-* Willingness-to-pay for a product
-* Your grade in the marketing research course (1, 2, 3, 4, 5)
-* Rank order of most important product attributes
-* Student registration number
-* Gender of survey participants
-* Consumer preferences measured on a 5-point Likert scale
-* Mileage (kilometers per liter) a car gets
-* Age of survey participants
-* Temperature in °C
-* Number of products sold
+* Occupation of survey participants - nominal 
+* Willingness-to-pay for a product - ratio 
+* Your grade in the marketing research course (1, 2, 3, 4, 5) - ordinal 
+* Rank order of most important product attributes - ordinal 
+* Student registration number - nominal 
+* Gender of survey participants - nominal  
+* Consumer preferences measured on a 5-point Likert scale - ordinal; interval 
+* Mileage (kilometers per liter) a car gets - ratio
+* Age of survey participants - ratio 
+* Temperature in °C - interval 
+* Number of products sold - ratio 
 
 **(LC1.2) Which of the answers is correct? A nominal scale …**
 
 - [ ] …has an absolute zero point
 - [ ] …possesses all properties of an ordinal scale
-- [ ] …can have numerical values
+- [x] …can have numerical values
 - [x] …serves as a label to classify/categorize objects
 - [ ] None of the above 	
 
