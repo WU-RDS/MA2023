@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10 R Markdown | Marketing Analytics 2023</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10 R Markdown | Marketing Analytics 2023" />
   <meta property="og:type" content="book" />
@@ -494,9 +494,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="text-and-equations" class="section level3 unnumbered hasAnchor">
 <h3>Text and Equations<a href="r-markdown.html#text-and-equations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R-Markdown documents are plain text files that include both text and R-code. Using RStudio they can be converted (‘knitted’) to HTML or PDF files that include both the text and the results of the R-code. In fact this website is written using R-Markdown and RStudio. In order for RStudio to be able to interpret the document you have to use certain characters or combinations of characters when formatting text and including R-code to be evaluated. By default the document starts with the options for the text part. You can change the title, date, author and a few more advanced options.</p>
-<div class="figure">
-<img src="rmdExplain/rmdHead.PNG" alt="" />
-<p class="caption">First lines of an R-Markdown document</p>
+<div class="float">
+<img src="rmdExplain/rmdHead.PNG" alt="First lines of an R-Markdown document" />
+<div class="figcaption">First lines of an R-Markdown document</div>
 </div>
 <p>The default is text mode, meaning that lines in an Rmd document will be interpreted as text, unless specified otherwise.</p>
 <div id="headings" class="section level4 unnumbered hasAnchor">
@@ -580,7 +580,7 @@ summary(cars)
 
 plot(dist~speed, cars)
 ```</code></pre>
-<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="r-markdown.html#cb775-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="r-markdown.html#cb775-1" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
 <pre><code>##      speed           dist       
 ##  Min.   : 4.0   Min.   :  2.00  
 ##  1st Qu.:12.0   1st Qu.: 26.00  
@@ -588,7 +588,7 @@ plot(dist~speed, cars)
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="r-markdown.html#cb777-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, cars)</span></code></pre></div>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="r-markdown.html#cb777-1" tabindex="-1"></a><span class="fu">plot</span>(dist<span class="sc">~</span>speed, cars)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" /></p>
 <p>A good overview of all available global/chunk options can be found <a href="https://yihui.name/knitr/options/#chunk_options">here</a>.</p>
 </div>

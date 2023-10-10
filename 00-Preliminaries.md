@@ -50,7 +50,7 @@ You will surely have come across various definitions of the term *Marketing* dur
 The corresponding marketing process can be depicted by as follows: 
 
 <div class="figure" style="text-align: center">
-<img src="./images/mr_process.JPG" alt="The marketing process Kotler &amp; Armstrong (2009)" width="90%" />
+<img src="./images/mr_process.JPG" alt="The marketing process Kotler & Armstrong (2009)" width="90%" />
 <p class="caption">(\#fig:unnamed-chunk-2)The marketing process Kotler & Armstrong (2009)</p>
 </div>
 
@@ -342,7 +342,7 @@ Wlömert & Papies (2016) study a panel of music consumers by tracking their musi
 The main advantage of a longitudinal design is that it allows researcher to observe changes over time, which is particularly helpful for the identification of causal effects. Although the observational units self-select into the test and control conditions, it is often possible to account for unobserved individual-level differences by focusing on the change over time. A method that lends itself very well for this purpose is the difference-in-differences (DiD) estimator. Continuing with the example from above, imagine we would have only conducted one cross-sectional study at T2 (after the streaming service had been introduced to the market). As can be seen from the figure below, Spotify users spend, on average, more money on music products from other channels (CDs & downloads). However, you cannot conclude from this observation that Spotify *causes* them to spend more money on music from other channels. Rather, in the absence of random assignment, the users self-selected into the test and control conditions and it is likely that music enthusiasts (i.e., consumers with a high interest in music) started using the streaming service. The unobserved factor in this case is the 'interest in music products'.
 
 <div class="figure" style="text-align: center">
-<img src="./images/spotify_study.JPG" alt="Example of DID study design (Wlömert &amp; Papies 2016)" width="70%" />
+<img src="./images/spotify_study.JPG" alt="Example of DID study design (Wlömert & Papies 2016)" width="70%" />
 <p class="caption">(\#fig:unnamed-chunk-14)Example of DID study design (Wlömert & Papies 2016)</p>
 </div>
 The DiD estimator exploits the longitudinal dimension of the data and focuses on the change over time. This is shown in the following figure:  
@@ -571,15 +571,15 @@ After discussing all the steps in the research process up to the data collection
 - [ ] …has an absolute zero point
 - [ ] …possesses all properties of an ordinal scale
 - [ ] …can have numerical values
-- [ ] …serves as a label to classify/categorize objects
+- [x] …serves as a label to classify/categorize objects
 - [ ] None of the above 	
 
 **(LC1.3) Which of these statements regarding formative constructs are true?**
 
-- [ ] Indicators (items) measure the cause for the change of the not directly observable construct
+- [x] Indicators (items) measure the cause for the change of the not directly observable construct
 - [ ] Indicators (items) measure the effect of the change in a not directly observable construct
 - [ ] The indicators (items) of the scale should be highly correlated
-- [ ] Multi-item measurement is particularly important for the increase in the reliability of the measurement
+- [x] Multi-item measurement is particularly important for the increase in the reliability of the measurement
 - [ ] None of the above
 
 **(LC1.4) In causal inference tasks, ...**
@@ -587,17 +587,17 @@ After discussing all the steps in the research process up to the data collection
 - [ ] …the main concern is to generate predictions of future outcomes 
 - [ ] …the main concern is to maximize the explained variance
 - [ ] …observational research is the 'gold standard'
-- [ ] …randomization minimizes unsystematic variation
+- [x] …randomization minimizes unsystematic variation
 - [ ] None of the above 	
 
 **(LC1.5) True or false? Reliability refers to the consistency of a measurement.**
 
-- [ ] True 
+- [x] True 
 - [ ] False
 
 **(LC1.6) Using a between-subjects design, we ... **
 
-- [ ] ... manipulate the independent variable (treatment) using different persons for each group
+- [x] ... manipulate the independent variable (treatment) using different persons for each group
 - [ ] ... manipulate independent variable using the same participants for each group 
 - [ ] ... manipulate the dependent variable (treatment) using different persons for each group
 - [ ] ... manipulate dependent variable using the same participants for each group 
@@ -605,23 +605,23 @@ After discussing all the steps in the research process up to the data collection
 
 **(LC1.7) When conducting field experiments, the term crossover effect means ...**
 
-- [ ] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
+- [x] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
 - [ ] ... that a treated individual affects the outcomes for other untreated individuals  
 - [ ] ... that individuals can be part of both the test and the control condition
 - [ ] None of the above
 
 **(LC1.8) Conditions for causality are ...**
 
-- [ ] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
+- [x] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
 - [ ] ... random assignment of test units
-- [ ] ... the causing event must occur before the effect
-- [ ] ... absence of other possible causal factors
+- [x] ... the causing event must occur before the effect
+- [x] ... absence of other possible causal factors
 - [ ] None of the above
 
 **(LC1.9) The effect of the treatment on the treated in DID models can be written as ...**
 
 - [ ] $(Yt,pre - Yt,post) − (Yc,post - Yc,pre)$  
-- [ ] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
+- [x] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
 - [ ] $(Yt,pre - Yt,post) − (Yc,pre - Yc,post)$  
 - [ ] $(Yt,post - Yt,pre) − (Yc,pre - Yc,post)$  
 - [ ] None of the above
@@ -629,15 +629,15 @@ After discussing all the steps in the research process up to the data collection
 **(LC1.10) In predictive modeling tasks ...**
 
 - [ ] ... once major concern are unobserved confounders
-- [ ] ... one major concern is overfitting 
-- [ ] ... we primarily care about the predictive ability of the model  
+- [x] ... one major concern is overfitting 
+- [x] ... we primarily care about the predictive ability of the model  
 - [ ] ... we primarily care about causal effects 
 - [ ] None of the above
 
 **(LC1.11) True or false? For ordinal scales, the magnitude of difference between scale points is known**
 
 - [ ] True 
-- [ ] False
+- [x] False
 
 
 ## References {-}
