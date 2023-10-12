@@ -1041,7 +1041,7 @@ ggmap(de_map_g_str, extent = "device") + geom_density2d(data = geo_data,
 - [x] 1.960
 - [ ] 2.580
 - [ ] 3.210
-- [ ] None of the above 	
+- [ ] None of the answers above 	
 
 ## References {-}
 

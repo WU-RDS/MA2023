@@ -781,7 +781,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [x] 1.960
 - [ ] 2.580
 - [ ] 3.210
-- [ ] None of the above 	
+- [ ] None of the answers above 	
 
 ## References {-}
 
