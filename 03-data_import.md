@@ -368,11 +368,11 @@ date <- as.Date(c("2020-10-06", "2020-10-08", "2020-10-09"))
 df <- data.frame(student, grade, date)
 ```
 
-- [ ] Error because a data frame can not have different data types
-- [ ] Error because you should use `as.data.frame()` instead of `data.frame()`
-- [x] Error because all vectors need to have the same length
-- [ ] Error because the column names are not specified
-- [ ] This code should not report an error	
+- [ ] Error because a data frame can not have different data types.
+- [ ] Error because you should use `as.data.frame()` instead of `data.frame()`.
+- [x] Error because all vectors need to have the same length.
+- [ ] Error because the column names are not specified.
+- [ ] This code should not report an error.	
 
 **You would like to analyze the following data frame**
 
