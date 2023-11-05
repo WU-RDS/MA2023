@@ -345,6 +345,33 @@ summary(logistf(Y~X))
 - [ ] None of the above 
 
 
+**(LC7.11) In a logistic regression model, where conversion (1 = conversion, 0 = no conversion) is the dependent variable, you obtain an estimate of your independent variable of 0.18. What is the correct interpretation of the coefficient associated with the independent variable?**
+
+- [ ] If the independent variable increases by 1 unit, the probability of a conversion increases by 0.18%. 
+- [ ] If the independent variable increases by 1 unit, a conversion becomes exp(0.18) = 1.19 times more likely. 
+- [ ] If the independent variable increases by 1%, the probability of conversion increases by 0.18%.
+- [ ] If the independent variable increases by 1%, the probability of conversion increases by 1.19%.
+
+**(LC7.12) What does the term elasticity (e.g., advertising elasticity) refer to?**
+
+- [ ] It expresses the relative change in an outcome variable due to a relative change in the input variable. 
+- [ ] It expresses the unit change in an outcome variable due to a change in the input variable by 1 unit. 
+- [ ] In a regression model: If the independent variable increases by 1%, the outcome changes by $\beta_1$%. 
+- [ ] In a regression model: If the independent variable increases by 1 unit, the outcome changes by $\beta_1$ units.
+
+**(LC7.13) What does the additive assumption of the linear regression model refer to?**
+
+- [ ] The effect of an independent variable on the dependent variable is independent of the values of the other independent variables included in the model.
+- [ ] The effect of an independent variable on the dependent variable is dependent of the values of the other independent variables included in the model.
+- [ ] None of the above.
+
+**(LC7.14) What types of variables can we consider as independent variables in regression models?**
+
+- [ ] Interval scale
+- [ ] Ratio scale
+- [ ] Ordinal scale
+- [ ] Nominal scale
+
 
 ## References {-}
 
