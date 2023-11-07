@@ -178,7 +178,7 @@ summary(cars)
 ```
 
 ```r
-plot(dist ~ speed, cars)
+plot(dist~speed, cars)
 ```
 
 <img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" />
@@ -357,7 +357,7 @@ library(psych)
 library(ggplot2)
 
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_fin.csv",
-    sep = ";", header = TRUE, dec = ",")
+                        sep = ";", header = TRUE, dec = ",")
 str(music_data)
 ```
 
@@ -397,7 +397,7 @@ str(music_data)
 ```
 
 ```r
-head(music_data)
+head(music_data) 
 ```
 
 <div data-pagedtable="false">
@@ -505,9 +505,9 @@ All audio features (danceability, energy, speechiness, instrumentalness, livenes
 
 ```r
 library(psych)
-describeBy(select(music_data, danceability, energy,
-    speechiness, instrumentalness, liveness, valence,
-    tempo), music_data$genre, skew = FALSE)
+describeBy(select(music_data, 
+                  danceability, energy, speechiness, instrumentalness, liveness, valence, tempo), 
+           music_data$genre, skew = FALSE) 
 ```
 
 ```
@@ -649,11 +649,11 @@ Which share of streams do the different genres account for?
   
 
 ```r
-genre_streams <- music_data %>%
-    group_by(genre) %>%
-    summarise(genre_streams = sum(streams))  #first compute sum of streams by genre
+genre_streams <- music_data %>% 
+  group_by(genre) %>%
+  summarise(genre_streams=sum(streams)) #first compute sum of streams by genre
 genre_streams_share <- genre_streams %>%
-    mutate(genre_share = genre_streams/sum(genre_streams))  #then divide the sum by the total streams
+  mutate(genre_share = genre_streams/sum(genre_streams)) #then divide the sum by the total streams
 genre_streams_share
 ```
 
@@ -671,9 +671,10 @@ This is a simple plot of valence distribution across all songs in your data (we 
   
 
 ```r
-ggplot(music_data, aes(x = valence)) + geom_histogram(binwidth = 4,
-    col = "white", fill = "lavenderblush3") + labs(x = "Valence",
-    y = "Frequency") + theme_minimal()
+ggplot(music_data,aes(x = valence)) + 
+  geom_histogram(binwidth = 4, col = "white", fill = "lavenderblush3") + 
+  labs(x = "Valence", y = "Frequency") +
+  theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -687,9 +688,11 @@ Create a grouped boxplot for the variable "energy" by genre.
 
 
 ```r
-ggplot(music_data, aes(x = genre, y = energy, color = genre)) +
-    geom_boxplot(coef = 3) + labs(x = "Genre", y = "Energy") +
-    theme_minimal() + coord_flip()
+ggplot(music_data, aes(x = genre, y = energy, color = genre)) + 
+  geom_boxplot(coef = 3) + 
+  labs(x = "Genre", y = "Energy") + 
+  theme_minimal() + 
+  coord_flip()
 ```
 
 <div class="figure" style="text-align: center">
@@ -706,8 +709,9 @@ Finally, we can visualize the relationship between valence and energy of songs i
 
 ```r
 ggplot(music_data, aes(x = valence, y = energy)) +
-    geom_point(shape = 1) + labs(x = "Valence", y = "Energy") +
-    theme_minimal()
+  geom_point(shape = 1) + 
+  labs(x = "Valence", y = "Energy") +
+  theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
