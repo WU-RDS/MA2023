@@ -234,8 +234,11 @@ We can use the `fviz_cluster` function from the `factoextra` library to get a pa
 ```r
 library(factoextra)
 fviz_cluster(kmeans_tracks, data = famous_tracks_scale,
-    palette = hcl.colors(3, palette = "Dynamic"), geom = "point",
-    ellipse.type = "convex", ggtheme = theme_bw())
+             palette = hcl.colors(3, palette = "Dynamic"), 
+             geom = "point",
+             ellipse.type = "convex", 
+             ggtheme = theme_bw()
+             )
 ```
 
 <img src="13-cluster_analysis_files/figure-html/unnamed-chunk-14-1.png" width="672" />
@@ -277,14 +280,14 @@ ggRadar(hier_centers, aes(color = cluster), rescale = T) +
 
 - [ ] To find the best-fitting linear regression model.
 - [ ] To identify underlying factors that explain correlations among variables.
-- [ ] To partition data into clusters based on similarity.
+- [x] To partition data into clusters based on similarity.
 - [ ] To calculate the correlation between variables.
 - [ ] None of the above 
 
 **(LC9.2) In the k-means algorithm, what does "k" represent?**
 
 - [ ] The number of variables in the dataset.
-- [ ] The number of clusters to be formed.
+- [x] The number of clusters to be formed.
 - [ ] The number of iterations to converge.
 - [ ] The number of outliers in the data.
 - [ ] None of the above 
@@ -292,7 +295,7 @@ ggRadar(hier_centers, aes(color = cluster), rescale = T) +
 **(LC9.3) What is the primary limitation of the k-means clustering algorithm?**
 
 - [ ] It is computationally expensive.
-- [ ] It requires specifying the number of clusters in advance.
+- [x] It requires specifying the number of clusters in advance.
 - [ ] It cannot handle categorical data.
 - [ ] It always produces spherical clusters.
 - [ ] None of the above 
