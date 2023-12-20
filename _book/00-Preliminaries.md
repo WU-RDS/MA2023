@@ -50,7 +50,7 @@ You will surely have come across various definitions of the term *Marketing* dur
 The corresponding marketing process can be depicted by as follows: 
 
 <div class="figure" style="text-align: center">
-<img src="./images/mr_process.JPG" alt="The marketing process Kotler & Armstrong (2009)" width="90%" />
+<img src="./images/mr_process.JPG" alt="The marketing process Kotler &amp; Armstrong (2009)" width="90%" />
 <p class="caption">(\#fig:unnamed-chunk-2)The marketing process Kotler & Armstrong (2009)</p>
 </div>
 
@@ -342,7 +342,7 @@ Wlömert & Papies (2016) study a panel of music consumers by tracking their musi
 The main advantage of a longitudinal design is that it allows researcher to observe changes over time, which is particularly helpful for the identification of causal effects. Although the observational units self-select into the test and control conditions, it is often possible to account for unobserved individual-level differences by focusing on the change over time. A method that lends itself very well for this purpose is the difference-in-differences (DiD) estimator. Continuing with the example from above, imagine we would have only conducted one cross-sectional study at T2 (after the streaming service had been introduced to the market). As can be seen from the figure below, Spotify users spend, on average, more money on music products from other channels (CDs & downloads). However, you cannot conclude from this observation that Spotify *causes* them to spend more money on music from other channels. Rather, in the absence of random assignment, the users self-selected into the test and control conditions and it is likely that music enthusiasts (i.e., consumers with a high interest in music) started using the streaming service. The unobserved factor in this case is the 'interest in music products'.
 
 <div class="figure" style="text-align: center">
-<img src="./images/spotify_study.JPG" alt="Example of DID study design (Wlömert & Papies 2016)" width="70%" />
+<img src="./images/spotify_study.JPG" alt="Example of DID study design (Wlömert &amp; Papies 2016)" width="70%" />
 <p class="caption">(\#fig:unnamed-chunk-14)Example of DID study design (Wlömert & Papies 2016)</p>
 </div>
 The DiD estimator exploits the longitudinal dimension of the data and focuses on the change over time. This is shown in the following figure:  
@@ -579,7 +579,7 @@ After discussing all the steps in the research process up to the data collection
 - [x] Indicators (items) measure the cause for the change of the not directly observable construct
 - [ ] Indicators (items) measure the effect of the change in a not directly observable construct
 - [ ] The indicators (items) of the scale should be highly correlated
-- [x] Multi-item measurement is particularly important for the increase in the reliability of the measurement
+- [ ] Multi-item measurement is particularly important for the increase in the reliability of the measurement
 - [ ] None of the above
 
 **(LC1.4) In causal inference tasks, ...**

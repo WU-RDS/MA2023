@@ -609,7 +609,7 @@ After discussing all the steps in the research process up to the data collection
 - [x] Indicators (items) measure the cause for the change of the not directly observable construct
 - [ ] Indicators (items) measure the effect of the change in a not directly observable construct
 - [ ] The indicators (items) of the scale should be highly correlated
-- [x] Multi-item measurement is particularly important for the increase in the reliability of the measurement
+- [ ] Multi-item measurement is particularly important for the increase in the reliability of the measurement
 - [ ] None of the above
 
 **(LC1.4) In causal inference tasks, ...**
