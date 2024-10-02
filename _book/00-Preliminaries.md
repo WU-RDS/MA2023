@@ -11,9 +11,6 @@ output:
 ---
 
 
-```
-## Warning: package 'knitr' was built under R version 4.2.3
-```
 
 # (PART) Lecture notes {-}
 
@@ -127,23 +124,23 @@ One of the most important aspects you need to reflect on when choosing an approp
    <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Will behavioral targeting in online advertising increase, on average, the probability of purchasing from our store within the next month? </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> Data </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Features</b>: user characteristics (age, gender, location, ...), product characteristics of visited pages, ...; </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Output</b>: making a purchases within the next month<br>
-              <b>Inputs</b>: age, gender, frequency of past purchases, recency of last purchases, monetary value of past purchases, past ad exposures, ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Outcome</b>: making a purchases within the next month<br>
-              <b>Treatment</b>: initiation of targeting campaign<br>
-              <b>Confounders</b>: for non-experimental settings (interest in product category, eligibility criteria used for targeting ...) </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> Data </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> &lt;b&gt;Features&lt;/b&gt;: user characteristics (age, gender, location, ...), product characteristics of visited pages, ...; </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> &lt;b&gt;Output&lt;/b&gt;: making a purchases within the next month&lt;br&gt;
+              &lt;b&gt;Inputs&lt;/b&gt;: age, gender, frequency of past purchases, recency of last purchases, monetary value of past purchases, past ad exposures, ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> |&lt;b&gt;Outcome&lt;/b&gt;: making a purchases within the next month&lt;br&gt;
+              &lt;b&gt;Treatment&lt;/b&gt;: initiation of targeting campaign&lt;br&gt;
+              &lt;b&gt;Confounders&lt;/b&gt;: for non-experimental settings (interest in product category, eligibility criteria used for targeting .. </td>
   </tr>
   <tr>
    <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Example of analytics </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Cluster Anaylsis <br> ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Regression<br>Decision trees<br>Random forests<br>Support vector machines<br>Neural networks<br> ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Experiments with random assignment<br>
-              Regression<br>
-              Instrumental variables<br>
-              Regression discontinuity<br>
-              Difference-in-differences<br>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Cluster Anaylsis &lt;br&gt; ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Regression&lt;br&gt;Decision trees&lt;br&gt;Random forests&lt;br&gt;Support vector machines&lt;br&gt;Neural networks&lt;br&gt; ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Experiments with random assignment&lt;br&gt;
+              Regression&lt;br&gt;
+              Instrumental variables&lt;br&gt;
+              Regression discontinuity&lt;br&gt;
+              Difference-in-differences&lt;br&gt;
               ... </td>
   </tr>
 </tbody>
@@ -570,13 +567,13 @@ After discussing all the steps in the research process up to the data collection
 
 - [ ] …has an absolute zero point
 - [ ] …possesses all properties of an ordinal scale
-- [x] …can have numerical values
-- [x] …serves as a label to classify/categorize objects
+- [ ] …can have numerical values
+- [ ] …serves as a label to classify/categorize objects
 - [ ] None of the above 	
 
 **(LC1.3) Which of these statements regarding formative constructs are true?**
 
-- [x] Indicators (items) measure the cause for the change of the not directly observable construct
+- [ ] Indicators (items) measure the cause for the change of the not directly observable construct
 - [ ] Indicators (items) measure the effect of the change in a not directly observable construct
 - [ ] The indicators (items) of the scale should be highly correlated
 - [ ] Multi-item measurement is particularly important for the increase in the reliability of the measurement
@@ -587,17 +584,17 @@ After discussing all the steps in the research process up to the data collection
 - [ ] …the main concern is to generate predictions of future outcomes 
 - [ ] …the main concern is to maximize the explained variance
 - [ ] …observational research is the 'gold standard'
-- [x] …randomization minimizes unsystematic variation
+- [ ] …randomization minimizes unsystematic variation
 - [ ] None of the above 	
 
 **(LC1.5) True or false? Reliability refers to the consistency of a measurement.**
 
-- [x] True 
+- [ ] True 
 - [ ] False
 
 **(LC1.6) Using a between-subjects design, we ... **
 
-- [x] ... manipulate the independent variable (treatment) using different persons for each group
+- [ ] ... manipulate the independent variable (treatment) using different persons for each group
 - [ ] ... manipulate independent variable using the same participants for each group 
 - [ ] ... manipulate the dependent variable (treatment) using different persons for each group
 - [ ] ... manipulate dependent variable using the same participants for each group 
@@ -605,23 +602,23 @@ After discussing all the steps in the research process up to the data collection
 
 **(LC1.7) When conducting field experiments, the term crossover effect means ...**
 
-- [x] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
+- [ ] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
 - [ ] ... that a treated individual affects the outcomes for other untreated individuals  
 - [ ] ... that individuals can be part of both the test and the control condition
 - [ ] None of the above
 
 **(LC1.8) Conditions for causality are ...**
 
-- [x] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
+- [ ] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
 - [ ] ... random assignment of test units
-- [x] ... the causing event must occur before the effect
-- [x] ... absence of other possible causal factors
+- [ ] ... the causing event must occur before the effect
+- [ ] ... absence of other possible causal factors
 - [ ] None of the above
 
 **(LC1.9) The effect of the treatment on the treated in DID models can be written as ...**
 
 - [ ] $(Yt,pre - Yt,post) − (Yc,post - Yc,pre)$  
-- [x] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
+- [ ] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
 - [ ] $(Yt,pre - Yt,post) − (Yc,pre - Yc,post)$  
 - [ ] $(Yt,post - Yt,pre) − (Yc,pre - Yc,post)$  
 - [ ] None of the above
@@ -629,15 +626,15 @@ After discussing all the steps in the research process up to the data collection
 **(LC1.10) In predictive modeling tasks ...**
 
 - [ ] ... once major concern are unobserved confounders
-- [x] ... one major concern is overfitting 
-- [x] ... we primarily care about the predictive ability of the model  
+- [ ] ... one major concern is overfitting 
+- [ ] ... we primarily care about the predictive ability of the model  
 - [ ] ... we primarily care about causal effects 
 - [ ] None of the above
 
 **(LC1.11) True or false? For ordinal scales, the magnitude of difference between scale points is known**
 
 - [ ] True 
-- [x] False
+- [ ] False
 
 
 ## References {-}

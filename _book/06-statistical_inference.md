@@ -29,7 +29,7 @@ This chapter will provide you with a basic intuition on statistical inference. A
 Assume there are $25,000$ students at WU and every single one has kindly provided us with the hours they listened to music in the past month. Using the code below, the ```rnorm()``` function will be used to generate 25,000 observations from a normal distribution with a mean of 50 and a standard deviation of 10. Although you might not be used to working with this type of simulated (i.e., synthetic) data, it is useful when explaining statistical concepts because the properties of the data are known. In this case, for example, we know the true mean ($49.93$ hours) and the true standard deviation (SD = $10.02$) and thus we can easily summarize the entire distribution. Since the data follows a normal distribution, roughly 95% of the values lie within 2 standard deviations from the mean, as the following plot shows:
 
 
-```r
+``` r
 library(tidyverse)
 library(ggplot2)
 library(latex2exp)
@@ -83,7 +83,7 @@ Using this notation, $N$ refers to the number of observations in the entire popu
 In the first step towards a realistic research setting, let us take one sample from this population and calculate the mean listening time. We can simply sample the row numbers of students and then subset the ```hours``` vector with the sampled row numbers. The ```sample()``` function will be used to draw a sample of size 100 from the population of 25,000 students, and one student can only be drawn once (i.e., ```replace = FALSE```). The following plot shows the distribution of listening times for our sample.
 
 
-```r
+``` r
 student_sample <- sample(1:25000, size = 100, replace = FALSE)
 sample_1 <- hours[student_sample]
 ggplot(data.frame(sample_1)) +
@@ -149,7 +149,7 @@ The central limit theorem states that if **(1)** the population distribution has
 To illustrate this, let's repeat the analysis above with a population from a gamma distribution. In the previous example, we assumed a normal distribution so it was more likely for a given student to spend around 50 hours per week listening to music. The following example depicts the case in which most students spend a similar amount of time listening to music, but there are a few students who very rarely listen to music, and some music enthusiasts with a very high level of listening time. In the following code, we will use the `rgamma()` function to generate 25,000 random observations from the gamma distribution. The gamma distribution is specified by shape and scale parameters instead of the mean and standard deviation of the normal distribution. Here is a histogram of the listening times in the population:
 
 
-```r
+``` r
 set.seed(321)
 hours <- rgamma(n = 25000, shape = 2, scale = 10)
 ggplot(data.frame(hours)) +
@@ -204,7 +204,7 @@ When we try to estimate parameters of populations (e.g., the population mean $\m
 Let us consider one random sample of 100 students from our population above. 
 
 
-```r
+``` r
 set.seed(321)
 hours <- rgamma(25000, shape = 2, scale = 10)
 
@@ -226,7 +226,7 @@ plot2
 From the central limit theorem we know that the sampling distribution of the sample mean is approximately normal and we know that for the normal distribution, 95% of the values lie within about 2 standard deviations from the mean. Actually, it is not exactly 2 standard deviations from the mean. To get the exact number, we can use the quantile function for the normal distribution ```qnorm()```:  
 
 
-```r
+``` r
 qnorm(0.975)
 ```
 
@@ -246,7 +246,7 @@ Here, $\alpha$ refers to the significance level. You can find a detailed discuss
 Plugging in the values from our sample, we get:
 
 
-```r
+``` r
 sample_mean <- mean(hours_s)
 se <- sd(hours_s)/sqrt(sample_size)
 ci_lower <- sample_mean - qnorm(0.975)*se
@@ -258,7 +258,7 @@ ci_lower
 ## [1] 17.67089
 ```
 
-```r
+``` r
 ci_upper
 ```
 
@@ -285,7 +285,7 @@ Note that this does **not** mean that for a specific sample there is a $95\%$ ch
 
 **(LC5.1) What is the correct interpretation of a confidence interval for a significance level of $\alpha$=0.05?**
 
-- [x] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 95% of these intervals.
+- [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 95% of these intervals.
 - [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 5% of these intervals.
 - [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 100% of these intervals.
 - [ ] For a given sample, there is a 95% chance that the true population mean lies within the confidence interval.
@@ -293,25 +293,25 @@ Note that this does **not** mean that for a specific sample there is a $95\%$ ch
 **(LC5.2) Which statements regarding standard error are TRUE?**
 
 - [ ] There is no connection between the standard deviation and the standard error.
-- [x] The standard error is a function of the sample size and the standard deviation.
-- [x] The standard error of the mean decreases as the sample size increases.
-- [x] The standard error of the mean increases as the standard deviation increases.
+- [ ] The standard error is a function of the sample size and the standard deviation.
+- [ ] The standard error of the mean decreases as the sample size increases.
+- [ ] The standard error of the mean increases as the standard deviation increases.
 - [ ] None of the above 	
 
 **(LC5.3) What is the correct definition for the standard error ($SE_{\bar x}$)?**
 
-- [x] ${s \over \sqrt{n}}$
+- [ ] ${s \over \sqrt{n}}$
 - [ ] ${s * \sqrt{n}}$
-- [x] ${\sqrt{s^2} \over \sqrt{n}}$
+- [ ] ${\sqrt{s^2} \over \sqrt{n}}$
 - [ ] ${\sqrt{s} \over n}$
 - [ ] None of the above 	
 
 **(LC5.4) Which of the following do you need to compute a confidence interval around a sample mean?**
 
-- [x] The critical value of the test statistic given a certain level of confidence 
-- [x] A continuous variable (i.e., at least measured at the interval level) 
-- [x] The sample the mean
-- [x] The standard error
+- [ ] The critical value of the test statistic given a certain level of confidence 
+- [ ] A continuous variable (i.e., at least measured at the interval level) 
+- [ ] The sample the mean
+- [ ] The standard error
 - [ ] None of the above 	
 
 **(LC5.5) What is the correct definition for the confidence interval?**
@@ -319,14 +319,14 @@ Note that this does **not** mean that for a specific sample there is a $95\%$ ch
 - [ ] $CI=\bar{x} \pm \frac{z_{1-\frac{a}{n}}}{\sigma_{\bar{x}}}$
 - [ ] $CI=\bar{x} * z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
 - [ ] $CI= z_{1-\frac{a}{n}}*\sigma_{\bar{x}}-\bar{x}$
-- [x] $CI=\bar{x} \pm z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
+- [ ] $CI=\bar{x} \pm z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
 - [ ] None of the above 	
 
 *As a marketing manager at Spotify you wish to find the average listening time of your users. Based on a random sample of 180 users you found that the mean listening time for the sample is 7.34 hours per week and the standard deviation is 6.87 hours.* 
 
 **(LC5.6) What is the 95% confidence interval for the mean listening time (the corresponding z-value for the 95% CI is 1.96)?**
 
-- [x] [6.34;8.34]
+- [ ] [6.34;8.34]
 - [ ] [7.15;7.55]
 - [ ] [6.25;8.15]
 - [ ] [6.54;8.54]
