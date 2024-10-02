@@ -659,15 +659,15 @@ After discussing all the steps in the research process up to the data collection
 **(LC1.10) In predictive modeling tasks ...**
 
 - [ ] ... once major concern are unobserved confounders
-- [x] ... one major concern is overfitting 
-- [x] ... we primarily care about the predictive ability of the model  
+- [ ] ... one major concern is overfitting 
+- [ ] ... we primarily care about the predictive ability of the model  
 - [ ] ... we primarily care about causal effects 
 - [ ] None of the above
 
 **(LC1.11) True or false? For ordinal scales, the magnitude of difference between scale points is known**
 
 - [ ] True 
-- [x] False
+- [ ] False
 
 
 ## References {-}
